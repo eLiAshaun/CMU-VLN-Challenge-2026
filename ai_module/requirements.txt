@@ -1,1 +1,19 @@
-scikit-learn
+# CMU VLN Challenge 2026 - AI Module Dependencies
+# Base image: docker_ai_module:semantic-qa-phase1-perception (CUDA 12.8, ROS Jazzy, torch 2.11)
+# Additional pip packages installed in Dockerfile:
+
+transformers>=4.57,<5
+accelerate>=1,<2
+bitsandbytes>=0.46,<1
+einops==0.8.2
+roma==1.5.7
+trimesh==5.0.0
+scikit-learn==1.9.0
+opencv-python-headless>=4.11
+matplotlib>=3.9
+scipy>=1.15
+numpy<2
+Pillow>=11.0
+torch>=2.1.0
+torchvision>=0.16.0
+huggingface_hub>=0.28
