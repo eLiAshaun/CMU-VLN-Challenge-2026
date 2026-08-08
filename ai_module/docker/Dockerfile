@@ -11,8 +11,6 @@ RUN python3 -m pip install --break-system-packages --no-cache-dir \
     "trimesh==5.0.0" \
     "scikit-learn==1.9.0"
 
-# The base image is retained only for its CUDA/ROS/vision dependencies.  The
-# retired scnav_vln implementation must not survive in the runnable image.
 RUN rm -rf \
     /home/docker/ai_module/src/scnav_vln \
     /home/docker/ai_module/install/scnav_vln \
@@ -24,9 +22,13 @@ RUN chmod +x /home/docker/ai_module/docker/start_live_chain.sh && \
     mkdir -p /home/docker/ai_module/runs/live_robot && \
     chown -R docker:docker /home/docker/ai_module/runs
 
+# DeepSeek API key — set at image build time so it is baked into the
+# submitted Docker image but not exposed in the public repository.
+ARG DEEPSEEK_API_KEY=""
 ENV HF_HUB_OFFLINE=1 \
     TRANSFORMERS_OFFLINE=1 \
-    PYTHONPATH=/home/docker/ai_module
+    PYTHONPATH=/home/docker/ai_module \
+    DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
 
 WORKDIR /home/docker/ai_module
 USER docker
