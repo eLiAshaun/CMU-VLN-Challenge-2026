@@ -1,0 +1,23 @@
+{
+  "schema_version": "mast3r_sensor_extrinsics_v1",
+  "configured": true,
+  "source_frame": "sensor_at_scan",
+  "camera_frame": "camera_panorama_x_forward_y_right_z_up",
+  "source_to_camera": [
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, -1.0, 0.0, 0.0],
+    [0.0, 0.0, 1.0, -0.1],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "adapter_to_camera_canonical": [
+    [0.0, 0.0, 1.0, 0.0],
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, -1.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "provenance": {
+    "source": "live_tf_sensor_at_scan_to_camera_optical",
+    "observed_date": "2026-07-10",
+    "verification_required_if_organizer_sensor_rig_changes": true
+  }
+}

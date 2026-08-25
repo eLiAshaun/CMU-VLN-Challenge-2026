@@ -1,0 +1,116 @@
+{
+  "schema_version": "2.1",
+  "asset_root": "..",
+  "runtime": {
+    "enabled": true,
+    "perception_container_image": "docker_ai_module:mast3r-live",
+    "pipeline": {
+      "stage_order": [
+        "task_compilation",
+        "task_conditioned_perception",
+        "lidar_geometry",
+        "scene_memory",
+        "query_domain",
+        "query_execution",
+        "waypoint_selection",
+        "root_finalization"
+      ],
+      "canonical_evidence": "raw_equirectangular_panorama",
+      "semantic_primary_input": "eight_high_resolution_perspective_views",
+      "proposal_backend": "qwen3vl",
+      "same_optical_center_counts_as_independent_evidence": false,
+      "geometry_authority": "official_lidar_and_state_estimation_map_frame"
+    },
+    "yolo_world": {
+      "enabled": true,
+      "required": false,
+      "role": "task_conditioned_proposal_generator",
+      "score_threshold": 0.20,
+      "nms_iou_threshold": 0.65,
+      "endpoint": "@mast3r_yolo"
+    },
+    "sam2": {
+      "enabled": true,
+      "required": true,
+      "endpoint": "@mast3r_sam2",
+      "keep_alive": true,
+      "startup_timeout_seconds": 180,
+      "request_timeout_seconds": 120,
+      "panorama_mask_iou_threshold": 0.2,
+      "panorama_mask_containment_threshold": 0.5
+    },
+    "qwen3vl": {
+      "enabled": true,
+      "required": true,
+      "role": "semantic_verifier",
+      "endpoint": "@mast3r_qwen3vl",
+      "quantization": "int8",
+      "startup_timeout_seconds": 180,
+      "keep_alive": true,
+      "grounding_enabled": true,
+      "max_pixels": 1048576,
+      "batch_max_new_tokens": 256,
+      "semantic_perspective_width": 1024,
+      "semantic_perspective_height": 768,
+      "semantic_perspective_yaws_deg": [0, 45, 90, 135, 180, 225, 270, 315]
+    },
+    "navigation": {
+      "goal_timeout_seconds": 60.0,
+      "terrain_obstacle_height_threshold": 0.05,
+      "terrain_obstacle_clearance_m": 0.75,
+      "terrain_voxel_size_m": 0.05,
+      "terrain_waypoint_acceptance_radius_m": 0.3,
+      "semantic_goal_roi_m": 2.5,
+      "stop_surface_distance_m": 0.9,
+      "stop_band_width_m": 0.45,
+      "near_surface_distance_m": 1.1,
+      "near_band_width_m": 0.8,
+      "terrain_distance_weight": 0.2,
+      "next_step_alignment_weight": 0.15,
+      "geometry_uncertainty_weight": 0.1
+    },
+    "time_budget": {
+      "question_time_budget_seconds": 600.0,
+      "answer_reserve_seconds": 70.0,
+      "initial_acquisition_estimate_seconds": 90.0
+    },
+    "competition_geometry": {
+      "enabled": true,
+      "sensor_scan_required": true,
+      "registered_scan_required": false,
+      "state_estimation_required": true,
+      "max_age_seconds": 1.0,
+      "max_camera_lidar_offset_seconds": 0.25,
+      "calibration": "configs/sensor_at_scan_to_panorama.json"
+    },
+    "semantic_execution": {
+      "enabled": true,
+      "geometry_required_for_numerical": true,
+      "minimum_independent_viewpoint_separation_m": 0.3,
+      "distance_uncertainty_sigma_factor": 2.5,
+      "scene_memory_store_name": "scene_memory.json"
+    }
+  },
+  "models": {
+    "qwen3vl": {
+      "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+      "checkpoint": "checkpoints/qwen3vl/Qwen3-VL-8B-Instruct",
+      "worker_module": "integrations.qwen3vl.worker_server",
+      "probe_module": "integrations.qwen3vl.worker_probe"
+    },
+    "sam2": {
+      "config": "third_party/Grounded-SAM-2/sam2/configs/sam2.1/sam2.1_hiera_b+.yaml",
+      "checkpoint": "checkpoints/sam2/sam2.1_hiera_base_plus.pt",
+      "worker_module": "integrations.perception.sam2_worker_server",
+      "probe_module": "integrations.perception.sam2_worker_probe"
+    },
+    "yolo_world": {
+      "role": "fixed_task_conditioned_proposal_ensemble",
+      "config": "third_party/YOLO-World/configs/pretrain/yolo_world_v2_x_vlpan_bn_2e-3_100e_4x8gpus_obj365v1_goldg_cc3mlite_train_lvis_minival.py",
+      "checkpoint": "checkpoints/yolo_world/x_stage1-62b674ad.pth",
+      "text_encoder": "checkpoints/text_encoders/clip-vit-base-patch32",
+      "worker": "integrations/perception/yolo_world_worker.py"
+    }
+  },
+  "offline_wheels": "vendor/wheels"
+}

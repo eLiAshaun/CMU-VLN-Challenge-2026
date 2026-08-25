@@ -1,15 +1,54 @@
-FROM zhangjicmu/ubuntu24_ros:ai_module
+FROM docker_ai_module:mast3r-live
 
-# Copy updated dummy_vlm source into the existing workspace
-COPY src/dummy_vlm /home/docker/ai_module/src/dummy_vlm
+# Thin runtime image for the task-conditioned online perception-memory-navigation chain.
+# CUDA/ROS dependencies and checkpoint layers are inherited from the existing
+# docker_ai_module:mast3r-live base; all business source is replaced below.
 
-# Rebuild only dummy_vlm against the already-built workspace dependencies
+USER root
+
+# Remove all stale business source code from base image before overlaying new code
+RUN rm -rf \
+    /home/docker/ai_module/integration \
+    /home/docker/ai_module/integrations \
+    /home/docker/ai_module/tools \
+    /home/docker/ai_module/configs \
+    /home/docker/ai_module/orchestration \
+    /home/docker/ai_module/perception \
+    /home/docker/ai_module/reasoning \
+    /home/docker/ai_module/memory \
+    /home/docker/ai_module/navigation \
+    /home/docker/ai_module/config \
+    /home/docker/ai_module/utils \
+    /home/docker/ai_module/mast3r \
+    /home/docker/ai_module/dust3r \
+    /home/docker/ai_module/third_party \
+    /home/docker/ai_module/docker \
+    /home/docker/ai_module/vendor \
+    /home/docker/ai_module/AGENTS.md \
+    /home/docker/ai_module/README.md \
+    /home/docker/ai_module/MODEL_ASSETS.md \
+    /home/docker/ai_module/ARCHITECTURE_FINAL.md
+
+# Overlay the current source over the inherited code.
+COPY --chown=docker:docker integrations /home/docker/ai_module/integrations
+COPY --chown=docker:docker tools /home/docker/ai_module/tools
+COPY --chown=docker:docker configs /home/docker/ai_module/configs
+COPY --chown=docker:docker orchestration /home/docker/ai_module/orchestration
+COPY --chown=docker:docker navigation /home/docker/ai_module/navigation
+COPY --chown=docker:docker config /home/docker/ai_module/config
+COPY --chown=docker:docker utils /home/docker/ai_module/utils
+COPY --chown=docker:docker mast3r /home/docker/ai_module/mast3r
+COPY --chown=docker:docker dust3r /home/docker/ai_module/dust3r
+COPY --chown=docker:docker third_party /home/docker/ai_module/third_party
+COPY --chown=docker:docker docker /home/docker/ai_module/docker
+COPY --chown=docker:docker vendor /home/docker/ai_module/vendor
+COPY --chown=docker:docker LICENSE NOTICE requirements.txt /home/docker/ai_module/
+COPY --chown=docker:docker AGENTS.md ARCHITECTURE_FINAL.md MODEL_ASSETS.md README.md /home/docker/ai_module/
+
+RUN chmod +x /home/docker/ai_module/docker/start_live_chain.sh && \
+    mkdir -p /home/docker/ai_module/runs/live_robot && \
+    chown -R docker:docker /home/docker/ai_module/runs
+
+USER docker
 WORKDIR /home/docker/ai_module
-RUN /bin/bash -c "\
-    source /opt/ros/jazzy/setup.bash && \
-    colcon build \
-      --cmake-args -DCMAKE_BUILD_TYPE=Release \
-      --packages-select dummy_vlm"
-
-# Ensure the updated install is sourced in every new shell
-RUN echo "source /home/docker/ai_module/install/setup.bash" >> /home/docker/.bashrc
+CMD ["/home/docker/ai_module/docker/start_live_chain.sh"]

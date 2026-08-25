@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Persistent abstract-socket SAM2 box-to-mask service."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from multiprocessing.connection import Listener
+from pathlib import Path
+
+from .sam2_box_worker import SAM2BoxService
+
+
+def serve(
+    *,
+    checkpoint: str,
+    config: str,
+    endpoint: str,
+    device: str,
+) -> None:
+    if not endpoint.startswith("@") or len(endpoint) < 2:
+        raise ValueError("endpoint_must_be_abstract_unix_socket")
+    service = SAM2BoxService(
+        sam2_config=config,
+        sam2_checkpoint=checkpoint,
+        device=device,
+    )
+    listener = Listener("\0" + endpoint[1:], family="AF_UNIX")
+    try:
+        while True:
+            connection = listener.accept()
+            request_id = ""
+            try:
+                payload = json.loads(connection.recv_bytes().decode("utf-8"))
+                if not isinstance(payload, dict):
+                    raise ValueError("request_must_be_object")
+                request_id = str(payload["request_id"])
+                operation = str(payload["operation"])
+                if operation == "healthcheck":
+                    metadata = service.healthcheck()
+                elif operation == "segment_boxes":
+                    request = payload.get("parameters")
+                    if not isinstance(request, dict):
+                        raise ValueError("sam2_parameters_must_be_object")
+                    metadata = service.segment(request)
+                else:
+                    raise ValueError("sam2_operation_invalid")
+                response = {"request_id": request_id, "ok": True, "metadata": metadata}
+            except Exception as exc:
+                response = {
+                    "request_id": request_id,
+                    "ok": False,
+                    "metadata": {"error_detail": str(exc)[:500]},
+                    "error_code": type(exc).__name__,
+                }
+            try:
+                connection.send_bytes(json.dumps(
+                    response,
+                    separators=(",", ":"),
+                    allow_nan=False,
+                ).encode("utf-8"))
+            except (BrokenPipeError, EOFError, OSError):
+                pass
+            finally:
+                connection.close()
+    finally:
+        listener.close()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--checkpoint", required=False)
+    parser.add_argument("--config", required=False)
+    parser.add_argument("--endpoint", required=False)
+    parser.add_argument("--device", required=False)
+    args = parser.parse_args()
+
+    # Backward compatibility: support CLI arguments
+    if args.checkpoint and args.config:
+        checkpoint = args.checkpoint
+        config = args.config
+        endpoint = args.endpoint or "@mast3r_sam2"
+        device = args.device or "cuda"
+    else:
+        # New path: load from config
+        try:
+            from config import load_config
+            ai_module_root = Path(__file__).resolve().parents[2]
+            app_config = load_config(
+                asset_manifest_path=ai_module_root / "configs" / "model_assets.json"
+            )
+            checkpoint = str(ai_module_root / app_config.sam2.checkpoint_path)
+            config = str(ai_module_root / app_config.sam2.config_name)
+            endpoint = app_config.sam2.endpoint
+            device = app_config.sam2.device
+        except ImportError:
+            raise RuntimeError(
+                "No --checkpoint provided and config system not available. "
+                "Use --checkpoint, --config, --endpoint, --device"
+            )
+
+    try:
+        serve(
+            checkpoint=checkpoint,
+            config=config,
+            endpoint=endpoint,
+            device=device,
+        )
+    except KeyboardInterrupt:
+        pass
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
