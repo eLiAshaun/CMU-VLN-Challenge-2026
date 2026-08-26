@@ -147,7 +147,52 @@ def _semantic_traversed(
     action: str,
     monitor: dict[str, Any] | None = None,
 ) -> bool:
-    if action in {"pass_near", "pass_by", "between", "pass_between", "path_near"}:
+    if action in {"between", "pass_between"}:
+        if previous is None or not isinstance(monitor, dict):
+            return False
+        ingress = region.get("ingress_xy")
+        egress = region.get("egress_xy")
+        if not (
+            isinstance(ingress, Sequence)
+            and len(ingress) >= 2
+            and isinstance(egress, Sequence)
+            and len(egress) >= 2
+        ):
+            return False
+        dx = float(egress[0]) - float(ingress[0])
+        dy = float(egress[1]) - float(ingress[1])
+        scale = dx * dx + dy * dy
+        if scale <= 1e-8:
+            return False
+
+        def progress(point: Sequence[float]) -> float:
+            return (
+                (float(point[0]) - float(ingress[0])) * dx
+                + (float(point[1]) - float(ingress[1])) * dy
+            ) / scale
+
+        intersects = _segment_hits_approach_region(
+            previous, actual, region
+        )
+        if intersects:
+            monitor["between_min_progress"] = min(
+                float(monitor.get("between_min_progress", 1.0)),
+                progress(previous),
+                progress(actual),
+            )
+            monitor["between_max_progress"] = max(
+                float(monitor.get("between_max_progress", 0.0)),
+                progress(previous),
+                progress(actual),
+            )
+        crossed = bool(
+            float(monitor.get("between_min_progress", 1.0)) <= 0.30
+            and float(monitor.get("between_max_progress", 0.0)) >= 0.70
+        )
+        if crossed:
+            monitor["semantic_ingress_seen"] = True
+        return crossed
+    if action in {"pass_near", "pass_by", "path_near"}:
         if previous is None:
             return False
         # ingress_xy/egress_xy are navigation-planning hints.  They are not
@@ -199,7 +244,7 @@ def _stop_ready(
 def _requires_terminal_stop(action: str) -> bool:
     """Return whether a terminal semantic action requires a real stop.
 
-    ``go_to`` is a terminal pose-entry predicate used by Q4.  ``stop_at``
+    ``go_to`` is a terminal pose-entry predicate.  ``stop_at``
     (and the compatible ``stop_near`` spelling) are the only terminal
     actions that own the dwell/low-speed requirement.
     """
@@ -422,7 +467,7 @@ def apply_actual_pose(
             and value.get("forbidden") is not True
             and int(value.get("order", -1)) == step_index
         ), None)
-        if region is not None and str(step.get("status")) in {"BOUND", "EXECUTING"}:
+        if region is not None and str(step.get("status")) in {"READY", "EXECUTING"}:
             action = str(step.get("action", region.get("action", ""))).lower()
             terminal = bool(step.get("is_terminal", False) or region.get("terminal", False))
             if not (terminal and not allow_terminal_completion):

@@ -1185,17 +1185,28 @@ class LeanPipeline:
             else None
         )
         target_object_ids = []
-        if target_object_id is not None:
+        bound_target_object_id = active_directive.get(
+            "bound_target_object_id", target_object_id
+        )
+        if bound_target_object_id is not None:
             try:
-                target_object_ids = [int(target_object_id)]
+                target_object_ids = [int(bound_target_object_id)]
             except (TypeError, ValueError):
                 target_object_ids = []
         anchor_object_ids = [
-            int(value["object_id"])
-            for value in active_directive.get("anchor_objects", ())
-            if isinstance(value, Mapping)
-            and str(value.get("object_id", "")).lstrip("-").isdigit()
+            int(value)
+            for value in active_directive.get(
+                "bound_anchor_object_ids", ()
+            )
+            if str(value).lstrip("-").isdigit()
         ]
+        if not anchor_object_ids:
+            anchor_object_ids = [
+                int(value["object_id"])
+                for value in active_directive.get("anchor_objects", ())
+                if isinstance(value, Mapping)
+                and str(value.get("object_id", "")).lstrip("-").isdigit()
+            ]
         if not anchor_object_ids and isinstance(active_object, Mapping):
             anchor_object_ids = [
                 int(value)
@@ -1271,6 +1282,9 @@ class LeanPipeline:
                 f"target={target_name}|attempt={attempt}"
             ),
             "step_index": int(ctx.current_step_index),
+            "predicate": str(
+                active_step.get("predicate", active_step.get("operator", action_name))
+            ),
             "action": action_name,
             "selector_provisional": bool(
                 active_directive.get(
@@ -1295,6 +1309,11 @@ class LeanPipeline:
                 str(value) for value in active_step.get("anchor_entities", ())
             ],
             "anchor_object_ids": anchor_object_ids,
+            "binding_revision": copy.deepcopy(
+                active_directive.get(
+                    "binding_revision", active_step.get("binding_revision")
+                )
+            ),
             "probe_object_ids": probe_object_ids,
             "probe_source_candidate_id": (
                 int(active_object.get("probe_source_candidate_id"))
@@ -1330,6 +1349,9 @@ class LeanPipeline:
             "is_terminal": terminal,
             "generated_scene_version": int(snapshot.get("scene_version", 0)),
             "semantic_region": (
+                dict(active_region) if isinstance(active_region, Mapping) else {}
+            ),
+            "route_geometry": (
                 dict(active_region) if isinstance(active_region, Mapping) else {}
             ),
             "command_signature": (

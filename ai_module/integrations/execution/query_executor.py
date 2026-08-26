@@ -11,6 +11,10 @@ from integrations.execution.query_domain import (
     relation_identity_blockers,
     relation_identity_ready,
 )
+from integrations.execution.instruction_executor import (
+    RecedingHorizonInstructionExecutor,
+    StepStatus,
+)
 from integrations.semantics.relation_registry import OperatorKind, relation_spec
 
 
@@ -4014,84 +4018,8 @@ def _numerical_probe_object_from_snapshot(
 def normalize_execution_steps(
     task_ir: Mapping[str, Any],
 ) -> list[dict[str, Any]]:
-    """Compile ordered TaskIR constraints into the episode's monotonic steps."""
-    if str(task_ir.get("task_type", "")) != "instruction_following":
-        return []
-    relations = {
-        str(value.get("id", "")): value
-        for value in task_ir.get("relations", ())
-    }
-    trajectory_constraints = {
-        int(value["order"]): value
-        for value in (
-            task_ir.get("trajectory_ir") or {}
-        ).get("ordered_path_constraints", ())
-    }
-    forbidden_constraints = {
-        int(value["order"]): value
-        for value in (
-            task_ir.get("trajectory_ir") or {}
-        ).get("forbidden_path_regions", ())
-    }
-    steps: list[dict[str, Any]] = []
-    raw_steps = [
-        value for value in sorted(
-            task_ir.get("ordered_trajectory_constraints", ()),
-            key=lambda value: int(value["order"]),
-        )
-        if int(value["order"]) not in forbidden_constraints
-    ]
-    for execution_index, raw in enumerate(raw_steps):
-        relation_ids = [str(value) for value in raw.get("relation_ids", ())]
-        step_relations = [
-            relations[value] for value in relation_ids if value in relations
-        ]
-        predicates = {
-            str(value.get("predicate", "")).strip().lower()
-            for value in step_relations
-        }
-        if "farthest" in predicates:
-            operator = "ARGMAX_DISTANCE"
-        elif "closest" in predicates:
-            operator = "ARGMIN_DISTANCE"
-        else:
-            operator = str(raw.get("action", "go_to")).strip().upper()
-        anchor_entities = list(dict.fromkeys(
-            str(entity_id)
-            for relation in step_relations
-            for entity_id in relation.get("object_entities", ())
-        ))
-        source_order = int(raw["order"])
-        order = execution_index
-        trajectory = trajectory_constraints.get(
-            source_order, {}
-        )
-        steps.append({
-            "step_index": order,
-            "source_order": source_order,
-            "operator": operator,
-            "action": str(raw.get("action", "go_to")),
-            "target_slot": f"ordered_step_{order}.target",
-            "anchor_slots": [
-                f"ordered_step_{order}.anchor_{index}"
-                for index in range(len(anchor_entities))
-            ],
-            "target_entity": str(raw["target_entity"]),
-            "anchor_entities": anchor_entities,
-            "relation_ids": relation_ids,
-            "is_terminal": bool(raw.get("terminal", False)),
-            "trajectory_constraint": str(
-                trajectory.get("constraint", "TERMINATE_INSIDE" if raw.get("terminal") else "ENTER_REGION")
-            ),
-            "trajectory_region_kind": str(
-                trajectory.get("region_kind", "STOP_REGION" if raw.get("terminal") else "NEAR_REGION")
-            ),
-            "forbidden": False,
-            "status": "UNRESOLVED",
-            "bound_object_id": None,
-            "bound_anchor_object_ids": [None] * len(anchor_entities),
-        })
-    return steps
+    """Compile TaskIR once into the canonical receding-horizon StepSpecs."""
+    return RecedingHorizonInstructionExecutor.compile(task_ir)
 
 
 def evaluate_required_relation_tuples(
@@ -4420,7 +4348,7 @@ def derive_task_resolution_evidence(
                 if target_relations else "class_instance_count"
             )
             # Preserve the current count as a diagnostic only.  The reason is
-            # explicitly count-specific; SceneMemory and Q4/Q5 selector
+            # explicitly count-specific; SceneMemory and instruction selector
             # openness are not reported as a numerical closure failure.
             relation_probe = (
                 _numerical_relation_probe_object(
@@ -4493,18 +4421,12 @@ def derive_task_resolution_evidence(
         result["failed_constraints"].append("unsupported_task_type")
         return result
 
-    normalized_steps = [
-        dict(value) for value in (
-            execution_steps
-            if execution_steps is not None
-            else normalize_execution_steps(task_ir)
-        )
-    ]
-    statuses = {"UNRESOLVED", "BOUND", "EXECUTING", "SATISFIED"}
-    if any(str(step.get("status")) not in statuses for step in normalized_steps):
-        raise ValueError("execution_step_status_invalid")
-    if current_step_index < 0 or current_step_index > len(normalized_steps):
-        raise ValueError("current_step_index_invalid")
+    normalized_steps = RecedingHorizonInstructionExecutor.normalize_steps(
+        task_ir, execution_steps
+    )
+    active_window = RecedingHorizonInstructionExecutor.window(
+        len(normalized_steps), current_step_index
+    )
     result.update({
         "execution_steps": normalized_steps,
         "current_step_index": int(current_step_index),
@@ -4568,10 +4490,310 @@ def derive_task_resolution_evidence(
     singular_observation_objective: dict[str, Any] | None = None
     singular_probe_candidate: dict[str, Any] | None = None
     open_relation_probe: dict[str, Any] | None = None
-    # Only the active instruction step owns a binding.  Future referents stay
-    # in scene memory but are not frozen into execution state before the
-    # actual trajectory satisfies the current ordered constraint.
-    for step in normalized_steps[current_step_index:current_step_index + 1]:
+    lookahead_directives: list[dict[str, Any]] = []
+    result["verification_policy"] = {
+        "maximum_explicit_probes_per_step": 1,
+        "explicit_probe_selected": False,
+        "selection_reason": "motion_toward_current_step_is_perception",
+        "semantic_probe_cutoff_elapsed_seconds": 420.0,
+    }
+
+    def exact_relation_anchors(
+        entity_id: str, selected_id: int
+    ) -> list[dict[str, Any]]:
+        attempts = []
+        state_rank = {"YES": 2, "UNKNOWN": 1, "NO": 0, "INVALID": -1}
+        for attempt in instruction_resolver.relation_attempts:
+            candidate = attempt.get("candidate", {})
+            if (
+                str(attempt.get("entity_id", "")) != entity_id
+                or not isinstance(candidate, Mapping)
+                or int(candidate.get("object_id", -1)) != selected_id
+            ):
+                continue
+            anchors = [
+                dict(value)
+                for value in attempt.get("bound_anchors", ())
+                if isinstance(value, Mapping)
+                and RecedingHorizonInstructionExecutor.eligible(value)
+            ]
+            if not anchors:
+                continue
+            attempts.append((
+                state_rank.get(str(attempt.get("path_state", "UNKNOWN")), -1),
+                min(
+                    RecedingHorizonInstructionExecutor.object_rank(value)
+                    for value in anchors
+                ),
+                tuple(-int(value["object_id"]) for value in anchors),
+                anchors,
+            ))
+        return max(attempts)[3] if attempts else []
+
+    def bind_one_step(
+        raw_step: Mapping[str, Any], *, lookahead_only: bool
+    ) -> tuple[dict[str, Any] | None, dict[str, Any] | None, list[str]]:
+        step = dict(raw_step)
+        step_index = int(step["step_index"])
+        entity_id = str(step["target_entity"])
+        step_relations = [
+            relation_by_id[value]
+            for value in step.get("relation_ids", ())
+            if value in relation_by_id
+        ]
+        action = str(step.get("action", ""))
+        failures: list[str] = []
+
+        if (
+            not lookahead_only
+            and str(step.get("status")) == StepStatus.EXECUTING.value
+        ):
+            if not RecedingHorizonInstructionExecutor.execution_binding_valid(
+                step, snapshot
+            ):
+                invalidated = RecedingHorizonInstructionExecutor.invalidate(
+                    step, "frozen_binding_no_longer_eligible"
+                )
+                result["active_action_invalidated"] = {
+                    "step_index": step_index,
+                    "target_entity": entity_id,
+                    "prior_bound_object_id": step.get("bound_object_id"),
+                    "prior_bound_anchor_object_ids": list(
+                        step.get("bound_anchor_object_ids", ())
+                    ),
+                    "reason": "frozen_binding_no_longer_eligible",
+                    "transition": ["CANCEL", "INVALIDATED", "RECOMPUTE"],
+                }
+                rebound, directive, rebound_failures = bind_one_step(
+                    invalidated, lookahead_only=False
+                )
+                if rebound is not None:
+                    rebound["recomputed_after_invalidation"] = True
+                return rebound, directive, list(dict.fromkeys([
+                    f"active_action_invalidated:{step_index}",
+                    *rebound_failures,
+                ]))
+            target = (
+                object_by_id.get(int(step["bound_object_id"]))
+                if step.get("bound_object_id") is not None
+                else None
+            )
+            anchors = [
+                object_by_id[int(value)]
+                for value in step.get("bound_anchor_object_ids", ())
+                if value is not None and int(value) in object_by_id
+            ]
+            bound = RecedingHorizonInstructionExecutor.bind(
+                step,
+                snapshot,
+                target=target,
+                anchors=anchors,
+                between_anchor_only=bool(
+                    step.get("between_anchor_only_binding", False)
+                ),
+            )
+            bound["status"] = StepStatus.EXECUTING.value
+        elif action == "pass_between":
+            between = next((
+                value for value in step_relations
+                if str(value.get("predicate", "")).lower() == "between"
+            ), None)
+            anchor_domains: list[list[dict[str, Any]]] = []
+            for anchor_entity in (
+                between.get("object_entities", ())
+                if isinstance(between, Mapping) else ()
+            ):
+                candidates, anchor_failures = instruction_resolver.resolve(
+                    str(anchor_entity)
+                )
+                failures.extend(anchor_failures)
+                anchor_domains.append([
+                    dict(value) for value in candidates
+                    if RecedingHorizonInstructionExecutor.eligible(value)
+                ])
+            pair = (
+                RecedingHorizonInstructionExecutor.distinct_anchor_pair(
+                    anchor_domains[0], anchor_domains[1]
+                )
+                if len(anchor_domains) == 2 else []
+            )
+            if len(pair) != 2:
+                return None, None, list(dict.fromkeys([
+                    *failures,
+                    f"between_two_distinct_atomic_anchors_unavailable:{step_index}",
+                ]))
+            bound = RecedingHorizonInstructionExecutor.bind(
+                step,
+                snapshot,
+                target=None,
+                anchors=pair,
+                between_anchor_only=True,
+                lookahead_only=lookahead_only,
+            )
+            target = pair[0]
+            anchors = pair
+        else:
+            ranking = next((
+                value for value in step_relations
+                if str(value.get("predicate", "")).lower()
+                in {"closest", "farthest"}
+            ), None)
+            anchors: list[dict[str, Any]] = []
+            challenger = None
+            if ranking is not None:
+                anchor_entity = next(
+                    iter(ranking.get("object_entities", ())), ""
+                )
+                anchor_candidates, anchor_failures = instruction_resolver.resolve(
+                    str(anchor_entity)
+                )
+                failures.extend(anchor_failures)
+                anchor = RecedingHorizonInstructionExecutor.best_atomic(
+                    anchor_candidates
+                )
+                target_candidates = instruction_resolver._class_candidates(
+                    entity_id
+                )
+                target, challenger = (
+                    RecedingHorizonInstructionExecutor.distance_winner(
+                        target_candidates,
+                        anchor,
+                        farthest=(
+                            str(ranking.get("predicate", "")).lower()
+                            == "farthest"
+                        ),
+                    )
+                    if anchor is not None else (None, None)
+                )
+                if anchor is not None:
+                    anchors = [anchor]
+                if target is not None:
+                    step["selector_binding_authorized"] = True
+                    step["selector_provisional"] = False
+                    step["selector_state"] = "COMMITTED_CURRENT_DISTANCE_WINNER"
+                    step["selector_relation_id"] = str(ranking.get("id", ""))
+                    step["selector_evidence_complete"] = True
+                    ranking_domains.append({
+                        "relation_id": str(ranking.get("id", "")),
+                        "predicate": str(ranking.get("predicate", "")),
+                        "selected_object_id": int(target["object_id"]),
+                        "anchor_object_ids": [int(anchor["object_id"])],
+                        "challenger_object_id": (
+                            int(challenger["object_id"])
+                            if challenger is not None else None
+                        ),
+                        "ranking_policy": (
+                            "fused_horizontal_distance_then_semantic_evidence_lexicographic"
+                        ),
+                        "explicit_verification_probe": False,
+                    })
+            else:
+                candidates, step_failures = instruction_resolver.resolve(entity_id)
+                failures.extend(step_failures)
+                target = RecedingHorizonInstructionExecutor.best_atomic(candidates)
+                if target is not None and step_relations:
+                    anchors = exact_relation_anchors(
+                        entity_id, int(target["object_id"])
+                    )
+            if target is None:
+                return None, None, list(dict.fromkeys([
+                    *failures,
+                    f"active_step_atomic_binding_unavailable:{step_index}",
+                ]))
+            bound = RecedingHorizonInstructionExecutor.bind(
+                step,
+                snapshot,
+                target=target,
+                anchors=anchors,
+                lookahead_only=lookahead_only,
+            )
+
+        directive = {
+            "order": step_index,
+            "action": action,
+            "terminal": bool(step["is_terminal"]),
+            "trajectory_constraint": str(step["trajectory_constraint"]),
+            "trajectory_region_kind": str(step["trajectory_region_kind"]),
+            "forbidden": bool(step.get("forbidden", False)),
+            "object": dict(target) if isinstance(target, Mapping) else {},
+            "candidate_objects": [dict(target)] if isinstance(target, Mapping) else [],
+            "anchor_objects": [dict(value) for value in anchors],
+            "selector_provisional": False,
+            "selector_state": str(bound.get("selector_state", "")),
+            "selector_relation_id": str(bound.get("selector_relation_id", "")),
+            "selector_evidence_complete": bool(
+                bound.get("selector_evidence_complete", True)
+            ),
+            "between_anchor_only_binding": bool(
+                bound.get("between_anchor_only_binding", False)
+            ),
+            "binding_revision": copy.deepcopy(bound.get("binding_revision")),
+            "bound_target_object_id": bound.get("bound_object_id"),
+            "bound_anchor_object_ids": list(
+                bound.get("bound_anchor_object_ids", ())
+            ),
+            "lookahead_only": bool(lookahead_only),
+        }
+        return bound, directive, list(dict.fromkeys(failures))
+
+    active_indexes = [active_window.current_index]
+    if active_window.lookahead_index is not None:
+        active_indexes.append(active_window.lookahead_index)
+    for step_index in active_indexes:
+        step = normalized_steps[step_index]
+        lookahead_only = step_index != active_window.current_index
+        bound, directive, step_failures = bind_one_step(
+            step, lookahead_only=lookahead_only
+        )
+        if lookahead_only:
+            result.setdefault("lookahead_preparation", []).append({
+                "step_index": step_index,
+                "ready": directive is not None,
+                "failures": step_failures,
+                "binding_revision": (
+                    copy.deepcopy(bound.get("binding_revision"))
+                    if isinstance(bound, Mapping) else None
+                ),
+                "target_object_id": (
+                    bound.get("bound_object_id")
+                    if isinstance(bound, Mapping) else None
+                ),
+                "anchor_object_ids": (
+                    list(bound.get("bound_anchor_object_ids", ()))
+                    if isinstance(bound, Mapping) else []
+                ),
+            })
+            if directive is not None:
+                lookahead_directives.append(directive)
+            continue
+        result["failed_constraints"].extend(step_failures)
+        if bound is None or directive is None:
+            normalized_steps[step_index] = (
+                bound
+                if isinstance(bound, Mapping)
+                else RecedingHorizonInstructionExecutor.block(
+                    step,
+                    step_failures[0]
+                    if step_failures else "active_step_binding_unavailable",
+                )
+            )
+            unresolved_entity_id = str(step["target_entity"])
+            break
+        normalized_steps[step_index] = bound
+        trajectory_directives.append(directive)
+        instruction_candidate_selection.append({
+            "step_index": step_index,
+            "selection_mode": "stable_task_local_lexicographic",
+            "selected_object_id": bound.get("bound_object_id"),
+            "selected_anchor_object_ids": list(
+                bound.get("bound_anchor_object_ids", ())
+            ),
+            "binding_revision": copy.deepcopy(bound.get("binding_revision")),
+        })
+
+    # Disabled legacy active-step planner: the receding-horizon owner above
+    # is the only production Instruction binding/execution path.
+    for step in ():
         if str(step.get("status")) == "SATISFIED":
             continue
         step_index = int(step["step_index"])
@@ -4810,6 +5032,42 @@ def derive_task_resolution_evidence(
             ),
         }
         trajectory_directives.append(trajectory_directive)
+
+    if unresolved_entity_id:
+        active = normalized_steps[current_step_index]
+        result.update({
+            "execution_steps": normalized_steps,
+            "current_step_status": str(active.get("status", StepStatus.BLOCKED.value)),
+            "current_step_ready": False,
+            "current_step_binding": None,
+            "trajectory_directives": [],
+            "instruction_candidate_selection": instruction_candidate_selection,
+            "relation_verifications": list(instruction_resolver.verifications),
+            "candidate_domains": dict(instruction_resolver.candidate_domains),
+            "ranking_domains": ranking_domains,
+            "selector_resolutions": list(instruction_resolver.selector_resolutions),
+            "probe_object": None,
+            "explicit_verification_probe": None,
+            "unresolved_slots": [str(active["target_slot"])],
+            "remaining_required_classes": list(dict.fromkeys(
+                str(entities[value]["class_name"])
+                for step in normalized_steps[current_step_index:]
+                for value in (
+                    step["target_entity"], *step.get("anchor_entities", ())
+                )
+                if value in entities
+            )),
+            "active_constraint_order": int(current_step_index),
+            "remaining_constraint_orders": list(
+                range(current_step_index, len(normalized_steps))
+            ),
+        })
+        result["failed_constraints"] = list(dict.fromkeys(
+            str(value) for value in result["failed_constraints"]
+        ))
+        return result
+
+    trajectory_directives.extend(lookahead_directives)
 
     if not unresolved_entity_id:
         for constraint in (
@@ -5189,15 +5447,27 @@ def derive_task_resolution_evidence(
         active = normalized_steps[current_step_index]
         result["current_step_status"] = str(active["status"])
         result["current_step_ready"] = bool(trajectory_directives)
-        if active.get("bound_object_id") is not None:
-            result["current_step_binding"] = {
-                "target_slot": str(active["target_slot"]),
-                "object_id": int(active["bound_object_id"]),
-                "entity_id": str(active["target_entity"]),
-                "class_name": str(
-                    entities[str(active["target_entity"])]["class_name"]
-                ),
-            }
+        result["current_step_binding"] = {
+            "target_slot": str(active["target_slot"]),
+            "object_id": (
+                int(active["bound_object_id"])
+                if active.get("bound_object_id") is not None else None
+            ),
+            "entity_id": str(active["target_entity"]),
+            "class_name": str(
+                entities[str(active["target_entity"])]["class_name"]
+            ),
+            "anchor_slots": list(active.get("anchor_slots", ())),
+            "anchor_object_ids": list(
+                active.get("bound_anchor_object_ids", ())
+            ),
+            "binding_revision": copy.deepcopy(
+                active.get("binding_revision")
+            ),
+            "between_anchor_only_binding": bool(
+                active.get("between_anchor_only_binding", False)
+            ),
+        }
         result["failed_constraints"] = []
 
     result["execution_steps"] = normalized_steps
@@ -5236,7 +5506,15 @@ def derive_task_resolution_evidence(
     bound_entities = {
         str(step["target_entity"])
         for step in normalized_steps
-        if step.get("bound_object_id") is not None
+        if (
+            step.get("bound_object_id") is not None
+            or str(step.get("status"))
+            in {
+                StepStatus.READY.value,
+                StepStatus.EXECUTING.value,
+                StepStatus.SATISFIED.value,
+            }
+        )
     }
     remaining_entity_ids = list(dict.fromkeys(
         str(value)
@@ -5247,7 +5525,11 @@ def derive_task_resolution_evidence(
     result["unresolved_slots"] = [
         str(step["target_slot"])
         for step in normalized_steps[current_step_index:]
-        if step.get("bound_object_id") is None
+        if str(step.get("status")) not in {
+            StepStatus.READY.value,
+            StepStatus.EXECUTING.value,
+            StepStatus.SATISFIED.value,
+        }
     ]
     result["remaining_required_classes"] = list(dict.fromkeys(
         str(entities[value]["class_name"])

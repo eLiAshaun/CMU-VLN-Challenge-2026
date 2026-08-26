@@ -306,10 +306,10 @@ class NavigationExecutor:
         waypoint_context: Mapping[str, object] | None = None,
         timeout_s: float | None = None,
     ) -> bool:
-        """Publish one semantic corridor with at most two semantic points."""
+        """Publish one semantic route; BETWEEN owns entry/center/exit."""
         if self.has_active_goal or self.awaiting_arrival_acquisition:
             return False
-        if not isinstance(waypoint_context, Mapping) or not waypoints or len(waypoints) > 2:
+        if not isinstance(waypoint_context, Mapping) or not waypoints or len(waypoints) > 3:
             return False
         start = _pose(start_pose) if start_pose is not None else self._last_pose
         if start is None:

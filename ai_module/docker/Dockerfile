@@ -1,9 +1,8 @@
 FROM elias1012/cmu-vln-2026:latest
 
 # Thin runtime image for the task-conditioned online perception-memory-navigation chain.
-# CUDA/ROS dependencies and checkpoint layers are inherited from the team's
-# existing public Docker Hub image; all business source is replaced below from
-# this submitted repository.
+# CUDA/ROS dependencies and checkpoint layers are inherited from the existing
+# docker_ai_module:mast3r-live base; all business source is replaced below.
 
 USER root
 

@@ -40,6 +40,7 @@ if str(ROOT) not in sys.path:
 from integrations.ros.output_adapter import RosOutputAdapter
 from integrations.execution.evidence_acquisition import EvidenceAcquisitionCoordinator
 from integrations.execution.navigation_executor import NavigationExecutor
+from integrations.execution.instruction_executor import StepStatus
 from integrations.execution.query_executor import normalize_execution_steps
 from integrations.execution.resolver_contracts import ResolverResult, ResolverStatus
 from integrations.execution.root_finalizer import (
@@ -446,8 +447,19 @@ class LiveTaskProbe(Node):
                     == step_index
                 ):
                     step = steps[step_index]
-                    if str(step.get("status")) == "BOUND":
-                        step["status"] = "EXECUTING"
+                    if str(step.get("status")) == StepStatus.READY.value:
+                        step["status"] = StepStatus.EXECUTING.value
+                        step["dispatch_target_object_id"] = step.get(
+                            "bound_object_id"
+                        )
+                        step["dispatch_anchor_object_ids"] = list(
+                            step.get("bound_anchor_object_ids", ())
+                        )
+                        step["geometry_used_for_execution"] = copy.deepcopy(
+                            waypoint_context.get("semantic_region")
+                            if isinstance(waypoint_context, Mapping)
+                            else None
+                        )
         elif state in {"navigation_local_waypoint_arrived", "navigation_arrived"} and goal_id:
             started = self.navigation_started.pop(goal_id, None)
             if started is not None:
@@ -1152,18 +1164,59 @@ class LiveTaskProbe(Node):
                 else None
             )
         returned_steps = execution.get("execution_steps")
+        invalidated_step_index: int | None = None
+        invalidation = execution.get("active_action_invalidated")
+        if isinstance(invalidation, Mapping):
+            try:
+                invalidated_step_index = int(invalidation.get("step_index"))
+            except (TypeError, ValueError):
+                invalidated_step_index = None
+            owned_steps = self.episode_state.get("execution_steps", [])
+            if (
+                invalidated_step_index is not None
+                and 0 <= invalidated_step_index < len(owned_steps)
+            ):
+                prior = dict(owned_steps[invalidated_step_index])
+                self.navigation.cancel("semantic_action_invalidated")
+                owned_steps[invalidated_step_index].update({
+                    "status": StepStatus.INVALIDATED.value,
+                    "invalidation_reason": str(
+                        invalidation.get("reason", "binding_invalidated")
+                    ),
+                    "invalidation_count": int(
+                        prior.get("invalidation_count", 0) or 0
+                    ) + 1,
+                })
+                self.episode_state["active_waypoint"] = None
+                self.episode_state["active_waypoint_context"] = None
+                monitor = self.episode_state.get("trajectory_monitor", {})
+                if isinstance(monitor, dict):
+                    monitor["route_active"] = False
+                self._publish_status(
+                    "semantic_action_invalidated",
+                    transition=["CANCEL", "INVALIDATED", "RECOMPUTE"],
+                    step_index=invalidated_step_index,
+                    prior_binding=prior.get("bound_object_id"),
+                    prior_anchor_bindings=list(
+                        prior.get("bound_anchor_object_ids", ())
+                    ),
+                    reason=str(invalidation.get("reason", "")),
+                )
         if isinstance(returned_steps, list):
             owned_steps = self.episode_state.get("execution_steps", [])
             if len(returned_steps) != len(owned_steps):
                 raise RuntimeError("execution_step_count_changed")
-            for owned, returned in zip(owned_steps, returned_steps):
+            for index, (owned, returned) in enumerate(zip(owned_steps, returned_steps)):
                 old_status = str(owned["status"])
                 new_status = str(returned["status"])
-                if new_status == "SATISFIED" and old_status != "SATISFIED":
-                    new_status = "BOUND"
                 if (
-                    old_status == "SATISFIED"
-                    and new_status != "SATISFIED"
+                    new_status == StepStatus.SATISFIED.value
+                    and old_status != StepStatus.SATISFIED.value
+                ):
+                    new_status = StepStatus.READY.value
+                if (
+                    old_status == StepStatus.SATISFIED.value
+                    and new_status != StepStatus.SATISFIED.value
                 ):
                     raise RuntimeError("execution_step_status_regressed")
                 old_binding = owned.get("bound_object_id")
@@ -1174,25 +1227,64 @@ class LiveTaskProbe(Node):
                 new_anchor_bindings = list(
                     returned.get("bound_anchor_object_ids", ())
                 )
+                executing_binding_changed = bool(
+                    old_status == StepStatus.EXECUTING.value
+                    and (
+                        old_binding != new_binding
+                        or old_anchor_bindings != new_anchor_bindings
+                    )
+                )
+                if executing_binding_changed:
+                    self.navigation.cancel("semantic_binding_revision_changed")
+                    owned.update({
+                        "status": StepStatus.INVALIDATED.value,
+                        "invalidation_reason": "semantic_binding_revision_changed",
+                        "invalidation_count": int(
+                            owned.get("invalidation_count", 0) or 0
+                        ) + 1,
+                    })
+                    self.episode_state["active_waypoint"] = None
+                    self.episode_state["active_waypoint_context"] = None
+                    monitor = self.episode_state.get("trajectory_monitor", {})
+                    if isinstance(monitor, dict):
+                        monitor["route_active"] = False
+                    self._publish_status(
+                        "semantic_action_invalidated",
+                        transition=[
+                            "CANCEL", "INVALIDATED", "RECOMPUTE", "NEW_ACTION"
+                        ],
+                        step_index=index,
+                        prior_binding=old_binding,
+                        new_binding=new_binding,
+                        prior_anchor_bindings=old_anchor_bindings,
+                        new_anchor_bindings=new_anchor_bindings,
+                    )
+                    continue
                 if (
-                    old_status == "SATISFIED"
+                    old_status == StepStatus.SATISFIED.value
                     and old_binding is not None
                     and new_binding != old_binding
                 ):
                     raise RuntimeError("execution_step_binding_changed")
                 if (
-                    old_status == "SATISFIED"
+                    old_status == StepStatus.SATISFIED.value
                     and
                     any(value is not None for value in old_anchor_bindings)
                     and new_anchor_bindings != old_anchor_bindings
                 ):
                     raise RuntimeError("execution_anchor_binding_changed")
-                if old_status != "SATISFIED":
+                if old_status != StepStatus.SATISFIED.value:
                     owned["status"] = new_status
                     owned["bound_object_id"] = (
                         None if new_binding is None else int(new_binding)
                     )
                     owned["bound_anchor_object_ids"] = new_anchor_bindings
+                    owned["binding_revision"] = copy.deepcopy(
+                        returned.get("binding_revision")
+                    )
+                    owned["between_anchor_only_binding"] = bool(
+                        returned.get("between_anchor_only_binding", False)
+                    )
         if isinstance(geometry, Mapping) and geometry.get("status") == "completed":
             self.episode_state["geometry_manifest_path"] = str(
                 geometry.get("observations_path", "")
@@ -1248,6 +1340,8 @@ class LiveTaskProbe(Node):
                 monitor["activation_stamp_seconds"] = None
                 monitor["semantic_previous_pose_map"] = None
                 monitor["semantic_ingress_seen"] = False
+                monitor.pop("between_min_progress", None)
+                monitor.pop("between_max_progress", None)
                 # A newly computed selection is only a route candidate. Semantic
                 # evaluation starts after output_adapter confirms publication.
                 self.episode_state["active_waypoint_context"] = None
@@ -1916,6 +2010,52 @@ class LiveTaskProbe(Node):
             observation_intent = decision.get("observation_intent")
             if not isinstance(observation_intent, Mapping):
                 return False
+            active_task_type = str(
+                (self.episode_state or {}).get("task_ir", {}).get(
+                    "task_type", ""
+                )
+            )
+            if active_task_type == "instruction_following":
+                step_index = int(
+                    (self.episode_state or {}).get("current_step_index", 0)
+                )
+                runtime = self._current_step_runtime(step_index)
+                elapsed = (
+                    None
+                    if self.episode_started_monotonic is None
+                    else max(
+                        0.0,
+                        time.monotonic() - self.episode_started_monotonic,
+                    )
+                )
+                concrete_ids = list(dict.fromkeys([
+                    *(
+                        int(value)
+                        for value in context.get("target_object_ids", ())
+                    ),
+                    *(
+                        int(value)
+                        for value in context.get("anchor_object_ids", ())
+                    ),
+                ]))
+                if (
+                    int(runtime.get("evidence_dispatch_count", 0) or 0) >= 1
+                    or elapsed is not None and elapsed >= 420.0
+                    or len(concrete_ids) < 2
+                ):
+                    self._publish_status(
+                        "instruction_verification_blocked",
+                        reason=(
+                            "verification_probe_budget_exhausted"
+                            if int(runtime.get("evidence_dispatch_count", 0) or 0) >= 1
+                            else "semantic_probe_cutoff_reached"
+                            if elapsed is not None and elapsed >= 420.0
+                            else "winner_changing_challenger_missing"
+                        ),
+                        step_index=step_index,
+                        concrete_object_ids=concrete_ids,
+                    )
+                    return False
             context["observation_intent"] = dict(observation_intent)
             purpose = "evidence"
         else:
@@ -1924,6 +2064,47 @@ class LiveTaskProbe(Node):
                 return False
             context["execution_intent"] = dict(execution_intent)
             purpose = "instruction"
+            if self.episode_state is None:
+                return False
+            step_index = context.get("step_index")
+            steps = self.episode_state.get("execution_steps", ())
+            if (
+                not isinstance(step_index, int)
+                or not 0 <= step_index < len(steps)
+                or step_index
+                != int(self.episode_state.get("current_step_index", -1))
+            ):
+                return False
+            step = steps[step_index]
+            selected_target_ids = [
+                int(value) for value in context.get("target_object_ids", ())
+            ]
+            selected_anchor_ids = [
+                int(value) for value in context.get("anchor_object_ids", ())
+            ]
+            expected_target_ids = (
+                [int(step["bound_object_id"])]
+                if step.get("bound_object_id") is not None else []
+            )
+            expected_anchor_ids = [
+                int(value)
+                for value in step.get("bound_anchor_object_ids", ())
+                if value is not None
+            ]
+            if (
+                selected_target_ids != expected_target_ids
+                or selected_anchor_ids != expected_anchor_ids
+            ):
+                self._publish_status(
+                    "instruction_dispatch_rejected",
+                    reason="selected_dispatched_semantic_ids_mismatch",
+                    step_index=step_index,
+                    selected_target_ids=selected_target_ids,
+                    expected_target_ids=expected_target_ids,
+                    selected_anchor_ids=selected_anchor_ids,
+                    expected_anchor_ids=expected_anchor_ids,
+                )
+                return False
         self.dispatch_in_progress = True
         dispatched = self.navigation.dispatch_segment(
             waypoints,
@@ -2528,9 +2709,12 @@ class LiveTaskProbe(Node):
             task_type = str(self.episode_state["task_ir"].get("task_type", ""))
             if task_type == "instruction_following":
                 active_index = int(self.episode_state["current_step_index"])
+                active_window = execution_steps[
+                    active_index:min(len(execution_steps), active_index + 2)
+                ]
                 scene_observation_entity_ids = list(dict.fromkeys(
                     str(entity_id)
-                    for step in execution_steps[active_index:]
+                    for step in active_window
                     for entity_id in (
                         step.get("target_entity"),
                         *step.get("anchor_entities", ()),

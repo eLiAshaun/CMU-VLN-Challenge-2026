@@ -2,7 +2,8 @@
 
 This module does not implement a waypoint converter or a global planner. It
 keeps semantic target coordinates intact, uses terrain only as a soft feature,
-and emits one point for a goal or two points for an ordered corridor.
+and emits one point for a goal, two for PASS_NEAR, or entry/center/exit for
+BETWEEN.
 """
 
 from __future__ import annotations
@@ -602,21 +603,33 @@ def _corridor_waypoints(
     kind = str(region.get("kind", ""))
     center = region.get("center_xy", _target_xy(directive))
     if kind == "between_corridor":
-        polygon = region.get("polygon_xy", ())
-        if isinstance(polygon, Sequence) and len(polygon) >= 4:
-            ordered = [(float(point[0]), float(point[1])) for point in polygon]
-            first = ((ordered[0][0] + ordered[3][0]) * 0.5, (ordered[0][1] + ordered[3][1]) * 0.5)
-            second = ((ordered[1][0] + ordered[2][0]) * 0.5, (ordered[1][1] + ordered[2][1]) * 0.5)
-            if math.dist(start_xy[:2], second) < math.dist(start_xy[:2], first):
+        endpoints = region.get("centerline_endpoints_xy", ())
+        if isinstance(endpoints, Sequence) and len(endpoints) == 2:
+            first = (float(endpoints[0][0]), float(endpoints[0][1]))
+            second = (float(endpoints[1][0]), float(endpoints[1][1]))
+            center = (
+                0.5 * (first[0] + second[0]),
+                0.5 * (first[1] + second[1]),
+            )
+            forward_cost = math.dist(start_xy[:2], first) + (
+                math.dist(second, next_target[:2])
+                if next_target is not None else 0.0
+            )
+            reverse_cost = math.dist(start_xy[:2], second) + (
+                math.dist(first, next_target[:2])
+                if next_target is not None else 0.0
+            )
+            if reverse_cost < forward_cost:
                 first, second = second, first
+            route = [first, center, second]
             if (
-                point_in_region(first, region)
-                and point_in_region(second, region)
+                all(point_in_region(value, region) for value in route)
                 and segment_intersects_region(first, second, region)
                 and not _forbidden(first, start_xy, forbidden_regions)
-                and not _forbidden(second, first, forbidden_regions)
+                and not _forbidden(center, first, forbidden_regions)
+                and not _forbidden(second, center, forbidden_regions)
             ):
-                return [first, second]
+                return route
         return []
     polygon = region.get("footprint_polygon_xy", ())
     if (
@@ -976,14 +989,48 @@ def select_semantic_waypoints(
         )
     else:
         route = []
-    if action in {"pass_near", "pass_by", "path_near", "pass_between", "between"}:
+    if action in {"pass_between", "between"}:
+        if len(route) != 3:
+            return []
+        valid = [point for point in route if not _forbidden(point, start_xy, forbidden_regions)]
+        if len(valid) != 3:
+            return []
+        return [
+            (
+                point[0],
+                point[1],
+                math.atan2(
+                    (
+                        valid[index + 1][1]
+                        if index + 1 < len(valid)
+                        else (next_target or semantic_target)[1]
+                    ) - point[1],
+                    (
+                        valid[index + 1][0]
+                        if index + 1 < len(valid)
+                        else (next_target or semantic_target)[0]
+                    ) - point[0],
+                ),
+            )
+            for index, point in enumerate(valid)
+        ]
+    if action in {"pass_near", "pass_by", "path_near"}:
         if len(route) != 2:
             return []
         valid = [point for point in route if not _forbidden(point, start_xy, forbidden_regions)]
         if len(valid) != 2:
             return []
         return [
-            (valid[index][0], valid[index][1], math.atan2(valid[index + 1][1] - valid[index][1], valid[index + 1][0] - valid[index][0]) if index == 0 else math.atan2(semantic_target[1] - valid[index][1], semantic_target[0] - valid[index][0]))
+            (
+                valid[index][0],
+                valid[index][1],
+                math.atan2(
+                    valid[index + 1][1] - valid[index][1]
+                    if index == 0 else semantic_target[1] - valid[index][1],
+                    valid[index + 1][0] - valid[index][0]
+                    if index == 0 else semantic_target[0] - valid[index][0],
+                ),
+            )
             for index in range(2)
         ]
     if route:
@@ -1049,7 +1096,7 @@ def semantic_waypoint_segment_output(
     navigation_config: dict | None = None,
     navigation_history: Sequence[Mapping[str, Any]] = (),
 ) -> dict:
-    """Compile one active semantic step to at most two sparse waypoints."""
+    """Compile one active semantic step to its smallest semantic route."""
     if not trajectory_directives or not (0 <= active_directive_index < len(trajectory_directives)):
         return {"schema_version": "semantic_waypoint_segment_v2", "status": "blocked", "reason": "waypoint_coordinate_missing", "waypoints": []}
     config = dict(navigation_config or {})
@@ -1113,6 +1160,9 @@ def semantic_waypoint_segment_output(
     if active_action in {"pass_near", "pass_by", "path_near", "pass_between", "between"} and len(waypoints) >= 2:
         active_region["ingress_xy"] = list(waypoints[0][:2])
         active_region["egress_xy"] = list(waypoints[1][:2])
+        if active_action in {"pass_between", "between"} and len(waypoints) == 3:
+            active_region["corridor_center_xy"] = list(waypoints[1][:2])
+            active_region["egress_xy"] = list(waypoints[2][:2])
     context = {
         "constraint_set_id": str(constraint_set_id),
         "step_index": int(active.get("order", active_directive_index)),

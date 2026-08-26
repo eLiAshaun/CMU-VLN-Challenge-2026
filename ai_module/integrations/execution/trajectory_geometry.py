@@ -120,7 +120,10 @@ def _point_in_polygon(point: Sequence[float], polygon: Sequence[Sequence[float]]
         if _point_segment_distance((x, y), first, second) <= 1e-8:
             return True
         if (y1 > y) != (y2 > y):
-            crossing = (x2 - x1) * (y - y1) / max(1e-12, y2 - y1) + x1
+            denominator = y2 - y1
+            if abs(denominator) <= 1e-12:
+                continue
+            crossing = (x2 - x1) * (y - y1) / denominator + x1
             if x < crossing:
                 inside = not inside
     return inside
@@ -325,21 +328,46 @@ def compile_directive_geometry(
                     "geometry_blocked_reason": "between_region_anchors_coincident",
                 }
             else:
-                nx, ny = -dy / length, dx / length
-                width = max(0.35, min(1.25, 0.5 * length - 0.5 * max(_extent_xy(anchors[0])) - 0.5 * max(_extent_xy(anchors[1]))))
+                # BETWEEN is a path through the gap, perpendicular to the
+                # line joining the two real anchors.  It is not a route from
+                # one anchor into the other.
+                ux, uy = dx / length, dy / length
+                nx, ny = -uy, ux
+                center = [
+                    (first[0] + second[0]) * 0.5,
+                    (first[1] + second[1]) * 0.5,
+                ]
+                first_radius = 0.5 * max(_extent_xy(anchors[0]))
+                second_radius = 0.5 * max(_extent_xy(anchors[1]))
+                free_gap = max(0.35, length - first_radius - second_radius)
+                half_width = max(0.22, min(0.55, 0.42 * free_gap))
+                half_length = max(0.90, min(1.60, 0.65 * length))
+                entry_a = [
+                    center[0] - nx * half_length,
+                    center[1] - ny * half_length,
+                ]
+                entry_b = [
+                    center[0] + nx * half_length,
+                    center[1] + ny * half_length,
+                ]
                 corridor = [
-                    [first[0] + dx * 0.20 - nx * width, first[1] + dy * 0.20 - ny * width],
-                    [second[0] - dx * 0.20 - nx * width, second[1] - dy * 0.20 - ny * width],
-                    [second[0] - dx * 0.20 + nx * width, second[1] - dy * 0.20 + ny * width],
-                    [first[0] + dx * 0.20 + nx * width, first[1] + dy * 0.20 + ny * width],
+                    [entry_a[0] - ux * half_width, entry_a[1] - uy * half_width],
+                    [entry_b[0] - ux * half_width, entry_b[1] - uy * half_width],
+                    [entry_b[0] + ux * half_width, entry_b[1] + uy * half_width],
+                    [entry_a[0] + ux * half_width, entry_a[1] + uy * half_width],
                 ]
                 region = {
                     "kind": kind,
                     "shape": "polygon",
                     "polygon_xy": corridor,
-                    "center_xy": [(first[0] + second[0]) * 0.5, (first[1] + second[1]) * 0.5],
+                    "center_xy": center,
+                    "centerline_endpoints_xy": [entry_a, entry_b],
+                    "corridor_center_xy": center,
+                    "corridor_half_width_m": half_width,
+                    "corridor_half_length_m": half_length,
                     "anchor_footprints_xy": [_obb_polygon(anchors[0]), _obb_polygon(anchors[1])],
                 }
+                semantic_target = list(center)
     elif action in {"avoid_near", "avoid", "avoid_between"} or bool(directive.get("forbidden")):
         kind = "forbidden_polygon"
         polygon = _inflate_polygon(footprint_polygon, float(clearance_m) + float(acceptance_radius_m))
@@ -422,14 +450,26 @@ def compile_directive_geometry(
             )
         ),
         "action": action,
-        "semantic_object_id": int(obj["object_id"]) if str(obj.get("object_id", "")).lstrip("-").isdigit() and int(obj.get("object_id", -1)) >= 0 else None,
-        "semantic_object_class": str(obj.get("class_label", "")),
+        "semantic_object_id": (
+            None
+            if directive.get("between_anchor_only_binding") is True
+            else int(obj["object_id"])
+            if str(obj.get("object_id", "")).lstrip("-").isdigit()
+            and int(obj.get("object_id", -1)) >= 0
+            else None
+        ),
+        "semantic_object_class": (
+            "between_corridor"
+            if directive.get("between_anchor_only_binding") is True
+            else str(obj.get("class_label", ""))
+        ),
         "terminal": bool(directive.get("terminal", False)),
         "forbidden": bool(directive.get("forbidden", False)) or kind == "forbidden_polygon",
         "support_object_id": int(support.get("object_id")) if support is not None and str(support.get("object_id", "")).lstrip("-").isdigit() else None,
         "navigation_footprint": (
             None
             if region.get("kind") == "viewpoint_region"
+            or directive.get("between_anchor_only_binding") is True
             else int(footprint_object.get("object_id", -1))
             if str(footprint_object.get("object_id", "")).lstrip("-").isdigit()
             else None
@@ -454,7 +494,7 @@ def compile_directive_geometry(
         region.get("navigation_target_xy", region.get("center_xy", semantic_target))
     )
     result["semantic_target_xy"] = semantic_target
-    result["look_at_xy"] = semantic_target
+    result["look_at_xy"] = look_at_xy
     return result
 
 
