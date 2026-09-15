@@ -1,0 +1,17 @@
+{
+  "output_type": "object_reference",
+  "task_type": "object_reference",
+  "action": "SAFE_REJECT",
+  "reason_code": "query_unresolved_without_probe_goal",
+  "numerical_answer": null,
+  "count_belief": null,
+  "commit_tier": "",
+  "stop_reason": "query_unresolved_without_probe_goal",
+  "answer_source": "QUERY_PLAN_ROOT",
+  "navigation_outcome": "",
+  "repeat_agreement": false,
+  "publish_intent": false,
+  "selected_object_label": null,
+  "selected_object": null,
+  "waypoint_sequence": []
+}

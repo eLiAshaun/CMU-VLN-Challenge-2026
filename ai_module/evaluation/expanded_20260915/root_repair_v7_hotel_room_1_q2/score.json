@@ -1,0 +1,100 @@
+{
+  "schema_version": "cmu_vln_local_score_v1",
+  "evaluation_kind": "transparent_local_proxy_not_private_official_scorer",
+  "scene": "hotel_room_1",
+  "question_id": "q2",
+  "task_type": "object_reference",
+  "question": "Find the bedside table farthest from the window.",
+  "proxy_score_before_time_adjustment": 0.07494708995551565,
+  "proxy_score": 0.07494708995551565,
+  "max_points": 2.0,
+  "details": {
+    "metric": "axis_aligned_3d_iou",
+    "ground_truth": {
+      "object_id": 72,
+      "label": "bedside table",
+      "center": [
+        3.5302891681563,
+        0.181008862352729,
+        0.323834823241966
+      ],
+      "native_oriented_size": [
+        0.8722669781572,
+        0.794661411105227,
+        0.650673415520935
+      ],
+      "heading": -3.1415856130402,
+      "enclosing_aabb_size": [
+        0.8722725729886559,
+        0.7946675523244499,
+        0.650673415520935
+      ]
+    },
+    "observed": {
+      "elapsed_seconds": 529.860652923584,
+      "frame_id": "map",
+      "center": [
+        3.2339648190570047,
+        -0.19162846208603612,
+        0.5425542992016457
+      ],
+      "size": [
+        0.39896447164855786,
+        0.36695811385663757,
+        0.2917370187837557
+      ],
+      "label": "bedside table"
+    },
+    "valid_marker": true,
+    "frame": "map",
+    "iou_3d": 0.037473544977757824,
+    "center_error_m": 0.5239321564840999
+  },
+  "timing": {
+    "completion_seconds": 530.0353866405785,
+    "time_limit_seconds": 600.0,
+    "late_seconds": 0.0,
+    "configured_mode": "report_only",
+    "configured_penalty_points": 0.0,
+    "official_late_penalty_formula_publicly_unknown": true,
+    "early_completion_tiebreak_seconds": 530.0353866405785
+  },
+  "termination": {
+    "reason": "object_reference_output",
+    "success": true,
+    "failure_stage": null
+  },
+  "question_accepted": true,
+  "protocol_diagnostics": {
+    "accepted_model_episodes": 1,
+    "single_command_reaccepted": false
+  },
+  "run": "20260915T160134_080627Z",
+  "label": "root_repair_v7_hotel_room_1_q2",
+  "root_decision": "object_reference_output",
+  "failure_stage": null,
+  "runtime_navigation": {
+    "waypoint": [
+      3.25,
+      -1.0,
+      0.0
+    ],
+    "complete": false,
+    "progress": {
+      "step": 0,
+      "completed_steps": [],
+      "travel_m": 70.41104257607377
+    },
+    "evidence_need": [],
+    "trajectory_violations": [],
+    "purpose": "observation"
+  },
+  "candidate_coverage": {
+    "observed_candidates": 5,
+    "observed_anchors": 2,
+    "geometry_unknown_pairs": 0,
+    "complete": true
+  },
+  "numerical_answer": null,
+  "ros_published": true
+}

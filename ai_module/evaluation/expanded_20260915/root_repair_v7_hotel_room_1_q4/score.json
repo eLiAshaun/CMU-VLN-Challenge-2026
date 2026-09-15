@@ -1,0 +1,139 @@
+{
+  "schema_version": "cmu_vln_local_score_v1",
+  "evaluation_kind": "transparent_local_proxy_not_private_official_scorer",
+  "scene": "hotel_room_1",
+  "question_id": "q4",
+  "task_type": "instruction_following",
+  "question": "Go to the bedside table closest to the window and stop at the chair closest to the TV.",
+  "proxy_score_before_time_adjustment": 3.6943558152036164,
+  "proxy_score": 3.6943558152036164,
+  "max_points": 6.0,
+  "details": {
+    "metric": "ordered_reference_trajectory_proxy_v1",
+    "score_uses_actual_state_estimation_not_commanded_waypoints": true,
+    "reference_path": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/questions/hotel_room_1/trajectory_q4.ply",
+    "reference_points": 719,
+    "observed_points": 153,
+    "reference_length_m": 8.230641772969724,
+    "observed_length_m": 9.084232711344487,
+    "enough_motion": true,
+    "invalid_observed_frames": [],
+    "metrics": {
+      "discrete_frechet_m": 0.9191961519163578,
+      "progress_rmse_m": 0.6146582566389452,
+      "endpoint_error_m": 0.5570134588441021,
+      "coverage_fraction": 1.0,
+      "length_ratio": 0.9060359894447894
+    },
+    "normalized_components": {
+      "frechet": 0.5404019240418211,
+      "progress_rmse": 0.5902278289073699,
+      "endpoint": 0.44298654115589786,
+      "coverage": 1.0,
+      "length_ratio": 0.9060359894447894
+    },
+    "weights": {
+      "frechet": 0.3,
+      "progress_rmse": 0.25,
+      "endpoint": 0.25,
+      "coverage": 0.15,
+      "length_ratio": 0.05
+    },
+    "weighted_similarity": 0.6157259692006027
+  },
+  "timing": {
+    "completion_seconds": 67.04139823745936,
+    "time_limit_seconds": 600.0,
+    "late_seconds": 0.0,
+    "configured_mode": "report_only",
+    "configured_penalty_points": 0.0,
+    "official_late_penalty_formula_publicly_unknown": true,
+    "early_completion_tiebreak_seconds": 67.04139823745936
+  },
+  "termination": {
+    "reason": "instruction_trajectory_complete",
+    "success": true,
+    "failure_stage": null
+  },
+  "question_accepted": true,
+  "protocol_diagnostics": {
+    "accepted_model_episodes": 1,
+    "single_command_reaccepted": false
+  },
+  "run": "20260915T155843_636901Z",
+  "label": "root_repair_v7_hotel_room_1_q4",
+  "root_decision": "instruction_trajectory_complete",
+  "failure_stage": null,
+  "runtime_navigation": {
+    "waypoint": null,
+    "complete": true,
+    "progress": {
+      "step": 2,
+      "completed_steps": [
+        {
+          "step": 0,
+          "action": "go_to",
+          "compiled_order": 0,
+          "object_id": "object_000005",
+          "stamp": 1789487985.1338334,
+          "position": [
+            2.160107374191284,
+            -3.944051742553711,
+            0.7522076964378357
+          ],
+          "surface_distance_m": 1.2496301292605396,
+          "distance_basis": "estimated_location",
+          "target_center": [
+            3.398269623447571,
+            -3.775144358249986,
+            0.3321259135599933
+          ],
+          "target_bbox": [
+            0.7965031206030675,
+            1.053294230365287,
+            0.6830502452203788
+          ],
+          "translation_since_binding_m": 0.5810316293116675,
+          "target_observation_id": "image_1_1789487967.813756"
+        },
+        {
+          "step": 1,
+          "action": "go_to",
+          "compiled_order": 1,
+          "object_id": "object_000002",
+          "stamp": 1789487990.388829,
+          "position": [
+            0.4558538496494293,
+            -3.42759370803833,
+            0.7522076964378357
+          ],
+          "surface_distance_m": 1.2486769282843007,
+          "distance_basis": "measured_extent",
+          "target_center": [
+            -0.8507383614778519,
+            -2.1902350783348083,
+            0.5770161915570498
+          ],
+          "target_bbox": [
+            0.7116037309169769,
+            0.8558388948440552,
+            1.1570361517369747
+          ],
+          "translation_since_binding_m": 1.8263714461952827,
+          "target_observation_id": "image_1_1789487967.813756"
+        }
+      ],
+      "travel_m": 9.147609115878764
+    },
+    "evidence_need": [],
+    "trajectory_violations": []
+  },
+  "candidate_coverage": {
+    "observed_candidates": 2,
+    "observed_anchors": 1,
+    "geometry_unknown_pairs": 0,
+    "complete": true
+  },
+  "numerical_answer": null,
+  "ros_published": true
+}

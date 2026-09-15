@@ -1,0 +1,7 @@
+services:
+  system:
+    volumes:
+      - type: bind
+        source: ${SCNAV_UNITY_CALIBRATION_SCENE_DIR:?SCNAV_UNITY_CALIBRATION_SCENE_DIR is required}
+        target: /home/docker/autonomy_stack_mecanum_wheel_platform/src/base_autonomy/vehicle_simulator/mesh/unity/environment
+        read_only: false

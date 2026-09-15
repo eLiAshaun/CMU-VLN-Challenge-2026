@@ -1,3 +1,77 @@
-.vscode
+# --- Python cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+*.egg
 
+# --- Build artifacts (colcon) ---
+build/
+install/
+log/
+
+# --- Results and output ---
+results/
+*.bag
+*.mcap
+*.db3
+
+# --- Local raw replay and dated runtime evidence ---
+# Existing historical fixtures under artifacts/ may remain tracked; new
+# production images, replay bundles, and diagnostic dumps stay local.
+artifacts/scene_memory_raw_replay*/
+artifacts/*20260801*
+artifacts/scene_memory_*smem*
+artifacts/scene_memory_tv_replay_*
+artifacts/scene_memory_synthetic_benchmark_*
+
+# --- Model weights (>50MB — use external cache or Git LFS) ---
+ai_module/hf_cache/
+ai_module/models/*.pth
+ai_module/models/*.pt
+ai_module/*.pt
+!ai_module/eresh.pt
+*.pth
+*.onnx
+*.safetensors
+*.h5
+*.msgpack
+*.ot
+
+# --- Archives ---
+*.zip
+*.tar.gz
+*.tar
+*.rar
+# Local, read-only quarantine; restore only on an explicit request.
+ai_module/.legacy_archive/
+
+# --- IDE / OS ---
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+*~
+
+# --- Docker ---
+docker/*.tar
+*.tar
+
+# --- ROS2 logs ---
+ros2_log/
+*.log
+
+# --- Temporary evaluation outputs ---
+tmp/
+temp/
+.stdout
+
+# --- Local credentials ---
+.env
+.env.*
+!.env.example

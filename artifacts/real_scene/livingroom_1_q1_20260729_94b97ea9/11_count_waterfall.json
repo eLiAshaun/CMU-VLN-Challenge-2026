@@ -1,0 +1,4632 @@
+{
+  "schema_version": "scnav_count_waterfall_v1",
+  "inventory_id": "35fc94fce9ab4134b32a7e11e8634a62",
+  "query_id": "35fc94fce9ab4134b32a7e11e8634a62",
+  "metadata": {
+    "task_type": "numerical",
+    "target_category": "chair",
+    "source": "online_runtime_only",
+    "coverage_gaps": [
+      "detector_pre_threshold_class_score_rejections_not_observable",
+      "provisional_observation_missing_proposal_lineage"
+    ],
+    "runtime_adapter_finalized": true
+  },
+  "count_waterfall": {
+    "raw_local_proposals": 57,
+    "after_duplicate_suppression": 37,
+    "after_mask_split": 37,
+    "tracklets": 11,
+    "physical_hypotheses": 11,
+    "confirmed_hypotheses": 1,
+    "relation_true_hypotheses": 0,
+    "counted_hypotheses": 0
+  },
+  "summary": {
+    "total_candidate_identities": 79,
+    "eliminated_candidate_identities": 56,
+    "promoted_candidate_identities": 23,
+    "counted_candidate_identities": 0,
+    "active_candidate_identities": 0
+  },
+  "candidate_ledger": [
+    {
+      "candidate_id": "memory-1",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-829e7fae22304366a3ee4821ee361b3a"
+      ],
+      "source_observation_ids": [
+        "obs-0145a8154e89f0c43457de27",
+        "canonical-57eedc98464ff758e02ea0a3"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0000"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-10",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-58515b015d2848c5b1e3be279ac5d362"
+      ],
+      "source_observation_ids": [
+        "obs-b357b6fe10fe33a1f21c5991",
+        "canonical-571b3837b7c3d518405ef8fe"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0001"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-12",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-579a7f0c01714b44aedce510fbc14cf8"
+      ],
+      "source_observation_ids": [
+        "obs-c80d937b71ced37c91b42425",
+        "canonical-2a9ee148494e59772e8ced91",
+        "obs-16991fe6afd8782c15b36157"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0002"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-13",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-688a0286f7e2475cbb284f390a9974e7"
+      ],
+      "source_observation_ids": [
+        "obs-2d7758c319830e0fabe066ea",
+        "canonical-fbe9addeced63789f1fbb1ee"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0003"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-15",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-14827cddc7ab4c62ad2967b87ce74eab"
+      ],
+      "source_observation_ids": [
+        "canonical-8f467189c65fc966c52a0bdb",
+        "obs-01586f4b863ce083ff2dd0af"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0004"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-17",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-10f9ae92255c4153add1f99e17bd4206"
+      ],
+      "source_observation_ids": [
+        "canonical-6d9ff046b79e452f52aaf66e",
+        "obs-0b371f93a8ed73ab8059ff47",
+        "obs-889b3218a09fe161b0809b41"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0005"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-18",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-55662720bba34bb89651f982af7ec64a"
+      ],
+      "source_observation_ids": [
+        "canonical-83fd695b1565decec67c6449",
+        "obs-37922bfc6e909e31441d541c"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0006"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-6",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-7dbf0bddf9c44df2bd2eb53e818c7a3c",
+        "proposal-2f338306e0af4aa3a2467632b3243681"
+      ],
+      "source_observation_ids": [
+        "obs-5c4ab9f904c6d7c41f182098",
+        "canonical-ea1a31c41c81214f48f0e1f4",
+        "obs-70c290f18dc0660f17e9b8d5",
+        "canonical-7e04908f0065f3547c3f141b"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0007"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-7",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-7ae5cd0d0bc94beab7fd5a7c0eb0d711"
+      ],
+      "source_observation_ids": [
+        "canonical-2c01d4dfa3e58cb795110797",
+        "obs-d85186c68a3f20e80972c49c"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0008"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-8",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-2c8d913e9f4a4668a7993e7ab7e9bb33"
+      ],
+      "source_observation_ids": [
+        "canonical-f951e903443bafc3e52253ba",
+        "obs-c09014beb8a2a76cd142236c"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0009"
+        ]
+      }
+    },
+    {
+      "candidate_id": "memory-9",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [
+        "proposal-066f3e6724f24bc78655029f2b83f499"
+      ],
+      "source_observation_ids": [
+        "canonical-38645f44f6417a4943f69ade",
+        "obs-773a6ee862ea0d695745cab7",
+        "obs-44c39445837e922e1f51a879"
+      ],
+      "observed_stages": [
+        "tracklets"
+      ],
+      "last_survived_stage": "tracklets",
+      "evidence_by_stage": {
+        "tracklets": {
+          "source": "object_memory_observation_lineage"
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "physical_hypotheses",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "child_candidate_ids": [
+          "obj_h0010"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0000",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-1"
+      ],
+      "source_observation_ids": [
+        "canonical-57eedc98464ff758e02ea0a3"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.6166222495896665,
+          "p_class": 0.2631072998046875
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0001",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-10"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:6e95956f87ee661d22861fca"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.2815689591701749,
+          "p_class": 0.5514864921569824
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0002",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-12"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:953f51083ef2096f45728b09"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "provisional",
+          "confirmation_profile": "general",
+          "p_exist": 0.3842603539604478,
+          "p_class": 0.6689453125
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "provisional_only",
+      "terminal_evidence": {
+        "confirmation_mode": "provisional",
+        "reasons": [
+          "insufficient_category_aware_confirmation_evidence"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0003",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-13"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:9559eff6882d5a6dbcf53bcb"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.4690025910390532,
+          "p_class": 0.21250298619270325
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0004",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-15"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:b5967bb1e9fd68410cc13276"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.27729221088283973,
+          "p_class": 0.512073278427124
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0005",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-17"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:bb1c7cc5b0f806fa81fb3d0d"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "provisional",
+          "confirmation_profile": "general",
+          "p_exist": 0.37078633230154157,
+          "p_class": 0.5165873169898987
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "provisional_only",
+      "terminal_evidence": {
+        "confirmation_mode": "provisional",
+        "reasons": [
+          "insufficient_category_aware_confirmation_evidence"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0006",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-18"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:c831360c8c87a091868df88a"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "provisional",
+          "confirmation_profile": "general",
+          "p_exist": 0.4445616708597828,
+          "p_class": 0.3757624328136444
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "provisional_only",
+      "terminal_evidence": {
+        "confirmation_mode": "provisional",
+        "reasons": [
+          "insufficient_category_aware_confirmation_evidence"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0007",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-6"
+      ],
+      "source_observation_ids": [
+        "canonical-ea1a31c41c81214f48f0e1f4",
+        "panorama@1785259707.696271896:328b33232c27c08c:767c608dbc4630122462037b"
+      ],
+      "observed_stages": [
+        "physical_hypotheses",
+        "confirmed_hypotheses"
+      ],
+      "last_survived_stage": "confirmed_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "multiview_confirmed",
+          "confirmation_profile": "general",
+          "p_exist": 0.8149656116176579,
+          "p_class": 0.4338743777112142
+        },
+        "confirmed_hypotheses": {
+          "confirmation_mode": "multiview_confirmed",
+          "reasons": [
+            "independent_multiview_confirmation"
+          ]
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "relation_true_hypotheses",
+      "terminal_reason": "relation_unknown",
+      "terminal_evidence": {
+        "relation_evidence": [
+          {
+            "relation_type": "on",
+            "state": "unknown",
+            "posterior": 0.0,
+            "evidence_mass": 0.0,
+            "observability": 0.0,
+            "positive_mass": 0.0,
+            "negative_mass": 0.0,
+            "independent_view_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0008",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-7"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:02240b28377b67e8e3d5b909"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.2781798631060537,
+          "p_class": 0.5661351084709167
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0009",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-8"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:43e88d3d68dcc9cd1e998ea5"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "rejected",
+          "confirmation_profile": "general",
+          "p_exist": 0.5286965506536199,
+          "p_class": 0.20063282549381256
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "physical_hypothesis_rejected",
+      "terminal_evidence": {
+        "confirmation_mode": "rejected",
+        "reasons": [
+          "existence_or_category_rejected"
+        ]
+      }
+    },
+    {
+      "candidate_id": "obj_h0010",
+      "category": "chair",
+      "bound_anchor_id": "3",
+      "parent_candidate_ids": [
+        "memory-9"
+      ],
+      "source_observation_ids": [
+        "panorama@1785259707.696271896:328b33232c27c08c:48c09d5007f846aaf376116a"
+      ],
+      "observed_stages": [
+        "physical_hypotheses"
+      ],
+      "last_survived_stage": "physical_hypotheses",
+      "evidence_by_stage": {
+        "physical_hypotheses": {
+          "confirmation_mode": "provisional",
+          "confirmation_profile": "general",
+          "p_exist": 0.3751078788060851,
+          "p_class": 0.5179432034492493
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "confirmed_hypotheses",
+      "terminal_reason": "provisional_only",
+      "terminal_evidence": {
+        "confirmation_mode": "provisional",
+        "reasons": [
+          "insufficient_category_aware_confirmation_evidence"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.0797363,
+                0.5098958,
+                0.1592773,
+                0.6729167
+              ],
+              "confidence": 0.46875,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.0797363,
+                0.5098958,
+                0.1592773,
+                0.6729167
+              ],
+              "confidence": 0.46875,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8807488
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0797363,
+              0.5098958,
+              0.1592773,
+              0.6729167
+            ],
+            "confidence": 0.46875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0797363,
+              0.5098958,
+              0.1592773,
+              0.6729167
+            ],
+            "confidence": 0.46875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8807488
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-01434213a93d428181e773dd2270adf8",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.5398437,
+                0.5078125,
+                0.5964844,
+                0.640625
+              ],
+              "confidence": 0.10821533203125,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.5398437,
+                0.5078125,
+                0.5964844,
+                0.640625
+              ],
+              "confidence": 0.10821533203125,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8258719
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.5398437,
+              0.5078125,
+              0.5964844,
+              0.640625
+            ],
+            "confidence": 0.10821533203125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.5398437,
+              0.5078125,
+              0.5964844,
+              0.640625
+            ],
+            "confidence": 0.10821533203125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8258719
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-05490dbeab6c459c944e780439021508",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.5386573,
+                0.5035753,
+                0.5876284,
+                0.6193017
+              ],
+              "confidence": 0.2927021086215973,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.5386573,
+                0.5035753,
+                0.5876284,
+                0.6193017
+              ],
+              "confidence": 0.2927021086215973,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.6818474
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5386573,
+              0.5035753,
+              0.5876284,
+              0.6193017
+            ],
+            "confidence": 0.2927021086215973,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5386573,
+              0.5035753,
+              0.5876284,
+              0.6193017
+            ],
+            "confidence": 0.2927021086215973,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6818474
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-066f3e6724f24bc78655029f2b83f499",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-066f3e6724f24bc78655029f2b83f499",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4004043,
+                0.4975965,
+                0.44871,
+                0.6431421
+              ],
+              "confidence": 0.5179432034492493,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-773a6ee862ea0d695745cab7"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:3:17b518e5af868079979a",
+          "mask_quality": 0.6423549627465724
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-38645f44f6417a4943f69ade",
+          "obs-44c39445837e922e1f51a879",
+          "obs-773a6ee862ea0d695745cab7"
+        ],
+        "child_candidate_ids": [
+          "memory-9"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-0a56ec1a0c0041179dac26b8465eefa4",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-0a56ec1a0c0041179dac26b8465eefa4",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.0,
+                0.4734375,
+                0.3748047,
+                1.0
+              ],
+              "confidence": 0.74755859375,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-10f9ae92255c4153add1f99e17bd4206",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-10f9ae92255c4153add1f99e17bd4206",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.3355453,
+                0.5028721,
+                0.3895861,
+                0.6561602
+              ],
+              "confidence": 0.5165873169898987,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-889b3218a09fe161b0809b41"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:9:ccf66e1eb3c7026847a8",
+          "mask_quality": 0.6262097973592432
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-6d9ff046b79e452f52aaf66e",
+          "obs-0b371f93a8ed73ab8059ff47",
+          "obs-889b3218a09fe161b0809b41"
+        ],
+        "child_candidate_ids": [
+          "memory-17"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-14827cddc7ab4c62ad2967b87ce74eab",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-14827cddc7ab4c62ad2967b87ce74eab",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.322471,
+                0.4771839,
+                0.36915,
+                0.6241391
+              ],
+              "confidence": 0.512073278427124,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-01586f4b863ce083ff2dd0af"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:16:7db6b95331bd6aefe1ab",
+          "mask_quality": 0.3640844957720065
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-8f467189c65fc966c52a0bdb",
+          "obs-01586f4b863ce083ff2dd0af"
+        ],
+        "child_candidate_ids": [
+          "memory-15"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2948212,
+                0.4473736,
+                0.6125639,
+                0.9721123
+              ],
+              "confidence": 0.22421854734420776,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2948212,
+                0.4473736,
+                0.6125639,
+                0.9721123
+              ],
+              "confidence": 0.22421854734420776,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.6766215
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y03",
+            "observation_id": "obs-37922bfc6e909e31441d541c"
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2948212,
+              0.4473736,
+              0.6125639,
+              0.9721123
+            ],
+            "confidence": 0.22421854734420776,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2948212,
+              0.4473736,
+              0.6125639,
+              0.9721123
+            ],
+            "confidence": 0.22421854734420776,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6766215
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-18e45e8b1f8b455db06df10d73b11614",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-18e45e8b1f8b455db06df10d73b11614",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0,
+                0.6758431,
+                0.0195429,
+                0.9962353
+              ],
+              "confidence": 0.21837998926639557,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y00",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-1a9647db2afe42d69df93585f459af70",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2621993,
+                0.5047278,
+                0.3149755,
+                0.6343732
+              ],
+              "confidence": 0.26496896147727966,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2621993,
+                0.5047278,
+                0.3149755,
+                0.6343732
+              ],
+              "confidence": 0.26496896147727966,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.6629083
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-c80d937b71ced37c91b42425"
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2621993,
+              0.5047278,
+              0.3149755,
+              0.6343732
+            ],
+            "confidence": 0.26496896147727966,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2621993,
+              0.5047278,
+              0.3149755,
+              0.6343732
+            ],
+            "confidence": 0.26496896147727966,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6629083
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.496875,
+                0.4619792,
+                0.6542969,
+                0.7729167
+              ],
+              "confidence": 0.947265625,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.496875,
+                0.4619792,
+                0.6542969,
+                0.7729167
+              ],
+              "confidence": 0.947265625,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.9686065
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.496875,
+              0.4619792,
+              0.6542969,
+              0.7729167
+            ],
+            "confidence": 0.947265625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.496875,
+              0.4619792,
+              0.6542969,
+              0.7729167
+            ],
+            "confidence": 0.947265625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9686065
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-20aefad1d2f24e0181ece6e1ad93affa",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-20aefad1d2f24e0181ece6e1ad93affa",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4276901,
+                0.5065599,
+                0.4777875,
+                0.6485942
+              ],
+              "confidence": 0.5486723780632019,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "insufficient_cluster_support",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_cluster_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-296c3f574e34490ca2576ea489c20a08",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-296c3f574e34490ca2576ea489c20a08",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2925408,
+                0.4787056,
+                0.7953937,
+                0.9997665
+              ],
+              "confidence": 0.20737765729427338,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4225394,
+                0.5041634,
+                0.4815843,
+                0.6263419
+              ],
+              "confidence": 0.2943798303604126,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4225394,
+                0.5041634,
+                0.4815843,
+                0.6263419
+              ],
+              "confidence": 0.2943798303604126,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.7204845
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4225394,
+              0.5041634,
+              0.4815843,
+              0.6263419
+            ],
+            "confidence": 0.2943798303604126,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4225394,
+              0.5041634,
+              0.4815843,
+              0.6263419
+            ],
+            "confidence": 0.2943798303604126,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.7204845
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-2c8d913e9f4a4668a7993e7ab7e9bb33",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-2c8d913e9f4a4668a7993e7ab7e9bb33",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2853952,
+                0.0,
+                0.577041,
+                0.7318695
+              ],
+              "confidence": 0.20063282549381256,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y00",
+            "observation_id": "obs-c09014beb8a2a76cd142236c"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y00:4:03fd65a54550b8e4609a",
+          "mask_quality": 0.5884520779692168
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-f951e903443bafc3e52253ba",
+          "obs-c09014beb8a2a76cd142236c"
+        ],
+        "child_candidate_ids": [
+          "memory-8"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-2f338306e0af4aa3a2467632b3243681",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-2f338306e0af4aa3a2467632b3243681",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.6848642,
+                0.6363233,
+                0.9999593,
+                0.9994346
+              ],
+              "confidence": 0.233183816075325,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y00",
+            "observation_id": "obs-70c290f18dc0660f17e9b8d5"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y00:3:ac19ff158d136e2616a0",
+          "mask_quality": 0.8964356759904593
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-7e04908f0065f3547c3f141b",
+          "obs-70c290f18dc0660f17e9b8d5"
+        ],
+        "child_candidate_ids": [
+          "memory-6"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-318136ae813845f5959b437b8e823c86",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-318136ae813845f5959b437b8e823c86",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.7959123,
+                0.4945139,
+                1.0,
+                0.996866
+              ],
+              "confidence": 0.6798065304756165,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-337840b7b9564ff9b881ad04c55d8120",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-337840b7b9564ff9b881ad04c55d8120",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.5442627,
+                0.5082389,
+                0.5932954,
+                0.634944
+              ],
+              "confidence": 0.546917200088501,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-37109434979b411489e0f52d7d7fb1bb",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-37109434979b411489e0f52d7d7fb1bb",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4471749,
+                0.5037174,
+                0.4779909,
+                0.5979967
+              ],
+              "confidence": 0.27609020471572876,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "mask_quality_below_threshold",
+      "terminal_evidence": {
+        "provisional_reason": "mask_quality_below_threshold"
+      }
+    },
+    {
+      "candidate_id": "proposal-392ede55b2fc4c9abfce318984196256",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-392ede55b2fc4c9abfce318984196256",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0718149,
+                0.5032758,
+                0.1266814,
+                0.6526709
+              ],
+              "confidence": 0.256666898727417,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-3c7bc7865596466ba172171a4e283b60",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-3c7bc7865596466ba172171a4e283b60",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2967801,
+                0.5292397,
+                0.6122094,
+                0.9714065
+              ],
+              "confidence": 0.20739540457725525,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-4072ad77f2fb4b0580c0c7f971869539",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-4072ad77f2fb4b0580c0c7f971869539",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4881157,
+                0.5059483,
+                0.5332224,
+                0.6463691
+              ],
+              "confidence": 0.5708619356155396,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-4f41b0a2b78a42238f5c03ec9eb5f00e",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-4f41b0a2b78a42238f5c03ec9eb5f00e",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                4.63e-05,
+                0.508838,
+                0.0607124,
+                0.6944523
+              ],
+              "confidence": 0.570260763168335,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.4242187,
+                0.5046875,
+                0.4792969,
+                0.6536458
+              ],
+              "confidence": 0.4130859375,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.4242187,
+                0.5046875,
+                0.4792969,
+                0.6536458
+              ],
+              "confidence": 0.4130859375,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8672908
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.4242187,
+              0.5046875,
+              0.4792969,
+              0.6536458
+            ],
+            "confidence": 0.4130859375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.4242187,
+              0.5046875,
+              0.4792969,
+              0.6536458
+            ],
+            "confidence": 0.4130859375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8672908
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-55662720bba34bb89651f982af7ec64a",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-55662720bba34bb89651f982af7ec64a",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.1456787,
+                0.4460485,
+                0.612968,
+                0.9733841
+              ],
+              "confidence": 0.3757624328136444,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y03",
+            "observation_id": "obs-37922bfc6e909e31441d541c"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y03:4:1b49f3bee24a34ff2d01",
+          "mask_quality": 0.7315195899612388
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-83fd695b1565decec67c6449",
+          "obs-37922bfc6e909e31441d541c"
+        ],
+        "child_candidate_ids": [
+          "memory-18"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-579a7f0c01714b44aedce510fbc14cf8",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-579a7f0c01714b44aedce510fbc14cf8",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2620004,
+                0.5080324,
+                0.3213324,
+                0.6746202
+              ],
+              "confidence": 0.5573345422744751,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-c80d937b71ced37c91b42425"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:0:b94b0efcd5dc345425e3",
+          "mask_quality": 0.6641168093171854
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-2a9ee148494e59772e8ced91",
+          "obs-16991fe6afd8782c15b36157",
+          "obs-c80d937b71ced37c91b42425"
+        ],
+        "child_candidate_ids": [
+          "memory-12"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.7910156,
+                0.4963542,
+                1.0,
+                0.9958333
+              ],
+              "confidence": 0.91845703125,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.7910156,
+                0.4963542,
+                1.0,
+                0.9958333
+              ],
+              "confidence": 0.91845703125,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.9711142
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.7910156,
+              0.4963542,
+              1.0,
+              0.9958333
+            ],
+            "confidence": 0.91845703125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.7910156,
+              0.4963542,
+              1.0,
+              0.9958333
+            ],
+            "confidence": 0.91845703125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9711142
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-58515b015d2848c5b1e3be279ac5d362",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-58515b015d2848c5b1e3be279ac5d362",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4189515,
+                0.4932144,
+                0.4653396,
+                0.6213851
+              ],
+              "confidence": 0.5514864921569824,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-b357b6fe10fe33a1f21c5991"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:5:5077cde2cd9dc909f288",
+          "mask_quality": 0.3763138884043185
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-571b3837b7c3d518405ef8fe",
+          "obs-b357b6fe10fe33a1f21c5991"
+        ],
+        "child_candidate_ids": [
+          "memory-10"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-58a398c270014aedabde8003703a4ad8",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-58a398c270014aedabde8003703a4ad8",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0,
+                0.4282228,
+                0.1825652,
+                0.9993024
+              ],
+              "confidence": 0.35817277431488037,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0713227,
+                0.5037453,
+                0.1223902,
+                0.6519118
+              ],
+              "confidence": 0.2374291718006134,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0713227,
+                0.5037453,
+                0.1223902,
+                0.6519118
+              ],
+              "confidence": 0.2374291718006134,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.9061472
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0713227,
+              0.5037453,
+              0.1223902,
+              0.6519118
+            ],
+            "confidence": 0.2374291718006134,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0713227,
+              0.5037453,
+              0.1223902,
+              0.6519118
+            ],
+            "confidence": 0.2374291718006134,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9061472
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-688a0286f7e2475cbb284f390a9974e7",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-688a0286f7e2475cbb284f390a9974e7",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0003378,
+                0.0,
+                0.4278561,
+                0.9997441
+              ],
+              "confidence": 0.21250298619270325,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y07",
+            "observation_id": "obs-2d7758c319830e0fabe066ea"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y07:5:624bca783f23ecd33166",
+          "mask_quality": 0.9387303913758557
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-fbe9addeced63789f1fbb1ee",
+          "obs-2d7758c319830e0fabe066ea"
+        ],
+        "child_candidate_ids": [
+          "memory-13"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-6f26e2ea4e4d4e77852ce0ae564db91f",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-6f26e2ea4e4d4e77852ce0ae564db91f",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.3746115,
+                0.4974551,
+                0.4107526,
+                0.6246786
+              ],
+              "confidence": 0.40856799483299255,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "insufficient_cluster_support",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_cluster_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.484375,
+                0.50625,
+                0.5351562,
+                0.6526042
+              ],
+              "confidence": 0.381103515625,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.484375,
+                0.50625,
+                0.5351562,
+                0.6526042
+              ],
+              "confidence": 0.381103515625,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8488584
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.484375,
+              0.50625,
+              0.5351562,
+              0.6526042
+            ],
+            "confidence": 0.381103515625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.484375,
+              0.50625,
+              0.5351562,
+              0.6526042
+            ],
+            "confidence": 0.381103515625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8488584
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4374083,
+                0.5038147,
+                0.4791334,
+                0.6143158
+              ],
+              "confidence": 0.3648260533809662,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4374083,
+                0.5038147,
+                0.4791334,
+                0.6143158
+              ],
+              "confidence": 0.3648260533809662,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.6290677
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4374083,
+              0.5038147,
+              0.4791334,
+              0.6143158
+            ],
+            "confidence": 0.3648260533809662,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4374083,
+              0.5038147,
+              0.4791334,
+              0.6143158
+            ],
+            "confidence": 0.3648260533809662,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6290677
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-75741adc38a84c00b194d162ef2c3545",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-75741adc38a84c00b194d162ef2c3545",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.9743279,
+                0.4465839,
+                1.0,
+                0.6425364
+              ],
+              "confidence": 0.2576114237308502,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y00",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-76f6bdea91134a9b8ff17af76722a592",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-76f6bdea91134a9b8ff17af76722a592",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0760111,
+                0.5091363,
+                0.156195,
+                0.6666947
+              ],
+              "confidence": 0.4776155352592468,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-7ae5cd0d0bc94beab7fd5a7c0eb0d711",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-7ae5cd0d0bc94beab7fd5a7c0eb0d711",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.2114503,
+                0.5139831,
+                0.261313,
+                0.6672947
+              ],
+              "confidence": 0.5661351084709167,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-d85186c68a3f20e80972c49c"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y02:2:8fbc0c837c3ed9b05273",
+          "mask_quality": 0.36730540933847616
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-2c01d4dfa3e58cb795110797",
+          "obs-d85186c68a3f20e80972c49c"
+        ],
+        "child_candidate_ids": [
+          "memory-7"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-7dbf0bddf9c44df2bd2eb53e818c7a3c",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-7dbf0bddf9c44df2bd2eb53e818c7a3c",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.8595486,
+                0.6274871,
+                1.0,
+                0.9579906
+              ],
+              "confidence": 0.2617192566394806,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259655.066333771",
+            "source_view_id": "p00_y00",
+            "observation_id": "obs-5c4ab9f904c6d7c41f182098"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y00:8:785cc504d7b9d86acc2a",
+          "mask_quality": 0.8684848142551959
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-ea1a31c41c81214f48f0e1f4",
+          "obs-5c4ab9f904c6d7c41f182098"
+        ],
+        "child_candidate_ids": [
+          "memory-6"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-7ff9a4ce2dc04eba9aca3558bed36dfe",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-7ff9a4ce2dc04eba9aca3558bed36dfe",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair table",
+              "bbox": [
+                0.0,
+                0.6751059,
+                0.0197852,
+                0.9936151
+              ],
+              "confidence": 0.39815473556518555,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y00",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-81987d1682354f47ab6e3a19bec2b881",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-81987d1682354f47ab6e3a19bec2b881",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair table",
+              "bbox": [
+                0.0,
+                0.4761909,
+                0.3721603,
+                0.9992234
+              ],
+              "confidence": 0.30132612586021423,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-829e7fae22304366a3ee4821ee361b3a",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-829e7fae22304366a3ee4821ee361b3a",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4265782,
+                0.6214774,
+                0.5119362,
+                0.8449698
+              ],
+              "confidence": 0.2631072998046875,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259655.066333771",
+            "source_view_id": "p00_y07",
+            "observation_id": "obs-0145a8154e89f0c43457de27"
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": "sam:p00_y07:2:6691469e7aa59058769d",
+          "mask_quality": 0.9249828767495037
+        }
+      },
+      "terminal_status": "promoted",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "",
+      "terminal_evidence": {
+        "observation_ids": [
+          "canonical-57eedc98464ff758e02ea0a3",
+          "obs-0145a8154e89f0c43457de27"
+        ],
+        "child_candidate_ids": [
+          "memory-1"
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.0,
+                0.4260417,
+                0.1861328,
+                1.0
+              ],
+              "confidence": 0.83447265625,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.0,
+                0.4260417,
+                0.1861328,
+                1.0
+              ],
+              "confidence": 0.83447265625,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.9759137
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4260417,
+              0.1861328,
+              1.0
+            ],
+            "confidence": 0.83447265625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4260417,
+              0.1861328,
+              1.0
+            ],
+            "confidence": 0.83447265625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9759137
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                1.22e-05,
+                0.5072917,
+                0.0633789,
+                0.7145833
+              ],
+              "confidence": 0.537109375,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                1.22e-05,
+                0.5072917,
+                0.0633789,
+                0.7145833
+              ],
+              "confidence": 0.537109375,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8572633
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              1.22e-05,
+              0.5072917,
+              0.0633789,
+              0.7145833
+            ],
+            "confidence": 0.537109375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              1.22e-05,
+              0.5072917,
+              0.0633789,
+              0.7145833
+            ],
+            "confidence": 0.537109375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8572633
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-9682f6c14f16414db21751830be28cbf",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2603516,
+                0.5078125,
+                0.3230469,
+                0.6802083
+              ],
+              "confidence": 0.6689453125,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2603516,
+                0.5078125,
+                0.3230469,
+                0.6802083
+              ],
+              "confidence": 0.6689453125,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.9144715
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-c80d937b71ced37c91b42425"
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2603516,
+              0.5078125,
+              0.3230469,
+              0.6802083
+            ],
+            "confidence": 0.6689453125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2603516,
+              0.5078125,
+              0.3230469,
+              0.6802083
+            ],
+            "confidence": 0.6689453125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9144715
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-9b0cc44798f14effb446cc3bb7b56542",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-9b0cc44798f14effb446cc3bb7b56542",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.5372937,
+                0.5029207,
+                0.5734858,
+                0.6184047
+              ],
+              "confidence": 0.40541428327560425,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2888672,
+                0.4765625,
+                0.7984375,
+                1.0
+              ],
+              "confidence": 0.6669921875,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2888672,
+                0.4765625,
+                0.7984375,
+                1.0
+              ],
+              "confidence": 0.6669921875,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.982337
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2888672,
+              0.4765625,
+              0.7984375,
+              1.0
+            ],
+            "confidence": 0.6669921875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2888672,
+              0.4765625,
+              0.7984375,
+              1.0
+            ],
+            "confidence": 0.6669921875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.982337
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-ac86b3382b9a4789b6d946b22da221e9",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-ac86b3382b9a4789b6d946b22da221e9",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.3935699,
+                0.5059362,
+                0.4347245,
+                0.6353145
+              ],
+              "confidence": 0.5381423234939575,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-b2808bcaa1a24b69ac9dcd69106409fd",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-b2808bcaa1a24b69ac9dcd69106409fd",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.7007647,
+                0.0006599,
+                0.9998609,
+                0.7822204
+              ],
+              "confidence": 0.20029932260513306,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y07",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "mask_quality_below_threshold",
+      "terminal_evidence": {
+        "provisional_reason": "mask_quality_below_threshold"
+      }
+    },
+    {
+      "candidate_id": "proposal-b414425b7c43409cb622679173f4bc37",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-b414425b7c43409cb622679173f4bc37",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair table",
+              "bbox": [
+                0.0714601,
+                0.5051871,
+                0.156374,
+                0.6534138
+              ],
+              "confidence": 0.24478481709957123,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0896306,
+                0.5105969,
+                0.1555511,
+                0.6667507
+              ],
+              "confidence": 0.2859920263290405,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0896306,
+                0.5105969,
+                0.1555511,
+                0.6667507
+              ],
+              "confidence": 0.2859920263290405,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8142573
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0896306,
+              0.5105969,
+              0.1555511,
+              0.6667507
+            ],
+            "confidence": 0.2859920263290405,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0896306,
+              0.5105969,
+              0.1555511,
+              0.6667507
+            ],
+            "confidence": 0.2859920263290405,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8142573
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2109375,
+                0.5166667,
+                0.2660156,
+                0.6739583
+              ],
+              "confidence": 0.1591796875,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.2109375,
+                0.5166667,
+                0.2660156,
+                0.6739583
+              ],
+              "confidence": 0.1591796875,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8537668
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-d85186c68a3f20e80972c49c"
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2109375,
+              0.5166667,
+              0.2660156,
+              0.6739583
+            ],
+            "confidence": 0.1591796875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2109375,
+              0.5166667,
+              0.2660156,
+              0.6739583
+            ],
+            "confidence": 0.1591796875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8537668
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0716154,
+                0.5043781,
+                0.123652,
+                0.6507547
+              ],
+              "confidence": 0.25324323773384094,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0716154,
+                0.5043781,
+                0.123652,
+                0.6507547
+              ],
+              "confidence": 0.25324323773384094,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.922411
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0716154,
+              0.5043781,
+              0.123652,
+              0.6507547
+            ],
+            "confidence": 0.25324323773384094,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0716154,
+              0.5043781,
+              0.123652,
+              0.6507547
+            ],
+            "confidence": 0.25324323773384094,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.922411
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-d574e198a80f4ef082829e086240e810",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals"
+      ],
+      "last_survived_stage": "raw_local_proposals",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.3302734,
+                0.503125,
+                0.3904297,
+                0.6619792
+              ],
+              "confidence": 0.394287109375,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            },
+            {
+              "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+              "source": "fixed_vocabulary_detector",
+              "backend": "yolo_world_local",
+              "label": "chair",
+              "bbox": [
+                0.3302734,
+                0.503125,
+                0.3904297,
+                0.6619792
+              ],
+              "confidence": 0.394287109375,
+              "disposition": "suppressed_as_duplicate",
+              "reason": "box_iou_before_mask_union",
+              "box_iou": 0.8641969
+            }
+          ],
+          "context": {
+            "source_frame_id": "panorama@1785259707.696271896",
+            "source_view_id": "p00_y02",
+            "observation_id": "obs-889b3218a09fe161b0809b41"
+          }
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "after_duplicate_suppression",
+      "terminal_reason": "suppressed_as_duplicate",
+      "terminal_evidence": {
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.3302734,
+              0.503125,
+              0.3904297,
+              0.6619792
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.3302734,
+              0.503125,
+              0.3904297,
+              0.6619792
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8641969
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "proposal-ee445de85d384cdf8e198015a59e2c50",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-ee445de85d384cdf8e198015a59e2c50",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.4984263,
+                0.4609476,
+                0.6542619,
+                0.7672202
+              ],
+              "confidence": 0.7858279943466187,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y04",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector",
+            "fixed_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-f45298a26a8f4a3194bd15013992e1c9",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-f45298a26a8f4a3194bd15013992e1c9",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.0913748,
+                0.5045067,
+                0.1946462,
+                0.6585034
+              ],
+              "confidence": 0.2862884998321533,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "mask_quality_below_threshold",
+      "terminal_evidence": {
+        "provisional_reason": "mask_quality_below_threshold"
+      }
+    },
+    {
+      "candidate_id": "proposal-f888eb42d6914d968155ed1b3978c5ce",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-f888eb42d6914d968155ed1b3978c5ce",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.1454882,
+                0.5041314,
+                0.1944594,
+                0.6530818
+              ],
+              "confidence": 0.4587952196598053,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y03",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    },
+    {
+      "candidate_id": "proposal-fd6b279265f3409e9c269972b79a8337",
+      "category": "chair",
+      "bound_anchor_id": null,
+      "parent_candidate_ids": [],
+      "source_observation_ids": [],
+      "observed_stages": [
+        "raw_local_proposals",
+        "after_duplicate_suppression",
+        "after_mask_split"
+      ],
+      "last_survived_stage": "after_mask_split",
+      "evidence_by_stage": {
+        "raw_local_proposals": {
+          "proposal_lineage": [
+            {
+              "proposal_id": "proposal-fd6b279265f3409e9c269972b79a8337",
+              "source": "open_vocabulary_detector",
+              "backend": "groundingdino_local",
+              "label": "chair",
+              "bbox": [
+                0.5880185,
+                0.5040912,
+                0.6208043,
+                0.6302126
+              ],
+              "confidence": 0.533959686756134,
+              "disposition": "retained",
+              "reason": "raw_proposal"
+            }
+          ],
+          "context": {
+            "source_frame_id": null,
+            "source_view_id": "p00_y02",
+            "observation_id": null
+          }
+        },
+        "after_duplicate_suppression": {
+          "proposal_sources": [
+            "open_vocabulary_detector"
+          ]
+        },
+        "after_mask_split": {
+          "mask_id": null,
+          "mask_quality": null
+        }
+      },
+      "terminal_status": "eliminated",
+      "terminal_stage": "tracklets",
+      "terminal_reason": "invalid_depth",
+      "terminal_evidence": {
+        "provisional_reason": "insufficient_mask_point_support"
+      }
+    }
+  ]
+}

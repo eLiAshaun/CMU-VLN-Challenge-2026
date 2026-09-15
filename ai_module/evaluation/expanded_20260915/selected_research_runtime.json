@@ -1,0 +1,15 @@
+{
+  "selected_tag": "docker_ai_module:post-competition-rebuild",
+  "tested_tag": "docker_ai_module:post-competition-root-repair-v7",
+  "build_log": "ai_module/runs/rebuild/build_root_repair_v7.log",
+  "evidence": "closure_summary_v7.json",
+  "selection_basis": "same Q1 result; improved live navigation; object-reference geometry remains inadequate",
+  "competition_ready": false,
+  "real_robot_validated": false,
+  "target_16gb_laptop_validated": false,
+  "selected_local_image": "docker_ai_module:research-20260916-v7-slim",
+  "published_image": "elias1012/cmu-vln-2026:research-20260916-v7",
+  "packaging_evidence": "release_slim_packaging.json",
+  "release_validation": "release_validation_summary.json",
+  "q1_repeatability": "not established; additional trial returned 3 before final release round returned 2"
+}

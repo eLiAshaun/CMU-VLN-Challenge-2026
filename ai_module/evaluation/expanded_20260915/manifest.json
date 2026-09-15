@@ -1,0 +1,77 @@
+{
+  "purpose": "fixed image generalization audit; retain every completed and failed case",
+  "image": "docker_ai_module:post-competition-rebuild",
+  "build_log": "build_support_relation.log",
+  "cases": [
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q1",
+      "question": "How many pillows are on the bed?",
+      "label": "expanded_hotel_room_1_q1",
+      "task_type": "numerical"
+    },
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q2",
+      "question": "Find the bedside table farthest from the window.",
+      "label": "expanded_hotel_room_1_q2",
+      "task_type": "object_reference"
+    },
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q4",
+      "question": "Go to the bedside table closest to the window and stop at the chair closest to the TV.",
+      "label": "expanded_hotel_room_1_q4",
+      "task_type": "instruction_following"
+    },
+    {
+      "scene": "office_2",
+      "question_id": "q1",
+      "question": "How many potted plants are on a table?",
+      "label": "expanded_office_2_q1",
+      "task_type": "numerical"
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q3",
+      "question": "Find the vase between the cabinet and the stool.",
+      "label": "expanded_livingroom_3_q3",
+      "task_type": "object_reference"
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q5",
+      "question": "First, go near the stool, then take the path near the cabinet, and stop at the bowl on the table.",
+      "label": "expanded_livingroom_3_q5",
+      "task_type": "instruction_following"
+    },
+    {
+      "scene": "hotel_room_2",
+      "question_id": "q1",
+      "question": "How many pictures are above the bed?",
+      "label": "expanded_hotel_room_2_q1",
+      "task_type": "numerical"
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q2",
+      "question": "Find the potted plant near the books on the cabinet.",
+      "label": "expanded_livingroom_3_q2",
+      "task_type": "object_reference"
+    },
+    {
+      "scene": "loft",
+      "question_id": "q4",
+      "question": "Go to the cup near the TV remote and avoid the path near the cabinet.",
+      "label": "expanded_loft_q4",
+      "task_type": "instruction_following"
+    },
+    {
+      "scene": "chinese_room",
+      "question_id": "q1",
+      "question": "Count the number of chairs with pillows on them.",
+      "label": "expanded_chinese_room_q1",
+      "task_type": "numerical"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "release_image": "elias1012/cmu-vln-2026:research-20260916-v7",
+  "q1_rounds": [
+    {
+      "packaging": "single_layer_trial",
+      "run": "20260915T163706_943926Z",
+      "scene": "livingroom_3",
+      "question": "How many photos are on the TV cabinet?",
+      "root_decision": "numerical_output",
+      "numerical_answer": 3,
+      "failure_stage": null,
+      "ros_published": true,
+      "elapsed_seconds": 530.06301027257,
+      "actual_scene_mount": [
+        {
+          "Type": "bind",
+          "Source": "/home/robot/cmu_vln/Unity_environment_models/livingroom_3/environment",
+          "Destination": "/home/docker/autonomy_stack_mecanum_wheel_platform/src/base_autonomy/vehicle_simulator/mesh/unity/environment",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "actual_publisher_argv": [
+        "docker",
+        "exec",
+        "cmu_rebuild_ai",
+        "/bin/bash",
+        "-c",
+        "source /opt/ros/jazzy/setup.bash; python3 -m rebuild.publish_question 'How many photos are on the TV cabinet?'"
+      ],
+      "independent_numerical_responses": [
+        {
+          "received_time": 1789490756.8711061,
+          "topic": "/numerical_response",
+          "value": 3
+        }
+      ],
+      "proxy_score": 0.0,
+      "max_points": 1.0
+    },
+    {
+      "packaging": "final_six_layer_release",
+      "run": "20260915T164838_725346Z",
+      "scene": "livingroom_3",
+      "question": "How many photos are on the TV cabinet?",
+      "root_decision": "numerical_output",
+      "numerical_answer": 2,
+      "failure_stage": null,
+      "ros_published": true,
+      "elapsed_seconds": 530.0685820160434,
+      "actual_scene_mount": [
+        {
+          "Type": "bind",
+          "Source": "/home/robot/cmu_vln/Unity_environment_models/livingroom_3/environment",
+          "Destination": "/home/docker/autonomy_stack_mecanum_wheel_platform/src/base_autonomy/vehicle_simulator/mesh/unity/environment",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "actual_publisher_argv": [
+        "docker",
+        "exec",
+        "cmu_rebuild_ai",
+        "/bin/bash",
+        "-c",
+        "source /opt/ros/jazzy/setup.bash; python3 -m rebuild.publish_question 'How many photos are on the TV cabinet?'"
+      ],
+      "independent_numerical_responses": [
+        {
+          "received_time": 1789491448.5976243,
+          "topic": "/numerical_response",
+          "value": 2
+        }
+      ],
+      "proxy_score": 1.0,
+      "max_points": 1.0
+    }
+  ],
+  "conclusion": "final six-layer release completed Q1 correctly; preceding single-layer trial failed; counting repeatability remains unproven"
+}

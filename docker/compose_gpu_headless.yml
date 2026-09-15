@@ -1,0 +1,82 @@
+services:
+  system:
+    build:
+      context: .
+      dockerfile: system_headless.Dockerfile
+    image: cmu_vln_system_headless:latest
+    container_name: iros2026_system
+    restart: "no"
+    stop_grace_period: 30s
+    runtime: nvidia
+    privileged: true
+    network_mode: host
+    ipc: host
+    environment:
+      - DISPLAY=:99
+      - HEADLESS_BACKEND=nvidia-xorg
+      - HEADLESS_DISPLAY=:99
+      - HEADLESS_WIDTH=1920
+      - HEADLESS_HEIGHT=640
+      - HEADLESS_DEPTH=24
+      - QT_X11_NO_MITSHM=1
+      - XDG_RUNTIME_DIR=/tmp/runtime-docker
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - SCNAV_GLOBAL_PLANNER_BACKEND=far
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /dev/input:/dev/input
+      - /dev/bus/usb:/dev/bus/usb
+      - /usr/lib/x86_64-linux-gnu/nvidia:/usr/lib/x86_64-linux-gnu/nvidia:ro
+    command: /usr/local/bin/system_simulation_headless.sh
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  ai_module:
+    build:
+      context: ../ai_module
+      dockerfile: docker/Dockerfile
+    image: docker_ai_module:p1p2-final
+    container_name: iros2026_ai_module
+    env_file:
+      - ../.env
+    restart: "no"
+    stop_grace_period: 30s
+    runtime: nvidia
+    network_mode: host
+    ipc: host
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - HF_HUB_OFFLINE=1
+      - TRANSFORMERS_OFFLINE=1
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - SCNAV_GLOBAL_PLANNER_BACKEND=far
+      - MAST3R_QWEN_QUANTIZATION=${MAST3R_QWEN_QUANTIZATION:-int8}
+      - MAST3R_QWEN_MAX_PIXELS=${MAST3R_QWEN_MAX_PIXELS:-1048576}
+      - MAST3R_QWEN_BATCH_MAX_NEW_TOKENS=${MAST3R_QWEN_BATCH_MAX_NEW_TOKENS:-256}
+      - MAST3R_YOLO_ENABLED=${MAST3R_YOLO_ENABLED:-true}
+      - MAST3R_OUTPUT_ROOT=/home/docker/ai_module/runs/live_robot
+      - CHALLENGE_QUESTION_TIME_BUDGET_SECONDS=${CHALLENGE_QUESTION_TIME_BUDGET_SECONDS:-600}
+      - PYTHONPATH=/home/docker/ai_module
+    volumes:
+      - ${CMU_VLN_AI_RUNS_DIR:-../ai_module/runs}:/home/docker/ai_module/runs
+    stdin_open: true
+    tty: true
+    command: ["/home/docker/ai_module/docker/start_live_chain.sh"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

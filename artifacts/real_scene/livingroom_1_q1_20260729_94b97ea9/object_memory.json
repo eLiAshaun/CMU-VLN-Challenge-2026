@@ -1,0 +1,4641 @@
+[
+  {
+    "object_id": 0,
+    "canonical_id": 0,
+    "lifecycle": "confirmed",
+    "class_label": "table",
+    "raw_label": "table",
+    "aliases": [],
+    "color": "brown",
+    "attributes": {
+      "color": "brown"
+    },
+    "class_distribution": {
+      "table": 0.42626953125
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "brown": 0.5
+      }
+    },
+    "center_3d": [
+      1.748650482060827,
+      -2.1567927758758794,
+      0.2626761637025362
+    ],
+    "bbox_3d": [
+      0.8124012648716901,
+      1.7658359601543516,
+      0.5265141730057645
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-1684bd9d032f9640246ff037",
+      "panorama@1785259707.696271896:328b33232c27c08c:fcfef8e27344624305bd5cf2"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-a2a290c3a2afe81358d2c7c7",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y01",
+        "source_mask_id": "sam:p00_y01:4:81b5aa6150f391d00908",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 4,
+        "mask_digest": "81b5aa6150f391d00908",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [],
+        "proposal_lineage": [],
+        "canonical_observation_id": "canonical-1684bd9d032f9640246ff037",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-e8b7e256dd97bc94a53df272",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:11:e0a996b43fe643ffe965",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 11,
+        "mask_digest": "e0a996b43fe643ffe965",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f353f3bafec2470f80c109b700a9ccfe",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0001048,
+              0.5745801,
+              0.2802132,
+              0.9923313
+            ],
+            "confidence": 0.20820488035678864,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-7c6f0513f45a4c86aec6a741dd2ddf5d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.5739583,
+              0.2814453,
+              1.0
+            ],
+            "confidence": 0.1871337890625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-7c6f0513f45a4c86aec6a741dd2ddf5d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.5739583,
+              0.2814453,
+              1.0
+            ],
+            "confidence": 0.1871337890625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.975883
+          }
+        ],
+        "canonical_observation_id": "canonical-1684bd9d032f9640246ff037",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-86399a658619834c8d793e5f",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:1:a9c16ef3dd0df802dba6",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 1,
+        "mask_digest": "a9c16ef3dd0df802dba6",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-d79627bfebb84437be82b700b936da00",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.6827641,
+              0.6307357,
+              0.9999943,
+              0.9994335
+            ],
+            "confidence": 0.6590389609336853,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-13c29c040e594705bb8cdc0c04151257",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.6808594,
+              0.6255208,
+              1.0,
+              1.0
+            ],
+            "confidence": 0.533203125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-13c29c040e594705bb8cdc0c04151257",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.6808594,
+              0.6255208,
+              1.0,
+              1.0
+            ],
+            "confidence": 0.533203125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9786679
+          }
+        ],
+        "canonical_observation_id": "canonical-5b7478337ec1a0d28bae569c",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-a2a290c3a2afe81358d2c7c7",
+        "mask_quality": 0.7507369004027126,
+        "mask_pixel_count": 15371,
+        "fusion_point_count": 211,
+        "fusion_quality": 0.16216676913881223,
+        "valid_depth_ratio": 0.024321585407048756,
+        "mask_fill_fraction": 0.6438384853815866,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 1.0,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.42626953125,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.4849233624847801,
+        "support_plane_inlier_ratio": 0.15639810426540285,
+        "support_plane_normal_alignment": 0.9812142391752342,
+        "support_plane_area_coverage": 0.34620327885770097,
+        "support_plane_height": 0.18818610906600952,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.9062138795852654,
+          2.0710213422775268,
+          0.5159878373146056
+        ]
+      },
+      {
+        "observation_id": "obs-e8b7e256dd97bc94a53df272",
+        "mask_quality": 0.7114838443571523,
+        "mask_pixel_count": 19645,
+        "fusion_point_count": 147,
+        "fusion_quality": 0.09439748891192809,
+        "valid_depth_ratio": 0.023979261179520414,
+        "mask_fill_fraction": 0.5630875945883972,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.542235036039709,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.457764963960291,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.19766933470964432,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.43645633313407484,
+        "support_plane_inlier_ratio": 0.3877551020408163,
+        "support_plane_normal_alignment": 0.28591788430693765,
+        "support_plane_area_coverage": 0.45243533069486547,
+        "support_plane_height": 0.18342101573944092,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7807320880889892,
+          2.188718628883361,
+          0.5254602670669554
+        ]
+      },
+      {
+        "observation_id": "obs-86399a658619834c8d793e5f",
+        "mask_quality": 0.886485234677246,
+        "mask_pixel_count": 30538,
+        "fusion_point_count": 452,
+        "fusion_quality": 0.3318361297195999,
+        "valid_depth_ratio": 0.04810557684120902,
+        "mask_fill_fraction": 0.8884815687643653,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.5064341405090386,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.49356585949096143,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.9368347032102307,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.5961210429668427,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.45515315801414113,
+        "support_plane_inlier_ratio": 0.1747787610619469,
+        "support_plane_normal_alignment": 0.7016890614826373,
+        "support_plane_area_coverage": 0.5054022508280285,
+        "support_plane_height": 0.20853799966199382,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.5935051638733475,
+          1.0537367352002767,
+          0.5510756229518021
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 2,
+    "observed_viewpoints": [
+      "p00_y01",
+      "p00_y00",
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.6590389609336853,
+    "association_confidence": 0.5,
+    "track_stability": 0.2,
+    "temporal_reliability": 0.20964824722056696,
+    "fusion_quality": 0.3318361297195999,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 2,
+    "provenance": [
+      "p00_y01",
+      "task_conditioned_deterministic_v1",
+      "yolo_world_local",
+      "fast_complete",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "groundingdino_local",
+      "open_fast_union",
+      "acquisition_spherical_canonicalization",
+      "p00_y00",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 1,
+    "canonical_id": 1,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.2631072998046875
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      1.581685029268265,
+      1.7518530440330506,
+      0.17601244121789933
+    ],
+    "bbox_3d": [
+      0.7183493256568909,
+      0.7515540456771852,
+      0.3531868153810501
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-57eedc98464ff758e02ea0a3"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-0145a8154e89f0c43457de27",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:2:6691469e7aa59058769d",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 2,
+        "mask_digest": "6691469e7aa59058769d",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-829e7fae22304366a3ee4821ee361b3a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4265782,
+              0.6214774,
+              0.5119362,
+              0.8449698
+            ],
+            "confidence": 0.2631072998046875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-57eedc98464ff758e02ea0a3",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-0145a8154e89f0c43457de27",
+        "mask_quality": 0.9249828767495037,
+        "mask_pixel_count": 5258,
+        "fusion_point_count": 60,
+        "fusion_quality": 0.4509456068183504,
+        "valid_depth_ratio": 0.02230971128608924,
+        "mask_fill_fraction": 0.9448337825696316,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 1.0,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.2631072998046875,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.4945891208777524,
+        "support_plane_inlier_ratio": 0.25,
+        "support_plane_normal_alignment": 0.9469190062718251,
+        "support_plane_area_coverage": 0.3517968465489807,
+        "support_plane_height": 0.07295197248458862,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7183493256568909,
+          0.7515540456771852,
+          0.3531868153810501
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "p00_y07"
+    ],
+    "confidence": 0.2631072998046875,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.03014167356206898,
+    "fusion_quality": 0.4509456068183504,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259655.0663338,
+    "last_seen_time": 1785259655.0663338,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y07",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_only",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization"
+    ]
+  },
+  {
+    "object_id": 2,
+    "canonical_id": 2,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "vase": 0.5005836486816406
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      1.581685029268265,
+      1.7518530440330506,
+      0.17601244121789933
+    ],
+    "bbox_3d": [
+      0.7183493256568909,
+      0.7515540456771852,
+      0.3531868153810501
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-a49c6f9e23bca244c63d7c8c"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-e9e4f1f6deaa7dc778159acc",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:1:b67edf8827ed09e11823",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 1,
+        "mask_digest": "b67edf8827ed09e11823",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-ee8b54d4d6eb43e7b4e542ba01433a02",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.4270989,
+              0.6220446,
+              0.5114404,
+              0.8446051
+            ],
+            "confidence": 0.5005836486816406,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-a49c6f9e23bca244c63d7c8c",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-e9e4f1f6deaa7dc778159acc",
+        "mask_quality": 0.9250295762338061,
+        "mask_pixel_count": 5259,
+        "fusion_point_count": 60,
+        "fusion_quality": 0.4509456068183504,
+        "valid_depth_ratio": 0.02230971128608924,
+        "mask_fill_fraction": 0.9450134770889488,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 1.0,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.5005836486816406,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.9469190062718251,
+        "support_plane_area_coverage": 0.3517968465489807,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7183493256568909,
+          0.7515540456771852,
+          0.3531868153810501
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "p00_y07"
+    ],
+    "confidence": 0.5005836486816406,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.057349950790895624,
+    "fusion_quality": 0.4509456068183504,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259655.0663338,
+    "last_seen_time": 1785259655.0663338,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y07",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_only",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization"
+    ]
+  },
+  {
+    "object_id": 3,
+    "canonical_id": 3,
+    "lifecycle": "tentative",
+    "class_label": "table",
+    "raw_label": "table",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "table": 0.5025447607040405
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      1.581685029268265,
+      1.7518530440330506,
+      0.17601244121789933
+    ],
+    "bbox_3d": [
+      0.7183493256568909,
+      0.7515540456771852,
+      0.3531868153810501
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-aecee46590c5cf84567e0ad5"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-b2de99730251d7cf20d33204",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:0:fbb16da5f288ac3432ef",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 0,
+        "mask_digest": "fbb16da5f288ac3432ef",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-e48c5a49c3a246f0a7275361465e57cc",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.4244406,
+              0.6191504,
+              0.5138521,
+              0.8467729
+            ],
+            "confidence": 0.5025447607040405,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-aecee46590c5cf84567e0ad5",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-b2de99730251d7cf20d33204",
+        "mask_quality": 0.8905473890284867,
+        "mask_pixel_count": 5263,
+        "fusion_point_count": 60,
+        "fusion_quality": 0.4509456068183504,
+        "valid_depth_ratio": 0.02230239422761561,
+        "mask_fill_fraction": 0.936810252758989,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 1.0,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.5025447607040405,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.4945891208777524,
+        "support_plane_inlier_ratio": 0.25,
+        "support_plane_normal_alignment": 0.9469190062718251,
+        "support_plane_area_coverage": 0.3517968465489807,
+        "support_plane_height": 0.07295197248458862,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7183493256568909,
+          0.7515540456771852,
+          0.3531868153810501
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "p00_y07"
+    ],
+    "confidence": 0.5025447607040405,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.0554284272112131,
+    "fusion_quality": 0.4509456068183504,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259655.0663338,
+    "last_seen_time": 1785259655.0663338,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y07",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_only",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization"
+    ]
+  },
+  {
+    "object_id": 4,
+    "canonical_id": 4,
+    "lifecycle": "confirmed",
+    "class_label": "table",
+    "raw_label": "table",
+    "aliases": [],
+    "color": "brown",
+    "attributes": {
+      "color": "brown"
+    },
+    "class_distribution": {
+      "table": 0.6410845518112183
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "brown": 0.5
+      }
+    },
+    "center_3d": [
+      1.8882821424443608,
+      -1.2609302110151654,
+      0.4379624913072551
+    ],
+    "bbox_3d": [
+      0.6452987273674695,
+      0.6010626301234666,
+      0.5812315761103054
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-c521349a010e71e5e6fcc004",
+      "panorama@1785259707.696271896:328b33232c27c08c:8fbf196bb39aab3ce8537601"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-9510f2d9e10844fef4fff2ca",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:1:c44f1761472e91ecfbdc",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 1,
+        "mask_digest": "c44f1761472e91ecfbdc",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-26ccd1021050445ab032a287c6e3c35e",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.8582656,
+              0.6224165,
+              1.0,
+              0.9602159
+            ],
+            "confidence": 0.6410845518112183,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-8435ae00f18f4ab7b63878c6643a1943",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.8570313,
+              0.6286458,
+              1.0,
+              0.98125
+            ],
+            "confidence": 0.443603515625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-8435ae00f18f4ab7b63878c6643a1943",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.8570313,
+              0.6286458,
+              1.0,
+              0.98125
+            ],
+            "confidence": 0.443603515625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9161817
+          }
+        ],
+        "canonical_observation_id": "canonical-c521349a010e71e5e6fcc004",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-7c5d3a8f33431836cc8e381c",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:2:7022973b983ba125e082",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 2,
+        "mask_digest": "7022973b983ba125e082",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9a2ed094ef9b4116be084b7ac7fad553",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.7000144,
+              0.2437744,
+              0.9999422,
+              0.7847599
+            ],
+            "confidence": 0.28453123569488525,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-0782f21358f4f1a93060e1eb",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-9510f2d9e10844fef4fff2ca",
+        "mask_quality": 0.8534417453004484,
+        "mask_pixel_count": 11252,
+        "fusion_point_count": 74,
+        "fusion_quality": 0.409909074343147,
+        "valid_depth_ratio": 0.02463382157123835,
+        "mask_fill_fraction": 0.8156578470460312,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.5986305321665009,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.40136946783349914,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.5423440337181091,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.3357997684448983,
+        "support_plane_inlier_ratio": 0.24324324324324326,
+        "support_plane_normal_alignment": 0.12578192308196584,
+        "support_plane_area_coverage": 0.5119741410747366,
+        "support_plane_height": 0.1689208447933197,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.8400267362594604,
+          0.6295104050636289,
+          0.4916024351119994
+        ]
+      },
+      {
+        "observation_id": "obs-7c5d3a8f33431836cc8e381c",
+        "mask_quality": 0.40344612168916516,
+        "mask_pixel_count": 10947,
+        "fusion_point_count": 122,
+        "fusion_quality": 0.6881919860842342,
+        "valid_depth_ratio": 0.02260515100982027,
+        "mask_fill_fraction": 0.23298429319371727,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.04518668140968311,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.3154034074004838,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6536619444755672,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.28453123569488525,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.4671694935485997,
+        "support_plane_inlier_ratio": 0.4426229508196721,
+        "support_plane_normal_alignment": 0.0029215807979631114,
+        "support_plane_area_coverage": 0.8362938524012822,
+        "support_plane_height": 0.9732106950298818,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.19093337328615734,
+          0.5346844885964213,
+          0.7903662384396861
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 2,
+    "observed_viewpoints": [
+      "p00_y00",
+      "p00_y07",
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.6410845518112183,
+    "association_confidence": 0.5,
+    "track_stability": 0.2,
+    "temporal_reliability": 0.1001896039172866,
+    "fusion_quality": 0.6881919860842342,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 2,
+    "provenance": [
+      "p00_y00",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "p00_y07",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 5,
+    "canonical_id": 5,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "vase": 0.621277391910553
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      2.2417356495860714,
+      -0.9380386969917285,
+      1.3964529852405705
+    ],
+    "bbox_3d": [
+      0.15789139866436774,
+      0.22675051235932991,
+      0.26128821569707505
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-e99c0a0c20c5f2f066ced4cf",
+      "panorama@1785259707.696271896:328b33232c27c08c:19224fca0c63306f696d01c6"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-80cf973bcea7df812d8a6a06",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y01",
+        "source_mask_id": "sam:p00_y01:0:9b18eeb4a480b2190f8b",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 0,
+        "mask_digest": "9b18eeb4a480b2190f8b",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [],
+        "proposal_lineage": [],
+        "canonical_observation_id": "canonical-e99c0a0c20c5f2f066ced4cf",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-a0a6598a50da225e9d5adee0",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:0:260a02a0f0e106b6addd",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 0,
+        "mask_digest": "260a02a0f0e106b6addd",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-03e0d93c97c44bcbabad68b2b01aecb0",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.6772075,
+              0.2080693,
+              0.7258397,
+              0.3685809
+            ],
+            "confidence": 0.621277391910553,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-3c8355ca06f64974bd6b4c48e7d4af58",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.6746094,
+              0.2083333,
+              0.7277344,
+              0.3739583
+            ],
+            "confidence": 0.8916015625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-3c8355ca06f64974bd6b4c48e7d4af58",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.6746094,
+              0.2083333,
+              0.7277344,
+              0.3739583
+            ],
+            "confidence": 0.8916015625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8844187
+          }
+        ],
+        "canonical_observation_id": "canonical-e99c0a0c20c5f2f066ced4cf",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-77f7dc0858ad1d221b5dddc2",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:0:d38c8a6e68e3f274f0d6",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 0,
+        "mask_digest": "d38c8a6e68e3f274f0d6",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6c80910996994f13b1cb37105bfd2ed6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.4528302,
+              0.0774135,
+              0.5238263,
+              0.3309911
+            ],
+            "confidence": 0.695144772529602,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-0ec6854dcb4041d1ba9c5c808afa4af2",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.4511719,
+              0.0768229,
+              0.5253906,
+              0.3354167
+            ],
+            "confidence": 0.9033203125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-0ec6854dcb4041d1ba9c5c808afa4af2",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.4511719,
+              0.0768229,
+              0.5253906,
+              0.3354167
+            ],
+            "confidence": 0.9033203125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.938023
+          }
+        ],
+        "canonical_observation_id": "canonical-e62957f71e0e18030ec05d5c",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-80cf973bcea7df812d8a6a06",
+        "mask_quality": 0.6713534821651551,
+        "mask_pixel_count": 1415,
+        "fusion_point_count": 30,
+        "fusion_quality": 0.5132061076340311,
+        "valid_depth_ratio": 0.038461538461538464,
+        "mask_fill_fraction": 0.5851943755169562,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6786840053859136,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.89013671875,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.6878989378461269,
+        "support_plane_area_coverage": 0.7394499717549156,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.1535324382781984,
+          0.2248413109779358,
+          0.2591614866256713
+        ]
+      },
+      {
+        "observation_id": "obs-a0a6598a50da225e9d5adee0",
+        "mask_quality": 0.7153970557661864,
+        "mask_pixel_count": 1382,
+        "fusion_point_count": 31,
+        "fusion_quality": 0.5305194995660657,
+        "valid_depth_ratio": 0.03929024081115336,
+        "mask_fill_fraction": 0.578969417679095,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6707233346668853,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.7564394772052765,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.6740599725390614,
+        "support_plane_area_coverage": 0.7455782356296398,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.15316042900085458,
+          0.2288885593414307,
+          0.25865797996521
+        ]
+      },
+      {
+        "observation_id": "obs-77f7dc0858ad1d221b5dddc2",
+        "mask_quality": 0.7046954622620215,
+        "mask_pixel_count": 2964,
+        "fusion_point_count": 25,
+        "fusion_quality": 0.397607830258893,
+        "valid_depth_ratio": 0.013919821826280624,
+        "mask_fill_fraction": 0.5696713434556986,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.14391296803114306,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.8409039884566656,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.799232542514801,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.7288553038759159,
+        "support_plane_area_coverage": 0.6640225683870679,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.1689303278792318,
+          0.2217617360677614,
+          0.26742543240476024
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 2,
+    "observed_viewpoints": [
+      "p00_y00",
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.695144772529602,
+    "association_confidence": 0.5,
+    "track_stability": 0.2,
+    "temporal_reliability": 0.19531282892989144,
+    "fusion_quality": 0.5305194995660657,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 2,
+    "provenance": [
+      "p00_y01",
+      "task_conditioned_deterministic_v1",
+      "yolo_world_local",
+      "fast_complete",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y00",
+      "groundingdino_local",
+      "open_fast_union",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 6,
+    "canonical_id": 6,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "brown",
+    "attributes": {
+      "color": "brown"
+    },
+    "class_distribution": {
+      "chair": 0.2617192566394806
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "brown": 0.5
+      }
+    },
+    "center_3d": [
+      1.7808607152723446,
+      -1.6308892630403773,
+      0.25414123120837273
+    ],
+    "bbox_3d": [
+      0.7660702645436266,
+      0.7567783041046232,
+      0.5094443914639402
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "canonical-ea1a31c41c81214f48f0e1f4",
+      "panorama@1785259707.696271896:328b33232c27c08c:767c608dbc4630122462037b"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-5c4ab9f904c6d7c41f182098",
+        "source_frame_id": "panorama@1785259655.066333771",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:8:785cc504d7b9d86acc2a",
+        "source_stamp_s": 1785259655.0663338,
+        "projection_box_index": 8,
+        "mask_digest": "785cc504d7b9d86acc2a",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-7dbf0bddf9c44df2bd2eb53e818c7a3c",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.8595486,
+              0.6274871,
+              1.0,
+              0.9579906
+            ],
+            "confidence": 0.2617192566394806,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-ea1a31c41c81214f48f0e1f4",
+        "acquisition_id": "panorama@1785259655.066333771:c9e47fa8f0fe02ed"
+      },
+      {
+        "observation_id": "obs-70c290f18dc0660f17e9b8d5",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:3:ac19ff158d136e2616a0",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 3,
+        "mask_digest": "ac19ff158d136e2616a0",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-2f338306e0af4aa3a2467632b3243681",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.6848642,
+              0.6363233,
+              0.9999593,
+              0.9994346
+            ],
+            "confidence": 0.233183816075325,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-7e04908f0065f3547c3f141b",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-5c4ab9f904c6d7c41f182098",
+        "mask_quality": 0.8684848142551959,
+        "mask_pixel_count": 11236,
+        "fusion_point_count": 74,
+        "fusion_quality": 0.409909074343147,
+        "valid_depth_ratio": 0.024691358024691357,
+        "mask_fill_fraction": 0.814498006524103,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.5754716981132075,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.42452830188679247,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.2617192566394806,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.3357997684448983,
+        "support_plane_inlier_ratio": 0.24324324324324326,
+        "support_plane_normal_alignment": 0.12578192308196584,
+        "support_plane_area_coverage": 0.5119741410747366,
+        "support_plane_height": 0.1689208447933197,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.8400267362594604,
+          0.6295104050636289,
+          0.4916024351119994
+        ]
+      },
+      {
+        "observation_id": "obs-70c290f18dc0660f17e9b8d5",
+        "mask_quality": 0.8964356759904593,
+        "mask_pixel_count": 30503,
+        "fusion_point_count": 452,
+        "fusion_quality": 0.3318361297195999,
+        "valid_depth_ratio": 0.04812606473594549,
+        "mask_fill_fraction": 0.8874632684530563,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.5067246055983093,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.49327539440169066,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.9266542459860371,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.233183816075325,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.45515315801414113,
+        "support_plane_inlier_ratio": 0.1747787610619469,
+        "support_plane_normal_alignment": 0.7016890614826373,
+        "support_plane_area_coverage": 0.5054022508280285,
+        "support_plane_height": 0.20853799966199382,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.5935051638733475,
+          1.0537367352002767,
+          0.5510756229518021
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 2,
+    "observed_viewpoints": [
+      "p00_y00",
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.2617192566394806,
+    "association_confidence": 0.5,
+    "track_stability": 0.2,
+    "temporal_reliability": 0.089708845035112,
+    "fusion_quality": 0.409909074343147,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 2,
+    "provenance": [
+      "p00_y00",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 7,
+    "canonical_id": 7,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.5661351084709167
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      1.2566431275542311,
+      -7.952895937795152,
+      0.30022969812643385
+    ],
+    "bbox_3d": [
+      0.38237778567060077,
+      1.3483341530415496,
+      0.6016210599316134
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:02240b28377b67e8e3d5b909"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-d85186c68a3f20e80972c49c",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:2:8fbc0c837c3ed9b05273",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 2,
+        "mask_digest": "8fbc0c837c3ed9b05273",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-7ae5cd0d0bc94beab7fd5a7c0eb0d711",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2114503,
+              0.5139831,
+              0.261313,
+              0.6672947
+            ],
+            "confidence": 0.5661351084709167,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2109375,
+              0.5166667,
+              0.2660156,
+              0.6739583
+            ],
+            "confidence": 0.1591796875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b74b9d8c93f64e2b914aba02ca0c5308",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2109375,
+              0.5166667,
+              0.2660156,
+              0.6739583
+            ],
+            "confidence": 0.1591796875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8537668
+          }
+        ],
+        "canonical_observation_id": "canonical-2c01d4dfa3e58cb795110797",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-d85186c68a3f20e80972c49c",
+        "mask_quality": 0.36730540933847616,
+        "mask_pixel_count": 596,
+        "fusion_point_count": 20,
+        "fusion_quality": 1.720366188903015e-05,
+        "valid_depth_ratio": 0.09280742459396751,
+        "mask_fill_fraction": 0.2670250896057348,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.30982477027839217,
+        "foreground_depth_centroid_map": [
+          1.2105478134777297,
+          -4.830006352496115,
+          0.16696118396013687
+        ],
+        "background_depth_centroid_map": [
+          1.215865059084056,
+          -7.692728050731683,
+          -0.0005807628087453054
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-2a9ee148494e59772e8ced91",
+        "visual_detectability_coverage": 0.3039988163664034,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8069178052279626,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.3626573979854584,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.40349218307223156,
+        "support_plane_inlier_ratio": 0.3,
+        "support_plane_normal_alignment": 0.18783210260444116,
+        "support_plane_area_coverage": 0.9826707871056063,
+        "support_plane_height": -0.0005807657080683648,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.38237778567060077,
+          1.3483341530415496,
+          0.6016210599316134
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.5661351084709167,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.021003475186634587,
+    "fusion_quality": 1.720366188903015e-05,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y02",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 8,
+    "canonical_id": 8,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "",
+    "attributes": {},
+    "class_distribution": {
+      "chair": 0.20063282549381256
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {},
+    "center_3d": [
+      2.225462281219838,
+      -0.7486497459076469,
+      0.9643482656943714
+    ],
+    "bbox_3d": [
+      0.19043819773691384,
+      0.6928021803704723,
+      0.9172822252282987
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:43e88d3d68dcc9cd1e998ea5"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-c09014beb8a2a76cd142236c",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:4:03fd65a54550b8e4609a",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 4,
+        "mask_digest": "03fd65a54550b8e4609a",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-2c8d913e9f4a4668a7993e7ab7e9bb33",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2853952,
+              0.0,
+              0.577041,
+              0.7318695
+            ],
+            "confidence": 0.20063282549381256,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-f951e903443bafc3e52253ba",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-c09014beb8a2a76cd142236c",
+        "mask_quality": 0.5884520779692168,
+        "mask_pixel_count": 43708,
+        "fusion_point_count": 518,
+        "fusion_quality": 0.5255958084109847,
+        "valid_depth_ratio": 0.020525876128724294,
+        "mask_fill_fraction": 0.6731038731038731,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.18893683173004136,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.8110631682699586,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.20063282549381256,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.4253393093098009,
+        "support_plane_inlier_ratio": 0.3359073359073359,
+        "support_plane_normal_alignment": 0.031873585799518364,
+        "support_plane_area_coverage": 0.8310630585081007,
+        "support_plane_height": 0.9723278558126959,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.19043819773691384,
+          0.6928021803704723,
+          0.9172822252282987
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.20063282549381256,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.011924957384047802,
+    "fusion_quality": 0.5255958084109847,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y00",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 9,
+    "canonical_id": 9,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.5179432034492493
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -0.9723715846053473,
+      -6.495705583775626,
+      0.3893715982846575
+    ],
+    "bbox_3d": [
+      0.6579507631014252,
+      1.6519930876982647,
+      0.7799046600055966
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:48c09d5007f846aaf376116a"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-44c39445837e922e1f51a879",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y01",
+        "source_mask_id": "sam:p00_y01:4:3c59a584e055aabcd03f",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 4,
+        "mask_digest": "3c59a584e055aabcd03f",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [],
+        "proposal_lineage": [],
+        "canonical_observation_id": "canonical-38645f44f6417a4943f69ade",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-773a6ee862ea0d695745cab7",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:3:17b518e5af868079979a",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 3,
+        "mask_digest": "17b518e5af868079979a",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-066f3e6724f24bc78655029f2b83f499",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4004043,
+              0.4975965,
+              0.44871,
+              0.6431421
+            ],
+            "confidence": 0.5179432034492493,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-38645f44f6417a4943f69ade",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-44c39445837e922e1f51a879",
+        "mask_quality": 0.6200481312531437,
+        "mask_pixel_count": 2222,
+        "fusion_point_count": 67,
+        "fusion_quality": 0.09445910461196175,
+        "valid_depth_ratio": 0.08105369807497467,
+        "mask_fill_fraction": 0.5695975390925404,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.2559526866829719,
+        "foreground_depth_centroid_map": [
+          -0.8330222928050512,
+          -5.744502481274376,
+          0.3139074053970099
+        ],
+        "background_depth_centroid_map": [
+          -1.7196440811360234,
+          -8.627061824828365,
+          0.20461451039871592
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-571b3837b7c3d518405ef8fe",
+        "visual_detectability_coverage": 0.6327934489666847,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8572586757116107,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.56005859375,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.33754063764001374,
+        "support_plane_inlier_ratio": 0.208955223880597,
+        "support_plane_normal_alignment": 0.012313453073126486,
+        "support_plane_area_coverage": 0.7834121181273173,
+        "support_plane_height": 0.4248148889131526,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.6601228773643137,
+          1.6514910030330734,
+          0.7797935305767607
+        ]
+      },
+      {
+        "observation_id": "obs-773a6ee862ea0d695745cab7",
+        "mask_quality": 0.6423549627465724,
+        "mask_pixel_count": 1277,
+        "fusion_point_count": 65,
+        "fusion_quality": 0.09445910461196175,
+        "valid_depth_ratio": 0.07889344262295082,
+        "mask_fill_fraction": 0.5970079476390837,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.27048100753455706,
+        "foreground_depth_centroid_map": [
+          -0.8369067816251081,
+          -5.744502481274376,
+          0.3773392787782
+        ],
+        "background_depth_centroid_map": [
+          -1.7196440811360234,
+          -8.627061824828365,
+          0.20461451039871592
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-571b3837b7c3d518405ef8fe",
+        "visual_detectability_coverage": 0.4703503221882348,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.9468936205485817,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.5179432034492493,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.3820081915417359,
+        "support_plane_inlier_ratio": 0.2,
+        "support_plane_normal_alignment": 0.07648941424813001,
+        "support_plane_area_coverage": 0.958179189898517,
+        "support_plane_height": 0.42866928564274226,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.6579507631014252,
+          1.6519930876982647,
+          0.7799046600055966
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.5179432034492493,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.03360477313921296,
+    "fusion_quality": 0.09445910461196175,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y01",
+      "task_conditioned_deterministic_v1",
+      "yolo_world_local",
+      "fast_complete",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "groundingdino_local",
+      "open_fast_union",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 10,
+    "canonical_id": 10,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.5514864921569824
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -1.135515393142585,
+      -6.209259677966292,
+      0.3741449218422629
+    ],
+    "bbox_3d": [
+      0.7534240812324529,
+      1.0961966515658768,
+      0.7494512002424625
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:6e95956f87ee661d22861fca"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-b357b6fe10fe33a1f21c5991",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:5:5077cde2cd9dc909f288",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 5,
+        "mask_digest": "5077cde2cd9dc909f288",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-58515b015d2848c5b1e3be279ac5d362",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4189515,
+              0.4932144,
+              0.4653396,
+              0.6213851
+            ],
+            "confidence": 0.5514864921569824,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-571b3837b7c3d518405ef8fe",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-b357b6fe10fe33a1f21c5991",
+        "mask_quality": 0.3763138884043185,
+        "mask_pixel_count": 692,
+        "fusion_point_count": 32,
+        "fusion_quality": 0.0003313489025970572,
+        "valid_depth_ratio": 0.09339774557165861,
+        "mask_fill_fraction": 0.3728448275862069,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.47461607291227154,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8004624753264824,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.5514864921569824,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.41491631590138256,
+        "support_plane_inlier_ratio": 0.4375,
+        "support_plane_normal_alignment": 0.07999570015193201,
+        "support_plane_area_coverage": 0.7902119543169979,
+        "support_plane_height": 0.4830917594629215,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7534240812324529,
+          1.0961966515658768,
+          0.7494512002424625
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.5514864921569824,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.02096181442995556,
+    "fusion_quality": 0.0003313489025970572,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y02",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 11,
+    "canonical_id": 11,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "white",
+    "attributes": {
+      "color": "white"
+    },
+    "class_distribution": {
+      "vase": 0.3777574896812439
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "white": 0.5
+      }
+    },
+    "center_3d": [
+      2.2036474141544975,
+      -0.8530335981285784,
+      0.6579349275542496
+    ],
+    "bbox_3d": [
+      0.13617098848438847,
+      0.14915714969589589,
+      0.14717155503365176
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:823960e407c51f9250c1b57b"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-335aa30ff0da2aef5ba179f2",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y00",
+        "source_mask_id": "sam:p00_y00:2:77b5ee4fbc00233da873",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 2,
+        "mask_digest": "77b5ee4fbc00233da873",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-7dceb4da574f45dda1facd25b42a39a9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.4560962,
+              0.5805347,
+              0.509471,
+              0.6617096
+            ],
+            "confidence": 0.3777574896812439,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d255f072b2624e5eb789e068e2968745",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.4539063,
+              0.5807292,
+              0.5113281,
+              0.6671875
+            ],
+            "confidence": 0.1044921875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d255f072b2624e5eb789e068e2968745",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.4539063,
+              0.5807292,
+              0.5113281,
+              0.6671875
+            ],
+            "confidence": 0.1044921875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8688089
+          }
+        ],
+        "canonical_observation_id": "canonical-eb3df6b2d100fff19c6fd52b",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-489d60a3c4231bf76c596458",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:1:e7e8eaf55638a72d30b5",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 1,
+        "mask_digest": "e7e8eaf55638a72d30b5",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-122494ae94644d75a989e22c1ec5c9de",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.9199775,
+              0.606048,
+              1.0,
+              0.7264917
+            ],
+            "confidence": 0.350205659866333,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9c9b32b85e524e12b85ab506c792ba62",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.9179688,
+              0.6046875,
+              1.0,
+              0.7359375
+            ],
+            "confidence": 0.18359375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9c9b32b85e524e12b85ab506c792ba62",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.9179688,
+              0.6046875,
+              1.0,
+              0.7359375
+            ],
+            "confidence": 0.18359375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8951942
+          }
+        ],
+        "canonical_observation_id": "canonical-eb3df6b2d100fff19c6fd52b",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-335aa30ff0da2aef5ba179f2",
+        "mask_quality": 0.8897410466874507,
+        "mask_pixel_count": 1185,
+        "fusion_point_count": 25,
+        "fusion_quality": 0.542120555694058,
+        "valid_depth_ratio": 0.03245942571785269,
+        "mask_fill_fraction": 0.8977272727272727,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6210814660734935,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.24112483859062195,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.14978558003088677,
+        "support_plane_area_coverage": 0.7061297476945532,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.13617098848438847,
+          0.14915714969589589,
+          0.14717155503365176
+        ]
+      },
+      {
+        "observation_id": "obs-489d60a3c4231bf76c596458",
+        "mask_quality": 0.8807374962162111,
+        "mask_pixel_count": 2487,
+        "fusion_point_count": 22,
+        "fusion_quality": 0.47995248253300926,
+        "valid_depth_ratio": 0.030136986301369864,
+        "mask_fill_fraction": 0.8555211558307534,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.521357295753251,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.43066415933892704,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.2668997049331665,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.12194725399386885,
+        "support_plane_area_coverage": 0.9687912140948002,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.14228954048327536,
+          0.11543690331637069,
+          0.1452029577069487
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.3777574896812439,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.03394848951236085,
+    "fusion_quality": 0.542120555694058,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y00",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y07",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 12,
+    "canonical_id": 12,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.5573345422744751
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      0.4650112906089437,
+      -6.253144772444799,
+      0.369494695816866
+    ],
+    "bbox_3d": [
+      0.7704566251862318,
+      4.8592369172869,
+      0.7401510587296405
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:953f51083ef2096f45728b09"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-16991fe6afd8782c15b36157",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y01",
+        "source_mask_id": "sam:p00_y01:2:66159ac172dc0269d5fd",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 2,
+        "mask_digest": "66159ac172dc0269d5fd",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [],
+        "proposal_lineage": [],
+        "canonical_observation_id": "canonical-2a9ee148494e59772e8ced91",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-c80d937b71ced37c91b42425",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:0:b94b0efcd5dc345425e3",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 0,
+        "mask_digest": "b94b0efcd5dc345425e3",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-579a7f0c01714b44aedce510fbc14cf8",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2620004,
+              0.5080324,
+              0.3213324,
+              0.6746202
+            ],
+            "confidence": 0.5573345422744751,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2621993,
+              0.5047278,
+              0.3149755,
+              0.6343732
+            ],
+            "confidence": 0.26496896147727966,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1a9647db2afe42d69df93585f459af70",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2621993,
+              0.5047278,
+              0.3149755,
+              0.6343732
+            ],
+            "confidence": 0.26496896147727966,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6629083
+          },
+          {
+            "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2603516,
+              0.5078125,
+              0.3230469,
+              0.6802083
+            ],
+            "confidence": 0.6689453125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9682f6c14f16414db21751830be28cbf",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2603516,
+              0.5078125,
+              0.3230469,
+              0.6802083
+            ],
+            "confidence": 0.6689453125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9144715
+          }
+        ],
+        "canonical_observation_id": "canonical-2a9ee148494e59772e8ced91",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-16991fe6afd8782c15b36157",
+        "mask_quality": 0.641905895048172,
+        "mask_pixel_count": 1715,
+        "fusion_point_count": 114,
+        "fusion_quality": 0.00400085670878376,
+        "valid_depth_ratio": 0.0989433237271854,
+        "mask_fill_fraction": 0.5861244019138756,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.141668003963859,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6413229159334496,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.6318359375,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.316464765233361,
+        "support_plane_inlier_ratio": 0.14912280701754385,
+        "support_plane_normal_alignment": 0.09821634545809808,
+        "support_plane_area_coverage": 0.6240270785547085,
+        "support_plane_height": 0.13030350354947456,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7825432605026285,
+          4.583872562246266,
+          0.7402995462046869
+        ]
+      },
+      {
+        "observation_id": "obs-c80d937b71ced37c91b42425",
+        "mask_quality": 0.6641168093171854,
+        "mask_pixel_count": 1697,
+        "fusion_point_count": 116,
+        "fusion_quality": 0.002429373528870796,
+        "valid_depth_ratio": 0.09829867674858223,
+        "mask_fill_fraction": 0.5439102564102564,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.13184156338146455,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.6452519199795775,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.6131399273872375,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.30998371127072566,
+        "support_plane_inlier_ratio": 0.13793103448275862,
+        "support_plane_normal_alignment": 0.08067142053509774,
+        "support_plane_area_coverage": 0.6387344530985493,
+        "support_plane_height": 0.13030350354947456,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.7704566251862318,
+          4.8592369172869,
+          0.7401510587296405
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.5573345422744751,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.037385584823850106,
+    "fusion_quality": 0.002429373528870796,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y01",
+      "task_conditioned_deterministic_v1",
+      "yolo_world_local",
+      "fast_complete",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "groundingdino_local",
+      "open_fast_union",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 13,
+    "canonical_id": 13,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "white",
+    "attributes": {
+      "color": "white"
+    },
+    "class_distribution": {
+      "chair": 0.21250298619270325
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "white": 0.5
+      }
+    },
+    "center_3d": [
+      2.0927282262573375,
+      1.3309204769438847,
+      1.1076547294096555
+    ],
+    "bbox_3d": [
+      0.18867530934378274,
+      1.8814474075379213,
+      2.2164714274028157
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:9559eff6882d5a6dbcf53bcb"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-2d7758c319830e0fabe066ea",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:5:624bca783f23ecd33166",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 5,
+        "mask_digest": "624bca783f23ecd33166",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-688a0286f7e2475cbb284f390a9974e7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0003378,
+              0.0,
+              0.4278561,
+              0.9997441
+            ],
+            "confidence": 0.21250298619270325,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-fbe9addeced63789f1fbb1ee",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-2d7758c319830e0fabe066ea",
+        "mask_quality": 0.9387303913758557,
+        "mask_pixel_count": 127025,
+        "fusion_point_count": 2141,
+        "fusion_quality": 0.06986738514375915,
+        "valid_depth_ratio": 0.04538334441988713,
+        "mask_fill_fraction": 0.9678390198558432,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.7238942119892554,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.2761057880107446,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.21250298619270325,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": true,
+        "support_plane_quality": 0.7381684758245072,
+        "support_plane_inlier_ratio": 0.962634283045306,
+        "support_plane_normal_alignment": 0.0199321938164782,
+        "support_plane_area_coverage": 1.0,
+        "support_plane_height": 1.0091280918035581,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.18867530934378274,
+          1.8814474075379213,
+          2.2164714274028157
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.21250298619270325,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.020148822049645913,
+    "fusion_quality": 0.06986738514375915,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y07",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 14,
+    "canonical_id": 14,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "vase": 0.4030534625053406
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -2.447372412277536,
+      -4.567470720515932,
+      0.7615954348029296
+    ],
+    "bbox_3d": [
+      0.4193720049078751,
+      0.43917776808427256,
+      0.27965802581299637
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:b1583ced0d334a933b8bc16c"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-16a0927bda71a35cf319edd8",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y03",
+        "source_mask_id": "sam:p00_y03:3:045c27b2145bcb23bfae",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 3,
+        "mask_digest": "045c27b2145bcb23bfae",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-e98c5fd0c44f40e18cfde8e9281df7a4",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.1528251,
+              0.4772168,
+              0.1919846,
+              0.5461903
+            ],
+            "confidence": 0.40982580184936523,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-149f9b7a58e91890bf2127ad",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-9dda7beb9210c122831af4d4",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:6:d1a8083449cc4f917db6",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 6,
+        "mask_digest": "d1a8083449cc4f917db6",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-3c78b9cf1d7b43a78d7e447baf841219",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.5899496,
+              0.4793143,
+              0.6192251,
+              0.5393845
+            ],
+            "confidence": 0.4030534625053406,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-149f9b7a58e91890bf2127ad",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-16a0927bda71a35cf319edd8",
+        "mask_quality": 0.8726038287915111,
+        "mask_pixel_count": 801,
+        "fusion_point_count": 21,
+        "fusion_quality": 0.3006890161579058,
+        "valid_depth_ratio": 0.07631578947368421,
+        "mask_fill_fraction": 0.898989898989899,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.8895751330327792,
+        "foreground_depth_centroid_map": [
+          -1.6166259344103788,
+          -3.6204430622683703,
+          0.5636559196584183
+        ],
+        "background_depth_centroid_map": [
+          -2.331285325326663,
+          -4.429902035116229,
+          0.7745270131480636
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-83fd695b1565decec67c6449",
+        "visual_detectability_coverage": 0.056386162302133856,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.9371963733896097,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.40982580184936523,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.5133378441684754,
+        "support_plane_area_coverage": 0.0,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.2112652982197245,
+          0.4391791259242366,
+          0.28560818490480544
+        ]
+      },
+      {
+        "observation_id": "obs-9dda7beb9210c122831af4d4",
+        "mask_quality": 0.9017090672827215,
+        "mask_pixel_count": 510,
+        "fusion_point_count": 23,
+        "fusion_quality": 0.2998723388745003,
+        "valid_depth_ratio": 0.07731958762886598,
+        "mask_fill_fraction": 0.925589836660617,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.956204910409024,
+        "foreground_depth_centroid_map": [
+          -1.6027411227984376,
+          -3.6099526965038207,
+          0.5590584611013567
+        ],
+        "background_depth_centroid_map": [
+          -2.349907680076698,
+          -4.429902035116229,
+          0.7745270131480636
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-83fd695b1565decec67c6449",
+        "visual_detectability_coverage": 0.017844315837347264,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.4030534625053406,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.874485626287147,
+        "support_plane_area_coverage": 0.9420242822246638,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.4193720049078751,
+          0.43917776808427256,
+          0.27965802581299637
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.4030534625053406,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.036709024077229466,
+    "fusion_quality": 0.2998723388745003,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y03",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 15,
+    "canonical_id": 15,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.512073278427124
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      0.07977144595133231,
+      -6.259221101544448,
+      0.5141077815452395
+    ],
+    "bbox_3d": [
+      0.44283362663925313,
+      2.170296715965727,
+      1.0293771602384787
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:b5967bb1e9fd68410cc13276"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-01586f4b863ce083ff2dd0af",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:16:7db6b95331bd6aefe1ab",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 16,
+        "mask_digest": "7db6b95331bd6aefe1ab",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-14827cddc7ab4c62ad2967b87ce74eab",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.322471,
+              0.4771839,
+              0.36915,
+              0.6241391
+            ],
+            "confidence": 0.512073278427124,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-8f467189c65fc966c52a0bdb",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-01586f4b863ce083ff2dd0af",
+        "mask_quality": 0.3640844957720065,
+        "mask_pixel_count": 611,
+        "fusion_point_count": 31,
+        "fusion_quality": 0.00021712840026978897,
+        "valid_depth_ratio": 0.09340659340659341,
+        "mask_fill_fraction": 0.2645021645021645,
+        "visible_fraction": 0.6492181485503321,
+        "depth_multimodality": 0.6590237257296546,
+        "foreground_depth_centroid_map": [
+          0.027707778452843446,
+          -6.528092316637839,
+          0.4224394280978879
+        ],
+        "background_depth_centroid_map": [
+          -0.3477739157548936,
+          -8.611906890028767,
+          0.22073599041477968
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": "canonical-2a9ee148494e59772e8ced91",
+        "visual_detectability_coverage": 0.09872447031643487,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.512073278427124,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.5044691003260893,
+        "support_plane_inlier_ratio": 0.6451612903225806,
+        "support_plane_normal_alignment": 0.1624236404134242,
+        "support_plane_area_coverage": 0.6739530478878589,
+        "support_plane_height": 0.42876750148394716,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.44283362663925313,
+          2.170296715965727,
+          1.0293771602384787
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.512073278427124,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.0188312021046055,
+    "fusion_quality": 0.00021712840026978897,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y02",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 16,
+    "canonical_id": 16,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "vase": 0.477374404668808
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -1.3084933214738301,
+      2.4596504376648367,
+      2.552832217955649
+    ],
+    "bbox_3d": [
+      0.22902530541648458,
+      0.08881972686405426,
+      0.2243346048670265
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:b9df976cf0e84e0957088967"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-71f399134daf706f86e64a99",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y04",
+        "source_mask_id": "sam:p00_y04:2:f87946f79699791ad295",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 2,
+        "mask_digest": "f87946f79699791ad295",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-06c9c595026d43d0b2b98311885ae12a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.7240075,
+              0.0849585,
+              0.7582184,
+              0.1472605
+            ],
+            "confidence": 0.477374404668808,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-ddca0ce8383e446c9f611ebf472c372c",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.7222656,
+              0.0845052,
+              0.7597656,
+              0.1510417
+            ],
+            "confidence": 0.20947265625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-ddca0ce8383e446c9f611ebf472c372c",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.7222656,
+              0.0845052,
+              0.7597656,
+              0.1510417
+            ],
+            "confidence": 0.20947265625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8542329
+          }
+        ],
+        "canonical_observation_id": "canonical-a2d3779b056dd0df39c7e639",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-71f399134daf706f86e64a99",
+        "mask_quality": 0.7218889802499847,
+        "mask_pixel_count": 405,
+        "fusion_point_count": 23,
+        "fusion_quality": 0.4564891873774934,
+        "valid_depth_ratio": 0.1004566210045662,
+        "mask_fill_fraction": 0.6136363636363636,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.05489808243807505,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.34315912379869035,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8931690857277842,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.343423530459404,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.1731648923371495,
+        "support_plane_area_coverage": 1.0,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.22902530541648458,
+          0.08881972686405426,
+          0.2243346048670265
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.477374404668808,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.03480753653326756,
+    "fusion_quality": 0.4564891873774934,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y04",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 17,
+    "canonical_id": 17,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.5165873169898987
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -0.1989476612802436,
+      -5.912216903571391,
+      0.37004671011240914
+    ],
+    "bbox_3d": [
+      0.9698117365623252,
+      2.8578773176544017,
+      0.7412550236600312
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:bb1c7cc5b0f806fa81fb3d0d"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-0b371f93a8ed73ab8059ff47",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y01",
+        "source_mask_id": "sam:p00_y01:6:f0a7f493e96c2d967dc1",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 6,
+        "mask_digest": "f0a7f493e96c2d967dc1",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [],
+        "proposal_lineage": [],
+        "canonical_observation_id": "canonical-6d9ff046b79e452f52aaf66e",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-889b3218a09fe161b0809b41",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:9:ccf66e1eb3c7026847a8",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 9,
+        "mask_digest": "ccf66e1eb3c7026847a8",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-10f9ae92255c4153add1f99e17bd4206",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.3355453,
+              0.5028721,
+              0.3895861,
+              0.6561602
+            ],
+            "confidence": 0.5165873169898987,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.3302734,
+              0.503125,
+              0.3904297,
+              0.6619792
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d574e198a80f4ef082829e086240e810",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.3302734,
+              0.503125,
+              0.3904297,
+              0.6619792
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8641969
+          }
+        ],
+        "canonical_observation_id": "canonical-6d9ff046b79e452f52aaf66e",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-0b371f93a8ed73ab8059ff47",
+        "mask_quality": 0.6244449923011733,
+        "mask_pixel_count": 1831,
+        "fusion_point_count": 76,
+        "fusion_quality": 0.02097869904118851,
+        "valid_depth_ratio": 0.09465020576131687,
+        "mask_fill_fraction": 0.5868589743589744,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.2610460774434377,
+        "foreground_depth_centroid_map": [
+          -0.14145423465413987,
+          -5.72822138046469,
+          0.14534497719142975
+        ],
+        "background_depth_centroid_map": [
+          -0.6444942991784133,
+          -8.611907183556916,
+          0.17946024108426728
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.5704937951798826,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8710557103262837,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.49609375,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.2592678259904825,
+        "support_plane_inlier_ratio": 0.17105263157894737,
+        "support_plane_normal_alignment": 0.0741966085762726,
+        "support_plane_area_coverage": 0.3437249481794401,
+        "support_plane_height": 0.1650685067278388,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.9714612826707276,
+          2.9015700619489806,
+          0.74177403697086
+        ]
+      },
+      {
+        "observation_id": "obs-889b3218a09fe161b0809b41",
+        "mask_quality": 0.6262097973592432,
+        "mask_pixel_count": 1387,
+        "fusion_point_count": 78,
+        "fusion_quality": 0.012803651159227736,
+        "valid_depth_ratio": 0.09778225806451613,
+        "mask_fill_fraction": 0.5857263513513513,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.26581787517041244,
+        "foreground_depth_centroid_map": [
+          -0.13836918852721702,
+          -5.7288513747181184,
+          0.14281639276592328
+        ],
+        "background_depth_centroid_map": [
+          -0.6192794574646185,
+          -8.61190716102929,
+          0.17835662974192434
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.49332307666534053,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.8411467981070226,
+        "semantic_detector_count": 2,
+        "semantic_detector_consensus": 0.45543721318244934,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": 0.29802028583854423,
+        "support_plane_inlier_ratio": 0.1794871794871795,
+        "support_plane_normal_alignment": 0.07160441005009249,
+        "support_plane_area_coverage": 0.5092497627839518,
+        "support_plane_height": 0.1456579681346633,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.9698117365623252,
+          2.8578773176544017,
+          0.7412550236600312
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.5165873169898987,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.032674379058449526,
+    "fusion_quality": 0.012803651159227736,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y01",
+      "task_conditioned_deterministic_v1",
+      "yolo_world_local",
+      "fast_complete",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "groundingdino_local",
+      "open_fast_union",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 18,
+    "canonical_id": 18,
+    "lifecycle": "tentative",
+    "class_label": "chair",
+    "raw_label": "chair",
+    "aliases": [],
+    "color": "gray",
+    "attributes": {
+      "color": "gray"
+    },
+    "class_distribution": {
+      "chair": 0.3757624328136444
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "gray": 0.5
+      }
+    },
+    "center_3d": [
+      -2.098391320202789,
+      -2.5718982601807125,
+      0.6543920963901615
+    ],
+    "bbox_3d": [
+      1.117333931219307,
+      2.1947739543056484,
+      0.6902157707805601
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:c831360c8c87a091868df88a"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-37922bfc6e909e31441d541c",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y03",
+        "source_mask_id": "sam:p00_y03:4:1b49f3bee24a34ff2d01",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 4,
+        "mask_digest": "1b49f3bee24a34ff2d01",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-55662720bba34bb89651f982af7ec64a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.1456787,
+              0.4460485,
+              0.612968,
+              0.9733841
+            ],
+            "confidence": 0.3757624328136444,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2948212,
+              0.4473736,
+              0.6125639,
+              0.9721123
+            ],
+            "confidence": 0.22421854734420776,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-148d5276beec420b8c4df71c7d668eb7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2948212,
+              0.4473736,
+              0.6125639,
+              0.9721123
+            ],
+            "confidence": 0.22421854734420776,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6766215
+          }
+        ],
+        "canonical_observation_id": "canonical-83fd695b1565decec67c6449",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-37922bfc6e909e31441d541c",
+        "mask_quality": 0.7315195899612388,
+        "mask_pixel_count": 43692,
+        "fusion_point_count": 103,
+        "fusion_quality": 0.19007453593337326,
+        "valid_depth_ratio": 0.004086724597780264,
+        "mask_fill_fraction": 0.5880801119844945,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.0,
+        "foreground_depth_centroid_map": null,
+        "background_depth_centroid_map": null,
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 1.0,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 0.9015245422806788,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.3757624328136444,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": true,
+        "support_plane_quality": 0.8261908501050196,
+        "support_plane_inlier_ratio": 0.6893203883495146,
+        "support_plane_normal_alignment": 0.8778991924418391,
+        "support_plane_area_coverage": 0.9826093861863914,
+        "support_plane_height": 0.8602278228084217,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          1.117333931219307,
+          2.1947739543056484,
+          0.6902157707805601
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.3757624328136444,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.027764065830336818,
+    "fusion_quality": 0.19007453593337326,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y03",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 19,
+    "canonical_id": 19,
+    "lifecycle": "tentative",
+    "class_label": "table",
+    "raw_label": "table",
+    "aliases": [],
+    "color": "brown",
+    "attributes": {
+      "color": "brown"
+    },
+    "class_distribution": {
+      "table": 0.2507193386554718
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "brown": 0.5
+      }
+    },
+    "center_3d": [
+      2.2250269185065994,
+      -0.6559321831333276,
+      1.2176616547178232
+    ],
+    "bbox_3d": [
+      0.19130892689846535,
+      0.46588860350112593,
+      0.1604726771613727
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:d19c16cd466a2cd6e68007de"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-111d5e6d12f5f276d8c4c46e",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y07",
+        "source_mask_id": "sam:p00_y07:3:01936e97f449defe5954",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 3,
+        "mask_digest": "01936e97f449defe5954",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-1ba8d476334f44ffa4d55f039f9fa7df",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.7015898,
+              0.2488117,
+              1.0,
+              0.3504842
+            ],
+            "confidence": 0.2507193386554718,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-4a14e4aaf9f9ebaac5e04d01",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-111d5e6d12f5f276d8c4c46e",
+        "mask_quality": 0.7497569321235271,
+        "mask_pixel_count": 5599,
+        "fusion_point_count": 44,
+        "fusion_quality": 0.568270053731586,
+        "valid_depth_ratio": 0.020618556701030927,
+        "mask_fill_fraction": 0.6979556220393917,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.6997912929994725,
+        "foreground_depth_centroid_map": [
+          2.1307162171219365,
+          -0.5304487179263642,
+          1.1828286766718503
+        ],
+        "background_depth_centroid_map": [
+          2.3206813159029593,
+          -0.8108025990302452,
+          1.217444296585488
+        ],
+        "mask_truncation": 0.2138280861757364,
+        "occluder_id": "canonical-f951e903443bafc3e52253ba",
+        "visual_detectability_coverage": 0.23601565372931227,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.2507193386554718,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": true,
+        "support_plane_quality": 0.6239850664845584,
+        "support_plane_inlier_ratio": 0.29545454545454547,
+        "support_plane_normal_alignment": 0.9495026190273095,
+        "support_plane_area_coverage": 0.9932743313659278,
+        "support_plane_height": 1.191536537996516,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.19130892689846535,
+          0.46588860350112593,
+          0.1604726771613727
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.2507193386554718,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.01898681282115683,
+    "fusion_quality": 0.568270053731586,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y07",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  },
+  {
+    "object_id": 20,
+    "canonical_id": 20,
+    "lifecycle": "tentative",
+    "class_label": "vase",
+    "raw_label": "vase",
+    "aliases": [],
+    "color": "black",
+    "attributes": {
+      "color": "black"
+    },
+    "class_distribution": {
+      "vase": 0.3198681175708771
+    },
+    "attribute_supports": {},
+    "attribute_distribution": {
+      "color": {
+        "black": 0.5
+      }
+    },
+    "center_3d": [
+      -0.5040689826249302,
+      -2.88577761192611,
+      0.39921596434868356
+    ],
+    "bbox_3d": [
+      0.41383817921775745,
+      0.6587202941623427,
+      0.2597984259782588
+    ],
+    "geometry_covariance_3x3": [
+      [
+        0.25,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.25
+      ]
+    ],
+    "observation_ids": [
+      "panorama@1785259707.696271896:328b33232c27c08c:dec02bf205a35668e0743b2e"
+    ],
+    "observation_lineage": [
+      {
+        "observation_id": "obs-0386d7c6b161ef9b5164211b",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y03",
+        "source_mask_id": "sam:p00_y03:1:e26e3d9efb15d9a390f7",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 1,
+        "mask_digest": "e26e3d9efb15d9a390f7",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-5e9e059438d64725b15a73faf3497ce9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.0285717,
+              0.5727774,
+              0.0581783,
+              0.6819305
+            ],
+            "confidence": 0.5049287676811218,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-0f153be4673649fa8793ac58",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      },
+      {
+        "observation_id": "obs-e95d783edcc2830f2ccdfd7d",
+        "source_frame_id": "panorama@1785259707.696271896",
+        "source_view_id": "p00_y02",
+        "source_mask_id": "sam:p00_y02:12:a3bb1a3fdc9b6e822bf9",
+        "source_stamp_s": 1785259707.696272,
+        "projection_box_index": 12,
+        "mask_digest": "a3bb1a3fdc9b6e822bf9",
+        "cannot_link_eligible": false,
+        "independence_reason": "acquisition_spherical_canonicalization",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-fb2d9886178d4e03b13ae6c3f6da3364",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.5142377,
+              0.554005,
+              0.5311966,
+              0.6341703
+            ],
+            "confidence": 0.3198681175708771,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "canonical_observation_id": "canonical-0f153be4673649fa8793ac58",
+        "acquisition_id": "panorama@1785259707.696271896:328b33232c27c08c"
+      }
+    ],
+    "mask_quality_diagnostics": [
+      {
+        "observation_id": "obs-0386d7c6b161ef9b5164211b",
+        "mask_quality": 0.8182185544477408,
+        "mask_pixel_count": 789,
+        "fusion_point_count": 21,
+        "fusion_quality": 0.1377979231023052,
+        "valid_depth_ratio": 0.08118081180811808,
+        "mask_fill_fraction": 0.7835153922542205,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.7139686293250299,
+        "foreground_depth_centroid_map": [
+          -0.5566870351035671,
+          -3.0345913604321764,
+          0.3703396993201288
+        ],
+        "background_depth_centroid_map": [
+          -1.8618485198408057,
+          -5.443372525070815,
+          -0.0005806259712929362
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.1449577913299893,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.5049287676811218,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.04730887126290441,
+        "support_plane_area_coverage": 0.8021160831427053,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.4164300197269122,
+          0.6607490877630138,
+          0.260108259446769
+        ]
+      },
+      {
+        "observation_id": "obs-e95d783edcc2830f2ccdfd7d",
+        "mask_quality": 0.8327326092779573,
+        "mask_pixel_count": 330,
+        "fusion_point_count": 23,
+        "fusion_quality": 0.15092153482633425,
+        "valid_depth_ratio": 0.08540925266903915,
+        "mask_fill_fraction": 0.7692307692307693,
+        "visible_fraction": 1.0,
+        "depth_multimodality": 0.8240104932988916,
+        "foreground_depth_centroid_map": [
+          -0.5566870351035671,
+          -3.0345913604321764,
+          0.37670249130281086
+        ],
+        "background_depth_centroid_map": [
+          -1.8618485198408057,
+          -5.443372525070815,
+          -0.0005806259712929362
+        ],
+        "mask_truncation": 0.0,
+        "occluder_id": null,
+        "visual_detectability_coverage": 0.05768104744163207,
+        "local_crop_class_score": null,
+        "mask_boundary_strength": 1.0,
+        "semantic_detector_count": 1,
+        "semantic_detector_consensus": 0.3198681175708771,
+        "semantic_confirmation_tier": null,
+        "independent_instance_score": null,
+        "contained_instance_count": null,
+        "mask_split_required": null,
+        "support_plane_pollution_score": null,
+        "support_plane_valid": false,
+        "support_plane_quality": null,
+        "support_plane_inlier_ratio": null,
+        "support_plane_normal_alignment": 0.14341416639486396,
+        "support_plane_area_coverage": 0.4015085242048403,
+        "support_plane_height": null,
+        "planar_quality": null,
+        "measurement_gaps": [
+          "anchor_support_plane_not_measured",
+          "planar_quality_not_applicable",
+          "local_crop_not_applicable",
+          "panorama_instance_unresolved"
+        ],
+        "fused_extent_xyz": [
+          0.41383817921775745,
+          0.6587202941623427,
+          0.2597984259782588
+        ]
+      }
+    ],
+    "frame_mask_ids": [],
+    "observation_count": 1,
+    "observed_viewpoints": [
+      "panorama@1785259707.696271896:328b33232c27c08c"
+    ],
+    "confidence": 0.3198681175708771,
+    "association_confidence": 0.5,
+    "track_stability": 0.0,
+    "temporal_reliability": 0.026904211708745365,
+    "fusion_quality": 0.15092153482633425,
+    "commit_eligible": true,
+    "source": "calibrated_lidar_camera_fusion",
+    "source_stamp_s": 1785259707.696272,
+    "last_seen_time": 1785259707.696272,
+    "instance_version": 1,
+    "provenance": [
+      "p00_y03",
+      "task_conditioned_deterministic_v1",
+      "groundingdino_local",
+      "open_fast_union",
+      "sam2_1_local:sam2.1_hiera_base_plus.pt",
+      "calibrated_mask_fusion",
+      "dinov2_vitb14",
+      "p00_y02",
+      "acquisition_spherical_canonicalization",
+      "probe_observation_session"
+    ]
+  }
+]

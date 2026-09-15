@@ -1,0 +1,2456 @@
+[
+  {
+    "relation_type": "on",
+    "subjects": [
+      11
+    ],
+    "anchors": [
+      12
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 11,
+        "canonical_id": 11
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 12,
+        "canonical_id": 12
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:5380abe30c28c5e1258d",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:94e66473fbde119acb3b74e2"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      11
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 11,
+        "canonical_id": 11
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:b2ab5daca9ae83e1a101",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:db9e910883774e0f87f849bc"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      11
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 11,
+        "canonical_id": 11
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:9021d6718db64f612d88",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:09517b7b1f3e416ba24ca5b1"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      11
+    ],
+    "anchors": [
+      18
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 11,
+        "canonical_id": 11
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 18,
+        "canonical_id": 18
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:27a51ec52052f1154fc1",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:fa25442bdb7b6e9550f09a25"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      12
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 12,
+        "canonical_id": 12
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:54a362fed7708e7fe7b2",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:00cd62f3e76ba83d355465c1"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.004035703619924016,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:59191edf97d2878a5014",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:67de620d39a4c9e3d9b5a0dd",
+      "relation-measurement:cb886f013c1f1aafa419d56c"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.004035703619924016,
+    "evidence_mass": 0.004035703619924016,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.004035703619924016,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.004035703619924016,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:806fa5908c91cf8bada9",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:315109aa2c119efb834d1cb7",
+      "relation-measurement:8ae1f82ccece431557845dc0"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.004035703619924016,
+    "evidence_mass": 0.004035703619924016,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.004035703619924016,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      18
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 18,
+        "canonical_id": 18
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2c55256296a0c9af166a",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:4d37c3bb97cfb74f87771050"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      24
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 24,
+        "canonical_id": 24
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:c1f2fe7715497245db1f",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:c1564572527d702f26448d79"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      26
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 26,
+        "canonical_id": 26
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:ff7499d2b4d53c7c7892",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:6d8da28afb62b65279efc2b2"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      27
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 27,
+        "canonical_id": 27
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:d0af8520bd5c7193a9e5",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:fa8119cbfa215e1fb54370f0"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      28
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 28,
+        "canonical_id": 28
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:37b44378cce695657685",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:9ed9f54f628a1851e05395a5"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      13
+    ],
+    "anchors": [
+      31
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 13,
+        "canonical_id": 13
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 31,
+        "canonical_id": 31
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:fb5a4929d5a0af5c73df",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:ff4b74f62b8c74e28918ffba"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      12
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 12,
+        "canonical_id": 12
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:e30c829ebc8039157415",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:5bb4187334c3bc80cb992a1e"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.004035703619924016,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:ecc66abb6dd00eca549f",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:39eae6dbacbe212955b356b7",
+      "relation-measurement:cd9bfb1874f0f4dae42d52f1"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.004035703619924016,
+    "evidence_mass": 0.004035703619924016,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.004035703619924016,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.04185283814742196,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:6b39f118220746c6adb1",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:3f94fd82a6c73279deb06df8",
+      "relation-measurement:69b252c1f734247bd2760a87"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.04185283814742196,
+    "evidence_mass": 0.04185283814742196,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.04185283814742196,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      18
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 18,
+        "canonical_id": 18
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:530daddc08ca175220cb",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:6536d11f3e50cda1ef751693"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      24
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 24,
+        "canonical_id": 24
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:0c8b89479d661cd9378f",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:9232f215141db09b28eaaa0f"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      26
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 26,
+        "canonical_id": 26
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:1a4b364fc03126d8de6b",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:4ec50840d61b0f0496efe498"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      27
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 27,
+        "canonical_id": 27
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:c5f69354b2570b75239c",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:ee942399dc702c5422627fda"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      28
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 28,
+        "canonical_id": 28
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:38823a05a6ba4a88354f",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:abf92b48834c17cdaa475e85"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      19
+    ],
+    "anchors": [
+      31
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 19,
+        "canonical_id": 19
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 31,
+        "canonical_id": 31
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:5af3cf154f0767b6ab65",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:99e2e4b6a4cb1f957827712a"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      12
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 12,
+        "canonical_id": 12
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:34c273a00e2367ed1f51",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:adada52c54d0fb6000e00dd1"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.004035703619924016,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:faa603e17e9ea9221750",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:72abafa633ddcc9d61e2bfc5",
+      "relation-measurement:843db46ce7f110249542c28e"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.004035703619924016,
+    "evidence_mass": 0.004035703619924016,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.004035703619924016,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.004035703619924016,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:56a35c5192975ce6c0d6",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:29eb3050fa6957ef27f4e9a1",
+      "relation-measurement:8fcbe0fc444df0f1e01ac407"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.004035703619924016,
+    "evidence_mass": 0.004035703619924016,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.004035703619924016,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      18
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 18,
+        "canonical_id": 18
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:bad6ed3c2b6b18b10208",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:68ca759ae6d2708331a3b2b3"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      24
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 24,
+        "canonical_id": 24
+      }
+    ],
+    "confidence": 0.5,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "unknown",
+    "geometry_score": 0.5,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.42596267811629657,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:e91919a567b2bc531eb7",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [],
+    "participant_versions": {},
+    "probability": 0.5,
+    "observability": 0.42596267811629657,
+    "evidence_mass": 0.42596267811629657,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      26
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 26,
+        "canonical_id": 26
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:8f600e9fe31e42bbd313",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:345e23239a8f8d9f86a0e1e9"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      27
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 27,
+        "canonical_id": 27
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:5641118c5e19be2903b7",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:5c7e9e19424a9db4a24d92b9"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      28
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 28,
+        "canonical_id": 28
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:53f576f2879a9aae29a6",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:34089c24bf25e76c75e8ac31"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      21
+    ],
+    "anchors": [
+      31
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 21,
+        "canonical_id": 21
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 31,
+        "canonical_id": 31
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:56f745e6be9dd6058e9f",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:428f822673290c17e6c56056"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      22
+    ],
+    "anchors": [
+      12
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 22,
+        "canonical_id": 22
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 12,
+        "canonical_id": 12
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2432d7192864e33dcc1c",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:49ff7e4650dfad66270179af"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      22
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 22,
+        "canonical_id": 22
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:e45cca17e9ab45fa1b4b",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:f235b4fc2f2e2d15eb676d6a"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      22
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 22,
+        "canonical_id": 22
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:bf640da73d469c63805a",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:c185d9f0a26fb195e82065d6"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      22
+    ],
+    "anchors": [
+      18
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 22,
+        "canonical_id": 22
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 18,
+        "canonical_id": 18
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314006.1424572,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:cc2bba51793e5cafd5f0",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:3c5272f0f1020016d9e57434"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2bf52356781b9b8875b4",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:68b266f4208730fd9dca9fd8"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2e65c5044d877eacd95d",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:2c4f57e2868bb992e7daefad"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      24
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 24,
+        "canonical_id": 24
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2efffcf347ff70590f57",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:03ea0b404f36653903190073"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      26
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 26,
+        "canonical_id": 26
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:774759429016c8721a9b",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:e672d941947baeb325fd7188"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      27
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 27,
+        "canonical_id": 27
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:61c8a18b22850313afa0",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:6a4811fbc01a3c068dd0b276"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      28
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 28,
+        "canonical_id": 28
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:2c126cd3aa17a9839f64",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:9863ea221eab054ea4b6090c"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      29
+    ],
+    "anchors": [
+      31
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 29,
+        "canonical_id": 29
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 31,
+        "canonical_id": 31
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:41ea0ee4c03e36ad5c2d",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:d1d5b34ed42fd524e042598b"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      14
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 14,
+        "canonical_id": 14
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:4a1d14eb0ddd932d0677",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:2f3f729e3d50c68c49ebed11"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      17
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 17,
+        "canonical_id": 17
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:39350114c163ac272442",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:9033cbbf4f1a80b68910b192"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      24
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 24,
+        "canonical_id": 24
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:badf5796a4ceb3dcb9d4",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:73a5fde05a09ae4d56e8f8c7"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      26
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 26,
+        "canonical_id": 26
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:522b4f89883e7093e3b3",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:b7d893a598721c21850b6716"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      27
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 27,
+        "canonical_id": 27
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:4c60865b700884822c18",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:9b057b92e0acd831c2bb1ca1"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      28
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 28,
+        "canonical_id": 28
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:c12201fd48c6fcde9668",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:192cad0ea52d67ebaca2e059"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  },
+  {
+    "relation_type": "on",
+    "subjects": [
+      30
+    ],
+    "anchors": [
+      31
+    ],
+    "subject_handles": [
+      {
+        "initial_id": 30,
+        "canonical_id": 30
+      }
+    ],
+    "anchor_handles": [
+      {
+        "initial_id": 31,
+        "canonical_id": 31
+      }
+    ],
+    "confidence": 0.0,
+    "last_verified_time": 1785314034.1424654,
+    "source": "scene_memory_evidence",
+    "state": "false",
+    "geometry_score": 0.0,
+    "co_visibility_score": 0.0,
+    "temporal_reliability": 0.059846209500348864,
+    "provenance": [
+      "scene_snapshot_relation_projection"
+    ],
+    "edge_id": "scene-edge:535abe531155e417f81c",
+    "log_odds": 0.0,
+    "supporting_viewpoints": [],
+    "supporting_observation_ids": [],
+    "conflicting_observation_ids": [
+      "relation-measurement:ba012afa17d43c114f7687ae"
+    ],
+    "participant_versions": {},
+    "probability": 0.0,
+    "observability": 0.059846209500348864,
+    "evidence_mass": 0.059846209500348864,
+    "evidence_sources": [
+      "registered_geometry"
+    ],
+    "evidence_reasons": [],
+    "positive_evidence_mass": 0,
+    "negative_evidence_mass": 0.059846209500348864,
+    "independent_view_count": 1,
+    "relation_profile": "general"
+  }
+]

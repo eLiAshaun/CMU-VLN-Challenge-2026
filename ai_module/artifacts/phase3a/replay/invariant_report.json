@@ -1,0 +1,253 @@
+{
+  "commit3_decision_gate": {
+    "count_certificate": {
+      "best_evidence_answer": 2,
+      "duplicate_risk_orphans": [],
+      "lower_bound": 2,
+      "provisional_singletons": [
+        2
+      ],
+      "remaining_uncertainties": [
+        {
+          "entity_ids": [
+            2
+          ],
+          "variable_type": "RELATION"
+        }
+      ],
+      "schema_version": "count_certificate_v1",
+      "strict_closed": false,
+      "supported_entities": [
+        {
+          "entity_id": 0
+        },
+        {
+          "entity_id": 1
+        }
+      ],
+      "unresolved_relations": [
+        "rel_0"
+      ],
+      "unseen_relevant_volume": {
+        "closed": false
+      },
+      "upper_bound": null,
+      "why_this_integer_has_highest_support": "Counts query-target entities with affirmative QueryProgram evidence; unresolved candidates remain uncertainty rather than votes."
+    },
+    "root_decision": {
+      "action": "COMMIT",
+      "answer": 2,
+      "answer_authorized": true,
+      "commit_mode": "DEADLINE_BEST_EVIDENCE",
+      "count_certificate": {
+        "best_evidence_answer": 2,
+        "duplicate_risk_orphans": [],
+        "lower_bound": 2,
+        "provisional_singletons": [
+          2
+        ],
+        "remaining_uncertainties": [
+          {
+            "entity_ids": [
+              2
+            ],
+            "variable_type": "RELATION"
+          }
+        ],
+        "schema_version": "count_certificate_v1",
+        "strict_closed": false,
+        "supported_entities": [
+          {
+            "entity_id": 0
+          },
+          {
+            "entity_id": 1
+          }
+        ],
+        "unresolved_relations": [
+          "rel_0"
+        ],
+        "unseen_relevant_volume": {
+          "closed": false
+        },
+        "upper_bound": null,
+        "why_this_integer_has_highest_support": "Counts query-target entities with affirmative QueryProgram evidence; unresolved candidates remain uncertainty rather than votes."
+      },
+      "evidence_ids": [],
+      "failed_constraints": [],
+      "geometry_version": 1,
+      "identity_revision": 1,
+      "reason": "deadline_best_evidence",
+      "relation_revision": 1,
+      "remaining_uncertainties": [
+        {
+          "entity_ids": [
+            2
+          ],
+          "variable_type": "RELATION"
+        }
+      ],
+      "resolver_status": "NEED_EVIDENCE",
+      "scene_version": 1,
+      "schema_version": "root_decision_v2",
+      "selected_object": null,
+      "task_id": "fixture count pillow",
+      "task_type": "numerical"
+    },
+    "ros_publication_contract": "authorized Int32 payload; real publication is a real-run gate",
+    "status": "PASS"
+  },
+  "model_calls": 0,
+  "phase": "COMMIT_3_RELATION_COVERAGE_DEADLINE",
+  "results": [
+    {
+      "evidence": {
+        "acquisition_objects": 1,
+        "entities": 1,
+        "raw": 2
+      },
+      "invariant": "I1_panorama_duplicate",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "cannot_links": [
+          {
+            "acquisition_id": "A0",
+            "entity_ids": [
+              0,
+              1
+            ],
+            "hard": true,
+            "observation_ids": [
+              "i2_a",
+              "i2_b"
+            ],
+            "reason": "simultaneous_panorama_support_and_3d_core_separation"
+          }
+        ],
+        "entities": 2
+      },
+      "invariant": "I2_simultaneous_same_class_instances",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "entity_keys": [
+          "i3_0",
+          "i3_1",
+          "i3_2"
+        ]
+      },
+      "invariant": "I3_adjacent_annotation_components",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "orphans": [
+          {
+            "candidate_entity_ids": [
+              0
+            ],
+            "entity_id": 1,
+            "observation_id": "i4_later",
+            "reason": "unmatched_in_previously_covered_space"
+          }
+        ]
+      },
+      "invariant": "I4_duplicate_risk_later_observation",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "lifecycle": "NEW_SPACE_SINGLETON"
+      },
+      "invariant": "I5_genuine_new_space_object",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "semantic_after": "verified",
+        "semantic_before": "verified",
+        "target_support_after": 0.95,
+        "target_support_before": 0.95
+      },
+      "invariant": "I6_qwen_unavailable",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "assignment_unchanged": true,
+        "relation_state": "NO"
+      },
+      "invariant": "I7_relation_recomputation",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "first": {
+          "assignment": {
+            "i6_positive": 0,
+            "i6_unavailable": 0
+          },
+          "certificate": {
+            "duplicate_risk_orphans": [],
+            "lower_bound": 1,
+            "provisional_singletons": []
+          },
+          "entities": [
+            {
+              "id": 0,
+              "key": "i6_positive",
+              "lifecycle": "SUPPORTED_ENTITY",
+              "observations": [
+                "i6_positive",
+                "i6_unavailable"
+              ],
+              "status": "confirmed"
+            }
+          ],
+          "relations": [
+            {
+              "entity_id": 0,
+              "z_order": 1.0
+            }
+          ]
+        },
+        "second": {
+          "assignment": {
+            "i6_positive": 0,
+            "i6_unavailable": 0
+          },
+          "certificate": {
+            "duplicate_risk_orphans": [],
+            "lower_bound": 1,
+            "provisional_singletons": []
+          },
+          "entities": [
+            {
+              "id": 0,
+              "key": "i6_positive",
+              "lifecycle": "SUPPORTED_ENTITY",
+              "observations": [
+                "i6_positive",
+                "i6_unavailable"
+              ],
+              "status": "confirmed"
+            }
+          ],
+          "relations": [
+            {
+              "entity_id": 0,
+              "z_order": 1.0
+            }
+          ]
+        }
+      },
+      "invariant": "I8_deterministic_rematerialization",
+      "status": "PASS"
+    }
+  ],
+  "schema_version": "phase3a_invariant_report_v1",
+  "status": "PASS"
+}

@@ -1,0 +1,1524 @@
+{
+  "action": "REJECT",
+  "task_type": "numerical",
+  "confidence": 0.0,
+  "numerical_answer": null,
+  "count_belief": null,
+  "selected_object_id": null,
+  "waypoint_count": 0,
+  "support_score": 0.0,
+  "risk_score": 1.0,
+  "expected_information_gain": 0.0,
+  "evidence_ids": [],
+  "failed_guards": [
+    "relation:1:on:table",
+    "exists:1:table",
+    "select_unique:table:relation:1",
+    "relation:0:near:chair",
+    "count_distinct:chair"
+  ],
+  "reason_code": "query_plan_root_unresolved",
+  "commit_tier": null,
+  "stop_reason": null,
+  "answer_source": null,
+  "navigation_outcome": null,
+  "repeat_agreement": 0.0,
+  "publish_intent": false,
+  "decision_provenance": {
+    "probe_arbitration": {
+      "mode": "canonical_query_plan",
+      "candidate_count": 12,
+      "uncertainty_types": [
+        "RELATION_VERIFICATION"
+      ],
+      "source_plan_nodes": [
+        "relation:1:on:table"
+      ]
+    },
+    "selected_candidate_id": null,
+    "selected_relation_view_phase": null,
+    "hard_guard_results": {
+      "history_and_failed_sector": "candidate_set_exhausted",
+      "arbitrated_candidate_admissible": false,
+      "candidate_present_before_hard_guards": false
+    },
+    "policy_input": {
+      "remaining_time_s": 498.1670761469868,
+      "health": {
+        "sensor_health": {
+          "image_age_sec": 0.005439524946268648,
+          "pointcloud_age_sec": 0.08197422395460308,
+          "terrain_age_sec": 0.0721983719849959,
+          "odom_age_sec": 0.004030881973449141,
+          "camera_lidar_offset_sec": 0.0,
+          "sensor_sync_score": 0.8950900378157627,
+          "source_time_sec": 1785259756.9913042,
+          "receive_monotonic_sec": 275445.858172449,
+          "streams": {
+            "image": {
+              "stream_name": "image",
+              "age_s": 0.005439524946268648,
+              "interarrival_s": 0.11317078200000001,
+              "expected_period_s": 0.1,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.8740594484512012,
+              "source_stamp_s": 1785259756.886274,
+              "receive_monotonic_s": 275445.85273292405,
+              "sequence_id": 773
+            },
+            "registered_scan": {
+              "stream_name": "registered_scan",
+              "age_s": 0.08197422395460308,
+              "interarrival_s": 0.10237030000000001,
+              "expected_period_s": 0.2,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.8487857774338147,
+              "source_stamp_s": 1785259756.886274,
+              "receive_monotonic_s": 275445.77619822504,
+              "sequence_id": 838
+            },
+            "sensor_scan": {
+              "stream_name": "sensor_scan",
+              "age_s": 0.08189666795078665,
+              "interarrival_s": 0.101545887,
+              "expected_period_s": 0.2,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.8489174445111111,
+              "source_stamp_s": 1785259756.886274,
+              "receive_monotonic_s": 275445.77627578104,
+              "sequence_id": 836
+            },
+            "terrain_map": {
+              "stream_name": "terrain_map",
+              "age_s": 0.0721983719849959,
+              "interarrival_s": 0.101581504,
+              "expected_period_s": 0.2,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.8655442804553284,
+              "source_stamp_s": 1785259756.886274,
+              "receive_monotonic_s": 275445.785974077,
+              "sequence_id": 826
+            },
+            "terrain_map_ext": {
+              "stream_name": "terrain_map_ext",
+              "age_s": 0.07228953397134319,
+              "interarrival_s": 0.10139929,
+              "expected_period_s": 0.2,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.8653864853689234,
+              "source_stamp_s": 1785259756.886274,
+              "receive_monotonic_s": 275445.785882915,
+              "sequence_id": 826
+            },
+            "state_estimation": {
+              "stream_name": "state_estimation",
+              "age_s": 0.004030881973449141,
+              "interarrival_s": 0.008305513,
+              "expected_period_s": 0.01,
+              "stale": false,
+              "dropped_estimate": 0,
+              "timestamp_valid": true,
+              "pose_available": true,
+              "reliability": 0.9919706449227066,
+              "source_stamp_s": 1785259756.9913042,
+              "receive_monotonic_s": 275445.854141567,
+              "sequence_id": 7563
+            }
+          }
+        },
+        "object_freshness": [
+          {
+            "object_id": 0,
+            "class_label": "table",
+            "last_seen_age_sec": 49.302741289138794,
+            "track_stability": 0.2,
+            "is_stale": true
+          },
+          {
+            "object_id": 1,
+            "class_label": "chair",
+            "last_seen_age_sec": 101.93268322944641,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 2,
+            "class_label": "vase",
+            "last_seen_age_sec": 101.93268394470215,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 3,
+            "class_label": "table",
+            "last_seen_age_sec": 101.9326844215393,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 4,
+            "class_label": "table",
+            "last_seen_age_sec": 49.30274677276611,
+            "track_stability": 0.2,
+            "is_stale": true
+          },
+          {
+            "object_id": 5,
+            "class_label": "vase",
+            "last_seen_age_sec": 49.30274772644043,
+            "track_stability": 0.2,
+            "is_stale": true
+          },
+          {
+            "object_id": 6,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.30274820327759,
+            "track_stability": 0.2,
+            "is_stale": true
+          },
+          {
+            "object_id": 7,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.302748680114746,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 8,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.302749156951904,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 9,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.30274963378906,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 10,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.30275011062622,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 11,
+            "class_label": "vase",
+            "last_seen_age_sec": 49.30275058746338,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 12,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.302751302719116,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 13,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.302751779556274,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 14,
+            "class_label": "vase",
+            "last_seen_age_sec": 49.30275225639343,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 15,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.30275273323059,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 16,
+            "class_label": "vase",
+            "last_seen_age_sec": 49.30275321006775,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 17,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.30275368690491,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 18,
+            "class_label": "chair",
+            "last_seen_age_sec": 49.302754163742065,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 19,
+            "class_label": "table",
+            "last_seen_age_sec": 49.3027548789978,
+            "track_stability": 0.0,
+            "is_stale": true
+          },
+          {
+            "object_id": 20,
+            "class_label": "vase",
+            "last_seen_age_sec": 49.30275535583496,
+            "track_stability": 0.0,
+            "is_stale": true
+          }
+        ],
+        "relation_freshness": [],
+        "sensor_sync_score": 0.8950900378157627,
+        "candidate_staleness_risk": 0.35520331412553785,
+        "learned_risk_active": true,
+        "risk_backend": "ctgrf",
+        "learned_mean_risk": 0.07886187732219696,
+        "learned_staleness_risk": 0.07886187732219696,
+        "learned_inference_time_ms": 0.0,
+        "eresh_mean_reliability": 0.921138122677803,
+        "eresh_staleness_risk": 0.07886187732219696,
+        "eresh_inference_time_ms": 0.0,
+        "eresh_active": true,
+        "spatial_risk_active": true,
+        "spatial_risk_stamp_s": 1785259755.081234,
+        "spatial_risk_warmup_complete": true
+      },
+      "probe_state": {
+        "probe_attempts": 5,
+        "probe_attempt_budget": 6,
+        "successful_evidence_probes": 1,
+        "successful_evidence_budget": 6,
+        "charged_probes_used": 1,
+        "probe_history": [
+          {
+            "index": 1,
+            "budget_index": 1,
+            "budget_charged": false,
+            "outcome": "not_useful",
+            "time": 1785259689.8778193,
+            "waypoint": [
+              -0.12357096929637024,
+              0.019653490160978226,
+              -0.1577251086798176
+            ],
+            "candidate_id": "typed:b0de09f41b78c60fc23a",
+            "independent_evidence_verified": false,
+            "endpoint": [
+              0.0,
+              0.0
+            ],
+            "navigation_failure_reason": "probe_waypoint_stuck",
+            "realized_information_gain": 0.0
+          },
+          {
+            "index": 2,
+            "budget_index": 1,
+            "budget_charged": true,
+            "outcome": "useful",
+            "time": 1785259700.4240777,
+            "waypoint": [
+              0.5862144185159441,
+              -0.47715487093573117,
+              -0.6831951391793429
+            ],
+            "candidate_id": "typed:ae727f527b7bd51da7e4",
+            "independent_evidence_verified": true,
+            "endpoint": [
+              0.9348313212394714,
+              -0.28607940673828125
+            ],
+            "realized_information_gain": 1.0
+          },
+          {
+            "index": 3,
+            "budget_index": 2,
+            "budget_charged": false,
+            "outcome": "not_useful",
+            "time": 1785259722.4963577,
+            "waypoint": [
+              0.9561606859702867,
+              -0.2677117381004426,
+              0.7109286397480253
+            ],
+            "candidate_id": "typed:f049e83e482d9029e08b",
+            "independent_evidence_verified": false,
+            "endpoint": [
+              0.9348313212394714,
+              -0.28607940673828125
+            ],
+            "navigation_failure_reason": "probe_waypoint_stuck",
+            "realized_information_gain": 0.0
+          },
+          {
+            "index": 4,
+            "budget_index": 2,
+            "budget_charged": false,
+            "outcome": "not_useful",
+            "time": 1785259733.7928019,
+            "waypoint": [
+              0.9236743810607129,
+              -0.25826835801775694,
+              1.9523103526675716
+            ],
+            "candidate_id": "typed:8e0315625e57f8ad2cc9",
+            "independent_evidence_verified": false,
+            "endpoint": [
+              0.9348313212394714,
+              -0.28607940673828125
+            ],
+            "navigation_failure_reason": "probe_waypoint_stuck",
+            "realized_information_gain": 0.0
+          },
+          {
+            "index": 5,
+            "budget_index": 2,
+            "budget_charged": false,
+            "outcome": "not_useful",
+            "time": 1785259745.1021876,
+            "waypoint": [
+              0.9229962505917594,
+              -0.5224192406494994,
+              -1.6208310270413273
+            ],
+            "candidate_id": "typed:08f704fe0ef8ce1cf544",
+            "independent_evidence_verified": false,
+            "endpoint": [
+              0.9348313212394714,
+              -0.28607940673828125
+            ],
+            "navigation_failure_reason": "probe_waypoint_stuck",
+            "realized_information_gain": 0.0
+          }
+        ]
+      }
+    },
+    "canonical_query_plan_gate": {
+      "query_plan": {
+        "schema_version": 1,
+        "plan_id": "query-plan:c7508b327b0345a4c7c4",
+        "source_query_signature": "0fcfef3b72d640e35bb1bd72a4e2b1c75258ccd07ddc80aae593677993e16566",
+        "result_ref": "chair",
+        "nodes": [
+          {
+            "node_id": "set:chair",
+            "operator": "SET",
+            "input_nodes": [],
+            "output_type": "ENTITY_SET",
+            "parameters": {
+              "class": "chair",
+              "reference_semantics": "result_set",
+              "variable_ref": "chair"
+            },
+            "completion_requirement": "SET_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "chair"
+              ],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "query_conditioned_set_coverage"
+            }
+          },
+          {
+            "node_id": "set:table",
+            "operator": "SET",
+            "input_nodes": [],
+            "output_type": "ENTITY_SET",
+            "parameters": {
+              "class": "table",
+              "reference_semantics": "definite_singular",
+              "variable_ref": "table"
+            },
+            "completion_requirement": "SET_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "table"
+              ],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "query_conditioned_set_coverage"
+            }
+          },
+          {
+            "node_id": "set:vase",
+            "operator": "SET",
+            "input_nodes": [],
+            "output_type": "ENTITY_SET",
+            "parameters": {
+              "class": "vase",
+              "reference_semantics": "existential_set",
+              "variable_ref": "vase"
+            },
+            "completion_requirement": "SET_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "vase"
+              ],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "query_conditioned_set_coverage"
+            }
+          },
+          {
+            "node_id": "relation:1:on:table",
+            "operator": "RELATION_JOIN",
+            "input_nodes": [
+              "set:vase",
+              "set:table"
+            ],
+            "output_type": "RELATION_SET",
+            "parameters": {
+              "existential_subject": true,
+              "negation_scope": "edge",
+              "object_refs": [
+                "table"
+              ],
+              "output_ref": "table",
+              "polarity": "positive",
+              "predicate": "ON",
+              "subject_ref": "vase"
+            },
+            "completion_requirement": "RELATION_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "vase",
+                "table"
+              ],
+              "requires_joint_visibility": true,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "joint_relation_support"
+            }
+          },
+          {
+            "node_id": "exists:1:table",
+            "operator": "EXISTS",
+            "input_nodes": [
+              "relation:1:on:table"
+            ],
+            "output_type": "ENTITY_SET",
+            "parameters": {
+              "output_ref": "table",
+              "witness_ref": "vase"
+            },
+            "completion_requirement": "EXISTENTIAL_WITNESS",
+            "observation_contract": {
+              "directly_observable": false,
+              "required_entities": [],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 0,
+              "requires_depth_support": false,
+              "requires_multi_view": false,
+              "completion_metric": "derived_existential_witness"
+            }
+          },
+          {
+            "node_id": "select_unique:table:relation:1",
+            "operator": "SELECT_UNIQUE",
+            "input_nodes": [
+              "exists:1:table"
+            ],
+            "output_type": "ENTITY",
+            "parameters": {
+              "reference_semantics": "definite_singular_relation",
+              "variable_ref": "table"
+            },
+            "completion_requirement": "UNIQUE_BINDING",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "table"
+              ],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 64,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "binding_competitor_margin"
+            }
+          },
+          {
+            "node_id": "relation:0:near:chair",
+            "operator": "RELATION_JOIN",
+            "input_nodes": [
+              "set:chair",
+              "select_unique:table:relation:1"
+            ],
+            "output_type": "RELATION_SET",
+            "parameters": {
+              "existential_subject": false,
+              "negation_scope": "edge",
+              "object_refs": [
+                "table"
+              ],
+              "output_ref": "chair",
+              "polarity": "positive",
+              "predicate": "NEAR",
+              "subject_ref": "chair"
+            },
+            "completion_requirement": "RELATION_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "chair",
+                "table"
+              ],
+              "requires_joint_visibility": true,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "joint_relation_support"
+            }
+          },
+          {
+            "node_id": "count_distinct:chair",
+            "operator": "COUNT_DISTINCT",
+            "input_nodes": [
+              "relation:0:near:chair"
+            ],
+            "output_type": "INTEGER",
+            "parameters": {
+              "loss": "exact_match",
+              "result_ref": "chair"
+            },
+            "completion_requirement": "COUNT_BOUNDS_CLOSED",
+            "observation_contract": {
+              "directly_observable": true,
+              "required_entities": [
+                "chair"
+              ],
+              "requires_joint_visibility": false,
+              "minimum_pixel_support": 48,
+              "requires_depth_support": true,
+              "requires_multi_view": true,
+              "completion_metric": "query_conditioned_coverage_and_count_bounds"
+            }
+          }
+        ],
+        "dependency_edges": [
+          {
+            "source": "set:vase",
+            "target": "relation:1:on:table"
+          },
+          {
+            "source": "set:table",
+            "target": "relation:1:on:table"
+          },
+          {
+            "source": "relation:1:on:table",
+            "target": "exists:1:table"
+          },
+          {
+            "source": "exists:1:table",
+            "target": "select_unique:table:relation:1"
+          },
+          {
+            "source": "set:chair",
+            "target": "relation:0:near:chair"
+          },
+          {
+            "source": "select_unique:table:relation:1",
+            "target": "relation:0:near:chair"
+          },
+          {
+            "source": "relation:0:near:chair",
+            "target": "count_distinct:chair"
+          }
+        ],
+        "root_node": "count_distinct:chair",
+        "topological_order": [
+          "set:chair",
+          "set:table",
+          "set:vase",
+          "relation:1:on:table",
+          "exists:1:table",
+          "select_unique:table:relation:1",
+          "relation:0:near:chair",
+          "count_distinct:chair"
+        ]
+      },
+      "belief_runtime": {
+        "plan_id": "query-plan:c7508b327b0345a4c7c4",
+        "ledger_version": 28,
+        "node_beliefs": {
+          "count_distinct:chair": {
+            "node_id": "count_distinct:chair",
+            "belief_type": "AggregateBelief",
+            "status": "BLOCKED_BY_DEPENDENCY",
+            "hypotheses": [],
+            "supporting_evidence_ids": [
+              "world-snapshot:4:set:chair:set-snapshot"
+            ],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [
+              "COUNT_COVERAGE"
+            ],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28,
+            "count_lower_bound": 0,
+            "count_upper_bound": null,
+            "answer_distribution": {},
+            "exact_answer": null,
+            "unseen_relevant_mass": 1.0,
+            "competing_binding_mass": 1.0,
+            "evidence_independence": 0.0,
+            "coverage": 0.0
+          },
+          "exists:1:table": {
+            "node_id": "exists:1:table",
+            "belief_type": "BindingBelief",
+            "status": "BLOCKED_BY_DEPENDENCY",
+            "hypotheses": [],
+            "supporting_evidence_ids": [],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [
+              "RELATION_VERIFICATION"
+            ],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "relation:0:near:chair": {
+            "node_id": "relation:0:near:chair",
+            "belief_type": "BindingBelief",
+            "status": "BLOCKED_BY_DEPENDENCY",
+            "hypotheses": [],
+            "supporting_evidence_ids": [
+              "world-snapshot:4:set:chair:set-snapshot"
+            ],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [
+              "RELATION_VERIFICATION"
+            ],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "relation:1:on:table": {
+            "node_id": "relation:1:on:table",
+            "belief_type": "RelationBelief",
+            "status": "REFUTED",
+            "hypotheses": [
+              {
+                "hypothesis_id": "relation:1:on:table:pair:2:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 2,
+                    "canonical_id": 2
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:2:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 2,
+                    "canonical_id": 2
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:2:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 2,
+                    "canonical_id": 2
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:2:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 2,
+                    "canonical_id": 2
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:5:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 5,
+                    "canonical_id": 5
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:5:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 5,
+                    "canonical_id": 5
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:5:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 5,
+                    "canonical_id": 5
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:5:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 5,
+                    "canonical_id": 5
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:11:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 11,
+                    "canonical_id": 11
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:11:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 11,
+                    "canonical_id": 11
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:11:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 11,
+                    "canonical_id": 11
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:11:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 11,
+                    "canonical_id": 11
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:14:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 14,
+                    "canonical_id": 14
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:14:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 14,
+                    "canonical_id": 14
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:14:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 14,
+                    "canonical_id": 14
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:14:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 14,
+                    "canonical_id": 14
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:16:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 16,
+                    "canonical_id": 16
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:16:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 16,
+                    "canonical_id": 16
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:16:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 16,
+                    "canonical_id": 16
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:16:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 16,
+                    "canonical_id": 16
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:20:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 20,
+                    "canonical_id": 20
+                  },
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:20:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 20,
+                    "canonical_id": 20
+                  },
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:20:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 20,
+                    "canonical_id": 20
+                  },
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "relation:1:on:table:pair:20:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 20,
+                    "canonical_id": 20
+                  },
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              }
+            ],
+            "supporting_evidence_ids": [],
+            "contradicting_evidence_ids": [
+              "relation:081b3a2fdc5f898c20bf7d5d",
+              "relation:aca40f22c20e2c88f3fa0f5f"
+            ],
+            "unresolved_causes": [
+              "RELATION_VERIFICATION"
+            ],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "select_unique:table:relation:1": {
+            "node_id": "select_unique:table:relation:1",
+            "belief_type": "BindingBelief",
+            "status": "BLOCKED_BY_DEPENDENCY",
+            "hypotheses": [],
+            "supporting_evidence_ids": [],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [
+              "ENTITY_DISAMBIGUATION"
+            ],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "set:chair": {
+            "node_id": "set:chair",
+            "belief_type": "SetBelief",
+            "status": "SUPPORTED",
+            "hypotheses": [
+              {
+                "hypothesis_id": "set:chair:entity:1",
+                "probability": 1.0,
+                "value": 1,
+                "entity_handles": [
+                  {
+                    "initial_id": 1,
+                    "canonical_id": 1
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:6",
+                "probability": 1.0,
+                "value": 6,
+                "entity_handles": [
+                  {
+                    "initial_id": 6,
+                    "canonical_id": 6
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:7",
+                "probability": 1.0,
+                "value": 7,
+                "entity_handles": [
+                  {
+                    "initial_id": 7,
+                    "canonical_id": 7
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:8",
+                "probability": 1.0,
+                "value": 8,
+                "entity_handles": [
+                  {
+                    "initial_id": 8,
+                    "canonical_id": 8
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:9",
+                "probability": 1.0,
+                "value": 9,
+                "entity_handles": [
+                  {
+                    "initial_id": 9,
+                    "canonical_id": 9
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:10",
+                "probability": 1.0,
+                "value": 10,
+                "entity_handles": [
+                  {
+                    "initial_id": 10,
+                    "canonical_id": 10
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:12",
+                "probability": 1.0,
+                "value": 12,
+                "entity_handles": [
+                  {
+                    "initial_id": 12,
+                    "canonical_id": 12
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:13",
+                "probability": 1.0,
+                "value": 13,
+                "entity_handles": [
+                  {
+                    "initial_id": 13,
+                    "canonical_id": 13
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:15",
+                "probability": 1.0,
+                "value": 15,
+                "entity_handles": [
+                  {
+                    "initial_id": 15,
+                    "canonical_id": 15
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:17",
+                "probability": 1.0,
+                "value": 17,
+                "entity_handles": [
+                  {
+                    "initial_id": 17,
+                    "canonical_id": 17
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:chair:entity:18",
+                "probability": 1.0,
+                "value": 18,
+                "entity_handles": [
+                  {
+                    "initial_id": 18,
+                    "canonical_id": 18
+                  }
+                ],
+                "provenance": []
+              }
+            ],
+            "supporting_evidence_ids": [
+              "world-snapshot:4:set:chair:set-snapshot"
+            ],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "set:table": {
+            "node_id": "set:table",
+            "belief_type": "SetBelief",
+            "status": "SUPPORTED",
+            "hypotheses": [
+              {
+                "hypothesis_id": "set:table:entity:0",
+                "probability": 1.0,
+                "value": 0,
+                "entity_handles": [
+                  {
+                    "initial_id": 0,
+                    "canonical_id": 0
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:table:entity:3",
+                "probability": 1.0,
+                "value": 3,
+                "entity_handles": [
+                  {
+                    "initial_id": 3,
+                    "canonical_id": 3
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:table:entity:4",
+                "probability": 1.0,
+                "value": 4,
+                "entity_handles": [
+                  {
+                    "initial_id": 4,
+                    "canonical_id": 4
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:table:entity:19",
+                "probability": 1.0,
+                "value": 19,
+                "entity_handles": [
+                  {
+                    "initial_id": 19,
+                    "canonical_id": 19
+                  }
+                ],
+                "provenance": []
+              }
+            ],
+            "supporting_evidence_ids": [
+              "world-snapshot:4:set:table:set-snapshot"
+            ],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          },
+          "set:vase": {
+            "node_id": "set:vase",
+            "belief_type": "SetBelief",
+            "status": "SUPPORTED",
+            "hypotheses": [
+              {
+                "hypothesis_id": "set:vase:entity:2",
+                "probability": 1.0,
+                "value": 2,
+                "entity_handles": [
+                  {
+                    "initial_id": 2,
+                    "canonical_id": 2
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:vase:entity:5",
+                "probability": 1.0,
+                "value": 5,
+                "entity_handles": [
+                  {
+                    "initial_id": 5,
+                    "canonical_id": 5
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:vase:entity:11",
+                "probability": 1.0,
+                "value": 11,
+                "entity_handles": [
+                  {
+                    "initial_id": 11,
+                    "canonical_id": 11
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:vase:entity:14",
+                "probability": 1.0,
+                "value": 14,
+                "entity_handles": [
+                  {
+                    "initial_id": 14,
+                    "canonical_id": 14
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:vase:entity:16",
+                "probability": 1.0,
+                "value": 16,
+                "entity_handles": [
+                  {
+                    "initial_id": 16,
+                    "canonical_id": 16
+                  }
+                ],
+                "provenance": []
+              },
+              {
+                "hypothesis_id": "set:vase:entity:20",
+                "probability": 1.0,
+                "value": 20,
+                "entity_handles": [
+                  {
+                    "initial_id": 20,
+                    "canonical_id": 20
+                  }
+                ],
+                "provenance": []
+              }
+            ],
+            "supporting_evidence_ids": [
+              "world-snapshot:4:set:vase:set-snapshot"
+            ],
+            "contradicting_evidence_ids": [],
+            "unresolved_causes": [],
+            "acquisition_ids": [
+              "world-snapshot:4"
+            ],
+            "last_update_time": 1785259707.696272,
+            "version": 28
+          }
+        },
+        "root_node": "count_distinct:chair",
+        "root": {
+          "node_id": "count_distinct:chair",
+          "belief_type": "AggregateBelief",
+          "status": "BLOCKED_BY_DEPENDENCY",
+          "hypotheses": [],
+          "supporting_evidence_ids": [
+            "world-snapshot:4:set:chair:set-snapshot"
+          ],
+          "contradicting_evidence_ids": [],
+          "unresolved_causes": [
+            "COUNT_COVERAGE"
+          ],
+          "acquisition_ids": [
+            "world-snapshot:4"
+          ],
+          "last_update_time": 1785259707.696272,
+          "version": 28,
+          "count_lower_bound": 0,
+          "count_upper_bound": null,
+          "answer_distribution": {},
+          "exact_answer": null,
+          "unseen_relevant_mass": 1.0,
+          "competing_binding_mass": 1.0,
+          "evidence_independence": 0.0,
+          "coverage": 0.0
+        },
+        "unresolved_plan_nodes": [
+          "relation:1:on:table",
+          "exists:1:table",
+          "select_unique:table:relation:1",
+          "relation:0:near:chair",
+          "count_distinct:chair"
+        ],
+        "strict_commit_allowed": false
+      },
+      "strict_commit_allowed": false,
+      "unresolved_plan_nodes": [
+        "relation:1:on:table",
+        "exists:1:table",
+        "select_unique:table:relation:1",
+        "relation:0:near:chair",
+        "count_distinct:chair"
+      ],
+      "root_finalization": {
+        "action": "REJECT",
+        "answer": null,
+        "probe_request_id": null,
+        "source_plan_node": "count_distinct:chair",
+        "failed_constraints": [
+          "relation:1:on:table",
+          "exists:1:table",
+          "select_unique:table:relation:1",
+          "relation:0:near:chair",
+          "count_distinct:chair"
+        ],
+        "reason": "query_plan_root_unresolved"
+      }
+    }
+  },
+  "created_monotonic_s": 275445.858430826,
+  "memory_version": 0,
+  "route_execution": null
+}

@@ -1,54 +1,35 @@
 FROM elias1012/cmu-vln-2026:latest
 
-# Thin runtime image for the task-conditioned online perception-memory-navigation chain.
-# CUDA/ROS dependencies and checkpoint layers are inherited from the existing
-# docker_ai_module:mast3r-live base; all business source is replaced below.
-
 USER root
+RUN apt-get update && apt-get install -y --no-install-recommends python3.12-venv && \
+    python3 -m venv --system-site-packages /opt/cmu-rebuild-venv
+ENV PATH=/opt/cmu-rebuild-venv/bin:$PATH
+COPY rebuild/requirements.txt /tmp/cmu-rebuild-requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /tmp/cmu-rebuild-requirements.txt
+RUN git clone --depth 1 https://github.com/ByteDance-Seed/Depth-Anything-3.git /opt/cmu-da3 && \
+    python3 -m pip install --no-cache-dir --no-deps /opt/cmu-da3
 
-# Remove all stale business source code from base image before overlaying new code
-RUN rm -rf \
-    /home/docker/ai_module/integration \
-    /home/docker/ai_module/integrations \
-    /home/docker/ai_module/tools \
-    /home/docker/ai_module/configs \
-    /home/docker/ai_module/orchestration \
-    /home/docker/ai_module/perception \
-    /home/docker/ai_module/reasoning \
-    /home/docker/ai_module/memory \
-    /home/docker/ai_module/navigation \
-    /home/docker/ai_module/config \
-    /home/docker/ai_module/utils \
-    /home/docker/ai_module/mast3r \
-    /home/docker/ai_module/dust3r \
-    /home/docker/ai_module/third_party \
-    /home/docker/ai_module/docker \
-    /home/docker/ai_module/vendor \
-    /home/docker/ai_module/AGENTS.md \
-    /home/docker/ai_module/README.md \
-    /home/docker/ai_module/MODEL_ASSETS.md \
-    /home/docker/ai_module/ARCHITECTURE_FINAL.md
+# The base contains an old AI checkout. Remove it from the derived filesystem
+# before copying the selected implementation; base layers/host assets stay intact.
+RUN rm -r -- /home/docker/ai_module
+COPY --chown=docker:docker checkpoints/rebuild /home/docker/ai_module/checkpoints/rebuild
 
-# Overlay the current source over the inherited code.
-COPY --chown=docker:docker integrations /home/docker/ai_module/integrations
-COPY --chown=docker:docker tools /home/docker/ai_module/tools
-COPY --chown=docker:docker configs /home/docker/ai_module/configs
-COPY --chown=docker:docker orchestration /home/docker/ai_module/orchestration
-COPY --chown=docker:docker navigation /home/docker/ai_module/navigation
-COPY --chown=docker:docker config /home/docker/ai_module/config
-COPY --chown=docker:docker utils /home/docker/ai_module/utils
-COPY --chown=docker:docker mast3r /home/docker/ai_module/mast3r
-COPY --chown=docker:docker dust3r /home/docker/ai_module/dust3r
-COPY --chown=docker:docker third_party /home/docker/ai_module/third_party
-COPY --chown=docker:docker docker /home/docker/ai_module/docker
-COPY --chown=docker:docker vendor /home/docker/ai_module/vendor
-COPY --chown=docker:docker LICENSE NOTICE requirements.txt /home/docker/ai_module/
-COPY --chown=docker:docker AGENTS.md ARCHITECTURE_FINAL.md MODEL_ASSETS.md README.md /home/docker/ai_module/
-
+COPY rebuild/requirements-compiler.txt /tmp/cmu-rebuild-compiler-requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /tmp/cmu-rebuild-compiler-requirements.txt
+COPY --chown=docker:docker rebuild /home/docker/ai_module/rebuild
+COPY --chown=docker:docker configs/rebuild.json configs/model_assets.json configs/sensor_at_scan_to_panorama.json /home/docker/ai_module/configs/
+COPY --chown=docker:docker docker/start_live_chain.sh /home/docker/ai_module/docker/start_live_chain.sh
+COPY --chown=docker:docker ARCHITECTURE_FINAL.md MODEL_ASSETS.md README.md LICENSE NOTICE CHECKPOINTS_NOTICE /home/docker/ai_module/
 RUN chmod +x /home/docker/ai_module/docker/start_live_chain.sh && \
-    mkdir -p /home/docker/ai_module/runs/live_robot && \
-    chown -R docker:docker /home/docker/ai_module/runs
-
+    chmod o+x /home/docker /home/docker/ai_module && \
+    mkdir -p /home/docker/ai_module/runs/rebuild /tmp/cmu-rebuild-hf /tmp/cmu-rebuild-torch-kernels && \
+    chmod 1777 /tmp/cmu-rebuild-hf /tmp/cmu-rebuild-torch-kernels && \
+    chown -R docker:docker /home/docker/ai_module/runs/rebuild
+ENV PYTHONPATH=/home/docker/ai_module HF_HOME=/tmp/cmu-rebuild-hf HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+    TORCHINDUCTOR_CACHE_DIR=/tmp/cmu-rebuild-inductor TRITON_CACHE_DIR=/tmp/cmu-rebuild-triton \
+    PYTORCH_KERNEL_CACHE_PATH=/tmp/cmu-rebuild-torch-kernels \
+    ROS_LOG_DIR=/tmp/cmu-rebuild-ros MPLCONFIGDIR=/tmp/cmu-rebuild-matplotlib \
+    RMW_IMPLEMENTATION=rmw_fastrtps_cpp FASTDDS_BUILTIN_TRANSPORTS=UDPv4
 USER docker
 WORKDIR /home/docker/ai_module
 CMD ["/home/docker/ai_module/docker/start_live_chain.sh"]

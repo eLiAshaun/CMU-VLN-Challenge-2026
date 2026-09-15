@@ -1,0 +1,3731 @@
+{
+  "compiled": 15,
+  "programs": [
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "window",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "BELOW",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many sofas are below a window?",
+      "root_operator": "COUNT",
+      "scene": "arabic_room",
+      "target_class": "sofa",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed",
+                "window; visible class definition: an architectural window set into a wall, including windows covered by grilles or lattice, blinds, shutters, screens, glazing, or a closed panel; exclude any human-passable doorway, archway, or walk-through opening"
+              ],
+              "counted_parameter_roles": [
+                "lower_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "subject_object_and_wide_vertical_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "gravity_aligned_vertical_and_horizontal_projection_evidence",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute only from joint visibility with contradictory vertical order",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "lower_entity",
+                "upper_reference"
+              ],
+              "predicate": "below",
+              "qwen_instruction": "Evaluate BELOW(subject, object), never BELOW(object, subject). Supported means the grounded subject is below the grounded object in the scene. Reconcile the visible order with the supplied 3D gravity-axis direction and horizontal-projection evidence; no single diagnostic field has answer authority.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many sofas are below a window?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "window",
+              "descriptor": "window",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "an architectural window set into a wall, including windows covered by grilles or lattice, blinds, shutters, screens, glazing, or a closed panel; exclude any human-passable doorway, archway, or walk-through opening"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "sofa",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "window",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "sofa": [
+              "couch",
+              "settee"
+            ],
+            "window": [
+              "window with grilles",
+              "glazed window",
+              "lattice window",
+              "screened window",
+              "window with blinds",
+              "shuttered window",
+              "closed window"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "couch",
+                "settee"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "primary_class": "sofa",
+              "supporting_context": [],
+              "visual_definition": "sofa"
+            },
+            {
+              "detector_aliases": [
+                "window with grilles",
+                "glazed window",
+                "lattice window",
+                "screened window",
+                "window with blinds",
+                "shuttered window",
+                "closed window"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "window",
+              "supporting_context": [],
+              "visual_definition": "an architectural window set into a wall, including windows covered by grilles or lattice, blinds, shutters, screens, glazing, or a closed panel; exclude any human-passable doorway, archway, or walk-through opening"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many sofas are below a window?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "below",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "sofa",
+          "window"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "pillow",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "target_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "anchor_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "Count the number of chairs with pillows on them.",
+      "root_operator": "COUNT",
+      "scene": "chinese_room",
+      "target_class": "chair",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "chair"
+              ],
+              "counted_parameter_roles": [
+                "support_surface"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "target_0"
+              ],
+              "object_variables": [
+                "var:target_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "anchor_0",
+              "subject_variable": "var:anchor_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "chair",
+              "descriptor": "chair",
+              "visual_alternatives": [],
+              "visual_definition": "chair"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "Count the number of chairs with pillows on them.",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "chair",
+              "descriptor": "chair",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "chair"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "chair",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "pillow",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "chair": [],
+            "pillow": [
+              "cushion"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "chair",
+              "supporting_context": [],
+              "visual_definition": "chair"
+            },
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "Count the number of chairs with pillows on them.",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "target_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "anchor_0"
+          }
+        ],
+        "required_classes": [
+          "chair",
+          "pillow"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0",
+          "rel_1"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "sofa",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          },
+          {
+            "attributes": {},
+            "class_name": "picture",
+            "entity_id": "anchor_1",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 2,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_1"
+            ],
+            "operator": "BELOW",
+            "relation_id": "rel_0",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_1",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many pillows are on the sofa under the pictures?",
+      "root_operator": "COUNT",
+      "scene": "home_building_1",
+      "target_class": "pillow",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0",
+            "rel_1"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed",
+                "picture; visible class definition: a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork; visual alternatives to distinguish from using the supplied pixels: wall painting, wall art, poster, television screen content"
+              ],
+              "counted_parameter_roles": [],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "subject_object_and_wide_vertical_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "gravity_aligned_vertical_and_horizontal_projection_evidence",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute only from joint visibility with contradictory vertical order",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_1"
+              ],
+              "object_variables": [
+                "var:anchor_1"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "lower_entity",
+                "upper_reference"
+              ],
+              "predicate": "below",
+              "qwen_instruction": "Evaluate BELOW(subject, object), never BELOW(object, subject). Supported means the grounded subject is below the grounded object in the scene. Reconcile the visible order with the supplied 3D gravity-axis direction and horizontal-projection evidence; no single diagnostic field has answer authority.",
+              "subject_entity": "anchor_0",
+              "subject_variable": "var:anchor_0",
+              "symmetric": false
+            },
+            {
+              "argument_descriptions": [
+                "pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [
+                "rel_0"
+              ],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_1",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_1"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many pillows are on the sofa under the pictures?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            },
+            {
+              "aliases": [
+                "photo",
+                "photos",
+                "pictures"
+              ],
+              "attributes": {},
+              "class_name": "picture",
+              "descriptor": "picture",
+              "entity_id": "anchor_1",
+              "id": "var:anchor_1",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "pillow",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "sofa",
+            "id": "anchor_0",
+            "role": "anchor"
+          },
+          {
+            "aliases": [
+              "photo",
+              "photos",
+              "pictures"
+            ],
+            "attributes": {},
+            "class_name": "picture",
+            "id": "anchor_1",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "picture": [
+              "photo",
+              "photos",
+              "pictures",
+              "photograph",
+              "framed photo",
+              "framed picture"
+            ],
+            "pillow": [
+              "cushion"
+            ],
+            "sofa": [
+              "couch",
+              "settee"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "detector_aliases": [
+                "couch",
+                "settee"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "primary_class": "sofa",
+              "supporting_context": [],
+              "visual_definition": "sofa"
+            },
+            {
+              "detector_aliases": [
+                "photo",
+                "photos",
+                "pictures",
+                "photograph",
+                "framed photo",
+                "framed picture"
+              ],
+              "entity_id": "anchor_1",
+              "hard_negatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "primary_class": "picture",
+              "supporting_context": [],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many pillows are on the sofa under the pictures?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_1"
+            ],
+            "predicate": "below",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "id": "rel_1",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "pillow",
+          "sofa",
+          "picture"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "sofa",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "value": "red"
+        }
+      ],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many red pillows are on the sofa?",
+      "root_operator": "COUNT",
+      "scene": "home_building_2",
+      "target_class": "pillow",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "red pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {
+                "color": "red"
+              },
+              "class_name": "pillow",
+              "descriptor": "red pillow",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many red pillows are on the sofa?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {
+                "color": "red"
+              },
+              "class_name": "pillow",
+              "descriptor": "red pillow",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {
+              "color": "red"
+            },
+            "class_name": "pillow",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "sofa",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "pillow": [
+              "cushion"
+            ],
+            "sofa": [
+              "couch",
+              "settee"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "detector_aliases": [
+                "couch",
+                "settee"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "primary_class": "sofa",
+              "supporting_context": [],
+              "visual_definition": "sofa"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many red pillows are on the sofa?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "pillow",
+          "sofa"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "bed",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many pillows are on the bed?",
+      "root_operator": "COUNT",
+      "scene": "hotel_room_1",
+      "target_class": "pillow",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "bed; visible class definition: full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress; visual alternatives to distinguish from using the supplied pixels: sofa, daybed, bench"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many pillows are on the bed?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "bed",
+              "descriptor": "bed",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "sofa",
+                "daybed",
+                "bench"
+              ],
+              "visual_definition": "full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "pillow",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "bed",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "bed": [],
+            "pillow": [
+              "cushion"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "sofa",
+                "daybed",
+                "bench"
+              ],
+              "primary_class": "bed",
+              "supporting_context": [],
+              "visual_definition": "full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many pillows are on the bed?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "pillow",
+          "bed"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "bed",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ABOVE",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many pictures are above the bed?",
+      "root_operator": "COUNT",
+      "scene": "hotel_room_2",
+      "target_class": "picture",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "picture; visible class definition: a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork; visual alternatives to distinguish from using the supplied pixels: wall painting, wall art, poster, television screen content",
+                "bed; visible class definition: full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress; visual alternatives to distinguish from using the supplied pixels: sofa, daybed, bench"
+              ],
+              "counted_parameter_roles": [
+                "upper_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "subject_object_and_wide_vertical_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "gravity_aligned_vertical_and_horizontal_projection_evidence",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute only from joint visibility with contradictory vertical order",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "upper_entity",
+                "lower_reference"
+              ],
+              "predicate": "above",
+              "qwen_instruction": "Evaluate ABOVE(subject, object), never ABOVE(object, subject). Supported means the grounded subject is above the grounded object in the scene. Reconcile the visible order with the supplied 3D gravity-axis direction and horizontal-projection evidence; no single diagnostic field has answer authority.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [
+                "photo",
+                "photos",
+                "pictures"
+              ],
+              "attributes": {},
+              "class_name": "picture",
+              "descriptor": "picture",
+              "visual_alternatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many pictures are above the bed?",
+          "variables": [
+            {
+              "aliases": [
+                "photo",
+                "photos",
+                "pictures"
+              ],
+              "attributes": {},
+              "class_name": "picture",
+              "descriptor": "picture",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "bed",
+              "descriptor": "bed",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "sofa",
+                "daybed",
+                "bench"
+              ],
+              "visual_definition": "full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [
+              "photo",
+              "photos",
+              "pictures"
+            ],
+            "attributes": {},
+            "class_name": "picture",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "bed",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "bed": [],
+            "picture": [
+              "photo",
+              "photos",
+              "pictures",
+              "photograph",
+              "framed photo",
+              "framed picture"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "photo",
+                "photos",
+                "pictures",
+                "photograph",
+                "framed photo",
+                "framed picture"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "primary_class": "picture",
+              "supporting_context": [],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "sofa",
+                "daybed",
+                "bench"
+              ],
+              "primary_class": "bed",
+              "supporting_context": [],
+              "visual_definition": "full-size sleeping furniture with a mattress or clearly padded sleeping platform large enough for a person; exclude narrow upholstered seating benches with exposed legs and no mattress"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many pictures are above the bed?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "above",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "picture",
+          "bed"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "display ledge",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ABOVE",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many calligraphy paintings are above the display ledge?",
+      "root_operator": "COUNT",
+      "scene": "japanese_room",
+      "target_class": "calligraphy painting",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "calligraphy painting",
+                "display ledge"
+              ],
+              "counted_parameter_roles": [
+                "upper_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "subject_object_and_wide_vertical_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "gravity_aligned_vertical_and_horizontal_projection_evidence",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute only from joint visibility with contradictory vertical order",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "upper_entity",
+                "lower_reference"
+              ],
+              "predicate": "above",
+              "qwen_instruction": "Evaluate ABOVE(subject, object), never ABOVE(object, subject). Supported means the grounded subject is above the grounded object in the scene. Reconcile the visible order with the supplied 3D gravity-axis direction and horizontal-projection evidence; no single diagnostic field has answer authority.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "calligraphy painting",
+              "descriptor": "calligraphy painting",
+              "visual_alternatives": [],
+              "visual_definition": "calligraphy painting"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many calligraphy paintings are above the display ledge?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "calligraphy painting",
+              "descriptor": "calligraphy painting",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "calligraphy painting"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "display ledge",
+              "descriptor": "display ledge",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "display ledge"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "calligraphy painting",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "display ledge",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "calligraphy painting": [],
+            "display ledge": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "calligraphy painting",
+              "supporting_context": [],
+              "visual_definition": "calligraphy painting"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "display ledge",
+              "supporting_context": [],
+              "visual_definition": "display ledge"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many calligraphy paintings are above the display ledge?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "above",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "calligraphy painting",
+          "display ledge"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0",
+          "rel_1"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "vase",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          },
+          {
+            "attributes": {},
+            "class_name": "table",
+            "entity_id": "anchor_1",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 2,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_1"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "object_entities": [
+              "anchor_1"
+            ],
+            "operator": "NEAR",
+            "relation_id": "rel_1",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many chairs are near the table with a vase on it?",
+      "root_operator": "COUNT",
+      "scene": "livingroom_1",
+      "target_class": "chair",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0",
+            "rel_1"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "vase",
+                "table"
+              ],
+              "counted_parameter_roles": [],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_1"
+              ],
+              "object_variables": [
+                "var:anchor_1"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "anchor_0",
+              "subject_variable": "var:anchor_0",
+              "symmetric": false
+            },
+            {
+              "argument_descriptions": [
+                "chair",
+                "table"
+              ],
+              "counted_parameter_roles": [
+                "first_entity"
+              ],
+              "depends_on": [
+                "rel_0"
+              ],
+              "directed": false,
+              "evidence_policy": "separate_identity_crops_plus_wide_metric_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "map_frame_distance_with_object_scale_diagnostic",
+              "id": "rel_1",
+              "negative_evidence_policy": "a tight crop or missing co-visibility can never establish NOT_NEAR",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_1"
+              ],
+              "object_variables": [
+                "var:anchor_1"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "first_entity",
+                "second_entity"
+              ],
+              "predicate": "near",
+              "qwen_instruction": "Use the wide scene context and map geometry. Do not infer NEAR from two separately cropped objects or from image-plane adjacency alone.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": true
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "chair",
+              "descriptor": "chair",
+              "visual_alternatives": [],
+              "visual_definition": "chair"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_1"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many chairs are near the table with a vase on it?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "chair",
+              "descriptor": "chair",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "chair"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "vase",
+              "descriptor": "vase",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "vase"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "table",
+              "descriptor": "table",
+              "entity_id": "anchor_1",
+              "id": "var:anchor_1",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "table"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "chair",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "vase",
+            "id": "anchor_0",
+            "role": "anchor"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "table",
+            "id": "anchor_1",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "chair": [],
+            "table": [],
+            "vase": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "chair",
+              "supporting_context": [],
+              "visual_definition": "chair"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "vase",
+              "supporting_context": [],
+              "visual_definition": "vase"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_1",
+              "hard_negatives": [],
+              "primary_class": "table",
+              "supporting_context": [],
+              "visual_definition": "table"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many chairs are near the table with a vase on it?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_1"
+            ],
+            "predicate": "on",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "id": "rel_1",
+            "object_entities": [
+              "anchor_1"
+            ],
+            "predicate": "near",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "chair",
+          "vase",
+          "table"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "coffee table",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many cups are on the coffee table?",
+      "root_operator": "COUNT",
+      "scene": "livingroom_2",
+      "target_class": "cup",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "cup",
+                "coffee table; visual alternatives to distinguish from using the supplied pixels: dining table, desk, side table"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "cup",
+              "descriptor": "cup",
+              "visual_alternatives": [],
+              "visual_definition": "cup"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many cups are on the coffee table?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "cup",
+              "descriptor": "cup",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "cup"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "coffee table",
+              "descriptor": "coffee table",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "dining table",
+                "desk",
+                "side table"
+              ],
+              "visual_definition": "coffee table"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "cup",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "coffee table",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "coffee table": [
+              "cocktail table",
+              "low table"
+            ],
+            "cup": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "cup",
+              "supporting_context": [],
+              "visual_definition": "cup"
+            },
+            {
+              "detector_aliases": [
+                "cocktail table",
+                "low table"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "dining table",
+                "desk",
+                "side table"
+              ],
+              "primary_class": "coffee table",
+              "supporting_context": [],
+              "visual_definition": "coffee table"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many cups are on the coffee table?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "cup",
+          "coffee table"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "television cabinet",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many photos are on the TV cabinet?",
+      "root_operator": "COUNT",
+      "scene": "livingroom_3",
+      "target_class": "picture",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "picture; visible class definition: a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork; visual alternatives to distinguish from using the supplied pixels: wall painting, wall art, poster, television screen content",
+                "television cabinet; visible class definition: a television cabinet, TV stand, media console, or visually similar cabinet/stand that may support a television; include the lower furniture stand even when the television is partly occluded"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [
+                "photo",
+                "photos",
+                "pictures"
+              ],
+              "attributes": {},
+              "class_name": "picture",
+              "descriptor": "picture",
+              "visual_alternatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many photos are on the TV cabinet?",
+          "variables": [
+            {
+              "aliases": [
+                "photo",
+                "photos",
+                "pictures"
+              ],
+              "attributes": {},
+              "class_name": "picture",
+              "descriptor": "picture",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "television cabinet",
+              "descriptor": "television cabinet",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "a television cabinet, TV stand, media console, or visually similar cabinet/stand that may support a television; include the lower furniture stand even when the television is partly occluded"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [
+              "photo",
+              "photos",
+              "pictures"
+            ],
+            "attributes": {},
+            "class_name": "picture",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "television cabinet",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "picture": [
+              "photo",
+              "photos",
+              "pictures",
+              "photograph",
+              "framed photo",
+              "framed picture"
+            ],
+            "television cabinet": [
+              "tv cabinet",
+              "tv stand",
+              "media console",
+              "entertainment unit"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "photo",
+                "photos",
+                "pictures",
+                "photograph",
+                "framed photo",
+                "framed picture"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "wall painting",
+                "wall art",
+                "poster",
+                "television screen content"
+              ],
+              "primary_class": "picture",
+              "supporting_context": [],
+              "visual_definition": "a physical photo or recognizable picture frame displaying an image, including small tabletop or furniture-top framed photos; exclude decorative paintings, wall art, posters, and abstract artwork"
+            },
+            {
+              "detector_aliases": [
+                "tv cabinet",
+                "tv stand",
+                "media console",
+                "entertainment unit"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "television cabinet",
+              "supporting_context": [],
+              "visual_definition": "a television cabinet, TV stand, media console, or visually similar cabinet/stand that may support a television; include the lower furniture stand even when the television is partly occluded"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many photos are on the TV cabinet?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "picture",
+          "television cabinet"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "sofa",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many pillows are on a sofa?",
+      "root_operator": "COUNT",
+      "scene": "livingroom_4",
+      "target_class": "pillow",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many pillows are on a sofa?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "pillow",
+              "descriptor": "pillow",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "pillow",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "sofa",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "pillow": [
+              "cushion"
+            ],
+            "sofa": [
+              "couch",
+              "settee"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "detector_aliases": [
+                "couch",
+                "settee"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "primary_class": "sofa",
+              "supporting_context": [],
+              "visual_definition": "sofa"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many pillows are on a sofa?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "pillow",
+          "sofa"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "sofa",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "value": "black"
+        }
+      ],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many black pillows are on the sofa?",
+      "root_operator": "COUNT",
+      "scene": "loft",
+      "target_class": "pillow",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "black pillow; visible class definition: a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture; visual alternatives to distinguish from using the supplied pixels: towel, folded blanket, sofa armrest, upholstered furniture backrest",
+                "sofa; visual alternatives to distinguish from using the supplied pixels: armchair, bench, bed"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {
+                "color": "black"
+              },
+              "class_name": "pillow",
+              "descriptor": "black pillow",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many black pillows are on the sofa?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {
+                "color": "black"
+              },
+              "class_name": "pillow",
+              "descriptor": "black pillow",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "sofa",
+              "descriptor": "sofa",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "visual_definition": "sofa"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {
+              "color": "black"
+            },
+            "class_name": "pillow",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "sofa",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "pillow": [
+              "cushion"
+            ],
+            "sofa": [
+              "couch",
+              "settee"
+            ]
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "cushion"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "towel",
+                "folded blanket",
+                "sofa armrest",
+                "upholstered furniture backrest"
+              ],
+              "primary_class": "pillow",
+              "supporting_context": [],
+              "visual_definition": "a separate stuffed pillow or cushion with a volumetric soft body and fabric cover, used for head support or decoration; exclude flat folded towels or blankets and upholstery attached to furniture"
+            },
+            {
+              "detector_aliases": [
+                "couch",
+                "settee"
+              ],
+              "entity_id": "anchor_0",
+              "hard_negatives": [
+                "armchair",
+                "bench",
+                "bed"
+              ],
+              "primary_class": "sofa",
+              "supporting_context": [],
+              "visual_definition": "sofa"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many black pillows are on the sofa?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "pillow",
+          "sofa"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0",
+          "rel_1"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "table",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          },
+          {
+            "attributes": {},
+            "class_name": "map wall decal",
+            "entity_id": "anchor_1",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "place_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 2,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_1"
+            ],
+            "operator": "ARGMIN_DISTANCE",
+            "relation_id": "rel_0",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_1",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many computer monitors are on the table closest to the map wall decal?",
+      "root_operator": "COUNT",
+      "scene": "office_1",
+      "target_class": "computer monitor",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0",
+            "rel_1"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "table",
+                "map wall decal"
+              ],
+              "counted_parameter_roles": [],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "candidate_reference_identity_plus_complete_comparison_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "argmin_horizontal_xy_distance_over_joint_target_anchor_domain",
+              "id": "rel_0",
+              "negative_evidence_policy": "pairwise absence is not refutation; ranking requires a closed comparison domain",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_1"
+              ],
+              "object_variables": [
+                "var:anchor_1"
+              ],
+              "operator": "ARGMIN",
+              "parameter_roles": [
+                "ranked_candidate",
+                "reference_entity"
+              ],
+              "predicate": "closest",
+              "qwen_instruction": "Ground the exact candidate and reference IDs. Categorical selection is valid only after comparison with the complete candidate domain.",
+              "subject_entity": "anchor_0",
+              "subject_variable": "var:anchor_0",
+              "symmetric": false
+            },
+            {
+              "argument_descriptions": [
+                "computer monitor",
+                "table"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [
+                "rel_0"
+              ],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_1",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "computer monitor",
+              "descriptor": "computer monitor",
+              "visual_alternatives": [],
+              "visual_definition": "computer monitor"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_1"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many computer monitors are on the table closest to the map wall decal?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "computer monitor",
+              "descriptor": "computer monitor",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "computer monitor"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "table",
+              "descriptor": "table",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "table"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "map wall decal",
+              "descriptor": "map wall decal",
+              "entity_id": "anchor_1",
+              "id": "var:anchor_1",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "map wall decal"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "computer monitor",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "table",
+            "id": "anchor_0",
+            "role": "anchor"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "map wall decal",
+            "id": "anchor_1",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "computer monitor": [],
+            "map wall decal": [],
+            "table": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "computer monitor",
+              "supporting_context": [],
+              "visual_definition": "computer monitor"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "table",
+              "supporting_context": [],
+              "visual_definition": "table"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_1",
+              "hard_negatives": [],
+              "primary_class": "map wall decal",
+              "supporting_context": [],
+              "visual_definition": "map wall decal"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many computer monitors are on the table closest to the map wall decal?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_1"
+            ],
+            "predicate": "closest",
+            "subject_entity": "anchor_0"
+          },
+          {
+            "depends_on": [
+              "rel_0"
+            ],
+            "id": "rel_1",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "computer monitor",
+          "table",
+          "map wall decal"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "table",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ON",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many potted plants are on a table?",
+      "root_operator": "COUNT",
+      "scene": "office_2",
+      "target_class": "potted plant",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "potted plant; visible class definition: a physical plant growing from a container or pot, including a partly occluded potted plant whose leaves, stems, and container edge jointly identify the same instance; visual alternatives to distinguish from using the supplied pixels: vase",
+                "table"
+              ],
+              "counted_parameter_roles": [
+                "supported_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "surface_subject_object_and_joint_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "support_surface_contact_with_horizontal_overlap",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute_only_when_both_entities_and_the_relevant_surface_are_jointly_visible",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "supported_entity",
+                "support_surface"
+              ],
+              "predicate": "on",
+              "qwen_instruction": "Verify that the subject is physically supported by or attached to the specified object surface; proximity alone is not ON.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "potted plant",
+              "descriptor": "potted plant",
+              "visual_alternatives": [
+                "vase"
+              ],
+              "visual_definition": "a physical plant growing from a container or pot, including a partly occluded potted plant whose leaves, stems, and container edge jointly identify the same instance"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many potted plants are on a table?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "potted plant",
+              "descriptor": "potted plant",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [
+                "vase"
+              ],
+              "visual_definition": "a physical plant growing from a container or pot, including a partly occluded potted plant whose leaves, stems, and container edge jointly identify the same instance"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "table",
+              "descriptor": "table",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "table"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "potted plant",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "table",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "potted plant": [
+              "houseplant",
+              "plant in pot",
+              "plant pot",
+              "potted plant"
+            ],
+            "table": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [
+                "houseplant",
+                "plant in pot",
+                "plant pot",
+                "potted plant"
+              ],
+              "entity_id": "target_0",
+              "hard_negatives": [
+                "vase"
+              ],
+              "primary_class": "potted plant",
+              "supporting_context": [],
+              "visual_definition": "a physical plant growing from a container or pot, including a partly occluded potted plant whose leaves, stems, and container edge jointly identify the same instance"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "table",
+              "supporting_context": [],
+              "visual_definition": "table"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many potted plants are on a table?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "on",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "potted plant",
+          "table"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    },
+    {
+      "anchor_program": {
+        "dependency_order": [
+          "rel_0"
+        ],
+        "entities": [
+          {
+            "attributes": {},
+            "class_name": "couch",
+            "entity_id": "anchor_0",
+            "operator": "FILTER_CLASS"
+          }
+        ]
+      },
+      "attributes": [],
+      "candidate_scope": "anchor_local",
+      "compile_status": "COMPILED",
+      "max_anchor_depth": 1,
+      "path_program": {},
+      "predicate_program": {
+        "clauses": [
+          {
+            "depends_on": [],
+            "object_entities": [
+              "anchor_0"
+            ],
+            "operator": "ABOVE",
+            "relation_id": "rel_0",
+            "subject_entity": "target_0"
+          }
+        ],
+        "operator": "AND"
+      },
+      "question": "How many framed records are above the couch?",
+      "root_operator": "COUNT",
+      "scene": "studio",
+      "target_class": "framed record",
+      "task_ir": {
+        "compiler_diagnostics": {
+          "backend": "deterministic_local_template",
+          "local_parser_succeeded": true,
+          "primary_backend": "deterministic_local_template",
+          "remote_compiler": "disabled"
+        },
+        "count_query_graph": {
+          "dependency_order": [
+            "rel_0"
+          ],
+          "registry_schema_version": "relation_registry_v3",
+          "relation_nodes": [
+            {
+              "argument_descriptions": [
+                "framed record",
+                "couch"
+              ],
+              "counted_parameter_roles": [
+                "upper_entity"
+              ],
+              "depends_on": [],
+              "directed": true,
+              "evidence_policy": "subject_object_and_wide_vertical_context",
+              "evidence_roles": [
+                "subject",
+                "objects",
+                "joint_context"
+              ],
+              "geometry_policy": "gravity_aligned_vertical_and_horizontal_projection_evidence",
+              "id": "rel_0",
+              "negative_evidence_policy": "refute only from joint visibility with contradictory vertical order",
+              "node_type": "RELATION",
+              "object_entities": [
+                "anchor_0"
+              ],
+              "object_variables": [
+                "var:anchor_0"
+              ],
+              "operator": "FILTER",
+              "parameter_roles": [
+                "upper_entity",
+                "lower_reference"
+              ],
+              "predicate": "above",
+              "qwen_instruction": "Evaluate ABOVE(subject, object), never ABOVE(object, subject). Supported means the grounded subject is above the grounded object in the scene. Reconcile the visible order with the supplied 3D gravity-axis direction and horizontal-projection evidence; no single diagnostic field has answer authority.",
+              "subject_entity": "target_0",
+              "subject_variable": "var:target_0",
+              "symmetric": false
+            }
+          ],
+          "root": {
+            "cardinality_semantics": "unique_persistent_target_object_ids",
+            "entity_constraint": {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "framed record",
+              "descriptor": "framed record",
+              "visual_alternatives": [],
+              "visual_definition": "framed record"
+            },
+            "operator": "COUNT_DISTINCT",
+            "required_relation_nodes": [
+              "rel_0"
+            ],
+            "variable": "var:target_0"
+          },
+          "schema_version": "count_query_graph_v1",
+          "target_entity": "target_0",
+          "task_id": "How many framed records are above the couch?",
+          "variables": [
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "framed record",
+              "descriptor": "framed record",
+              "entity_id": "target_0",
+              "id": "var:target_0",
+              "quantifier": "COUNT_DISTINCT",
+              "role": "target",
+              "visual_alternatives": [],
+              "visual_definition": "framed record"
+            },
+            {
+              "aliases": [],
+              "attributes": {},
+              "class_name": "couch",
+              "descriptor": "couch",
+              "entity_id": "anchor_0",
+              "id": "var:anchor_0",
+              "quantifier": "SINGULAR",
+              "role": "anchor",
+              "visual_alternatives": [],
+              "visual_definition": "couch"
+            }
+          ]
+        },
+        "entities": [
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "framed record",
+            "id": "target_0",
+            "role": "target"
+          },
+          {
+            "aliases": [],
+            "attributes": {},
+            "class_name": "couch",
+            "id": "anchor_0",
+            "role": "anchor"
+          }
+        ],
+        "grounding_plan": {
+          "detector_classes": {
+            "couch": [],
+            "framed record": []
+          },
+          "entities": [
+            {
+              "detector_aliases": [],
+              "entity_id": "target_0",
+              "hard_negatives": [],
+              "primary_class": "framed record",
+              "supporting_context": [],
+              "visual_definition": "framed record"
+            },
+            {
+              "detector_aliases": [],
+              "entity_id": "anchor_0",
+              "hard_negatives": [],
+              "primary_class": "couch",
+              "supporting_context": [],
+              "visual_definition": "couch"
+            }
+          ],
+          "policy": "candidate_class_recall_only",
+          "relation_filters_applied": false,
+          "schema_version": "semantic_grounding_plan_v1"
+        },
+        "ordered_trajectory_constraints": [],
+        "original_question": "How many framed records are above the couch?",
+        "output_contract": "/numerical_response",
+        "parser_confidence": 0.72,
+        "relations": [
+          {
+            "depends_on": [],
+            "id": "rel_0",
+            "object_entities": [
+              "anchor_0"
+            ],
+            "predicate": "above",
+            "subject_entity": "target_0"
+          }
+        ],
+        "required_classes": [
+          "framed record",
+          "couch"
+        ],
+        "schema_version": "task_ir_v2",
+        "target_entity": "target_0",
+        "task_type": "numerical",
+        "trajectory_ir": null
+      },
+      "task_type": "numerical"
+    }
+  ],
+  "required": 15,
+  "schema_version": "phase3a_numerical_query_programs_v1"
+}

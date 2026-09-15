@@ -1,153 +1,59 @@
-THIS FILE IS THE ONLY CURRENT AI MODULE ARCHITECTURE AUTHORITY.
+# AI module: post-competition rebuild
 
-Historical handoffs, exploration/answering phase designs,
-legacy counting pipelines, previous implementation prompts,
-and obsolete runtime documents are not part of the current architecture.
+The 2026-09-14 rebuild plan and the user's decision to proceed after SAM3 access denial define the current architecture. All active source lives in `rebuild/`. The official AI entry remains `docker/start_live_chain.sh`; historical solvers and model services are not launched or imported.
 
-# Final AI Module Architecture
+`language_frontend.py` parses the competition's compositional English query and route syntax into physical TaskIR. Object names are open vocabulary; there are no scene or question dictionaries. The parser owns noun modifiers, nested anchor selection, physical relation direction, selected return side, comparatives, counting, and ordered/forbidden path actions. Relative pronouns preserve their owner. Unsupported syntax produces a compile error rather than an invented program. Bare modifiers attach recursively to the closest noun phrase; syntactically ambiguous attachment remains a language limitation.
 
-## Runtime call graph
+Qwen receives only the parsed intrinsic category names during compilation and translates them to detector vocabulary. It cannot change the goal, operator, selected object side or action order. Its category mapping uses a closed JSON schema with one required label per input category. The previously attempted unconstrained/grammar-constrained language-to-program generation has been removed from the active source after actual 75-question diagnostics showed semantic omissions. TaskIR derives its output type and ROS topic from the resulting program. Its general physical expression evaluator remains the one interpreter used by perception, querying and navigation.
 
-```text
-/challenge_question
-        |
-        v
-      TaskIR
-        |
-        v
-Perception -> SceneMemory -> Canonical Identity + Map Geometry
-                         -> RelationEngine -> SceneSnapshot
-                                                  |
-                         +------------------------+------------------------+
-                         |                        |                        |
-                         v                        v                        v
-                NumericalResolver      ObjectReferenceResolver   InstructionResolver
-                  Count Query Graph       Unique Object             Ordered Constraint
-                         |                Resolution                 Resolution
-                         +------------------------+------------------------+
-                                                  |
-                                                  v
-                                           ResolverResult
-                         +------------------------+------------------------+
-                         |                        |                        |
-                  FINALIZABLE              NEED_EVIDENCE           NEED_EXECUTION
-                         |                        |                        |
-                         v                        v                        v
-                   RootFinalizer       EvidenceAcquisition-       NavigationExecutor
-                         |                 Coordinator                    |
-                         v                        |                        |
-                  OutputAdapter             ObservationIntent            |
-                         |                        |                        |
-                         v                        +-----------+------------+
-                 official ROS output                         |
-                                                            v
-                                                   NavigationExecutor
-                                                            |
-                                                            v
-                                                   /state_estimation
-                                                            |
-                                                            v
-                                              fresh observation transaction
-                                                            |
-                                                            v
-                                                       SceneMemory
-                                                            |
-                                                            +----> resolve again
+Distance ranking uses the nearest distance from each candidate to the observed anchor set, then chooses the minimum or maximum candidate value. It does not require guessing one anchor identity or merging separate anchors. All pair distances, nearest-anchor witnesses and geometry uncertainty remain recorded. `anchor_candidates` is always a flat ID list; BETWEEN retains two separate role groups. A unique positive match from a monotone object query is actionable even when unrelated pairs remain unknown; rankings and exclusions retain their completeness requirement. Query coverage and supported outputs are separate concepts.
+
+The action contract distinguishes `pass_near`, `go_to`, `near_path`, `between_path`, `avoid_path` and `avoid_region`. Region actions operate on observed objects or two distinct observed anchors; a corridor is never inserted into ObjectStore as an invented object. Spatial operand direction and the selected return role are independent: choosing the anchor of a relation does not reverse the physical relation.
+
+```
+/challenge_question -> compositional English parser -> executable TaskIR
+  -> Qwen3-VL-4B BF16 translates only detector category names
+/camera/image + image-time /state_estimation + /registered_scan
+  -> calibrated perspective views -> GroundingDINO-Tiny proposals + SAM2.1 masks
+  -> current-region physical-category verification (bounded image batches)
+  -> verified instances / unconfirmed observation proposals
+  -> measured geometry + on-demand DA3 metric depth calibrated per view
+  -> CPU ObjectStore (verified instances only) -> spatial AST -> official outputs
+/state_estimation -> actual movement -> semantic step progress
 ```
 
-## Authorities
+`models.py` serializes GPU requests and initializes each of the four models once from explicit local assets. Qwen runs with BF16 weights and no quantization and remains GPU-resident while it translates detector labels or verifies a current detection region. GroundingDINO-Tiny and SAM2.1 form one auxiliary GPU group; DA3 forms another, and those groups are mutually exclusive. Entering a phase moves the inactive group to CPU and returns the required group to the configured device; switching away from SAM2.1 also clears its image cache. The AST retains each semantic class and supplies its corresponding `visual_class` through `task_visual_queries`; the semantic class remains the label used by the task. `models.detect(view, concepts, visual_queries)` sends one independent lower-case DINO prompt for each semantic concept, using its AST-provided visual class, with one prompt per image batch. Returned detections retain the requested semantic class and are assigned by their input prompt index; decoded detector labels are retained only as diagnostics. Category requests use batches of four crops, each bounded to 384 × 384; attributes and pairs retain their separate three-call observation budgets. GroundingDINO returns tensor boxes; Qwen does not generate detection coordinates, world positions or final counts. SAM2.1 uses the image predictor with one `set_image` call per view followed by batched box prediction. DA3 runs only when target LiDAR support is sparse. SAM3 and SAM3.1 have no runtime role.
 
-`TaskIR` is the only parsed-question authority. Task parsing is implemented by
-`integrations/semantics/task_compiler.py`; resolvers consume the resulting immutable task
-description and do not reinterpret the question.
+BF16 was retained after quantized compiler experiments. Compilation now gives Qwen only detector vocabulary, and the earlier four-question language-generation diagnostic is not acceptance evidence for this frontend. The final frontend plus actual Qwen vocabulary generation completed all 75 public questions without parse failures, output-family errors or empty visual queries in 59.906 seconds total; this checks structure and interface behavior, not every question's semantics or scene performance. Runtime acceptance and resource measurements are recorded in `REBUILD_STATUS.md`. The target 16 GB Laptop's speed and shared resource behavior remain unverified.
 
-`SceneMemory` in `integrations/execution/scene_memory.py` is the only world-state
-authority. It owns canonical object IDs, aliases, ambiguity groups, observation
-transactions, identity reconciliation, map-frame geometry, semantic evidence,
-relation-evidence provenance, and world revisions. Resolver retry state and
-answer-bearing task state are not stored there.
+`geometry.py` creates four overlapping 768 × 576 perspective views with 105-degree horizontal FOV from the actual 360 × 120-degree panorama. Each view records its intrinsics, image-time map transform and source image. Registered map points are transformed only by inverse camera pose for projection. Foreground selection retains one supported depth layer even for sparse returns. DA3's canonical output is converted using the processed focal length once, then calibrated against visible registered camera-Z returns for the whole view. Every sparse instance in that view uses the same calibrated depth map; quadrant residuals and measured/estimated provenance remain explicit.
 
-`RelationEngine` in `integrations/execution/relation_engine.py` is the only
-relation-verdict authority. Qwen tuple verification, geometry, visibility,
-freshness, persistent relation observations, and selector distance are evidence
-providers. Only the engine returns `YES`, `NO`, `UNKNOWN`, or `INVALID`.
+Projection keeps the nearest source return once per raster pixel for both lifting and depth calibration. Repeated source coordinates cannot create independent support. Historical measured points can also project into a current mask to preserve identity when current monocular depth drifts. A missing current LiDAR return is not an occlusion; an actual nearer return is. Current measured geometry that conflicts with such a matched track is recorded without being fused into its geometry. This separation preserves image/category history without authorizing an inconsistent measured surface.
 
-Task resolution is implemented by the three thin resolvers in
-`integrations/execution/task_resolvers.py`:
+`object_store.py` keeps bounded geometry, representative crops and a masked RGB histogram on CPU. The histogram is a lightweight appearance descriptor, not a CLIP-equivalent representation. Same-view contained detector fragments share an ID; overlapping panorama evidence handles adjacent views. Cross-frame matching combines geometry and appearance. Measured and estimated observed-surface envelopes are maintained separately before thinning the bounded point samples. Memory does not segment foreground a second time. Later partial views and sample replacement cannot erase an already observed part of the static object. Envelopes are observed surfaces, not a claim of complete entity extent; this distinction is consumed by the spatial tools. Tracks sharing measured voxels can consolidate under the oldest ID, with aliases retained and relation references rewritten; clearly separated detections in the same view remain separate. Association uses the existing match score across the observation batch before applying same-frame mask compatibility, so an arbitrary view index cannot give a weak match first ownership of a track.
 
-- `NumericalResolver` consumes the sole Count Query Graph result. An integer is
-  finalizable only when that graph is complete over the current canonical
-  domain.
-- `ObjectReferenceResolver` resolves one stable canonical object and requires
-  the current SceneMemory geometry needed for the marker.
-- `InstructionResolver` derives ordered-constraint progress from the TaskIR,
-  current SceneSnapshot, and the actual trajectory. A step counter alone never
-  establishes completion.
+Rectangle containment alone cannot establish fragment identity: the actual SAM regions must overlap, and conflicting measured geometry cannot be overridden by a larger rectangle. Estimated depth spread remains recorded as uncertainty. Distance ranking and NEAR use measured bounds only when both objects have measured extents; otherwise they compare estimated locations. Navigation likewise uses measured physical extents, or a point location when only an estimate is available, so uncertainty cannot enlarge the region considered reached.
 
-Every resolver returns the common `ResolverResult` contract from
-`integrations/execution/resolver_contracts.py`: `FINALIZABLE`, `NEED_EVIDENCE`,
-`NEED_EXECUTION`, or `SYSTEM_FAILURE`. `FINALIZABLE` is the only status that may
-carry a final payload.
+`task_ir.py` executes class/attribute filters, nested anchor selection, ON/INSIDE/NEAR/BETWEEN and distance extrema, distinct counting and ordered actions. The AST keeps the semantic classes used by those expressions and provides their separate `visual_class` values through `task_visual_queries`; those visual values are the DINO query vocabulary. NEAR uses the task's explicit metric limit, or a declared local 1.5 m distance policy with the measured-bound/location distinction above; its threshold does not depend on the candidate being tested. A single-object target can bind the sole category-confirmed candidate with adequate measured support while preserving other proposals in diagnostics. Counting still evaluates the qualifying object-ID set. A partial observed envelope cannot produce a definitive geometric NO for ON/INSIDE/vertical extent relations. It contributes UNKNOWN to the existing geometry/image evidence combiner; image contradictions remain explicit. `same_room` remains explicit but needs room evidence that this runtime does not yet produce.
 
-All missing semantic evidence is expressed as the same `EvidenceNeed` contract.
-`EvidenceAcquisitionCoordinator` in
-`integrations/execution/evidence_acquisition.py` is the only semantic evidence
-acquisition authority. It converts an `EvidenceNeed` into an
-`ObservationIntent` and accepts completion only after physical arrival, a fresh
-post-arrival observation, a consumed SceneMemory transaction, updated world
-revisions, required visibility, and the relevant relation recomputation.
+`navigation.py` chooses semantic goals and observation positions. Navigation consumes supported goal sets: it chooses a short feasible approach to one matching object, and binds that identity together with its route and completion predicate. Reference-marker output remains singular. If a bound object disappears, no longer satisfies the query, or has no remaining approach, the remaining step can be replanned from the current pose without discarding completed steps. Positive between-path actions can choose among feasible distinct anchor pairs; unresolved avoidance bindings remain explicit. Ordinary Pose2D goals go through the **existing system FAR bridge and FAR planner**; the AI's incomplete terrain grid does not veto global routing. Explicit language avoid regions use AI terrain-based intermediate routes. Semantic progress uses actual `/state_estimation`, never a waypoint-reached topic. Current local surface-distance criteria are 1.5 m for `pass_near` and 1.25 m for `go_to`; intermediate waypoints use 0.4 m. These are declared research policies, not private evaluator thresholds. Eight seconds without actual translation invalidates the remaining route and causes replanning from the current pose. Failure is scoped to the origin/goal pair, so another observation position can retry the destination. `pass_near` uses net displacement since target binding, rather than summed odometry increments that can accumulate jitter. These changes do not add completion gates. Waypoints and trajectory monitoring provide empirical avoid-region handling, not a formal whole-path guarantee.
 
-`NavigationExecutor` in `integrations/execution/navigation_executor.py` owns
-only physical waypoint dispatch, arrival tracking, and execution telemetry for an
-`ObservationIntent` or `ExecutionNeed`. It reports planned, moving, arrived, or
-failed facts. It does not decide whether evidence, a relation, or a task is
-complete.
+`ros_node.py` receives sensors independently of the single model executor. Identical repeated questions preserve the episode and model instances; a different question resets the ObjectStore and buffers. Superseded work cannot publish into the new episode. The default 600-second budget includes cold startup; 70 seconds are reserved for final output/movement. Numerical output uses the same ObjectStore and solver at the deadline. Object markers contain the object's center and positive full extents, separate from approach points.
 
-`/state_estimation` is the sole actual-pose and actual-trajectory truth. The ROS
-parent feeds those odometry samples to `NavigationExecutor` and the trajectory
-monitor. `/way_point_reached` is diagnostic and cannot establish semantic
-progress.
+Detector outputs are proposals, not object identities. Each proposal keeps the semantic class requested by the AST independently of the visual query and any decoded DINO label; the decoded label is diagnostic metadata and does not determine concept assignment. Every region receives its own current-image physical-category evidence. Only a positive result becomes a `VerifiedObservation`, the sole input type accepted by ObjectStore. Negative/unknown regions never inherit a historical positive label or contribute point clouds, appearance or bounds to an established track. Unknown regions remain separate observation proposals and may guide acquisition of a better view; they cannot be counted or satisfy an instruction step. Category prompts describe physical-instance semantics without scene names, object-specific exceptions or expected answers.
 
-`RootFinalizer` in `integrations/execution/root_finalizer.py` is the sole final
-authorization authority and the sole constructor of root decisions. Normal
-completion, time-budget exhaustion, safe rejection, and system failure all pass
-through it. A budget event cannot invent an answer; it can commit only an
-already-current `FINALIZABLE` result.
+The model worker exclusively owns the mutable ObjectStore. Only after geometry, category, attribute and pair checks finish does it atomically publish a detached `SceneState` with bounded CPU records, evidence snapshot, image stamp and observation count. ROS holds that scene for query, navigation and final output, while the worker may stage the next observation. Final evidence uses the exact scene that produced the decision. Crop paths are immutable across updates. The commit lock covers only the scene swap; inference, snapshot serialization and image writes run outside it.
 
-`OutputAdapter` in `integrations/ros/output_adapter.py` only validates the root
-envelope, performs message-type conversion, and dispatches the official ROS
-message. It owns no semantic answer validation, task intent, fallback, or
-navigation behavior.
+Inputs are limited to `/challenge_question`, `/camera/image`, `/registered_scan`, `/sensor_scan`, `/terrain_map`, `/terrain_map_ext`, `/state_estimation`. Outputs are `/numerical_response` (Int32), `/selected_object_marker` (Marker), `/way_point_with_heading` (Pose2D). There is no AI dependency on TF, private traversability/semantic topics or navigation completion topics. The existing system bridge is outside the AI and remains unchanged.
 
-## Fixed invariants
+Fresh run artifacts include the request, raw and normalized TaskIR, image-time captures, view transforms, masks, detection-to-ID assignments, category/pair crops, ObjectStore and aliases, resource events, real trajectory and final publication status. Images are stored as image files rather than expanded JSON pixels. The repository's `REBUILD_STATUS.md` distinguishes runtime evidence, local criteria and unproven acceptance.
 
-- No global exploration/answering phase.
-- No second world model.
-- No second relation truth source.
-- No task-specific independent evidence state machine.
-- No direct final-answer fallback.
-- No semantic authority in ROS adapters.
-- No semantic authority in `NavigationExecutor`.
-- All semantic decisions are recomputed from `TaskIR + SceneSnapshot + actual
-  trajectory`.
-- All `NEED_EVIDENCE` results enter the shared evidence coordinator.
-- All physical movement enters `NavigationExecutor`.
-- All terminal paths enter `RootFinalizer`.
+Superseded AI source, its old build entrypoints and developer source caches are deleted. Historical data, reports and host checkpoints remain references. The derived image starts with a clean AI directory and copies only the selected code/configuration/assets plus documentation and notices. The upstream base image and frozen competition submission are unchanged.
 
-## Authority matrix
+Physical identity uncertainty is an explicit `identified|unknown` field in category evidence. A missing or unknown identity cannot become a positive memory contribution. Model outputs and normalized decisions remain recorded. Qwen batch cardinality, per-crop shapes and invocation order are included in telemetry.
 
-| Responsibility | Sole owner |
-|---|---|
-| Question parsing | `TaskIR` / `task_compiler.py` |
-| World state and identity | `SceneMemory` |
-| Object geometry | `SceneMemory` |
-| Relation verdict | `RelationEngine` |
-| Numerical resolution | `NumericalResolver` / Count Query Graph |
-| Object-reference resolution | `ObjectReferenceResolver` |
-| Instruction resolution | `InstructionResolver` |
-| Evidence diagnosis | Resolver -> `EvidenceNeed` |
-| Evidence acquisition | `EvidenceAcquisitionCoordinator` |
-| Physical execution | `NavigationExecutor` |
-| Actual pose and trajectory | `/state_estimation` |
-| Final authorization | `RootFinalizer` |
-| ROS serialization and publish | `OutputAdapter` |
+Category verification first names the complete physical artifact without the task category. The second stage receives the same current image, that independent artifact description and the requested category. It judges membership of the same physical artifact from visible structure and established function, instead of making a text-only subtype decision from a compressed category label. This avoids treating all desks as specialized bedside tables. The second response is only a closed yes/no/unknown verdict; visual evidence and both raw responses are retained. No unbounded rationale can consume the decision's output budget. Category crops retain context from the source panorama across artificial view boundaries. ON/INSIDE pair verification remains separate from object-category membership.
+
+ON checks horizontal alignment with observed anchor surfaces at or below the subject center, with a declared 0.35 m horizontal tolerance, and requires the independent image relation. It does not require visible object points to touch the anchor directly: support can pass through a vase, mount or another unobserved part of the same arrangement. A multi-level object's global AABB top is not its sole support plane. Evidence records the sample positions, horizontal/vertical gaps and measured/estimated sources. This is geometric compatibility plus visual relation evidence, not proof of exact contact or a complete object model. Sparse or missing surfaces remain explicit uncertainty. Segmentation errors and estimated geometry remain limitations requiring live validation.
+
+ABOVE/BELOW use both signed vertical clearance and lateral envelope separation. Vertical displacement must dominate lateral separation under the existing 0.05 m numerical tolerance; higher elevation alone cannot make an object across the room be above an anchor. Partial extent uncertainty remains explicit, and each decision records both components. These are declared qualitative geometry policies, not a private evaluator formula.

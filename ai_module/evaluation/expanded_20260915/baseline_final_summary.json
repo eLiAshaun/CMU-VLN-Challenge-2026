@@ -1,0 +1,367 @@
+{
+  "image": "docker_ai_module:post-competition-rebuild",
+  "scope": "ten preselected additional live rounds; public local proxy, not private official score",
+  "cases": [
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q1",
+      "label": "expanded_hotel_room_1_q1",
+      "run": "20260915T131656_126648Z",
+      "task_type": "numerical",
+      "proxy_score": 1.0,
+      "max_points": 1.0,
+      "root_decision": "numerical_output",
+      "failure_stage": null,
+      "numerical_answer": 4,
+      "ros_published": true,
+      "details": {
+        "metric": "exact_integer_match",
+        "expected": 4,
+        "observed": 4,
+        "correct": true
+      }
+    },
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q2",
+      "label": "expanded_hotel_room_1_q2",
+      "run": "20260915T132551_637344Z",
+      "task_type": "object_reference",
+      "proxy_score": 0.0,
+      "max_points": 2.0,
+      "root_decision": "time_exhausted_without_supported_output",
+      "failure_stage": null,
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "axis_aligned_3d_iou",
+        "ground_truth": {
+          "object_id": 72,
+          "label": "bedside table",
+          "center": [
+            3.5302891681563,
+            0.181008862352729,
+            0.323834823241966
+          ],
+          "native_oriented_size": [
+            0.8722669781572,
+            0.794661411105227,
+            0.650673415520935
+          ],
+          "heading": -3.1415856130402,
+          "enclosing_aabb_size": [
+            0.8722725729886559,
+            0.7946675523244499,
+            0.650673415520935
+          ]
+        },
+        "observed": null,
+        "valid_marker": false,
+        "frame": null,
+        "iou_3d": 0.0,
+        "center_error_m": null
+      }
+    },
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q4",
+      "label": "expanded_hotel_room_1_q4",
+      "run": "20260915T133557_546167Z",
+      "task_type": "instruction_following",
+      "proxy_score": 0.0,
+      "max_points": 6.0,
+      "root_decision": "runtime_failure",
+      "failure_stage": "compile",
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "ordered_reference_trajectory_proxy_v1",
+        "score_uses_actual_state_estimation_not_commanded_waypoints": true,
+        "reference_path": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/questions/hotel_room_1/trajectory_q4.ply",
+        "reference_points": 719,
+        "observed_points": 1,
+        "reference_length_m": 8.230641772969724,
+        "observed_length_m": 0,
+        "enough_motion": false,
+        "invalid_observed_frames": [],
+        "metrics": {
+          "discrete_frechet_m": null,
+          "progress_rmse_m": null,
+          "endpoint_error_m": null,
+          "coverage_fraction": 0.0,
+          "length_ratio": 0.0
+        },
+        "normalized_components": {
+          "frechet": 0.0,
+          "progress_rmse": 0.0,
+          "endpoint": 0.0,
+          "coverage": 0.0,
+          "length_ratio": 0.0
+        },
+        "weights": {
+          "frechet": 0.3,
+          "progress_rmse": 0.25,
+          "endpoint": 0.25,
+          "coverage": 0.15,
+          "length_ratio": 0.05
+        },
+        "weighted_similarity": 0.0
+      }
+    },
+    {
+      "scene": "office_2",
+      "question_id": "q1",
+      "label": "expanded_office_2_q1",
+      "run": "20260915T133611_663222Z",
+      "task_type": "numerical",
+      "proxy_score": 0.0,
+      "max_points": 1.0,
+      "root_decision": "numerical_output",
+      "failure_stage": null,
+      "numerical_answer": 0,
+      "ros_published": true,
+      "details": {
+        "metric": "exact_integer_match",
+        "expected": 1,
+        "observed": 0,
+        "correct": false
+      }
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q3",
+      "label": "expanded_livingroom_3_q3",
+      "run": "20260915T134507_364392Z",
+      "task_type": "object_reference",
+      "proxy_score": 0.0,
+      "max_points": 2.0,
+      "root_decision": "runtime_failure",
+      "failure_stage": "compile",
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "axis_aligned_3d_iou",
+        "ground_truth": {
+          "object_id": 37,
+          "label": "vase",
+          "center": [
+            3.88195267181205,
+            0.496026295944922,
+            0.331895458902312
+          ],
+          "native_oriented_size": [
+            0.450941219539663,
+            0.450941535552539,
+            0.663821295329159
+          ],
+          "heading": -2.15973886179011,
+          "enclosing_aabb_size": [
+            0.6254604998341998,
+            0.6254604125999434,
+            0.663821295329159
+          ]
+        },
+        "observed": null,
+        "valid_marker": false,
+        "frame": null,
+        "iou_3d": 0.0,
+        "center_error_m": null
+      }
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q5",
+      "label": "expanded_livingroom_3_q5",
+      "run": "20260915T134518_813632Z",
+      "task_type": "instruction_following",
+      "proxy_score": 0.22639134588025606,
+      "max_points": 6.0,
+      "root_decision": "time_exhausted_without_supported_output",
+      "failure_stage": null,
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "ordered_reference_trajectory_proxy_v1",
+        "score_uses_actual_state_estimation_not_commanded_waypoints": true,
+        "reference_path": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/questions/livingroom_3/trajectory_q5.ply",
+        "reference_points": 548,
+        "observed_points": 383,
+        "reference_length_m": 7.4317781269437715,
+        "observed_length_m": 16.24048581494833,
+        "enough_motion": true,
+        "invalid_observed_frames": [],
+        "metrics": {
+          "discrete_frechet_m": 5.22065666248829,
+          "progress_rmse_m": 4.236847911151502,
+          "endpoint_error_m": 2.6713800362266498,
+          "coverage_fraction": 0.09900990099009901,
+          "length_ratio": 0.4576081166305564
+        },
+        "normalized_components": {
+          "frechet": 0.0,
+          "progress_rmse": 0.0,
+          "endpoint": 0.0,
+          "coverage": 0.09900990099009901,
+          "length_ratio": 0.4576081166305564
+        },
+        "weights": {
+          "frechet": 0.3,
+          "progress_rmse": 0.25,
+          "endpoint": 0.25,
+          "coverage": 0.15,
+          "length_ratio": 0.05
+        },
+        "weighted_similarity": 0.037731890980042676
+      }
+    },
+    {
+      "scene": "hotel_room_2",
+      "question_id": "q1",
+      "label": "expanded_hotel_room_2_q1",
+      "run": "20260915T135522_387385Z",
+      "task_type": "numerical",
+      "proxy_score": 0.0,
+      "max_points": 1.0,
+      "root_decision": "numerical_output",
+      "failure_stage": null,
+      "numerical_answer": 4,
+      "ros_published": true,
+      "details": {
+        "metric": "exact_integer_match",
+        "expected": 3,
+        "observed": 4,
+        "correct": false
+      }
+    },
+    {
+      "scene": "livingroom_3",
+      "question_id": "q2",
+      "label": "expanded_livingroom_3_q2",
+      "run": "20260915T140418_253199Z",
+      "task_type": "object_reference",
+      "proxy_score": 0.0,
+      "max_points": 2.0,
+      "root_decision": "time_exhausted_without_supported_output",
+      "failure_stage": null,
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "axis_aligned_3d_iou",
+        "ground_truth": {
+          "object_id": 58,
+          "label": "potted plant",
+          "center": [
+            5.65923277401588,
+            0.586716947389658,
+            1.17013256128387
+          ],
+          "native_oriented_size": [
+            0.222418680006799,
+            0.218701717212539,
+            0.318294997777915
+          ],
+          "heading": 0.732580384590439,
+          "enclosing_aabb_size": [
+            0.31162299791393816,
+            0.3113454861486866,
+            0.318294997777915
+          ]
+        },
+        "observed": null,
+        "valid_marker": false,
+        "frame": null,
+        "iou_3d": 0.0,
+        "center_error_m": null
+      }
+    },
+    {
+      "scene": "loft",
+      "question_id": "q4",
+      "label": "expanded_loft_q4",
+      "run": "20260915T141423_884766Z",
+      "task_type": "instruction_following",
+      "proxy_score": 0.5709660554148277,
+      "max_points": 6.0,
+      "root_decision": "time_exhausted_without_supported_output",
+      "failure_stage": null,
+      "numerical_answer": null,
+      "ros_published": false,
+      "details": {
+        "metric": "ordered_reference_trajectory_proxy_v1",
+        "score_uses_actual_state_estimation_not_commanded_waypoints": true,
+        "reference_path": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/questions/loft/trajectory_q4.ply",
+        "reference_points": 739,
+        "observed_points": 264,
+        "reference_length_m": 11.161212585666,
+        "observed_length_m": 12.92381068275264,
+        "enough_motion": true,
+        "invalid_observed_frames": [],
+        "metrics": {
+          "discrete_frechet_m": 6.680134469286185,
+          "progress_rmse_m": 4.35461715947669,
+          "endpoint_error_m": 5.94559132207071,
+          "coverage_fraction": 0.3465346534653465,
+          "length_ratio": 0.8636162243200529
+        },
+        "normalized_components": {
+          "frechet": 0.0,
+          "progress_rmse": 0.0,
+          "endpoint": 0.0,
+          "coverage": 0.3465346534653465,
+          "length_ratio": 0.8636162243200529
+        },
+        "weights": {
+          "frechet": 0.3,
+          "progress_rmse": 0.25,
+          "endpoint": 0.25,
+          "coverage": 0.15,
+          "length_ratio": 0.05
+        },
+        "weighted_similarity": 0.09516100923580462
+      }
+    },
+    {
+      "scene": "chinese_room",
+      "question_id": "q1",
+      "label": "expanded_chinese_room_q1",
+      "run": "20260915T142427_679822Z",
+      "task_type": "numerical",
+      "proxy_score": 0.0,
+      "max_points": 1.0,
+      "root_decision": "numerical_output",
+      "failure_stage": null,
+      "numerical_answer": 1,
+      "ros_published": true,
+      "details": {
+        "metric": "exact_integer_match",
+        "expected": 6,
+        "observed": 1,
+        "correct": false
+      }
+    }
+  ],
+  "groups": {
+    "numerical": {
+      "cases": 4,
+      "score": 1.0,
+      "max_points": 4.0,
+      "runtime_outputs": 4,
+      "correct": 1
+    },
+    "object_reference": {
+      "cases": 3,
+      "score": 0.0,
+      "max_points": 6.0,
+      "runtime_outputs": 0
+    },
+    "instruction_following": {
+      "cases": 3,
+      "score": 0.7973574012950837,
+      "max_points": 18.0,
+      "runtime_outputs": 0,
+      "runtime_completed": 0
+    }
+  },
+  "total_proxy_score": 1.7973574012950837,
+  "total_max_points": 28.0
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "phase3a_recorded_acquisition_fusion_check_v1",
+  "source_session": "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8",
+  "acquisition_id": "20260822T223845_284666Z",
+  "execution": "production lift_detections_to_observations over recorded masks, scans, pose, views, and calibration; no model calls",
+  "raw_observation_count": 18,
+  "acquisition_object_count_before_cutover": 7,
+  "acquisition_object_count_after_cutover": 5,
+  "bed_acquisition_object_count_before_cutover": 4,
+  "bed_acquisition_object_count_after_cutover": 2,
+  "pillow_acquisition_object_count_after_cutover": 3,
+  "escaped_fragment_cluster": [
+    "yolo_det_10000092",
+    "qwen_det_000008",
+    "yolo_det_10000086",
+    "qwen_det_000003"
+  ],
+  "escaped_fragment_fused_with_main_bed": true,
+  "same_acquisition_cannot_link_count": 1,
+  "model_calls": 0,
+  "status": "PASS"
+}

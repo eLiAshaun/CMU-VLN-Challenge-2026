@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase3a_baseline_v1",
+  "captured_before_production_change": true,
+  "initial_head": "7054e855ca8aca0b2fb23c6fa09bff23e958f01a",
+  "branch": "phase2/runtime-validation-20260822",
+  "freeze_point": "8f262bfbdb2f96cb1af03e3a66cb2b697af4355f",
+  "freeze_point_subject": "checkpoint: final semantic authority cutover",
+  "docker": {
+    "ai_container": "iros2026_ai_module",
+    "ai_image_tag": "docker_ai_module:p1p2-final",
+    "ai_image_id": "sha256:e584e69dca26656dd333ef5ca3d81c5eff473263c9e5f19f60a17449f3e422ae",
+    "system_container": "iros2026_system",
+    "system_image_tag": "cmu_vln_system_headless:latest",
+    "system_image_id": "sha256:66d09d7d966e0947449a4cf134ebd12459f46439f71baaaeb22c7cb75a02ca32",
+    "baseline_container_state": "running_stale_incomplete_20260822T224333Z_hotel_room_1_q1_session"
+  },
+  "workspace": {
+    "tracked_changes": [],
+    "preexisting_untracked_paths": [
+      "artifacts/scene_memory_real_r1_20260802_053014_livingroom_1_tv_38ad919/",
+      "artifacts/scene_memory_real_r1_20260802_053805_livingroom_1_tv_38ad919_repeat2/",
+      "artifacts/scene_memory_real_r1_20260802_055232_livingroom_1_tv_b5ee227/",
+      "artifacts/scene_memory_real_r1_20260802_080000_livingroom_2_control_b5ee227/"
+    ],
+    "preservation_policy": "Do not reset, delete, rename, or include these user artifacts in Phase 3A commits."
+  },
+  "vla_authority": "/home/robot/cmu_vln/VLA-3D_dataset/Unity.zip",
+  "lightweight_non_authority": "/home/robot/cmu_vln/VLA-3D_dataset/Unity",
+  "latest_completed_n1": "/home/robot/cmu_vln/challenge_eval_runs/20260822T223325Z_hotel_room_1_q1",
+  "latest_completed_n1_session": "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8",
+  "latest_requested_but_incomplete_n1": "/home/robot/cmu_vln/challenge_eval_runs/20260822T224333Z_hotel_room_1_q1"
+}

@@ -1,0 +1,13 @@
+# Merge after the official docker/compose_gpu_headless.yml. Relative paths
+# resolve from that official compose file's directory.
+services:
+  system:
+    container_name: cmu_rebuild_system
+  ai_module:
+    container_name: cmu_rebuild_ai
+    image: docker_ai_module:post-competition-rebuild
+    user: "${CMU_AI_UID:-1000}:${CMU_AI_GID:-1000}"
+    environment:
+      CMU_AI_CONFIG: ${CMU_AI_CONFIG:-/home/docker/ai_module/configs/rebuild.json}
+      HF_HOME: /tmp/cmu-rebuild-hf
+      FASTDDS_BUILTIN_TRANSPORTS: UDPv4

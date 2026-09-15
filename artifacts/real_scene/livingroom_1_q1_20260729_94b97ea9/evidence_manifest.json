@@ -1,0 +1,16 @@
+{
+  "source": "runtime_candidate_ledger_only",
+  "ground_truth_used": false,
+  "selected_anchor_id": 3,
+  "artifacts": [
+    "01_anchor_selection.png",
+    "05_post_nms_proposals/summary.png",
+    "06_mask_split_results/summary.png",
+    "07_depth_and_support_geometry/summary.png",
+    "08_cross_view_association_graph.png",
+    "09_physical_hypotheses.png",
+    "10_relation_evidence.png",
+    "13_query_domain_slots.png"
+  ],
+  "coordinate_limit": "downstream stages use text panels because their world/track identities cannot be faithfully overlaid on one stale image"
+}

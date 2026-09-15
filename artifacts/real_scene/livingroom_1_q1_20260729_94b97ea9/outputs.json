@@ -1,0 +1,17 @@
+{
+  "output_type": "numerical",
+  "task_type": "numerical",
+  "action": "REJECT",
+  "reason_code": "query_plan_root_unresolved",
+  "numerical_answer": null,
+  "count_belief": null,
+  "commit_tier": null,
+  "stop_reason": null,
+  "answer_source": null,
+  "navigation_outcome": null,
+  "repeat_agreement": 0.0,
+  "publish_intent": false,
+  "selected_object_label": null,
+  "selected_object": null,
+  "waypoint_sequence": []
+}

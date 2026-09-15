@@ -1,0 +1,28 @@
+{
+  "image": "docker_ai_module:post-competition-root-repair-v7",
+  "build_log": "ai_module/runs/rebuild/build_root_repair_v7.log",
+  "scope": "three remaining closure regressions after the active standard Q1; reduced at explicit user request",
+  "cases": [
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q4",
+      "question": "Go to the bedside table closest to the window and stop at the chair closest to the TV.",
+      "task_type": "instruction_following",
+      "label": "root_repair_v7_hotel_room_1_q4"
+    },
+    {
+      "scene": "livingroom_4",
+      "question_id": "q4",
+      "question": "Go near the chair closest to the bookcase and stop at the table with the flowers on it.",
+      "task_type": "instruction_following",
+      "label": "root_repair_v7_livingroom_4_q4"
+    },
+    {
+      "scene": "hotel_room_1",
+      "question_id": "q2",
+      "question": "Find the bedside table farthest from the window.",
+      "task_type": "object_reference",
+      "label": "root_repair_v7_hotel_room_1_q2"
+    }
+  ]
+}

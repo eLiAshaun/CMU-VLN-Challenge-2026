@@ -1,0 +1,12 @@
+{
+  "source_image": "docker_ai_module:post-competition-root-repair-v7",
+  "release_image": "docker_ai_module:research-20260916-v7-slim",
+  "source_size_bytes": 52046497042,
+  "release_size_bytes": 24516690303,
+  "saved_bytes": 27529806739,
+  "release_layer_count": 6,
+  "runtime_config_differences": [],
+  "environment_comparison": "identical key/value pairs; list order ignored",
+  "method": "Final runtime filesystem plus five separate unchanged model files; deleted historical files omitted",
+  "build_log": "ai_module/runs/rebuild/build_release_slim_layered_v7.log"
+}

@@ -1,0 +1,8 @@
+{
+  "frame_id": "frame_005",
+  "source_time_s": 1785318464.2227862,
+  "raw_image": "02_global_views_with_tracks/frame_005.jpg",
+  "proposal_overlay": "04_raw_proposals/frame_005.jpg",
+  "proposal_count": 0,
+  "proposals": []
+}

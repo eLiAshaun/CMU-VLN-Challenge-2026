@@ -1,0 +1,102 @@
+[
+  {
+    "run": "20260915T131656_126648Z",
+    "scene": "hotel_room_1",
+    "question_id": "q1",
+    "pid": 3557908,
+    "process_peak_mib": 11456,
+    "whole_card_peak_mib": 13922,
+    "rss_peak_bytes": 6789443584,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T132551_637344Z",
+    "scene": "hotel_room_1",
+    "question_id": "q2",
+    "pid": 3561963,
+    "process_peak_mib": 11456,
+    "whole_card_peak_mib": 13920,
+    "rss_peak_bytes": 6848069632,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T133557_546167Z",
+    "scene": "hotel_room_1",
+    "question_id": "q4",
+    "pid": 3567348,
+    "process_peak_mib": 9276,
+    "whole_card_peak_mib": 9872,
+    "rss_peak_bytes": 1930534912,
+    "cuda_peak_bytes": 9073827840
+  },
+  {
+    "run": "20260915T133611_663222Z",
+    "scene": "office_2",
+    "question_id": "q1",
+    "pid": 3568420,
+    "process_peak_mib": 11474,
+    "whole_card_peak_mib": 12711,
+    "rss_peak_bytes": 6838468608,
+    "cuda_peak_bytes": 11220493824
+  },
+  {
+    "run": "20260915T134507_364392Z",
+    "scene": "livingroom_3",
+    "question_id": "q3",
+    "pid": 3575855,
+    "process_peak_mib": 9276,
+    "whole_card_peak_mib": 9872,
+    "rss_peak_bytes": 1912897536,
+    "cuda_peak_bytes": 9071784448
+  },
+  {
+    "run": "20260915T134518_813632Z",
+    "scene": "livingroom_3",
+    "question_id": "q5",
+    "pid": 3576908,
+    "process_peak_mib": 11470,
+    "whole_card_peak_mib": 12750,
+    "rss_peak_bytes": 6957690880,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T135522_387385Z",
+    "scene": "hotel_room_2",
+    "question_id": "q1",
+    "pid": 3584098,
+    "process_peak_mib": 11454,
+    "whole_card_peak_mib": 12713,
+    "rss_peak_bytes": 6756691968,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T140418_253199Z",
+    "scene": "livingroom_3",
+    "question_id": "q2",
+    "pid": 3589550,
+    "process_peak_mib": 11456,
+    "whole_card_peak_mib": 12729,
+    "rss_peak_bytes": 6863835136,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T141423_884766Z",
+    "scene": "loft",
+    "question_id": "q4",
+    "pid": 3596476,
+    "process_peak_mib": 11452,
+    "whole_card_peak_mib": 12810,
+    "rss_peak_bytes": 6449221632,
+    "cuda_peak_bytes": 11220491776
+  },
+  {
+    "run": "20260915T142427_679822Z",
+    "scene": "chinese_room",
+    "question_id": "q1",
+    "pid": 3602571,
+    "process_peak_mib": 11454,
+    "whole_card_peak_mib": 12706,
+    "rss_peak_bytes": 7358681088,
+    "cuda_peak_bytes": 11220491776
+  }
+]

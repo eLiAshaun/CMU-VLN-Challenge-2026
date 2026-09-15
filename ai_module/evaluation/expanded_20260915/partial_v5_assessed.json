@@ -1,0 +1,90 @@
+[
+  {
+    "scene": "livingroom_3",
+    "question_id": "q1",
+    "question": "How many photos are on the TV cabinet?",
+    "task_type": "numerical",
+    "label": "root_repair_v5_livingroom_3_q1",
+    "event": "case_finished",
+    "run": "20260915T150651_972525Z",
+    "probe": "root_repair_v5_livingroom_3_q1_ros_messages.jsonl",
+    "root_decision": "numerical_output",
+    "numerical_answer": 2,
+    "failure_stage": null,
+    "ros_published": true,
+    "elapsed_seconds": 530.07042180188,
+    "observations": 31,
+    "driver_exit_code": 0,
+    "proxy_score": 1.0,
+    "max_points": 1.0,
+    "metrics": {
+      "metric": "exact_integer_match",
+      "expected": 2,
+      "observed": 2,
+      "correct": true
+    }
+  },
+  {
+    "scene": "hotel_room_1",
+    "question_id": "q4",
+    "question": "Go to the bedside table closest to the window and stop at the chair closest to the TV.",
+    "task_type": "instruction_following",
+    "label": "root_repair_v5_hotel_room_1_q4",
+    "event": "case_finished",
+    "run": "20260915T151547_646185Z",
+    "probe": "root_repair_v5_hotel_room_1_q4_ros_messages.jsonl",
+    "root_decision": "instruction_trajectory_complete",
+    "numerical_answer": null,
+    "failure_stage": null,
+    "ros_published": true,
+    "elapsed_seconds": 45.623708262108266,
+    "observations": 2,
+    "driver_exit_code": 0,
+    "proxy_score": 0.2432520315297435,
+    "max_points": 6.0,
+    "metrics": {
+      "metric": "ordered_reference_trajectory_proxy_v1",
+      "score_uses_actual_state_estimation_not_commanded_waypoints": true,
+      "reference_path": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/questions/hotel_room_1/trajectory_q4.ply",
+      "reference_points": 719,
+      "observed_points": 35,
+      "reference_length_m": 8.230641772969724,
+      "observed_length_m": 1.7842442780679524,
+      "enough_motion": true,
+      "invalid_observed_frames": [],
+      "metrics": {
+        "discrete_frechet_m": 3.9997246698363758,
+        "progress_rmse_m": 2.594948743987378,
+        "endpoint_error_m": 1.9348048305104364,
+        "coverage_fraction": 0.19801980198019803,
+        "length_ratio": 0.21678069915855097
+      },
+      "normalized_components": {
+        "frechet": 0.0,
+        "progress_rmse": 0.0,
+        "endpoint": 0.0,
+        "coverage": 0.19801980198019803,
+        "length_ratio": 0.21678069915855097
+      },
+      "weights": {
+        "frechet": 0.3,
+        "progress_rmse": 0.25,
+        "endpoint": 0.25,
+        "coverage": 0.15,
+        "length_ratio": 0.05
+      },
+      "weighted_similarity": 0.04054200525495725
+    }
+  },
+  {
+    "scene": "livingroom_4",
+    "question_id": "q4",
+    "label": "root_repair_v5_livingroom_4_q4",
+    "run": "20260915T151655_814515Z",
+    "proxy_score": 0.91839481199862,
+    "max_points": 6.0,
+    "root_decision": "runtime_failure",
+    "failure_stage": "navigation",
+    "ros_published": false
+  }
+]

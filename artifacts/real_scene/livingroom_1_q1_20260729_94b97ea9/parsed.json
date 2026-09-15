@@ -1,0 +1,342 @@
+{
+  "raw_text": "How many chairs are near the table with a vase on it?",
+  "kind": "numerical",
+  "target": {
+    "category": "chair",
+    "attributes": {},
+    "relation_constraints": [
+      {
+        "relation": "near",
+        "subject_ref": "chair",
+        "anchor_refs": [
+          "table"
+        ],
+        "polarity": "positive",
+        "ordinal": null,
+        "negation_scope": "edge"
+      },
+      {
+        "relation": "on",
+        "subject_ref": "vase",
+        "anchor_refs": [
+          "table"
+        ],
+        "polarity": "positive",
+        "ordinal": null,
+        "negation_scope": "edge"
+      }
+    ]
+  },
+  "query_ir": {
+    "aggregation": "count_distinct",
+    "loss": "exact_match",
+    "result_ref": "chair",
+    "variables": [
+      {
+        "ref": "chair",
+        "category": "chair",
+        "attributes": {}
+      },
+      {
+        "ref": "table",
+        "category": "table",
+        "attributes": {}
+      },
+      {
+        "ref": "vase",
+        "category": "vase",
+        "attributes": {}
+      }
+    ],
+    "relations": [
+      {
+        "relation": "near",
+        "subject_ref": "chair",
+        "anchor_refs": [
+          "table"
+        ],
+        "polarity": "positive",
+        "negation_scope": "edge"
+      },
+      {
+        "relation": "on",
+        "subject_ref": "vase",
+        "anchor_refs": [
+          "table"
+        ],
+        "polarity": "positive",
+        "negation_scope": "edge"
+      }
+    ],
+    "quantifiers": [
+      {
+        "kind": "exists",
+        "variable_refs": [
+          "table",
+          "vase"
+        ]
+      }
+    ],
+    "selectors": []
+  },
+  "query_plan": {
+    "schema_version": 1,
+    "plan_id": "query-plan:c7508b327b0345a4c7c4",
+    "source_query_signature": "0fcfef3b72d640e35bb1bd72a4e2b1c75258ccd07ddc80aae593677993e16566",
+    "result_ref": "chair",
+    "nodes": [
+      {
+        "node_id": "set:chair",
+        "operator": "SET",
+        "input_nodes": [],
+        "output_type": "ENTITY_SET",
+        "parameters": {
+          "class": "chair",
+          "reference_semantics": "result_set",
+          "variable_ref": "chair"
+        },
+        "completion_requirement": "SET_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "chair"
+          ],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "query_conditioned_set_coverage"
+        }
+      },
+      {
+        "node_id": "set:table",
+        "operator": "SET",
+        "input_nodes": [],
+        "output_type": "ENTITY_SET",
+        "parameters": {
+          "class": "table",
+          "reference_semantics": "definite_singular",
+          "variable_ref": "table"
+        },
+        "completion_requirement": "SET_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "table"
+          ],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "query_conditioned_set_coverage"
+        }
+      },
+      {
+        "node_id": "set:vase",
+        "operator": "SET",
+        "input_nodes": [],
+        "output_type": "ENTITY_SET",
+        "parameters": {
+          "class": "vase",
+          "reference_semantics": "existential_set",
+          "variable_ref": "vase"
+        },
+        "completion_requirement": "SET_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "vase"
+          ],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "query_conditioned_set_coverage"
+        }
+      },
+      {
+        "node_id": "relation:1:on:table",
+        "operator": "RELATION_JOIN",
+        "input_nodes": [
+          "set:vase",
+          "set:table"
+        ],
+        "output_type": "RELATION_SET",
+        "parameters": {
+          "existential_subject": true,
+          "negation_scope": "edge",
+          "object_refs": [
+            "table"
+          ],
+          "output_ref": "table",
+          "polarity": "positive",
+          "predicate": "ON",
+          "subject_ref": "vase"
+        },
+        "completion_requirement": "RELATION_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "vase",
+            "table"
+          ],
+          "requires_joint_visibility": true,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "joint_relation_support"
+        }
+      },
+      {
+        "node_id": "exists:1:table",
+        "operator": "EXISTS",
+        "input_nodes": [
+          "relation:1:on:table"
+        ],
+        "output_type": "ENTITY_SET",
+        "parameters": {
+          "output_ref": "table",
+          "witness_ref": "vase"
+        },
+        "completion_requirement": "EXISTENTIAL_WITNESS",
+        "observation_contract": {
+          "directly_observable": false,
+          "required_entities": [],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 0,
+          "requires_depth_support": false,
+          "requires_multi_view": false,
+          "completion_metric": "derived_existential_witness"
+        }
+      },
+      {
+        "node_id": "select_unique:table:relation:1",
+        "operator": "SELECT_UNIQUE",
+        "input_nodes": [
+          "exists:1:table"
+        ],
+        "output_type": "ENTITY",
+        "parameters": {
+          "reference_semantics": "definite_singular_relation",
+          "variable_ref": "table"
+        },
+        "completion_requirement": "UNIQUE_BINDING",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "table"
+          ],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 64,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "binding_competitor_margin"
+        }
+      },
+      {
+        "node_id": "relation:0:near:chair",
+        "operator": "RELATION_JOIN",
+        "input_nodes": [
+          "set:chair",
+          "select_unique:table:relation:1"
+        ],
+        "output_type": "RELATION_SET",
+        "parameters": {
+          "existential_subject": false,
+          "negation_scope": "edge",
+          "object_refs": [
+            "table"
+          ],
+          "output_ref": "chair",
+          "polarity": "positive",
+          "predicate": "NEAR",
+          "subject_ref": "chair"
+        },
+        "completion_requirement": "RELATION_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "chair",
+            "table"
+          ],
+          "requires_joint_visibility": true,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "joint_relation_support"
+        }
+      },
+      {
+        "node_id": "count_distinct:chair",
+        "operator": "COUNT_DISTINCT",
+        "input_nodes": [
+          "relation:0:near:chair"
+        ],
+        "output_type": "INTEGER",
+        "parameters": {
+          "loss": "exact_match",
+          "result_ref": "chair"
+        },
+        "completion_requirement": "COUNT_BOUNDS_CLOSED",
+        "observation_contract": {
+          "directly_observable": true,
+          "required_entities": [
+            "chair"
+          ],
+          "requires_joint_visibility": false,
+          "minimum_pixel_support": 48,
+          "requires_depth_support": true,
+          "requires_multi_view": true,
+          "completion_metric": "query_conditioned_coverage_and_count_bounds"
+        }
+      }
+    ],
+    "dependency_edges": [
+      {
+        "source": "set:vase",
+        "target": "relation:1:on:table"
+      },
+      {
+        "source": "set:table",
+        "target": "relation:1:on:table"
+      },
+      {
+        "source": "relation:1:on:table",
+        "target": "exists:1:table"
+      },
+      {
+        "source": "exists:1:table",
+        "target": "select_unique:table:relation:1"
+      },
+      {
+        "source": "set:chair",
+        "target": "relation:0:near:chair"
+      },
+      {
+        "source": "select_unique:table:relation:1",
+        "target": "relation:0:near:chair"
+      },
+      {
+        "source": "relation:0:near:chair",
+        "target": "count_distinct:chair"
+      }
+    ],
+    "root_node": "count_distinct:chair",
+    "topological_order": [
+      "set:chair",
+      "set:table",
+      "set:vase",
+      "relation:1:on:table",
+      "exists:1:table",
+      "select_unique:table:relation:1",
+      "relation:0:near:chair",
+      "count_distinct:chair"
+    ]
+  },
+  "path_steps": [],
+  "forbidden_constraints": [],
+  "parse_confidence": 1.0,
+  "parser_backend": "deterministic_v1",
+  "warnings": [],
+  "normalized_text": "count chair positive:near(table) positive:on(table)"
+}

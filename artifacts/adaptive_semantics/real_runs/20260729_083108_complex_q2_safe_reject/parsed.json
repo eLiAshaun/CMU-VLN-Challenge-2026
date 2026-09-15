@@ -1,0 +1,39 @@
+{
+  "raw_text": "Find the pillow on the sofa that is closest to the windows.",
+  "kind": "object_reference",
+  "target": {
+    "category": "pillow",
+    "attributes": {},
+    "relation_constraints": [
+      {
+        "relation": "on",
+        "subject_ref": "pillow",
+        "anchor_refs": [
+          "sofa"
+        ],
+        "polarity": "positive",
+        "ordinal": null,
+        "negation_scope": "edge"
+      },
+      {
+        "relation": "closest",
+        "subject_ref": "sofa",
+        "anchor_refs": [
+          "window"
+        ],
+        "polarity": "positive",
+        "ordinal": null,
+        "negation_scope": "edge"
+      }
+    ]
+  },
+  "query_ir": null,
+  "query_plan": null,
+  "path_steps": [],
+  "forbidden_constraints": [],
+  "parse_confidence": 1.0,
+  "parser_backend": "deterministic_v1",
+  "warnings": [],
+  "task_id": "task:179e365e8c05994e731aa413",
+  "normalized_text": "find pillow positive:on(sofa) positive:closest(window)"
+}

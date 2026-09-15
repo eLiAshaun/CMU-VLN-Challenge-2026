@@ -1,0 +1,45 @@
+# Repack the tested V7 filesystem without hidden historical files.
+# Keep large model files in separate reusable layers; runtime contents are retained.
+# Build from repo root with an empty context:
+# docker build -t docker_ai_module:research-20260916-v7-slim - < ai_module/docker/Dockerfile.release
+ARG SOURCE_IMAGE=docker_ai_module:post-competition-root-repair-v7
+FROM ${SOURCE_IMAGE} AS tested
+FROM tested AS runtime_files
+USER root
+RUN rm -- "/home/docker/ai_module/checkpoints/rebuild/sam21/sam2.1_hiera_base_plus.pt" "/home/docker/ai_module/checkpoints/rebuild/grounding_dino_tiny/model.safetensors" "/home/docker/ai_module/checkpoints/rebuild/da3metric/model.safetensors" "/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00002-of-00002.safetensors" "/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00001-of-00002.safetensors"
+FROM scratch
+COPY --from=runtime_files / /
+COPY --from=tested --chown=docker:docker ["/home/docker/ai_module/checkpoints/rebuild/sam21/sam2.1_hiera_base_plus.pt", "/home/docker/ai_module/checkpoints/rebuild/sam21/sam2.1_hiera_base_plus.pt"]
+COPY --from=tested --chown=docker:docker ["/home/docker/ai_module/checkpoints/rebuild/grounding_dino_tiny/model.safetensors", "/home/docker/ai_module/checkpoints/rebuild/grounding_dino_tiny/model.safetensors"]
+COPY --from=tested --chown=docker:docker ["/home/docker/ai_module/checkpoints/rebuild/da3metric/model.safetensors", "/home/docker/ai_module/checkpoints/rebuild/da3metric/model.safetensors"]
+COPY --from=tested --chown=docker:docker ["/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00002-of-00002.safetensors", "/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00002-of-00002.safetensors"]
+COPY --from=tested --chown=docker:docker ["/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00001-of-00002.safetensors", "/home/docker/ai_module/checkpoints/rebuild/qwen4b/model-00001-of-00002.safetensors"]
+ENV XAUTHORITY="/tmp/.docker.xauth"
+ENV DISPLAY=":0"
+ENV QT_X11_NO_MITSHM="1"
+ENV LANG="C.UTF-8"
+ENV LC_ALL="C.UTF-8"
+ENV ROS_DISTRO="jazzy"
+ENV NVIDIA_VISIBLE_DEVICES="all"
+ENV NVIDIA_DRIVER_CAPABILITIES="compute,utility,graphics"
+ENV HF_HUB_OFFLINE="1"
+ENV TRANSFORMERS_OFFLINE="1"
+ENV HF_HOME="/tmp/cmu-rebuild-hf"
+ENV PYTHONPATH="/home/docker/ai_module"
+ENV CUDA_MODULE_LOADING="LAZY"
+ENV PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+ENV PATH="/opt/cmu-rebuild-venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PYTHONDONTWRITEBYTECODE="1"
+ENV TORCHINDUCTOR_CACHE_DIR="/tmp/cmu-rebuild-inductor"
+ENV TRITON_CACHE_DIR="/tmp/cmu-rebuild-triton"
+ENV PYTORCH_KERNEL_CACHE_PATH="/tmp/cmu-rebuild-torch-kernels"
+ENV ROS_LOG_DIR="/tmp/cmu-rebuild-ros"
+ENV MPLCONFIGDIR="/tmp/cmu-rebuild-matplotlib"
+ENV RMW_IMPLEMENTATION="rmw_fastrtps_cpp"
+ENV FASTDDS_BUILTIN_TRANSPORTS="UDPv4"
+LABEL org.cmu-vln.active-system="rebuild"
+LABEL org.cmu-vln.legacy-runtime="removed"
+USER docker
+WORKDIR /home/docker/ai_module
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["/home/docker/ai_module/docker/start_live_chain.sh"]

@@ -1,0 +1,5382 @@
+[
+  {
+    "viewpoint_id": "vp-000000",
+    "episode_id": "35fc94fce9ab4134b32a7e11e8634a62",
+    "pose_map": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pose_covariance_6x6": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "localization_trusted": true,
+    "source_stamp_s": 1785259655.0663338,
+    "coverage_cell_count": 476,
+    "visible_object_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panorama_ref": null,
+    "panorama_embedding": null,
+    "lidar_signature": null,
+    "coverage_gain": 476.0,
+    "visit_count": 1,
+    "last_visit_time": 1785259655.0663338,
+    "novelty_score": 1.0,
+    "provisional_observations": [
+      {
+        "label": "vase",
+        "bbox": [
+          0.6005800869315863,
+          0.04955938458442688,
+          0.6490103099495173,
+          0.11923599243164062
+        ],
+        "detector_score": 0.44007521867752075,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.5315939849993724,
+          0.3137768530468889,
+          0.5460976156891888,
+          0.3405869190991318
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-a1e02b66ee1c4bba8998b70df365a450",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.6005801,
+              0.0495594,
+              0.6490103,
+              0.119236
+            ],
+            "confidence": 0.44007521867752075,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.8330316014293921,
+          -0.20956724822166506,
+          0.5119960151141624
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair table",
+        "bbox": [
+          0.0,
+          0.6751058995723724,
+          0.01978521514683962,
+          0.993615061044693
+        ],
+        "detector_score": 0.39815473556518555,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.375,
+          0.5584529765130092,
+          0.37821203812014537,
+          0.656127601964127
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-7ff9a4ce2dc04eba9aca3558bed36dfe",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair table",
+            "bbox": [
+              0.0,
+              0.6751059,
+              0.0197852,
+              0.9936151
+            ],
+            "confidence": 0.39815473556518555,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8559015989303589,
+          1.8588312864303589,
+          0.01851111650466919
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.6772134481114694,
+          0.6622357030456866,
+          -0.3206646524151972
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.6731274090707302,
+          0.00022052228450775146,
+          0.7379559315741062,
+          0.12156389653682709
+        ],
+        "detector_score": 0.30386054515838623,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.5530518279904727,
+          0.30381143252666365,
+          0.5706953639308561,
+          0.3492320959966975
+        ],
+        "track_id": "short-000004",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-8b7bf62fb6254ababbbf1013f2618ec7",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.6731274,
+              0.0002205,
+              0.7379559,
+              0.1215639
+            ],
+            "confidence": 0.30386054515838623,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.794745049351702,
+          -0.325945374316279,
+          0.5119960151141623
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.6782719288021326,
+          0.5258476361632347,
+          0.7142259683459997,
+          0.5768978968262672
+        ],
+        "detector_score": 0.31559932231903076,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.5545093903022804,
+          0.5113391705582926,
+          0.5644244618122426,
+          0.5344484688805081
+        ],
+        "track_id": "short-000005",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-72335e0b67f142438b3fe628b07a1aba",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.6782719,
+              0.5258476,
+              0.714226,
+              0.5768979
+            ],
+            "confidence": 0.31559932231903076,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          2.1755493879318237,
+          -0.8571558594703674,
+          0.6959270536899567
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.9285709901639562,
+          -0.36328787919763456,
+          -0.07601205860924298
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 10,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.9743279004469514,
+          0.4465838894248009,
+          1.0,
+          0.6425363793969154
+        ],
+        "detector_score": 0.2576114237308502,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.620807472606757,
+          0.48151777008937724,
+          0.625,
+          0.5489834131739016
+        ],
+        "track_id": "short-000006",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-75741adc38a84c00b194d162ef2c3545",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.9743279,
+              0.4465839,
+              1.0,
+              0.6425364
+            ],
+            "confidence": 0.2576114237308502,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8688876032829285,
+          -1.8522409796714783,
+          0.7761309146881104
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.71438853880964,
+          -0.6983541596090562,
+          -0.04416427712706746
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 10,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.0,
+          0.6758431047201157,
+          0.019542871974408627,
+          0.996235266327858
+        ],
+        "detector_score": 0.21837998926639557,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.375,
+          0.5586935375986009,
+          0.37817192131298155,
+          0.6567967408630313
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-18e45e8b1f8b455db06df10d73b11614",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.6758431,
+              0.0195429,
+              0.9962353
+            ],
+            "confidence": 0.21837998926639557,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8559015989303589,
+          1.8588312864303589,
+          0.01851111650466919
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.6772266532024708,
+          0.6622221990265965,
+          -0.32066465241519726
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.86953125,
+          0.5088541666666667,
+          0.9546875,
+          0.7036458333333333
+        ],
+        "detector_score": 0.8056640625,
+        "view_id": "p00_y01",
+        "reason_code": "insufficient_cluster_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7262964364205456,
+          0.5031275930522057,
+          0.7424516658407784,
+          0.5766772033007712
+        ],
+        "track_id": "short-000001",
+        "centroid_map": [
+          0.6137455701828003,
+          -5.743298530578613,
+          0.46442851424217224
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.10003794715454765,
+          -0.9903827355768481,
+          -0.09557429675609934
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 15,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.8578125,
+          0.5098958333333333,
+          1.0,
+          0.6864583333333333
+        ],
+        "detector_score": 0.640625,
+        "view_id": "p00_y01",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7238568247327826,
+          0.5033408948960147,
+          0.75,
+          0.5711875320566189
+        ],
+        "track_id": "short-000002",
+        "centroid_map": [
+          0.3557148873806,
+          -5.9333815574646,
+          0.16799110174179077
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.07673110550121212,
+          -0.9914713237598971,
+          -0.10534206951811408
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 8,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.9765625,
+          0.50625,
+          1.0,
+          0.715625
+        ],
+        "detector_score": 0.50390625,
+        "view_id": "p00_y01",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7461810144984183,
+          0.5021100854569005,
+          0.75,
+          0.573206139220961
+        ],
+        "track_id": "short-000003",
+        "centroid_map": [
+          0.053151898086071014,
+          -5.771579265594482,
+          0.16887688636779785
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.008097750425311717,
+          -0.9949082051650231,
+          -0.10045939345507636
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 6,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.7875,
+          0.7572916666666667,
+          1.0,
+          1.0
+        ],
+        "detector_score": 0.381103515625,
+        "view_id": "p00_y01",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7080525051072626,
+          0.5848015423272732,
+          0.75,
+          0.6835061447678389
+        ],
+        "track_id": "short-000005",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.09444475808616962,
+          -0.9021829027873886,
+          -0.4208873930021739
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.4881157111376524,
+          0.5059483349323273,
+          0.5332223940640688,
+          0.646369069814682
+        ],
+        "detector_score": 0.5708619356155396,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7462178254981353,
+          0.502833797099213,
+          0.7605594949866347,
+          0.5687793845712782
+        ],
+        "track_id": "short-000000",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-4072ad77f2fb4b0580c0c7f971869539",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4881157,
+              0.5059483,
+              0.5332224,
+              0.6463691
+            ],
+            "confidence": 0.5708619356155396,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.484375,
+              0.50625,
+              0.5351562,
+              0.6526042
+            ],
+            "confidence": 0.381103515625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-6f2f0cf6ac2b430a9a13a2d50e49513e",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.484375,
+              0.50625,
+              0.5351562,
+              0.6526042
+            ],
+            "confidence": 0.381103515625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8488584
+          }
+        ],
+        "centroid_map": [
+          -0.12000980973243713,
+          -5.748608589172363,
+          0.375946581363678
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.022826545904390587,
+          -0.9956178159770221,
+          -0.09068689713083823
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 19,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.3935699351131916,
+          0.5059361830353737,
+          0.43472446128726006,
+          0.6353145465254784
+        ],
+        "detector_score": 0.5381423234939575,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7166204436554697,
+          0.5027721406079203,
+          0.7293390010850032,
+          0.5632197135769819
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-ac86b3382b9a4789b6d946b22da221e9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.3935699,
+              0.5059362,
+              0.4347245,
+              0.6353145
+            ],
+            "confidence": 0.5381423234939575,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.2066642045974731,
+          -6.3545074462890625,
+          0.10177409648895264
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.17388278387013859,
+          -0.9791158388378831,
+          -0.10534206951811408
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 13,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.42769007943570614,
+          0.506559893488884,
+          0.4777875039726496,
+          0.6485942155122757
+        ],
+        "detector_score": 0.5486723780632019,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_cluster_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7271415191528072,
+          0.5030997714553598,
+          0.742934188788223,
+          0.5697408150688174
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-20aefad1d2f24e0181ece6e1ad93affa",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4276901,
+              0.5065599,
+              0.4777875,
+              0.6485942
+            ],
+            "confidence": 0.5486723780632019,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4225394,
+              0.5041634,
+              0.4815843,
+              0.6263419
+            ],
+            "confidence": 0.2943798303604126,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-2c47c24169d14e4585addf40c1288ad1",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4225394,
+              0.5041634,
+              0.4815843,
+              0.6263419
+            ],
+            "confidence": 0.2943798303604126,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.7204845
+          },
+          {
+            "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.4242187,
+              0.5046875,
+              0.4792969,
+              0.6536458
+            ],
+            "confidence": 0.4130859375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-537aab2d395a44d187ea47a5b5e2efeb",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.4242187,
+              0.5046875,
+              0.4792969,
+              0.6536458
+            ],
+            "confidence": 0.4130859375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8672908
+          }
+        ],
+        "centroid_map": [
+          0.5967119336128235,
+          -5.752084970474243,
+          0.48774348199367523
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.10003160367894319,
+          -0.9908428558324471,
+          -0.09068689713083825
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 16,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.5880185477435589,
+          0.5040911585092545,
+          0.6208042986690998,
+          0.6302126497030258
+        ],
+        "detector_score": 0.533959686756134,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.777733030085463,
+          0.5018987282579587,
+          0.787730132305602,
+          0.5604915651800931
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-fd6b279265f3409e9c269972b79a8337",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5880185,
+              0.5040912,
+              0.6208043,
+              0.6302126
+            ],
+            "confidence": 0.533959686756134,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -1.454968273639679,
+          -6.5327019691467285,
+          0.49820476770401
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.2120525958702406,
+          -0.9725735192695046,
+          -0.09557429675609934
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 8,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.5040972009301186,
+          0.7089503407478333,
+          0.6267925724387169,
+          0.8974757790565491
+        ],
+        "detector_score": 0.39326220750808716,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7513041503718014,
+          0.5938848582054657,
+          0.789526139723021,
+          0.6711284924432833
+        ],
+        "track_id": "short-000004",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-74a15947678949d98c0b7ed8a074cc89",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.5040972,
+              0.7089503,
+              0.6267926,
+              0.8974758
+            ],
+            "confidence": 0.39326220750808716,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-4b0be95bf3664ea0b93012ec63b22d45",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.5039062,
+              0.709375,
+              0.6277344,
+              0.9072917
+            ],
+            "confidence": 0.5,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-4b0be95bf3664ea0b93012ec63b22d45",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.5039062,
+              0.709375,
+              0.6277344,
+              0.9072917
+            ],
+            "confidence": 0.5,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.939712
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.1226657159360729,
+          -0.9257820847369667,
+          -0.3576040459977579
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.5442627090960741,
+          0.508238896727562,
+          0.593295393511653,
+          0.6349439769983292
+        ],
+        "detector_score": 0.546917200088501,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7640526253266935,
+          0.5038668514454966,
+          0.7793592282390426,
+          0.5633309126436756
+        ],
+        "track_id": "short-000005",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-337840b7b9564ff9b881ad04c55d8120",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5442627,
+              0.5082389,
+              0.5932954,
+              0.634944
+            ],
+            "confidence": 0.546917200088501,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5386573,
+              0.5035753,
+              0.5876284,
+              0.6193017
+            ],
+            "confidence": 0.2927021086215973,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-05490dbeab6c459c944e780439021508",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5386573,
+              0.5035753,
+              0.5876284,
+              0.6193017
+            ],
+            "confidence": 0.2927021086215973,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6818474
+          },
+          {
+            "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.5398437,
+              0.5078125,
+              0.5964844,
+              0.640625
+            ],
+            "confidence": 0.10821533203125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-01434213a93d428181e773dd2270adf8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.5398437,
+              0.5078125,
+              0.5964844,
+              0.640625
+            ],
+            "confidence": 0.10821533203125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8258719
+          }
+        ],
+        "centroid_map": [
+          -0.7528451681137085,
+          -5.741031646728516,
+          0.49964189529418945
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.13895138891084263,
+          -0.986138123291321,
+          -0.09068689713083825
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 13,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.4978951718658209,
+          0.4803004860877991,
+          0.5128923151642084,
+          0.5081628561019897
+        ],
+        "detector_score": 0.5516687631607056,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7493300163537937,
+          0.4905969943821244,
+          0.7541028422793652,
+          0.5038972474111565
+        ],
+        "track_id": "short-000006",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-14accbace1bf42e59d79f2b50ec1afc4",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.4978952,
+              0.4803005,
+              0.5128923,
+              0.5081629
+            ],
+            "confidence": 0.5516687631607056,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.08463975787162781,
+          -6.529697895050049,
+          0.8741896748542786
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.011799532786428212,
+          -0.9999273709173334,
+          0.0024543667964603264
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.7458599377423525,
+          0.502874355763197,
+          0.7804102133959532,
+          0.5688971467316151
+        ],
+        "detector_score": 0.35191407799720764,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8227340628430869,
+          0.5011970060201985,
+          0.8313461074463429,
+          0.5294359695112801
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-e24c871e0ad2419c9f1232eaf668e2e4",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.7458599,
+              0.5028744,
+              0.7804102,
+              0.5688971
+            ],
+            "confidence": 0.35191407799720764,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.4591375954545907,
+          -0.887792188495382,
+          -0.03190138690961079
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 2,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.4186224862933159,
+          0.5083514712750912,
+          0.5938702896237373,
+          0.6296374537050724
+        ],
+        "detector_score": 0.44056278467178345,
+        "view_id": "p00_y02",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7243218840505411,
+          0.50391886717779,
+          0.7795360298038378,
+          0.5611297285049398
+        ],
+        "track_id": "short-000008",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-16e5a04c118444168728b37331a3a3ac",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.4186225,
+              0.5083515,
+              0.5938703,
+              0.6296375
+            ],
+            "confidence": 0.44056278467178345,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d6b60ce9c2b143a38f02a7be8fde8843",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4164062,
+              0.5088542,
+              0.5980469,
+              0.6453125
+            ],
+            "confidence": 0.521484375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d6b60ce9c2b143a38f02a7be8fde8843",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4164062,
+              0.5088542,
+              0.5980469,
+              0.6453125
+            ],
+            "confidence": 0.521484375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8509529
+          }
+        ],
+        "centroid_map": [
+          0.037703096866607666,
+          -5.764020919799805,
+          0.5693815350532532
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.035208695137343475,
+          -0.9956902977237432,
+          -0.0857973123444399
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 19,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.6596581353805959,
+          0.4721226403489709,
+          0.674055038485676,
+          0.4991937568411231
+        ],
+        "detector_score": 0.33780214190483093,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7991920240389871,
+          0.48732698385087636,
+          0.8033153390799523,
+          0.49963644556422515
+        ],
+        "track_id": "short-000009",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-eba2d76efabb49748c56d29cd3449cb6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.6596581,
+              0.4721226,
+              0.674055,
+              0.4991938
+            ],
+            "confidence": 0.33780214190483093,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -2.6570587158203125,
+          -7.904976844787598,
+          0.9259255528450012
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.318571094688209,
+          -0.9477432744026069,
+          0.01717973963077882
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.5122978612780571,
+          0.6316044703125954,
+          0.6538610532879829,
+          0.8197085484862328
+        ],
+        "detector_score": 0.6160668730735779,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7539137417455372,
+          0.5593595054984788,
+          0.7975119128986952,
+          0.6422993889553219
+        ],
+        "track_id": "short-000010",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6cc092a349284d099cb57101952675b6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.5122979,
+              0.6316045,
+              0.6538611,
+              0.8197085
+            ],
+            "confidence": 0.6160668730735779,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-885e8a9092a94fb7bb4acd634743caf0",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.5105469,
+              0.634375,
+              0.6546875,
+              0.825
+            ],
+            "confidence": 0.49609375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-885e8a9092a94fb7bb4acd634743caf0",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.5105469,
+              0.634375,
+              0.6546875,
+              0.825
+            ],
+            "confidence": 0.49609375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9414187
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.1607196346750919,
+          -0.949613892189764,
+          -0.26907741412112685
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.4471749272197485,
+          0.5037174336612225,
+          0.4779909048229456,
+          0.5979967005550861
+        ],
+        "detector_score": 0.27609020471572876,
+        "view_id": "p00_y02",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7332474032118064,
+          0.5017651019792629,
+          0.7429988069249055,
+          0.5464129672522611
+        ],
+        "track_id": "short-000012",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-37109434979b411489e0f52d7d7fb1bb",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4471749,
+              0.5037174,
+              0.4779909,
+              0.5979967
+            ],
+            "confidence": 0.27609020471572876,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4374083,
+              0.5038147,
+              0.4791334,
+              0.6143158
+            ],
+            "confidence": 0.3648260533809662,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-742d5219211e4479a4f5d0f0c29a0882",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4374083,
+              0.5038147,
+              0.4791334,
+              0.6143158
+            ],
+            "confidence": 0.3648260533809662,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6290677
+          }
+        ],
+        "centroid_map": [
+          0.3787987232208252,
+          -6.1415486335754395,
+          0.18347406387329102
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.05938551000884936,
+          -0.9956986425553865,
+          -0.07111662544264545
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 9,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.5372936949133873,
+          0.5029206685721874,
+          0.5734858289361,
+          0.6184047050774097
+        ],
+        "detector_score": 0.40541428327560425,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7618490111693857,
+          0.5013796863256677,
+          0.7732249932185365,
+          0.5557988152940028
+        ],
+        "track_id": "short-000013",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9b0cc44798f14effb446cc3bb7b56542",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.5372937,
+              0.5029207,
+              0.5734858,
+              0.6184047
+            ],
+            "confidence": 0.40541428327560425,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.689149022102356,
+          -6.244759559631348,
+          0.49964189529418945
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.09656591376562358,
+          -0.9918303847848001,
+          -0.08335173733189744
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 7,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.4181263670325279,
+          0.5109988935291767,
+          0.48902175575494766,
+          0.6276195757091045
+        ],
+        "detector_score": 0.21844327449798584,
+        "view_id": "p00_y02",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7241680638489021,
+          0.505182106079737,
+          0.7465060777103206,
+          0.5601913329905529
+        ],
+        "track_id": "short-000014",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-5d42200fab2f4f46a29d8d9fcfbaa7db",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.4181264,
+              0.5109989,
+              0.4890218,
+              0.6276196
+            ],
+            "confidence": 0.21844327449798584,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          0.5967119336128235,
+          -5.752084970474243,
+          0.48774348199367523
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.09872717871404892,
+          -0.9909736781932934,
+          -0.09068689713083825
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 16,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.026124469935894012,
+          0.6584381610155106,
+          0.2341097667813301,
+          0.8560609072446823
+        ],
+        "detector_score": 0.5555997490882874,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7542683500182823,
+          0.5543717943298145,
+          0.7972134087262226,
+          0.6402595960098738
+        ],
+        "track_id": "short-000000",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-ab756a5b6f00435292956d7a12d941e1",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0261245,
+              0.6584382,
+              0.2341098,
+              0.8560609
+            ],
+            "confidence": 0.5555997490882874,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-f90f33e2bc5e489e9d169e49f631bce8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0237305,
+              0.6604167,
+              0.2361328,
+              0.8572917
+            ],
+            "confidence": 0.6318359375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-f90f33e2bc5e489e9d169e49f631bce8",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0237305,
+              0.6604167,
+              0.2361328,
+              0.8572917
+            ],
+            "confidence": 0.6318359375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9636005
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.16906335083613128,
+          -0.9520824958785951,
+          -0.25486565960451457
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          4.63239848613739e-05,
+          0.5088379606604576,
+          0.06071237102150917,
+          0.6944522634148598
+        ],
+        "detector_score": 0.570260763168335,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7500073730327174,
+          0.5029839108885275,
+          0.7602729459577469,
+          0.5686633804263003
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-4f41b0a2b78a42238f5c03ec9eb5f00e",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              4.63e-05,
+              0.508838,
+              0.0607124,
+              0.6944523
+            ],
+            "confidence": 0.570260763168335,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              1.22e-05,
+              0.5072917,
+              0.0633789,
+              0.7145833
+            ],
+            "confidence": 0.537109375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9346ad6115f9400c8ef1fa7e550bc68b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              1.22e-05,
+              0.5072917,
+              0.0633789,
+              0.7145833
+            ],
+            "confidence": 0.537109375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8572633
+          }
+        ],
+        "centroid_map": [
+          -0.22534123063087463,
+          -5.732638359069824,
+          0.4262952506542206
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.03428514173829528,
+          -0.9957225267364678,
+          -0.0857973123444399
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 13,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.14548815786838531,
+          0.5041313990950584,
+          0.19445939362049103,
+          0.6530818119645119
+        ],
+        "detector_score": 0.4587952196598053,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7768401559938936,
+          0.5016091502090771,
+          0.7876991157102535,
+          0.5615879813856933
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f888eb42d6914d968155ed1b3978c5ce",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.1454882,
+              0.5041314,
+              0.1944594,
+              0.6530818
+            ],
+            "confidence": 0.4587952196598053,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -1.454968273639679,
+          -6.5327019691467285,
+          0.49820476770401
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.21144017548918068,
+          -0.972706844834908,
+          -0.09557429675609934
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 8,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          5.304906517267227e-05,
+          0.4722904171794653,
+          0.025015088729560375,
+          0.512743154540658
+        ],
+        "detector_score": 0.5457354784011841,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7500084434688589,
+          0.490410760251507,
+          0.7540825265384992,
+          0.5044109765353423
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-2653f3b25a9e42868ad4ce2acba5cd89",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              5.3e-05,
+              0.4722904,
+              0.0250151,
+              0.5127432
+            ],
+            "confidence": 0.5457354784011841,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9e5390c707564d939769a9706731f3f1",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              3.66e-05,
+              0.471875,
+              0.0263184,
+              0.515625
+            ],
+            "confidence": 0.1895751953125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9e5390c707564d939769a9706731f3f1",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              3.66e-05,
+              0.471875,
+              0.0263184,
+              0.515625
+            ],
+            "confidence": 0.1895751953125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8782049
+          }
+        ],
+        "centroid_map": [
+          -0.08463975787162781,
+          -6.529697895050049,
+          0.8741896748542786
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.013976920354877003,
+          -0.9998993058208521,
+          0.0024543667964603264
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.07601109147071838,
+          0.5091362744569778,
+          0.15619498491287231,
+          0.6666946858167648
+        ],
+        "detector_score": 0.4776155352592468,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7630633187877618,
+          0.5033269661758779,
+          0.7791311009785568,
+          0.5646777684919922
+        ],
+        "track_id": "short-000004",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-76f6bdea91134a9b8ff17af76722a592",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0760111,
+              0.5091363,
+              0.156195,
+              0.6666947
+            ],
+            "confidence": 0.4776155352592468,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0896306,
+              0.5105969,
+              0.1555511,
+              0.6667507
+            ],
+            "confidence": 0.2859920263290405,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b53a06beb42147f2bf286aaece34a29a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0896306,
+              0.5105969,
+              0.1555511,
+              0.6667507
+            ],
+            "confidence": 0.2859920263290405,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8142573
+          },
+          {
+            "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0797363,
+              0.5098958,
+              0.1592773,
+              0.6729167
+            ],
+            "confidence": 0.46875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-000a6244dac54a9e9323ae6bc8d3f142",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0797363,
+              0.5098958,
+              0.1592773,
+              0.6729167
+            ],
+            "confidence": 0.46875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8807488
+          }
+        ],
+        "centroid_map": [
+          -0.6913937926292419,
+          -5.739351511001587,
+          0.48152483999729156
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.13249883528603887,
+          -0.987025807837173,
+          -0.09068689713083825
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 18,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.009425103664398193,
+          0.7535964325070381,
+          0.2018377035856247,
+          0.998817078769207
+        ],
+        "detector_score": 0.4133357107639313,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7515142788074407,
+          0.5843948323691472,
+          0.7894203797783066,
+          0.6818129748641582
+        ],
+        "track_id": "short-000005",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-2232c66f79924cabb1ab7d10c40426ba",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0094251,
+              0.7535964,
+              0.2018377,
+              0.9988171
+            ],
+            "confidence": 0.4133357107639313,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-f999a493591e468fb7e5e86b0c864626",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0076172,
+              0.75625,
+              0.2046875,
+              1.0
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-f999a493591e468fb7e5e86b0c864626",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0076172,
+              0.75625,
+              0.2046875,
+              1.0
+            ],
+            "confidence": 0.394287109375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.961408
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.12171464058528861,
+          -0.9259076047604466,
+          -0.3576040459977579
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.3289486989378929,
+          0.502895837649703,
+          0.3594588413834572,
+          0.5644565764814615
+        ],
+        "detector_score": 0.35810601711273193,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8225390253388113,
+          0.5013082173909391,
+          0.8313896272600207,
+          0.5295424800984959
+        ],
+        "track_id": "short-000006",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6e0f0c22a03c4194a4dcab43be06a02d",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.3289487,
+              0.5028958,
+              0.3594588,
+              0.5644566
+            ],
+            "confidence": 0.35810601711273193,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.45761715593814384,
+          -0.8885768622377739,
+          -0.03190138690961079
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 2,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.09137475490570068,
+          0.5045067444443703,
+          0.1946461796760559,
+          0.6585033759474754
+        ],
+        "detector_score": 0.2862884998321533,
+        "view_id": "p00_y03",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7659515877658307,
+          0.5016661556136218,
+          0.7877424132593991,
+          0.563722653041471
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f45298a26a8f4a3194bd15013992e1c9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0913748,
+              0.5045067,
+              0.1946462,
+              0.6585034
+            ],
+            "confidence": 0.2862884998321533,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.6417374312877655,
+          -4.52882194519043,
+          0.4759436994791031
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.17920412186265514,
+          -0.9776179968304076,
+          -0.11022220729388306
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 14,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.24185051210224628,
+          0.4703525733202696,
+          0.25830445997416973,
+          0.49915613420307636
+        ],
+        "detector_score": 0.25721827149391174,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7991464985947353,
+          0.4872621093283468,
+          0.8033369207959635,
+          0.4996419852583232
+        ],
+        "track_id": "short-000008",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-741d7f961bee4268899816530bb67c53",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.2418505,
+              0.4703526,
+              0.2583045,
+              0.4991561
+            ],
+            "confidence": 0.25721827149391174,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -2.6570587158203125,
+          -7.904976844787598,
+          0.9259255528450012
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.3171750826310412,
+          -0.9482113812353292,
+          0.01717973963077882
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.0,
+          0.508463516831398,
+          0.15854471176862717,
+          0.656924232840538
+        ],
+        "detector_score": 0.25329092144966125,
+        "view_id": "p00_y03",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.75,
+          0.5028573641088473,
+          0.7796400495841607,
+          0.5611121663927567
+        ],
+        "track_id": "short-000009",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-45fc82d98b8a4157bb4653988b1b0cc5",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.5084635,
+              0.1585447,
+              0.6569242
+            ],
+            "confidence": 0.25329092144966125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-5060e18b8ffd47c9a615b9062ef0453d",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0526746,
+              0.5143575,
+              0.1584011,
+              0.6515528
+            ],
+            "confidence": 0.29865601658821106,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-5060e18b8ffd47c9a615b9062ef0453d",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0526746,
+              0.5143575,
+              0.1584011,
+              0.6515528
+            ],
+            "confidence": 0.29865601658821106,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6162538
+          },
+          {
+            "proposal_id": "proposal-99a3f37391fe4e3fa0fa751d59d8934b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.5083333,
+              0.1599609,
+              0.6682292
+            ],
+            "confidence": 0.127685546875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-99a3f37391fe4e3fa0fa751d59d8934b",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.5083333,
+              0.1599609,
+              0.6682292
+            ],
+            "confidence": 0.127685546875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9202636
+          }
+        ],
+        "centroid_map": [
+          -0.43147191405296326,
+          -5.731195449829102,
+          0.5672146379947662
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.09232173339947904,
+          -0.9928236824774581,
+          -0.07601205860924298
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 18,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.20697851944714785,
+          0.5824774727225304,
+          0.22658617328852415,
+          0.6165537610650063
+        ],
+        "detector_score": 0.24397516250610352,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7906329585168295,
+          0.5338474041484117,
+          0.7953581716115447,
+          0.5484493130529234
+        ],
+        "track_id": "short-000010",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-02ad6dc76b7c49bdbee9d54cbf529adf",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.2069785,
+              0.5824775,
+              0.2265862,
+              0.6165538
+            ],
+            "confidence": 0.24397516250610352,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.2666661830550975,
+          -0.9550199784205899,
+          -0.12971502469784046
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.2925407886505127,
+          0.47870561480522156,
+          0.795393705368042,
+          0.9997664988040924
+        ],
+        "detector_score": 0.20737765729427338,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8124042705371042,
+          0.4898751787624164,
+          0.9599279421298686,
+          0.7041733505194188
+        ],
+        "track_id": "short-000011",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-296c3f574e34490ca2576ea489c20a08",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2925408,
+              0.4787056,
+              0.7953937,
+              0.9997665
+            ],
+            "confidence": 0.20737765729427338,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2888672,
+              0.4765625,
+              0.7984375,
+              1.0
+            ],
+            "confidence": 0.6669921875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9fc6a025167f4131ad1caa82771ecc3a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.2888672,
+              0.4765625,
+              0.7984375,
+              1.0
+            ],
+            "confidence": 0.6669921875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.982337
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.7030081261698061,
+          -0.617381202548705,
+          -0.3530156161966959
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair table",
+        "bbox": [
+          0.07146014273166656,
+          0.505187101662159,
+          0.1563740223646164,
+          0.653413824737072
+        ],
+        "detector_score": 0.24478481709957123,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7622244193837535,
+          0.5018804561942315,
+          0.7791698018382799,
+          0.5596592861824018
+        ],
+        "track_id": "short-000012",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b414425b7c43409cb622679173f4bc37",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair table",
+            "bbox": [
+              0.0714601,
+              0.5051871,
+              0.156374,
+              0.6534138
+            ],
+            "confidence": 0.24478481709957123,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.7528451681137085,
+          -5.737671375274658,
+          0.47783079743385315
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.1379824769956343,
+          -0.9867115369937761,
+          -0.08579731234443991
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 13,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.0718148723244667,
+          0.5032758489251137,
+          0.12668143957853317,
+          0.6526708826422691
+        ],
+        "detector_score": 0.256666898727417,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7622895378326325,
+          0.5011880031577484,
+          0.7729267109930762,
+          0.5577674595589669
+        ],
+        "track_id": "short-000013",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-392ede55b2fc4c9abfce318984196256",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0718149,
+              0.5032758,
+              0.1266814,
+              0.6526709
+            ],
+            "confidence": 0.256666898727417,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0716154,
+              0.5043781,
+              0.123652,
+              0.6507547
+            ],
+            "confidence": 0.25324323773384094,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-bc5aaa7de8e947d7820ebfaef1c932b9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0716154,
+              0.5043781,
+              0.123652,
+              0.6507547
+            ],
+            "confidence": 0.25324323773384094,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.922411
+          },
+          {
+            "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0713227,
+              0.5037453,
+              0.1223902,
+              0.6519118
+            ],
+            "confidence": 0.2374291718006134,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-6014bc55e97c4bb48c08ddc8e1a5d7e0",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0713227,
+              0.5037453,
+              0.1223902,
+              0.6519118
+            ],
+            "confidence": 0.2374291718006134,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9061472
+          }
+        ],
+        "centroid_map": [
+          -0.5974063575267792,
+          -6.146802663803101,
+          0.46761271357536316
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.09893343832105493,
+          -0.9917996011933041,
+          -0.08090566021470368
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 10,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.7959123328328133,
+          0.49451392889022827,
+          1.0,
+          0.9968660473823547
+        ],
+        "detector_score": 0.6798065304756165,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.08505025912063968,
+          0.49774582602726375,
+          0.12499999999999994,
+          0.6815317920220612
+        ],
+        "track_id": "short-000000",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-318136ae813845f5959b437b8e823c86",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.7959123,
+              0.4945139,
+              1.0,
+              0.996866
+            ],
+            "confidence": 0.6798065304756165,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.7910156,
+              0.4963542,
+              1.0,
+              0.9958333
+            ],
+            "confidence": 0.91845703125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-579b1322c1e34ff2858b952ebd89e5bc",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.7910156,
+              0.4963542,
+              1.0,
+              0.9958333
+            ],
+            "confidence": 0.91845703125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9711142
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.7564554118383554,
+          0.6100482348089354,
+          -0.23583121317367273
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair table",
+        "bbox": [
+          0.0,
+          0.4761908948421478,
+          0.37216027081012726,
+          0.999223381280899
+        ],
+        "detector_score": 0.30132612586021423,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.875,
+          0.4889906773348006,
+          0.9601608357773729,
+          0.6997820419001601
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-81987d1682354f47ab6e3a19bec2b881",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair table",
+            "bbox": [
+              0.0,
+              0.4761909,
+              0.3721603,
+              0.9992234
+            ],
+            "confidence": 0.30132612586021423,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.8158523865225799,
+          -0.49023580387774945,
+          -0.306681822092128
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.0,
+          0.4734375,
+          0.3748046875,
+          1.0
+        ],
+        "detector_score": 0.74755859375,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.875,
+          0.4877032653723129,
+          0.9609519273447507,
+          0.7002077022353606
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-0a56ec1a0c0041179dac26b8465eefa4",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4734375,
+              0.3748047,
+              1.0
+            ],
+            "confidence": 0.74755859375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.8158757612796864,
+          -0.4901969014126309,
+          -0.3066818220921281
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259655.0663338,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      }
+    ],
+    "provenance": [
+      "state_estimation",
+      "registered_scan",
+      "coverage_version:2"
+    ]
+  },
+  {
+    "viewpoint_id": "vp-000001",
+    "episode_id": "35fc94fce9ab4134b32a7e11e8634a62",
+    "pose_map": [
+      0.9348313212394714,
+      -0.28607940673828125,
+      -0.45975399017333984
+    ],
+    "pose_covariance_6x6": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "localization_trusted": true,
+    "source_stamp_s": 1785259707.696272,
+    "coverage_cell_count": 131,
+    "visible_object_ids": [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "panorama_ref": null,
+    "panorama_embedding": null,
+    "lidar_signature": null,
+    "coverage_gain": 131.0,
+    "visit_count": 1,
+    "last_visit_time": 1785259707.696272,
+    "novelty_score": 1.0,
+    "provisional_observations": [
+      {
+        "label": "vase",
+        "bbox": [
+          0.0,
+          0.003125,
+          0.046826171875,
+          0.2734375
+        ],
+        "detector_score": 0.78662109375,
+        "view_id": "p00_y01",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.5,
+          0.33939313248877573,
+          0.5078124574270317,
+          0.4249316665285098
+        ],
+        "track_id": "short-000006",
+        "centroid_map": [
+          2.3206813464054443,
+          -1.0334880996324705,
+          1.4334392992092364
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.8074171555579484,
+          -0.43748414886737874,
+          0.3958347589594642
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 16,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.6625,
+          0.5041666666666667,
+          0.9046875,
+          0.66875
+        ],
+        "detector_score": 0.72509765625,
+        "view_id": "p00_y01",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.675011560016426,
+          0.5015463799048849,
+          0.7332940081501368,
+          0.5751961204794859
+        ],
+        "track_id": "short-000007",
+        "centroid_map": [
+          -9.963802254042697e-05,
+          -6.368728099724297,
+          0.37836339036529554
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.1525332873021369,
+          -0.9834613630903639,
+          -0.09765932404664271
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 297,
+        "fusion_quality": 0.009054306579903675
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.94921875,
+          0.6645833333333333,
+          1.0,
+          0.9916666666666667
+        ],
+        "detector_score": 0.57177734375,
+        "view_id": "p00_y01",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7414936469849999,
+          0.5550120617881731,
+          0.75,
+          0.6597189611906894
+        ],
+        "track_id": "short-000009",
+        "centroid_map": [
+          -0.2342046521230874,
+          -2.8308626233500784,
+          0.2704012225504614
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.392672545622599,
+          -0.8693621601996835,
+          -0.30002950909403536
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 15,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.90703125,
+          0.6578125,
+          1.0,
+          0.91875
+        ],
+        "detector_score": 0.501953125,
+        "view_id": "p00_y01",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7337437308452622,
+          0.5527910377474599,
+          0.75,
+          0.6442878843673868
+        ],
+        "track_id": "short-000011",
+        "centroid_map": [
+          -0.27175279328905666,
+          -3.443340948469757,
+          0.016281823645513782
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.38308480646113546,
+          -0.8872486846086767,
+          -0.25697432307296253
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 7,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.24753284454345703,
+          0.5015061944723129,
+          0.4419158101081848,
+          0.6614229828119278
+        ],
+        "detector_score": 0.5123252868652344,
+        "view_id": "p00_y02",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.6755811760022123,
+          0.5006419587715978,
+          0.7315937303532427,
+          0.5751318851659952
+        ],
+        "track_id": "short-000016",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-9b795f7384604a08b36c9326b87a253a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.2475328,
+              0.5015062,
+              0.4419158,
+              0.661423
+            ],
+            "confidence": 0.5123252868652344,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-72484f2f757745ada31e22d4b3f1a42d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.2457031,
+              0.5020833,
+              0.4546875,
+              0.66875
+            ],
+            "confidence": 0.68408203125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-72484f2f757745ada31e22d4b3f1a42d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.2457031,
+              0.5020833,
+              0.4546875,
+              0.66875
+            ],
+            "confidence": 0.68408203125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.8863861
+          }
+        ],
+        "centroid_map": [
+          -0.27159946151066106,
+          -5.908329464174466,
+          0.3830931145886832
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.16636685736508464,
+          -0.9839900769688227,
+          -0.06391867643620386
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 76,
+        "fusion_quality": 0.0011117096848397207
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.4753503054380417,
+          0.6857294216752052,
+          0.5971216708421707,
+          0.8759779557585716
+        ],
+        "detector_score": 0.4283803701400757,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7421601058556596,
+          0.5849743958739635,
+          0.7805345496308316,
+          0.6632878597266522
+        ],
+        "track_id": "short-000019",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-e090ce6415a64470bbc254c7cf6766b9",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.4753503,
+              0.6857294,
+              0.5971217,
+              0.875978
+            ],
+            "confidence": 0.4283803701400757,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1259352b66f84d469394295a3c8d098a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4761719,
+              0.6875,
+              0.5984375,
+              0.8802083
+            ],
+            "confidence": 0.441650390625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1259352b66f84d469394295a3c8d098a",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4761719,
+              0.6875,
+              0.5984375,
+              0.8802083
+            ],
+            "confidence": 0.441650390625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9525453
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.4634273811808393,
+          -0.8142141431798265,
+          -0.3497004309660058
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.4495979994535446,
+          0.6122832298278809,
+          0.5845561772584915,
+          0.7925337553024292
+        ],
+        "detector_score": 0.4970132112503052,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_cluster_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7340105575859308,
+          0.55238269039797,
+          0.7766628007214698,
+          0.6315533876913115
+        ],
+        "track_id": "short-000022",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-5a9bc9ab80e04cc882679c81abf7652a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.449598,
+              0.6122832,
+              0.5845562,
+              0.7925338
+            ],
+            "confidence": 0.4970132112503052,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-0650a40e8c71478b965fef28044c43e6",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4480469,
+              0.6145833,
+              0.5871094,
+              0.8041667
+            ],
+            "confidence": 0.453369140625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-0650a40e8c71478b965fef28044c43e6",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.4480469,
+              0.6145833,
+              0.5871094,
+              0.8041667
+            ],
+            "confidence": 0.453369140625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9003355
+          }
+        ],
+        "centroid_map": [
+          -0.1756795571091414,
+          -2.568223281369646,
+          0.27215346246567024
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.4519805942492236,
+          -0.8589423364944685,
+          -0.24068985229864226
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 13,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.3362806383520365,
+          0.4760742448270321,
+          0.3529284652322531,
+          0.5082682110369205
+        ],
+        "detector_score": 0.3323976397514343,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.6996376373173322,
+          0.48904489287510045,
+          0.7044697751276675,
+          0.5037871591391818
+        ],
+        "track_id": "short-000023",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-0d29f0c94ead4b8ba1d07ec03cdba604",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.3362806,
+              0.4760742,
+              0.3529285,
+              0.5082682
+            ],
+            "confidence": 0.3323976397514343,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.1197165306163801,
+          -6.528895157121932,
+          0.9352264961750626
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.15866129506698196,
+          -0.9873330464663572,
+          0.00022091430526084008
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 14,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.37461151741445065,
+          0.4974551349878311,
+          0.41075257398188114,
+          0.6246785968542099
+        ],
+        "detector_score": 0.40856799483299255,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_cluster_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7108940722483579,
+          0.4988038280405574,
+          0.7218877231355092,
+          0.5579544133802421
+        ],
+        "track_id": "short-000025",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6f26e2ea4e4d4e77852ce0ae564db91f",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.3746115,
+              0.4974551,
+              0.4107526,
+              0.6246786
+            ],
+            "confidence": 0.40856799483299255,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.8183141131664844,
+          -7.366066562229532,
+          0.4506039530350433
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.24453439756764184,
+          -0.9676473926564134,
+          -0.06214058167957276
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 16,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.48861133167520165,
+          0.45969378389418125,
+          0.5019515841268003,
+          0.4859061297029257
+        ],
+        "detector_score": 0.2459929883480072,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7463755010002837,
+          0.480778742871775,
+          0.7506212053666623,
+          0.49327341903002325
+        ],
+        "track_id": "short-000026",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-7ff5c12e9f65496fa7447a0724fcae91",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.4886113,
+              0.4596938,
+              0.5019516,
+              0.4859061
+            ],
+            "confidence": 0.2459929883480072,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -2.657058736732705,
+          -7.573601579944589,
+          1.0273851214906924
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.43713261977502355,
+          -0.8990940760313109,
+          0.023343418216451316
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.03164804168045521,
+          0.5954272449016571,
+          0.0552507471293211,
+          0.6396555006504059
+        ],
+        "detector_score": 0.22417667508125305,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.6301997106995196,
+          0.5331330365195228,
+          0.6342970966699598,
+          0.5494216157008648
+        ],
+        "track_id": "short-000028",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-0ba0fba1837947f890352810d4d39ee6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.031648,
+              0.5954272,
+              0.0552507,
+              0.6396555
+            ],
+            "confidence": 0.22417667508125305,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.6063374748769972,
+          -2.585855725616059,
+          0.5480926072034771
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.28068259922119443,
+          -0.9528874905069892,
+          -0.11499003839345001
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 9,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.44981899112463,
+          0.6126851998269558,
+          0.5840821042656898,
+          0.7119628228247166
+        ],
+        "detector_score": 0.2041347622871399,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7340801968818109,
+          0.5525748589301246,
+          0.7765160714262169,
+          0.5979347934442522
+        ],
+        "track_id": "short-000029",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-cda7ba749c964956a229a6e434716bb2",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.449819,
+              0.6126852,
+              0.5840821,
+              0.7119628
+            ],
+            "confidence": 0.2041347622871399,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.3137667088061409,
+          -2.834820518954876,
+          0.26931673829096153
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.45464682544114354,
+          -0.8575031263775116,
+          -0.24080002568331194
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 15,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          1.547485589981079e-05,
+          0.5566217266023159,
+          0.03299465402960777,
+          0.6306873001158237
+        ],
+        "detector_score": 0.20488519966602325,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_cluster_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.6250024629379235,
+          0.5190939104757838,
+          0.6304283317876554,
+          0.5452932229494077
+        ],
+        "track_id": "short-000030",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-fa332cae943c468ea27ab0d6276d9736",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              1.55e-05,
+              0.5566217,
+              0.0329947,
+              0.6306873
+            ],
+            "confidence": 0.20488519966602325,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8183703181285515,
+          -3.1970924737751267,
+          0.5610002948734472
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.30472375125891554,
+          -0.9482097185549409,
+          -0.0896758889370744
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.0743945874273777,
+          0.6069034785032272,
+          0.12765222415328026,
+          0.7410250455141068
+        ],
+        "detector_score": 0.2541184723377228,
+        "view_id": "p00_y02",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.6377644767310335,
+          0.538676699922663,
+          0.6481253014320518,
+          0.5898355426418924
+        ],
+        "track_id": "short-000032",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-02978aef215e42b8b3e008cd8508ef18",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.0743946,
+              0.6069035,
+              0.1276522,
+              0.741025
+            ],
+            "confidence": 0.2541184723377228,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.6903298269030755,
+          -3.8611144963129824,
+          0.23363023112391304
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.20882724907863268,
+          -0.9592337601154971,
+          -0.19042524385421117
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 72,
+        "fusion_quality": 0.08549714190472403
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.0,
+          0.733961746096611,
+          0.16179928183555603,
+          0.9938947707414627
+        ],
+        "detector_score": 0.39684417843818665,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.75,
+          0.5774258270325646,
+          0.7803486750772959,
+          0.6751957392668972
+        ],
+        "track_id": "short-000014",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-6df45439a7d34a9380eb3114c256faf4",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.7339617,
+              0.1617993,
+              0.9938948
+            ],
+            "confidence": 0.39684417843818665,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d124e61749a642819744ae1b533af584",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6488876,
+              0.1595325,
+              0.9933266
+            ],
+            "confidence": 0.2772338092327118,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d124e61749a642819744ae1b533af584",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6488876,
+              0.1595325,
+              0.9933266
+            ],
+            "confidence": 0.2772338092327118,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.7438041
+          },
+          {
+            "proposal_id": "proposal-c70d46190a6c471fbcc81fa955df49fd",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              7.65e-05,
+              0.6482084,
+              0.1442167,
+              0.9801678
+            ],
+            "confidence": 0.2203626185655594,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-c70d46190a6c471fbcc81fa955df49fd",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              7.65e-05,
+              0.6482084,
+              0.1442167,
+              0.9801678
+            ],
+            "confidence": 0.2203626185655594,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6521468
+          },
+          {
+            "proposal_id": "proposal-15928293c3d043b6bb42aa1f278a8942",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.7375,
+              0.1638672,
+              0.9979167
+            ],
+            "confidence": 0.414794921875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-15928293c3d043b6bb42aa1f278a8942",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.7375,
+              0.1638672,
+              0.9979167
+            ],
+            "confidence": 0.414794921875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9592625
+          },
+          {
+            "proposal_id": "proposal-06e3a26779c44182b5a28402b9d5b365",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6432292,
+              0.1506836,
+              0.9895833
+            ],
+            "confidence": 0.27978515625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-06e3a26779c44182b5a28402b9d5b365",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6432292,
+              0.1506836,
+              0.9895833
+            ],
+            "confidence": 0.27978515625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6911672
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.4797730148825039,
+          -0.8064011667567704,
+          -0.34573835836347705
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.0,
+          0.6489001139998436,
+          0.1440703570842743,
+          0.7917824164032936
+        ],
+        "detector_score": 0.3536163568496704,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.75,
+          0.5498596288768454,
+          0.7765402344507844,
+          0.6090228920095803
+        ],
+        "track_id": "short-000016",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-92980d68f18b413f8e63b66ac6e67835",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6489001,
+              0.1440704,
+              0.7917824
+            ],
+            "confidence": 0.3536163568496704,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-5d604f2591eb4396a75b6b809767549e",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6483869,
+              0.1449083,
+              0.8741888
+            ],
+            "confidence": 0.2458622008562088,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-5d604f2591eb4396a75b6b809767549e",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6483869,
+              0.1449083,
+              0.8741888
+            ],
+            "confidence": 0.2458622008562088,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.6291183
+          },
+          {
+            "proposal_id": "proposal-20843efcab974f65941fbb0660276836",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6427083,
+              0.1463867,
+              0.8354167
+            ],
+            "confidence": 0.1510009765625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-20843efcab974f65941fbb0660276836",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6427083,
+              0.1463867,
+              0.8354167
+            ],
+            "confidence": 0.1510009765625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.729711
+          }
+        ],
+        "centroid_map": [
+          -0.2762291986640266,
+          -2.558501499561917,
+          0.2709379975911643
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.49344087852749513,
+          -0.8353169591325283,
+          -0.24240807986451218
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 8,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.296780064702034,
+          0.5292397141456604,
+          0.612209364771843,
+          0.9714065194129944
+        ],
+        "detector_score": 0.20739540457725525,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8135589293771336,
+          0.5129263728867992,
+          0.9101352222069425,
+          0.695295460001159
+        ],
+        "track_id": "short-000019",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-3c7bc7865596466ba172171a4e283b60",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.2967801,
+              0.5292397,
+              0.6122094,
+              0.9714065
+            ],
+            "confidence": 0.20739540457725525,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.8511253218072801,
+          -0.3616155332540939,
+          -0.3805520893226199
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.0,
+          0.6478587239980698,
+          0.14421575516462326,
+          0.9230188280344009
+        ],
+        "detector_score": 0.2193787395954132,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.75,
+          0.5495165341980374,
+          0.7765709550085853,
+          0.6518832493071982
+        ],
+        "track_id": "short-000020",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-45172aabeaf5487cbf48bbb819029647",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.6478587,
+              0.1442158,
+              0.9230188
+            ],
+            "confidence": 0.2193787395954132,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.2583324002366396,
+          -2.568223281369646,
+          0.27215346246567024
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.4841552316730684,
+          -0.8170000125969576,
+          -0.31321668387901797
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 9,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.49842628091573715,
+          0.46094755828380585,
+          0.654261864721775,
+          0.767220214009285
+        ],
+        "detector_score": 0.7858279943466187,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.9994990713115265,
+          0.4813752086778851,
+          0.04762843277097401,
+          0.6213461761500806
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-ee445de85d384cdf8e198015a59e2c50",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.4984263,
+              0.4609476,
+              0.6542619,
+              0.7672202
+            ],
+            "confidence": 0.7858279943466187,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.496875,
+              0.4619792,
+              0.6542969,
+              0.7729167
+            ],
+            "confidence": 0.947265625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-1ff70b822b2e4e34bc60d7938c043265",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.496875,
+              0.4619792,
+              0.6542969,
+              0.7729167
+            ],
+            "confidence": 0.947265625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9686065
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.7992185186898811,
+          0.5810573164821513,
+          -0.15369500429653984
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.7798933973535895,
+          0.05520259961485863,
+          0.8008148679509759,
+          0.1116429902613163
+        ],
+        "detector_score": 0.5633746385574341,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.08122090565777235,
+          0.33218141916514093,
+          0.08620101866421427,
+          0.3526301476169924
+        ],
+        "track_id": "short-000004",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b014b86373bc4bdeb09948a023ddc3d4",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.7798934,
+              0.0552026,
+              0.8008149,
+              0.111643
+            ],
+            "confidence": 0.5633746385574341,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -0.9671409146947498,
+          2.50406003794549,
+          2.532124045681168
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.504908564483524,
+          0.738504534045857,
+          0.446853885184966
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.0,
+          0.4282228350639343,
+          0.18256523460149765,
+          0.9993024468421936
+        ],
+        "detector_score": 0.35817277431488037,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.875,
+          0.4711465399445213,
+          0.9099716117715018,
+          0.6794710855185745
+        ],
+        "track_id": "short-000006",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-58a398c270014aedabde8003703a4ad8",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4282228,
+              0.1825652,
+              0.9993024
+            ],
+            "confidence": 0.35817277431488037,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4260417,
+              0.1861328,
+              1.0
+            ],
+            "confidence": 0.83447265625,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-91e922f5fb2a415180a0d39035cb796f",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "chair",
+            "bbox": [
+              0.0,
+              0.4260417,
+              0.1861328,
+              1.0
+            ],
+            "confidence": 0.83447265625,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9759137
+          }
+        ],
+        "centroid_map": [
+          -2.657057795242399,
+          -1.3770676741808094,
+          0.9689811581686977
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.9310944628774657,
+          -0.22045358293797448,
+          -0.2906257369345212
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.0,
+          0.42955437302589417,
+          0.18243595957756042,
+          0.9989970624446869
+        ],
+        "detector_score": 0.31804680824279785,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.875,
+          0.47168224955480575,
+          0.9099422867789634,
+          0.6793663122850931
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f2f20bcb1fab4675b5ecf7521edb51c6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.0,
+              0.4295544,
+              0.182436,
+              0.9989971
+            ],
+            "confidence": 0.31804680824279785,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -2.657057795242399,
+          -1.3770676741808094,
+          0.9689811581686977
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          -0.9310921845325073,
+          -0.2204633749560031,
+          -0.29062560830988743
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 3,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "vase",
+        "bbox": [
+          0.9156214706599712,
+          0.00012971460819244385,
+          1.0,
+          0.26752443611621857
+        ],
+        "detector_score": 0.6849158406257629,
+        "view_id": "p00_y07",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.4853744835376444,
+          0.3335103943901601,
+          0.49999999999999994,
+          0.4230470032812953
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-066f1b4c835a44b383e908c39c320f9f",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "vase",
+            "bbox": [
+              0.9156215,
+              0.0001297,
+              1.0,
+              0.2675244
+            ],
+            "confidence": 0.6849158406257629,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-a3e4cd36027c48bab5ffc752ebb0d86d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.9132813,
+              0.0018229,
+              1.0,
+              0.2729167
+            ],
+            "confidence": 0.84375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-a3e4cd36027c48bab5ffc752ebb0d86d",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "vase",
+            "bbox": [
+              0.9132813,
+              0.0018229,
+              1.0,
+              0.2729167
+            ],
+            "confidence": 0.84375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9478992
+          }
+        ],
+        "centroid_map": [
+          2.232993632151047,
+          -0.8858827441525514,
+          1.3812068681367418
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.8418109380226779,
+          -0.38474462231284273,
+          0.3785840992787827
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 15,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "table",
+        "bbox": [
+          0.7013011574745178,
+          0.675992526113987,
+          0.9999983906745911,
+          0.7852334603667259
+        ],
+        "detector_score": 0.2519474923610687,
+        "view_id": "p00_y07",
+        "reason_code": "degenerate_3d_extent",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.43591619430515893,
+          0.5587423801866079,
+          0.49999974386749385,
+          0.6202651172928411
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-a092c218eaff4e988882d9a773ab4b62",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "table",
+            "bbox": [
+              0.7013012,
+              0.6759925,
+              0.9999984,
+              0.7852335
+            ],
+            "confidence": 0.2519474923610687,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          2.1870656040818233,
+          -0.6328523000358734,
+          0.538626791527965
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.9390573819407926,
+          -0.24971803229813128,
+          -0.23624592645727022
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 42,
+        "fusion_quality": 0.8372169806214333
+      },
+      {
+        "label": "chair",
+        "bbox": [
+          0.7007647156715393,
+          0.0006599128246307373,
+          0.999860942363739,
+          0.7822203934192657
+        ],
+        "detector_score": 0.20029932260513306,
+        "view_id": "p00_y07",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "chair",
+          "table",
+          "vase"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.43576920192449453,
+          0.3066552561361764,
+          0.4999778652119457,
+          0.6191507592679859
+        ],
+        "track_id": "short-000009",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b2808bcaa1a24b69ac9dcd69106409fd",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "chair",
+            "bbox": [
+              0.7007647,
+              0.0006599,
+              0.9998609,
+              0.7822204
+            ],
+            "confidence": 0.20029932260513306,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          2.225369944994494,
+          -0.651983888479672,
+          0.9381740936122014
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785259707.696272,
+        "probe_ray_origin_map": [
+          0.9348313212394714,
+          -0.28607940673828125,
+          0.7494612336158752
+        ],
+        "probe_ray_direction_map": [
+          0.9500583695010069,
+          -0.25978144991876656,
+          0.17292395097033791
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 281,
+        "fusion_quality": 0.6855584474182329
+      }
+    ],
+    "provenance": [
+      "state_estimation",
+      "registered_scan",
+      "coverage_version:3"
+    ]
+  }
+]

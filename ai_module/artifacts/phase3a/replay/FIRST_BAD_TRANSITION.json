@@ -1,0 +1,54 @@
+{
+  "after_state": {
+    "acquisition_id": "20260822T223845_284666Z",
+    "anchor_candidate_count": 3,
+    "count_lower_bound": 3,
+    "count_upper_bound": null,
+    "entity_count": 12,
+    "new_births": [
+      15
+    ]
+  },
+  "before_state": {
+    "acquisition_id": "20260822T223751_198474Z",
+    "anchor_candidate_count": 3,
+    "count_lower_bound": 4,
+    "count_upper_bound": null,
+    "entity_count": 11
+  },
+  "downstream_consequence": "ANCHOR_RESOLUTION pollution; count lower bound regressed after previously reaching four.",
+  "first_bad_acquisition": "20260822T223845_284666Z",
+  "first_bad_acquisition_index": 6,
+  "first_bad_observation_ids": [
+    "20260822T223845_284666Z:20260822T223845_284666Z__pitch_+000.0_yaw_0092.4:yolo_det_10000086",
+    "20260822T223845_284666Z:20260822T223845_284666Z__pitch_+000.0_yaw_0092.4:qwen_det_000003"
+  ],
+  "responsible_owner": "SAME_ACQUISITION_DUPLICATION",
+  "same_acquisition_duplicate_evidence": {
+    "acquisition_object_ids": [
+      "20260822T223845_284666Z:20260822T223845_284666Z__pitch_+000.0_yaw_0092.4:yolo_det_10000086",
+      "20260822T223845_284666Z:20260822T223845_284666Z__pitch_+000.0_yaw_0092.4:qwen_det_000003"
+    ],
+    "class_name": "bed",
+    "containment_iom": 0.9994569939183319,
+    "first_area_px": 20186,
+    "intersection_px": 18406,
+    "iou": 0.9113685878391761,
+    "panorama_mask_paths": [
+      "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8/live_robot/20260822T223845_284666Z/05_lidar_geometry/yolo_det_10000086.panorama_mask.png",
+      "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8/live_robot/20260822T223845_284666Z/05_lidar_geometry/qwen_det_000003.panorama_mask.png"
+    ],
+    "representative_detection_ids": [
+      [
+        "yolo_det_10000086"
+      ],
+      [
+        "qwen_det_000003"
+      ]
+    ],
+    "second_area_px": 18416
+  },
+  "schema_version": "phase3a_first_bad_transition_v1",
+  "source_session": "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8",
+  "why_this_transition_is_wrong": "Two same-class acquisition objects retained separate identities despite direct original-panorama support containment above 0.90. The escaped fragment was born as an additional anchor candidate, making an already-supported target relation UNKNOWN and reducing the recoverable count lower bound."
+}

@@ -1,0 +1,271 @@
+{
+  "checks": {
+    "a6_escaped_fragment_fused": true,
+    "later_unmatched_not_automatically_definite": true,
+    "order_independent_rematerialization": true,
+    "qwen_unavailable_identity_noop": "covered_by_I6",
+    "relation_recompute_identity_noop": "covered_by_I7",
+    "same_view_distinctness_materialized": true
+  },
+  "later_unmatched_definite_violations": [],
+  "model_calls": 0,
+  "question": "How many pillows are on the bed?",
+  "recorded_acquisition_count": 11,
+  "relifted_acquisition_count": 10,
+  "rows": [
+    {
+      "acquisition_id": "20260822T223339_975804Z",
+      "acquisition_index": 0,
+      "acquisition_object_count": 10,
+      "bed_entity_count": 4,
+      "cannot_link_count": 12,
+      "duplicate_risk_orphan_ids": [],
+      "entity_count": 10,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 6,
+      "provisional_singleton_ids": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "query_observation_ledger_size": 10,
+      "raw_proposal_count": 21,
+      "supported_pillow_count": 2
+    },
+    {
+      "acquisition_id": "20260822T223451_559615Z",
+      "acquisition_index": 1,
+      "acquisition_object_count": 6,
+      "bed_entity_count": 5,
+      "cannot_link_count": 12,
+      "duplicate_risk_orphan_ids": [],
+      "entity_count": 11,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 6,
+      "provisional_singleton_ids": [
+        3,
+        4,
+        10
+      ],
+      "query_observation_ledger_size": 16,
+      "raw_proposal_count": 16,
+      "supported_pillow_count": 5
+    },
+    {
+      "acquisition_id": "20260822T223547_034150Z",
+      "acquisition_index": 2,
+      "acquisition_object_count": 5,
+      "bed_entity_count": 5,
+      "cannot_link_count": 14,
+      "duplicate_risk_orphan_ids": [],
+      "entity_count": 11,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 6,
+      "provisional_singleton_ids": [
+        3,
+        10
+      ],
+      "query_observation_ledger_size": 21,
+      "raw_proposal_count": 6,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T223631_241566Z",
+      "acquisition_index": 3,
+      "acquisition_object_count": 7,
+      "bed_entity_count": 5,
+      "cannot_link_count": 14,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 12,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 7,
+      "provisional_singleton_ids": [
+        3,
+        10
+      ],
+      "query_observation_ledger_size": 28,
+      "raw_proposal_count": 12,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T223711_305700Z",
+      "acquisition_index": 4,
+      "acquisition_object_count": 6,
+      "bed_entity_count": 5,
+      "cannot_link_count": 14,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 12,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 7,
+      "provisional_singleton_ids": [
+        3,
+        10
+      ],
+      "query_observation_ledger_size": 34,
+      "raw_proposal_count": 11,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T223751_198474Z",
+      "acquisition_index": 5,
+      "acquisition_object_count": 7,
+      "bed_entity_count": 5,
+      "cannot_link_count": 14,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 13,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 8,
+      "provisional_singleton_ids": [
+        10,
+        12
+      ],
+      "query_observation_ledger_size": 41,
+      "raw_proposal_count": 14,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T223845_284666Z",
+      "acquisition_index": 6,
+      "acquisition_object_count": 5,
+      "bed_entity_count": 6,
+      "cannot_link_count": 15,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 14,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 8,
+      "provisional_singleton_ids": [
+        10,
+        12,
+        13
+      ],
+      "query_observation_ledger_size": 46,
+      "raw_proposal_count": 18,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T223936_999624Z",
+      "acquisition_index": 7,
+      "acquisition_object_count": 5,
+      "bed_entity_count": 6,
+      "cannot_link_count": 15,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 14,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 8,
+      "provisional_singleton_ids": [
+        10,
+        12,
+        13
+      ],
+      "query_observation_ledger_size": 51,
+      "raw_proposal_count": 8,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T224034_548720Z",
+      "acquisition_index": 9,
+      "acquisition_object_count": 7,
+      "bed_entity_count": 6,
+      "cannot_link_count": 15,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 15,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 9,
+      "provisional_singleton_ids": [
+        10,
+        12,
+        13,
+        14
+      ],
+      "query_observation_ledger_size": 58,
+      "raw_proposal_count": 17,
+      "supported_pillow_count": 6
+    },
+    {
+      "acquisition_id": "20260822T224137_785287Z",
+      "acquisition_index": 10,
+      "acquisition_object_count": 8,
+      "bed_entity_count": 6,
+      "cannot_link_count": 15,
+      "duplicate_risk_orphan_ids": [
+        11
+      ],
+      "entity_count": 16,
+      "identity_change_reasons": [
+        "new_space_singleton",
+        "duplicate_risk_orphan",
+        "independent_observation_support"
+      ],
+      "pillow_entity_count": 10,
+      "provisional_singleton_ids": [
+        10,
+        12,
+        13,
+        15
+      ],
+      "query_observation_ledger_size": 66,
+      "raw_proposal_count": 20,
+      "supported_pillow_count": 7
+    }
+  ],
+  "schema_version": "phase3a_cutover_recorded_replay_v1",
+  "skipped_acquisitions": [
+    {
+      "acquisition_id": "20260822T224014_244951Z",
+      "reason": "no_recorded_geometry_input"
+    }
+  ],
+  "source_session": "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8",
+  "status": "PASS"
+}

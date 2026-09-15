@@ -1,0 +1,37 @@
+{
+  "action": "SAFE_REJECT",
+  "task_type": "object_reference",
+  "confidence": 0.0,
+  "numerical_answer": null,
+  "count_belief": null,
+  "selected_object_id": null,
+  "waypoint_count": 0,
+  "support_score": 0.0,
+  "risk_score": 1.0,
+  "expected_information_gain": 0.0,
+  "evidence_ids": [],
+  "failed_guards": [
+    "object_reference_not_unique",
+    "typed_probe_has_no_reachable_goal"
+  ],
+  "reason_code": "query_unresolved_without_probe_goal",
+  "commit_tier": "",
+  "stop_reason": "query_unresolved_without_probe_goal",
+  "answer_source": "QUERY_PLAN_ROOT",
+  "navigation_outcome": "",
+  "repeat_agreement": false,
+  "publish_intent": false,
+  "decision_provenance": {
+    "source_plan_node": "task:179e365e8c05994e731aa413:binding",
+    "typed_probe_request": {},
+    "scene_version": 4,
+    "evidence_ids": []
+  },
+  "created_monotonic_s": 329739.348515873,
+  "memory_version": 4,
+  "route_execution": {
+    "semantic_step_indices": [],
+    "source": "canonical_task_ir",
+    "planner_routes": []
+  }
+}

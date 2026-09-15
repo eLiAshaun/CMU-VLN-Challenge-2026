@@ -1,4 +1,4 @@
 [submodule "autonomy_stack_mecanum_wheel_platform"]
 	path = autonomy_stack_mecanum_wheel_platform
-	url = git@github.com:Yuxin916/End2end-ObjectNav-Physical-Experiment.git
+	url = https://github.com/Yuxin916/End2end-ObjectNav-Physical-Experiment.git
 	branch = iros_workshop

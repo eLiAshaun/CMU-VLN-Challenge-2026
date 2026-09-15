@@ -1,0 +1,1123 @@
+{
+  "authority_path": "/home/robot/cmu_vln/VLA-3D_dataset/Unity.zip",
+  "canonical_query_entity_definition": "A stable observation cluster that may correspond to one VLA/Challenge annotation object instance.",
+  "close_pair_scale_normalized_distance_distribution": {
+    "count": 1176,
+    "max": 1.4999364328882598,
+    "mean": 0.753450600791566,
+    "median": 0.7208659618801039,
+    "min": 2.136027504031478e-08,
+    "p10": 0.25162148895538716,
+    "p90": 1.3162123800417
+  },
+  "findings": [
+    "Adjacent, coplanar, same-class annotation instances remain distinct annotation units.",
+    "Class agreement and geometric continuity are insufficient destructive-merge evidence.",
+    "Same-acquisition separated support is positive distinctness evidence.",
+    "Archive findings calibrate one class-agnostic policy and never scene-specific runtime rules."
+  ],
+  "focus_class_same_region_groups": {
+    "bedside table": [
+      {
+        "class_name": "bedside table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.8821451972713925,
+        "object_ids": [
+          "72",
+          "85"
+        ],
+        "region_id": "2",
+        "scene_name": "hotel_room_1"
+      }
+    ],
+    "cabinet": [
+      {
+        "class_name": "cabinet",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.9950000678793984,
+        "object_ids": [
+          "132",
+          "155",
+          "160",
+          "56"
+        ],
+        "region_id": "0",
+        "scene_name": "office_2"
+      }
+    ],
+    "ceiling lamp": [
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 4.373019140254135,
+        "object_ids": [
+          "41",
+          "62"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      },
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 4.473063336561032,
+        "object_ids": [
+          "31",
+          "43"
+        ],
+        "region_id": "0",
+        "scene_name": "chinese_room"
+      },
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 1.0213538567035745,
+        "object_ids": [
+          "48",
+          "83"
+        ],
+        "region_id": "0",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.2030001027096473,
+        "object_ids": [
+          "36",
+          "52"
+        ],
+        "region_id": "0",
+        "scene_name": "japanese_room"
+      },
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 4,
+        "nearest_center_distance_m": 1.1230052330508764,
+        "object_ids": [
+          "12",
+          "35",
+          "75",
+          "94"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      },
+      {
+        "class_name": "ceiling lamp",
+        "instance_count": 5,
+        "nearest_center_distance_m": 2.320093685262574,
+        "object_ids": [
+          "134",
+          "139",
+          "142",
+          "156",
+          "31"
+        ],
+        "region_id": "0",
+        "scene_name": "office_2"
+      }
+    ],
+    "chair": [
+      {
+        "class_name": "chair",
+        "instance_count": 6,
+        "nearest_center_distance_m": 0.8431201367423716,
+        "object_ids": [
+          "29",
+          "60",
+          "61",
+          "81",
+          "84",
+          "86"
+        ],
+        "region_id": "0",
+        "scene_name": "chinese_room"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 3,
+        "nearest_center_distance_m": 1.9935245048153833,
+        "object_ids": [
+          "290",
+          "367",
+          "377"
+        ],
+        "region_id": "1",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 10.287070007590728,
+        "object_ids": [
+          "196",
+          "335"
+        ],
+        "region_id": "2",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 8.034460345048165,
+        "object_ids": [
+          "159",
+          "50"
+        ],
+        "region_id": "3",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.8269999069189528,
+        "object_ids": [
+          "249",
+          "263",
+          "27",
+          "53"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.333184147300236,
+        "object_ids": [
+          "219",
+          "248"
+        ],
+        "region_id": "8",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.9023642479138108,
+        "object_ids": [
+          "15",
+          "36"
+        ],
+        "region_id": "2",
+        "scene_name": "hotel_room_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 1.3820281571623172,
+        "object_ids": [
+          "15",
+          "53"
+        ],
+        "region_id": "1",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 9,
+        "nearest_center_distance_m": 0.6756235431243226,
+        "object_ids": [
+          "22",
+          "54",
+          "61",
+          "64",
+          "74",
+          "8",
+          "81",
+          "90",
+          "98"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 8,
+        "nearest_center_distance_m": 0.7560288209670986,
+        "object_ids": [
+          "103",
+          "104",
+          "29",
+          "30",
+          "39",
+          "74",
+          "81",
+          "94"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_3"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 6,
+        "nearest_center_distance_m": 0.6730430883067778,
+        "object_ids": [
+          "104",
+          "106",
+          "118",
+          "48",
+          "81",
+          "97"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 1.8371399396544938,
+        "object_ids": [
+          "11",
+          "92"
+        ],
+        "region_id": "-1",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 8,
+        "nearest_center_distance_m": 0.6960158716443859,
+        "object_ids": [
+          "10",
+          "100",
+          "94",
+          "95",
+          "96",
+          "97",
+          "98",
+          "99"
+        ],
+        "region_id": "2",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 12,
+        "nearest_center_distance_m": 0.9597923382425011,
+        "object_ids": [
+          "21",
+          "26",
+          "29",
+          "40",
+          "45",
+          "49",
+          "52",
+          "58",
+          "68",
+          "7",
+          "83",
+          "85"
+        ],
+        "region_id": "0",
+        "scene_name": "office_1"
+      },
+      {
+        "class_name": "chair",
+        "instance_count": 4,
+        "nearest_center_distance_m": 1.0216821001192955,
+        "object_ids": [
+          "146",
+          "148",
+          "157",
+          "90"
+        ],
+        "region_id": "0",
+        "scene_name": "office_2"
+      }
+    ],
+    "deck chair": [
+      {
+        "class_name": "deck chair",
+        "instance_count": 2,
+        "nearest_center_distance_m": 1.5301199197222455,
+        "object_ids": [
+          "1",
+          "19"
+        ],
+        "region_id": "1",
+        "scene_name": "livingroom_1"
+      }
+    ],
+    "dining chair": [
+      {
+        "class_name": "dining chair",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.8219995498657227,
+        "object_ids": [
+          "125",
+          "156",
+          "177",
+          "65"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_2"
+      }
+    ],
+    "lamp": [
+      {
+        "class_name": "lamp",
+        "instance_count": 3,
+        "nearest_center_distance_m": 8.320000239496634,
+        "object_ids": [
+          "160",
+          "195",
+          "206"
+        ],
+        "region_id": "0",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 4,
+        "nearest_center_distance_m": 5.3446233300028645,
+        "object_ids": [
+          "216",
+          "256",
+          "276",
+          "308"
+        ],
+        "region_id": "1",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 10.629744234732279,
+        "object_ids": [
+          "371",
+          "423"
+        ],
+        "region_id": "2",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 10.167711262723753,
+        "object_ids": [
+          "198",
+          "91"
+        ],
+        "region_id": "3",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 4.524113229620242,
+        "object_ids": [
+          "297",
+          "315"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.853150160310522,
+        "object_ids": [
+          "186",
+          "294"
+        ],
+        "region_id": "6",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.5594369171906797,
+        "object_ids": [
+          "283",
+          "395"
+        ],
+        "region_id": "8",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 3,
+        "nearest_center_distance_m": 3.8864676111457,
+        "object_ids": [
+          "46",
+          "51",
+          "52"
+        ],
+        "region_id": "7",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 3,
+        "nearest_center_distance_m": 3.9098652501289797,
+        "object_ids": [
+          "74",
+          "80",
+          "82"
+        ],
+        "region_id": "2",
+        "scene_name": "hotel_room_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.294999719994519,
+        "object_ids": [
+          "10",
+          "92"
+        ],
+        "region_id": "1",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 7.1404380957751705,
+        "object_ids": [
+          "105",
+          "26"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 3,
+        "nearest_center_distance_m": 4.08169016264645,
+        "object_ids": [
+          "15",
+          "17",
+          "72"
+        ],
+        "region_id": "1",
+        "scene_name": "livingroom_2"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 4,
+        "nearest_center_distance_m": 1.6020532306057758,
+        "object_ids": [
+          "14",
+          "73",
+          "84",
+          "93"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_3"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.6235043597411606,
+        "object_ids": [
+          "3",
+          "57",
+          "6"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 5,
+        "nearest_center_distance_m": 2.2601769476981968,
+        "object_ids": [
+          "101",
+          "102",
+          "65",
+          "79",
+          "80"
+        ],
+        "region_id": "-1",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "lamp",
+        "instance_count": 2,
+        "nearest_center_distance_m": 7.24421731080858,
+        "object_ids": [
+          "5",
+          "60"
+        ],
+        "region_id": "0",
+        "scene_name": "loft"
+      }
+    ],
+    "picture": [
+      {
+        "class_name": "picture",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.3790049866814167,
+        "object_ids": [
+          "17",
+          "3"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.6368195170248531,
+        "object_ids": [
+          "209",
+          "210",
+          "211",
+          "212"
+        ],
+        "region_id": "-1",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 2,
+        "nearest_center_distance_m": 6.2217693278800965,
+        "object_ids": [
+          "215",
+          "223"
+        ],
+        "region_id": "7",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 2,
+        "nearest_center_distance_m": 0.6649416612417812,
+        "object_ids": [
+          "19",
+          "6"
+        ],
+        "region_id": "2",
+        "scene_name": "hotel_room_1"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 2,
+        "nearest_center_distance_m": 1.1125047026810155,
+        "object_ids": [
+          "21",
+          "28"
+        ],
+        "region_id": "-1",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.5901070082751486,
+        "object_ids": [
+          "31",
+          "34",
+          "76"
+        ],
+        "region_id": "1",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 7,
+        "nearest_center_distance_m": 0.6730080751881622,
+        "object_ids": [
+          "50",
+          "57",
+          "69",
+          "82",
+          "83",
+          "87",
+          "88"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 7,
+        "nearest_center_distance_m": 0.5220012185379634,
+        "object_ids": [
+          "17",
+          "20",
+          "48",
+          "78",
+          "90",
+          "97",
+          "98"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_3"
+      },
+      {
+        "class_name": "picture",
+        "instance_count": 7,
+        "nearest_center_distance_m": 0.7880019515716459,
+        "object_ids": [
+          "10",
+          "17",
+          "20",
+          "28",
+          "30",
+          "46",
+          "8"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      }
+    ],
+    "pillow": [
+      {
+        "class_name": "pillow",
+        "instance_count": 12,
+        "nearest_center_distance_m": 0.2828038179756849,
+        "object_ids": [
+          "13",
+          "2",
+          "27",
+          "35",
+          "50",
+          "52",
+          "7",
+          "70",
+          "73",
+          "77",
+          "78",
+          "84"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 10,
+        "nearest_center_distance_m": 0.32766220943128876,
+        "object_ids": [
+          "35",
+          "65",
+          "66",
+          "69",
+          "72",
+          "74",
+          "80",
+          "83",
+          "85",
+          "87"
+        ],
+        "region_id": "0",
+        "scene_name": "chinese_room"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 11,
+        "nearest_center_distance_m": 0.30710135459716054,
+        "object_ids": [
+          "168",
+          "174",
+          "292",
+          "300",
+          "310",
+          "332",
+          "368",
+          "382",
+          "54",
+          "57",
+          "59"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.7466998751312189,
+        "object_ids": [
+          "163",
+          "222",
+          "267"
+        ],
+        "region_id": "6",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.2336510593792642,
+        "object_ids": [
+          "324",
+          "337",
+          "385",
+          "79"
+        ],
+        "region_id": "8",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.8723120347239298,
+        "object_ids": [
+          "213",
+          "71",
+          "85",
+          "94"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.2667351018535639,
+        "object_ids": [
+          "23",
+          "24",
+          "26",
+          "27"
+        ],
+        "region_id": "5",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 2,
+        "nearest_center_distance_m": 0.9973049673864383,
+        "object_ids": [
+          "62",
+          "63"
+        ],
+        "region_id": "7",
+        "scene_name": "home_building_2"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.34699422144509834,
+        "object_ids": [
+          "0",
+          "29",
+          "50",
+          "83"
+        ],
+        "region_id": "2",
+        "scene_name": "hotel_room_1"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 6,
+        "nearest_center_distance_m": 0.26395287915182075,
+        "object_ids": [
+          "14",
+          "22",
+          "51",
+          "66",
+          "88",
+          "93"
+        ],
+        "region_id": "1",
+        "scene_name": "hotel_room_2"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.6038522519649191,
+        "object_ids": [
+          "40",
+          "43",
+          "44",
+          "46"
+        ],
+        "region_id": "0",
+        "scene_name": "japanese_room"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.7657015213383929,
+        "object_ids": [
+          "16",
+          "34",
+          "41"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.42803602619520714,
+        "object_ids": [
+          "22",
+          "39",
+          "5"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_2"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 4,
+        "nearest_center_distance_m": 0.5947471889821009,
+        "object_ids": [
+          "11",
+          "75",
+          "89",
+          "96"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_3"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 6,
+        "nearest_center_distance_m": 0.27581519027271867,
+        "object_ids": [
+          "100",
+          "116",
+          "60",
+          "73",
+          "87",
+          "91"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.0117202368165588,
+        "object_ids": [
+          "104",
+          "93"
+        ],
+        "region_id": "-1",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "pillow",
+        "instance_count": 8,
+        "nearest_center_distance_m": 0.3396397255891601,
+        "object_ids": [
+          "112",
+          "54",
+          "55",
+          "84",
+          "85",
+          "89",
+          "90",
+          "91"
+        ],
+        "region_id": "2",
+        "scene_name": "loft"
+      }
+    ],
+    "round table": [
+      {
+        "class_name": "round table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 0.5446175538378698,
+        "object_ids": [
+          "102",
+          "60"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_1"
+      }
+    ],
+    "sofa": [
+      {
+        "class_name": "sofa",
+        "instance_count": 3,
+        "nearest_center_distance_m": 1.9991834217089348,
+        "object_ids": [
+          "40",
+          "56",
+          "74"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      },
+      {
+        "class_name": "sofa",
+        "instance_count": 4,
+        "nearest_center_distance_m": 1.2145832957789848,
+        "object_ids": [
+          "200",
+          "357",
+          "361",
+          "376"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_1"
+      },
+      {
+        "class_name": "sofa",
+        "instance_count": 3,
+        "nearest_center_distance_m": 1.5535737603584845,
+        "object_ids": [
+          "49",
+          "51",
+          "88"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      },
+      {
+        "class_name": "sofa",
+        "instance_count": 5,
+        "nearest_center_distance_m": 0.9881053236728695,
+        "object_ids": [
+          "28",
+          "29",
+          "86",
+          "87",
+          "88"
+        ],
+        "region_id": "2",
+        "scene_name": "loft"
+      }
+    ],
+    "sofa cushion": [
+      {
+        "class_name": "sofa cushion",
+        "instance_count": 4,
+        "nearest_center_distance_m": 1.0290115506094542,
+        "object_ids": [
+          "120",
+          "121",
+          "82",
+          "92"
+        ],
+        "region_id": "4",
+        "scene_name": "home_building_2"
+      }
+    ],
+    "table": [
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 0.8563056373619687,
+        "object_ids": [
+          "28",
+          "64"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.8736540388646152,
+        "object_ids": [
+          "77",
+          "88"
+        ],
+        "region_id": "0",
+        "scene_name": "chinese_room"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 3,
+        "nearest_center_distance_m": 3.215798399281655,
+        "object_ids": [
+          "26",
+          "58",
+          "59"
+        ],
+        "region_id": "0",
+        "scene_name": "japanese_room"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.5983073250287566,
+        "object_ids": [
+          "42",
+          "64",
+          "72"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_3"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 3.443892243029555,
+        "object_ids": [
+          "62",
+          "67"
+        ],
+        "region_id": "0",
+        "scene_name": "livingroom_4"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 6.928814482236042,
+        "object_ids": [
+          "22",
+          "73"
+        ],
+        "region_id": "0",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 3,
+        "nearest_center_distance_m": 0.5515146316377364,
+        "object_ids": [
+          "20",
+          "21",
+          "9"
+        ],
+        "region_id": "2",
+        "scene_name": "loft"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 4.698684117867322,
+        "object_ids": [
+          "50",
+          "53"
+        ],
+        "region_id": "0",
+        "scene_name": "office_1"
+      },
+      {
+        "class_name": "table",
+        "instance_count": 2,
+        "nearest_center_distance_m": 2.5444894854535454,
+        "object_ids": [
+          "25",
+          "8"
+        ],
+        "region_id": "0",
+        "scene_name": "office_2"
+      }
+    ],
+    "wall lamp": [
+      {
+        "class_name": "wall lamp",
+        "instance_count": 4,
+        "nearest_center_distance_m": 2.955985669167062,
+        "object_ids": [
+          "26",
+          "54",
+          "57",
+          "79"
+        ],
+        "region_id": "0",
+        "scene_name": "arabic_room"
+      }
+    ]
+  },
+  "same_class_multiplicity_distribution": {
+    "count": 366,
+    "max": 45.0,
+    "mean": 4.040983606557377,
+    "median": 3.0,
+    "min": 2.0,
+    "p10": 2.0,
+    "p90": 7.0
+  },
+  "schema_version": "phase3a_vla_annotation_granularity_v1"
+}

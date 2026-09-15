@@ -1,0 +1,1559 @@
+[
+  {
+    "viewpoint_id": "vp-000000",
+    "episode_id": "f124724130574829a16afee3cfe09787",
+    "pose_map": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pose_covariance_6x6": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "localization_trusted": true,
+    "source_stamp_s": 1785313868.4174664,
+    "coverage_cell_count": 476,
+    "visible_object_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panorama_ref": null,
+    "panorama_embedding": null,
+    "lidar_signature": null,
+    "coverage_gain": 476.0,
+    "visit_count": 1,
+    "last_visit_time": 1785313868.4174664,
+    "novelty_score": 1.0,
+    "provisional_observations": [
+      {
+        "label": "sofa",
+        "bbox": [
+          0.0,
+          0.6756481379270554,
+          0.019564425572752953,
+          0.9967443495988846
+        ],
+        "detector_score": 0.3481868505477905,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_only",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.375,
+          0.558629923596737,
+          0.3781754884479548,
+          0.6569356373057466
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f0d35d4ab16040b7b5da131445ec254b",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "sofa",
+            "bbox": [
+              0.0,
+              0.6756481,
+              0.0195644,
+              0.9967443
+            ],
+            "confidence": 0.3481868505477905,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8559015989303589,
+          1.8588312864303589,
+          0.01851111650466919
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.6772266532024708,
+          0.6622221990265965,
+          -0.32066465241519726
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.0,
+          0.6771534532308578,
+          0.018737836740911007,
+          0.9827718883752823
+        ],
+        "detector_score": 0.35842466354370117,
+        "view_id": "p00_y00",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_only",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.375,
+          0.5591209564441938,
+          0.3780387974269601,
+          0.6530713571273772
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-12534dda0449405da5756ae44f17b50d",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "pillow",
+            "bbox": [
+              0.0,
+              0.6771535,
+              0.0187378,
+              0.9827719
+            ],
+            "confidence": 0.35842466354370117,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.8559015989303589,
+          1.8588312864303589,
+          0.01851111650466919
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.6772253223811547,
+          0.6622235599985716,
+          -0.3206646524151972
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 11,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "window",
+        "bbox": [
+          0.7799386754631996,
+          0.012981235980987549,
+          0.9998735412955284,
+          0.740434467792511
+        ],
+        "detector_score": 0.32413536310195923,
+        "view_id": "p00_y01",
+        "reason_code": "mask_quality_below_threshold",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_only",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.7062318789627731,
+          0.31936447163167453,
+          0.7499798709266972,
+          0.5970451288964361
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-69cc9c4f9d39409d9d09a0cfd7446d7e",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "window",
+            "bbox": [
+              0.7799387,
+              0.0129812,
+              0.9998735,
+              0.7404345
+            ],
+            "confidence": 0.32413536310195923,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          0.6851495903730392,
+          -4.21206907749176,
+          1.4474549335241318
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.15627325007642826,
+          -0.9706055175651536,
+          0.18303988795514098
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 115,
+        "fusion_quality": 0.0019332058239388528
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.7069199830293655,
+          0.47952479124069214,
+          0.9999602288007736,
+          0.9992374777793884
+        ],
+        "detector_score": 0.5633086562156677,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8124492412685222,
+          0.4909692073459169,
+          0.8749936699653007,
+          0.6926726441982733
+        ],
+        "track_id": "short-000000",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b41779ab3e134298a57764c016a00c6c",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "sofa",
+            "bbox": [
+              0.70692,
+              0.4795248,
+              0.9999602,
+              0.9992375
+            ],
+            "confidence": 0.5633086562156677,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d4cbecd4aa50493bbdf250058e48e8d4",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.7046875,
+              0.4770833,
+              1.0,
+              1.0
+            ],
+            "confidence": 0.52734375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-d4cbecd4aa50493bbdf250058e48e8d4",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.7046875,
+              0.4770833,
+              1.0,
+              1.0
+            ],
+            "confidence": 0.52734375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9862256
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.5318985192508536,
+          -0.781829379744745,
+          -0.325310292162263
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.7313764467835426,
+          0.5154774785041809,
+          0.8527042493224144,
+          0.6457766890525818
+        ],
+        "detector_score": 0.6395999789237976,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8189791017711805,
+          0.5060379765237887,
+          0.8477763003361969,
+          0.5623575468902864
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-80e3138198974bd49ba816f9a4c0ddb6",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "pillow",
+            "bbox": [
+              0.7313764,
+              0.5154775,
+              0.8527042,
+              0.6457767
+            ],
+            "confidence": 0.6395999789237976,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-35fb2732fb3742e2a28b45a2390f40c9",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "pillow",
+            "bbox": [
+              0.7304688,
+              0.5166667,
+              0.853125,
+              0.6494792
+            ],
+            "confidence": 0.7373046875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-35fb2732fb3742e2a28b45a2390f40c9",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "pillow",
+            "bbox": [
+              0.7304688,
+              0.5166667,
+              0.853125,
+              0.6494792
+            ],
+            "confidence": 0.7373046875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9531518
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.5015417881812446,
+          -0.8586960364981315,
+          -0.10534206951811408
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 1,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.8284453824162483,
+          0.5075532644987106,
+          0.9930151030421257,
+          0.6901969462633133
+        ],
+        "detector_score": 0.5867230892181396,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8425015056584125,
+          0.5025679411228361,
+          0.8738805179895536,
+          0.5745097823992138
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-c3a394fe67ab49418e5e2b09af6b9523",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "pillow",
+            "bbox": [
+              0.8284454,
+              0.5075533,
+              0.9930151,
+              0.6901969
+            ],
+            "confidence": 0.5867230892181396,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b5e49ae7408d459198fe4dd8939d1f29",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "pillow",
+            "bbox": [
+              0.8265625,
+              0.509375,
+              0.9914063,
+              0.6927083
+            ],
+            "confidence": 0.87255859375,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-b5e49ae7408d459198fe4dd8939d1f29",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "pillow",
+            "bbox": [
+              0.8265625,
+              0.509375,
+              0.9914063,
+              0.6927083
+            ],
+            "confidence": 0.87255859375,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9563427
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.6351831832441426,
+          -0.7658003878234041,
+          -0.10045939345507635
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "window",
+        "bbox": [
+          0.9757499862462282,
+          0.06259173154830933,
+          0.9999863933771849,
+          0.3438188135623932
+        ],
+        "detector_score": 0.3557603359222412,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8710453853026792,
+          0.35876162659485805,
+          0.8749978344092539,
+          0.44774416562686986
+        ],
+        "track_id": "short-000003",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-1b334c7bd6fb4927a067960ad3a74733",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "window",
+            "bbox": [
+              0.97575,
+              0.0625917,
+              0.9999864,
+              0.3438188
+            ],
+            "confidence": 0.3557603359222412,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          -2.657057762145996,
+          -2.6861202716827393,
+          1.9040755033493042
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.6694965431396319,
+          -0.6847391804168499,
+          0.2879351203416211
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 15,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.7075793147087097,
+          0.47983671724796295,
+          1.0,
+          0.7780259698629379
+        ],
+        "detector_score": 0.2932415306568146,
+        "view_id": "p00_y02",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8126283418399203,
+          0.4911108583555183,
+          0.875,
+          0.617027417918184
+        ],
+        "track_id": "short-000005",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-b3da4b0826f14743b10c1ce84a2ca381",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "sofa",
+            "bbox": [
+              0.7075793,
+              0.4798367,
+              1.0,
+              0.778026
+            ],
+            "confidence": 0.2932415306568146,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9f05394ad55a41deb06aff3e3b7d3f59",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.70625,
+              0.4760417,
+              1.0,
+              0.7854167
+            ],
+            "confidence": 0.70751953125,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-9f05394ad55a41deb06aff3e3b7d3f59",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.70625,
+              0.4760417,
+              1.0,
+              0.7854167
+            ],
+            "confidence": 0.70751953125,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9594823
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.5510957278246645,
+          -0.8058114380197832,
+          -0.21670584932090017
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.5984375,
+          0.5119791666666667,
+          0.7640625,
+          0.7359375
+        ],
+        "detector_score": 0.91650390625,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.9059379629684575,
+          0.5050572035864241,
+          0.9523323729528912,
+          0.6063838014794527
+        ],
+        "track_id": "short-000000",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.8898924747797918,
+          -0.4293860164922647,
+          -0.15400984439704604
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.2896484375,
+          0.47708333333333336,
+          0.7984375,
+          1.0
+        ],
+        "detector_score": 0.9052734375,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8116204378683385,
+          0.4891045591787896,
+          0.9606442252802208,
+          0.7042426191550658
+        ],
+        "track_id": "short-000001",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.7028530235608099,
+          -0.617557772190339,
+          -0.3530156161966959
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.394921875,
+          0.50625,
+          0.498046875,
+          0.6489583333333333
+        ],
+        "detector_score": 0.80810546875,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8420323522535962,
+          0.5029202801600312,
+          0.8743783041656431,
+          0.5699725063858792
+        ],
+        "track_id": "short-000002",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.6209441412541604,
+          -0.7760666456312869,
+          -0.11022220729388306
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.314453125,
+          0.515625,
+          0.414453125,
+          0.6307291666666667
+        ],
+        "detector_score": 0.66357421875,
+        "view_id": "p00_y03",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.8184456243061731,
+          0.5069931949298739,
+          0.8480307185178189,
+          0.5607751284381283
+        ],
+        "track_id": "short-000003",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.5010059931165227,
+          -0.8590087562132109,
+          -0.10534206951811408
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 1,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.16552734375,
+          0.5119791666666667,
+          0.3455078125,
+          0.75
+        ],
+        "detector_score": 0.92041015625,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.9061656723229063,
+          0.5047536614103763,
+          0.9523046339037731,
+          0.6095107197697588
+        ],
+        "track_id": "short-000000",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.8898024551200113,
+          -0.4295725301869265,
+          -0.15400984439704601
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.0,
+          0.4703125,
+          0.375,
+          1.0
+        ],
+        "detector_score": 0.87158203125,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.875,
+          0.486257030723867,
+          0.9610104348113153,
+          0.7002216301683547
+        ],
+        "track_id": "short-000001",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.8158909413772012,
+          -0.4901716350186707,
+          -0.3066818220921281
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.791015625,
+          0.4947916666666667,
+          1.0,
+          0.99375
+        ],
+        "detector_score": 0.80322265625,
+        "view_id": "p00_y04",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "yolo_world_local",
+        "detector_cascade_mode": "fast_complete",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.08389095172273159,
+          0.4978507737665227,
+          0.12499999999999994,
+          0.6812403032815284
+        ],
+        "track_id": "short-000002",
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.7564785736424505,
+          0.6100195132230751,
+          -0.23583121317367278
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          0.3714187890291214,
+          0.49669942259788513,
+          0.5690874308347702,
+          0.9565004408359528
+        ],
+        "detector_score": 0.3123099207878113,
+        "view_id": "p00_y05",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.08493937617184764,
+          0.49842688477359864,
+          0.14685283971162694,
+          0.6908569321195221
+        ],
+        "track_id": "short-000002",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-d683fab2fb50444fb6b0175e86364fbf",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "sofa",
+            "bbox": [
+              0.3714188,
+              0.4966994,
+              0.5690874,
+              0.9565004
+            ],
+            "confidence": 0.3123099207878113,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.710029570932976,
+          0.6651843045340831,
+          -0.2310581082806711
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "sofa",
+        "bbox": [
+          9.292364120483398e-05,
+          0.49712520837783813,
+          0.1200525090098381,
+          0.9993608593940735
+        ],
+        "detector_score": 0.6434550881385803,
+        "view_id": "p00_y06",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.12501479063118454,
+          0.49890712731114684,
+          0.14658050080359447,
+          0.6711742525060613
+        ],
+        "track_id": "short-000000",
+        "proposal_sources": [
+          "open_vocabulary_detector",
+          "fixed_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-4a0ce0b5822b42fea8e6048328db5180",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "sofa",
+            "bbox": [
+              9.29e-05,
+              0.4971252,
+              0.1200525,
+              0.9993609
+            ],
+            "confidence": 0.6434550881385803,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-31840519d7a74c05a07825f1d7d53114",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.0,
+              0.4953125,
+              0.1243164,
+              0.9989583
+            ],
+            "confidence": 0.607421875,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          },
+          {
+            "proposal_id": "proposal-31840519d7a74c05a07825f1d7d53114",
+            "source": "fixed_vocabulary_detector",
+            "backend": "yolo_world_local",
+            "label": "sofa",
+            "bbox": [
+              0.0,
+              0.4953125,
+              0.1243164,
+              0.9989583
+            ],
+            "confidence": 0.607421875,
+            "disposition": "suppressed_as_duplicate",
+            "reason": "box_iou_before_mask_union",
+            "box_iou": 0.9607398
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          -0.6467765476192955,
+          0.7340197376783753,
+          -0.2071113761922186
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      },
+      {
+        "label": "window",
+        "bbox": [
+          0.5504936650395393,
+          0.0,
+          0.7049303576350212,
+          0.0071680431719869375
+        ],
+        "detector_score": 0.251714289188385,
+        "view_id": "p00_y06",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.2660183260943547,
+          0.2959418394029769,
+          0.31190776903644224,
+          0.30903853009189
+        ],
+        "track_id": "short-000001",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-f367e2287c0d49f4a5be2ca3199dd7bb",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "window",
+            "bbox": [
+              0.5504937,
+              0.0,
+              0.7049304,
+              0.007168
+            ],
+            "confidence": 0.251714289188385,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "probe_ray_origin_map": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "probe_ray_direction_map": [
+          0.2065585208564186,
+          0.7866560875125495,
+          0.581812493369691
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "source_stamp_s": 1785313868.4174664,
+        "fusion_point_count": 0,
+        "fusion_quality": 0.0
+      }
+    ],
+    "provenance": [
+      "state_estimation",
+      "registered_scan",
+      "coverage_version:2"
+    ]
+  },
+  {
+    "viewpoint_id": "vp-000001",
+    "episode_id": "f124724130574829a16afee3cfe09787",
+    "pose_map": [
+      0.37577664852142334,
+      -1.2220652103424072,
+      -0.5469495058059695
+    ],
+    "pose_covariance_6x6": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "localization_trusted": true,
+    "source_stamp_s": 1785314006.1424572,
+    "coverage_cell_count": 296,
+    "visible_object_ids": [
+      0,
+      2,
+      6,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "panorama_ref": null,
+    "panorama_embedding": null,
+    "lidar_signature": null,
+    "coverage_gain": 296.0,
+    "visit_count": 1,
+    "last_visit_time": 1785314006.1424572,
+    "novelty_score": 1.0,
+    "provisional_observations": [],
+    "provenance": [
+      "state_estimation",
+      "registered_scan",
+      "coverage_version:3"
+    ]
+  },
+  {
+    "viewpoint_id": "vp-000002",
+    "episode_id": "f124724130574829a16afee3cfe09787",
+    "pose_map": [
+      0.6191640496253967,
+      -1.8175876140594482,
+      -1.3051146268844604
+    ],
+    "pose_covariance_6x6": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "localization_trusted": true,
+    "source_stamp_s": 1785314034.1424654,
+    "coverage_cell_count": 57,
+    "visible_object_ids": [
+      2,
+      5,
+      6,
+      9,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "panorama_ref": null,
+    "panorama_embedding": null,
+    "lidar_signature": null,
+    "coverage_gain": 57.0,
+    "visit_count": 1,
+    "last_visit_time": 1785314034.1424654,
+    "novelty_score": 1.0,
+    "provisional_observations": [
+      {
+        "label": "pillow",
+        "bbox": [
+          0.6696476861834526,
+          0.0,
+          0.7284100130200386,
+          0.055865706875920296
+        ],
+        "detector_score": 0.28542661666870117,
+        "view_id": "p00_y05",
+        "reason_code": "degenerate_3d_extent",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_only",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.1770606574616037,
+          0.3034245216039888,
+          0.19319963858308903,
+          0.32658618571587067
+        ],
+        "track_id": "short-000007",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-a9636db481b3476992a84dd1c1a11d0a",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "pillow",
+            "bbox": [
+              0.6696477,
+              0.0,
+              0.72841,
+              0.0558657
+            ],
+            "confidence": 0.28542661666870117,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          2.1870651196031696,
+          -0.5716240700163513,
+          2.202551877262656
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785314034.1424654,
+        "probe_ray_origin_map": [
+          0.6191640496253967,
+          -1.8175876140594482,
+          0.7594318389892578
+        ],
+        "probe_ray_direction_map": [
+          0.6507958336194255,
+          0.5211615016224509,
+          0.5521371860056424
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 21,
+        "fusion_quality": 0.391269596982242
+      },
+      {
+        "label": "pillow",
+        "bbox": [
+          0.633195374161005,
+          0.4212968051433563,
+          0.6815091632306576,
+          0.5008238255977631
+        ],
+        "detector_score": 0.25492581725120544,
+        "view_id": "p00_y06",
+        "reason_code": "insufficient_mask_point_support",
+        "prompt_terms": [
+          "pillow",
+          "sofa",
+          "window"
+        ],
+        "detector_backend": "groundingdino_local",
+        "detector_cascade_mode": "open_fast_union",
+        "commit_eligible": false,
+        "panorama_bbox_xyxy_norm": [
+          0.29143515768102723,
+          0.4638446178381167,
+          0.3054217360450093,
+          0.5003800922544696
+        ],
+        "track_id": "short-000005",
+        "proposal_sources": [
+          "open_vocabulary_detector"
+        ],
+        "proposal_lineage": [
+          {
+            "proposal_id": "proposal-950586d488904ed6ae3257fa80402c49",
+            "source": "open_vocabulary_detector",
+            "backend": "groundingdino_local",
+            "label": "pillow",
+            "bbox": [
+              0.6331954,
+              0.4212968,
+              0.6815092,
+              0.5008238
+            ],
+            "confidence": 0.25492581725120544,
+            "disposition": "retained",
+            "reason": "raw_proposal"
+          }
+        ],
+        "centroid_map": [
+          1.9852664996953249,
+          -1.858840944751579,
+          0.90876573602769
+        ],
+        "centroid_role": "probe_hint_only",
+        "source_stamp_s": 1785314034.1424654,
+        "probe_ray_origin_map": [
+          0.6191640496253967,
+          -1.8175876140594482,
+          0.7594318389892578
+        ],
+        "probe_ray_direction_map": [
+          0.9982213809607813,
+          -0.03746134262536348,
+          0.04637588167847568
+        ],
+        "probe_ray_role": "probe_hint_only",
+        "fusion_point_count": 14,
+        "fusion_quality": 0.0
+      }
+    ],
+    "provenance": [
+      "state_estimation",
+      "registered_scan",
+      "coverage_version:4"
+    ]
+  }
+]

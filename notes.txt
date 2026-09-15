@@ -1,8 +1,0 @@
-Install cyclonedds in native ubuntu and docker image, then add line to bashrc file to switch to cyclonedds
-
-  sudo apt install ros-jazzy-rmw-cyclonedds-cpp
-
-  export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-
-Use 'autonomy_stack_mecanum_wheel_platform.zip' to prepare 'ubuntu24_ros:cmu_vla_challenge_simulation' docker image and 'ai_module.zip' to prepare 'ubuntu24_ros:ai_module' docker image
-

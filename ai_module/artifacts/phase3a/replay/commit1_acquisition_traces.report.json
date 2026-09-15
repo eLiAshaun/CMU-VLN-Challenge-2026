@@ -1,0 +1,12 @@
+{
+  "deterministic_two_run_match": true,
+  "ledger_size_after_replay": 70,
+  "memory_transaction_count": 10,
+  "output": "/home/robot/cmu_vln/CMU-VLN-Challenge-2026/ai_module/artifacts/phase3a/replay/commit1_acquisition_traces.jsonl",
+  "recorded_acquisition_count": 11,
+  "schema_version": "phase3a_commit1_trace_replay_v1",
+  "skipped_no_geometry_acquisition_ids": [
+    "20260822T224014_244951Z"
+  ],
+  "source_session": "/home/robot/cmu_vln/challenge_eval_runs/.ai_runtime_sessions/20260822T223324Z_hotel_room_1_q1_w9vhouv8"
+}

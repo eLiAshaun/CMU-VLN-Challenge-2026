@@ -132,6 +132,23 @@ The coordinate frames used by the physical system are shown below. The camera po
 </p>
 
 
+### Current MASt3R model chain
+
+当前自定义 AI runtime 的唯一架构权威见
+[`ai_module/ARCHITECTURE_FINAL.md`](ai_module/ARCHITECTURE_FINAL.md)。
+
+本机真实题目的入口是
+`python3 ../challenge_evaluator/challenge_eval.py run --scene <scene> --question <q1..q5>`。
+它按公开比赛规则为每条语言命令重新启动 system 与 ai_module，并在该命令结束后
+停止两个容器；Qwen3-VL、SAM2 和 `mast3r_live_task_probe` 只在单条命令的生命周期
+内常驻。每道题按需执行 MASt3R sparse global alignment、三维对象 lift、世界模型、
+查询、单点 waypoint 执行与 ROS 输出。运行状态只写入本地结构化日志，本次题目的完整结果
+位于 `ai_module/runs/live_robot/<run-id>/summary.json`；AI 模块不发布额外诊断话题。
+
+旧 `scnav_vln` 节点、viewer、回放、soak 与 benchmark 不再属于运行系统。
+`livingroom_3/Q1` 的固定问题是
+`How many photos are on the TV cabinet?`，不得用手工请求或离线回放替代在线验收。
+
 ### Object-Referential Dataset (VLA-3D)
 
 To help with the subtask of referential object-grounding, the VLA-3D dataset containing 7.6K indoor 3D scenes with over 11K regions and 9M+ statements is provided. The dataset includes processed scene point clouds, object and region labels, a scene graph of semantic relations, and generated language statements for each 3D scene from a diverse set of data sources and includes the 15 training scenes in Unity. For access to the data and more details on the format, please see our [VLA-3D repository](https://github.com/HaochenZ11/VLA-3D).
@@ -161,7 +178,7 @@ Please fill out the [Submission Form](https://docs.google.com/forms/d/e/1FAIpQLS
 ## Evaluation
 The submitted code will be pulled and evaluated with 3 Unity environment models which have been held from the released data. Each scene will be unknown and the module has a set amount of time to explore and answer the question (see [timing](#timing) for more details). The test scenes are of similar style to the provided training scenes. **The system will be relaunched for each language command tested such that information collected from previously exploring the scene is not retained.** Note that the information onboard the system that is allowed to be used at test time is limited to what is listed in [System Outputs](#system-outputs).
 
-Evaluation is performed on a Laptop with RTX 4090 GPU by a `challenge_evaluation_node` whose source code is not made public. The evaluation node will be started along with the team-provided AI module and the system at the same time, and publishes a single question each startup as a ROS String message on the following topic at a rate of 1Hz:
+Evaluation is performed by a `challenge_evaluation_node` whose source code is not made public. The evaluation node will be started along with the team-provided AI module and the system at the same time, and publishes a single question each startup as a ROS String message on the following topic at a rate of 1Hz:
 
 | Message | Description | Frequency | ROS Topic Name |
 |-|-|-|-|

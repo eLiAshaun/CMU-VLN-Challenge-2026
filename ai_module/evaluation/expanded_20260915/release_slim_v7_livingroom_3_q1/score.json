@@ -1,0 +1,2888 @@
+{
+  "schema_version": "cmu_vln_local_score_v1",
+  "evaluation_kind": "transparent_local_proxy_not_private_official_scorer",
+  "scene": "livingroom_3",
+  "question_id": "q1",
+  "task_type": "numerical",
+  "question": "How many photos are on the TV cabinet?",
+  "proxy_score_before_time_adjustment": 0.0,
+  "proxy_score": 0.0,
+  "max_points": 1.0,
+  "details": {
+    "metric": "exact_integer_match",
+    "expected": 2,
+    "observed": 3,
+    "correct": false
+  },
+  "timing": {
+    "completion_seconds": 530.06301027257,
+    "time_limit_seconds": 600.0,
+    "late_seconds": 0.0,
+    "configured_mode": "report_only",
+    "configured_penalty_points": 0.0,
+    "official_late_penalty_formula_publicly_unknown": true,
+    "early_completion_tiebreak_seconds": 530.06301027257
+  },
+  "termination": {
+    "reason": "numerical_output",
+    "success": true,
+    "failure_stage": null
+  },
+  "question_accepted": true,
+  "protocol_diagnostics": {
+    "accepted_model_episodes": 1,
+    "single_command_reaccepted": false
+  },
+  "run": "20260915T163706_943926Z",
+  "label": "release_slim_v7_livingroom_3_q1",
+  "root_decision": "numerical_output",
+  "failure_stage": null,
+  "runtime_navigation": {
+    "waypoint": [
+      2.0,
+      -6.5,
+      0.0
+    ],
+    "complete": false,
+    "progress": {
+      "step": 0,
+      "completed_steps": [],
+      "travel_m": 42.417448289969286
+    },
+    "evidence_need": [
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.921029883273259,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.3274977207183838,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.147775173533599,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4350405931472778,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.2870864270801725,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4555147268085644,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.3147453831303064,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.1220143511891365,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978053092956543,
+              -0.5581499934196472,
+              2.244935989379883
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.552440882427532,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.8277628945968356,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.246293541879623,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5664715766906738,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.397122982186992,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.6740144491195679,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.766216595330939,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.6944885827808545,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.4630196434772964,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.801368422806263,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.980137825012207,
+              -1.1272187232971191,
+              1.9242900609970093
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.939263577736476,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.0667367505691256,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.254444698122996,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.7514410018920898,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.405264391657372,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8589838743209839,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.774081076761926,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8794580079822705,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.599253797754268,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5177965834736824,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983049392700195,
+              -1.4811005592346191,
+              1.6407182216644287
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.947338581212129,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.2517061757705417,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.4781694099593263,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.46092578768730164,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.561721018591385,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4625053107738495,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              2.329047679901123,
+              -5.357603073120117,
+              0.45524755120277405
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.536465749239012,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.3949418320140452,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.479082305372051,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4860951900482178,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              4.458998203277588,
+              0.04137660190463066,
+              0.43165767192840576
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.978218714735042,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4191284911964449,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.192802818758397,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9501367509365082,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.25064978392221,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.406784787774086,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.203406384541221,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8841527952632517,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.75004358362511,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4607113003730774,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.63306196093924,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9083394544456515,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.935926166690664,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.489194244146347,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.992836104700784,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.9458422809839249,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.945590680695259,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4232102884730906,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.6383046431781607,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9997687935829163,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.390632598139247,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4473969476554904,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.456561671133985,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4715002477169037,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.5147421577301055,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.9281482845544815,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.467498680711532,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4055162920436473,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.8882002561042306,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9820747971534729,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.885593163542053,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.429702951226047,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.665090271870214,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9461969137191772,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.865603110388429,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.0537397861480713,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.087695905408043,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.0742139198093579,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.3281342681636477,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5509936287999153,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.992729187011719,
+              -0.5521219968795776,
+              1.6739152669906616
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.3191079163951525,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.446462087597629,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.6061184476496351,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.7936423420906067,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              1.1102900505065918,
+              -6.105500221252441,
+              0.42639225721359253
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.9037032748684372,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.219855561852455,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "YES",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.2740830024650552,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.8034665921109059,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.07829143106937408,
+              -6.103732585906982,
+              1.9370393753051758
+            ],
+            "anchor_surface_sample": [
+              0.07915168842279385,
+              -5.829650933479197,
+              0.13357278319427002
+            ]
+          },
+          "reason": "pair_image_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.130348386358109,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.2195625305175781,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              4.214519023895264,
+              -0.01684439182281494,
+              1.000472068786621
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 2.9690686430630935,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.7214102285240207,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.921029883273259,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.3274977207183838,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.147775173533599,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4350405931472778,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.2870864270801725,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4555147268085644,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.3147453831303064,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.1220143511891365,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.978053092956543,
+              -0.5581499934196472,
+              2.244935989379883
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000001",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.552440882427532,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.8277628945968356,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.978461265563965,
+              -1.050999641418457,
+              1.9588391780853271
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.246293541879623,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5664715766906738,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.397122982186992,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.6740144491195679,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.766216595330939,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.6944885827808545,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.4630196434772964,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.801368422806263,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.980137825012207,
+              -1.1272187232971191,
+              1.9242900609970093
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000002",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.939263577736476,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.0667367505691256,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.977410316467285,
+              -1.983288288116455,
+              2.197813034057617
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.254444698122996,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.7514410018920898,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.405264391657372,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8589838743209839,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.774081076761926,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8794580079822705,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.599253797754268,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5177965834736824,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.983049392700195,
+              -1.4811005592346191,
+              1.6407182216644287
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000003",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.947338581212129,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.2517061757705417,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.983051300048828,
+              -1.977384328842163,
+              1.3827824592590332
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.4781694099593263,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.46092578768730164,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.561721018591385,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4625053107738495,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              2.329047679901123,
+              -5.357603073120117,
+              0.45524755120277405
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.536465749239012,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.3949418320140452,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.479082305372051,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4860951900482178,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              4.458998203277588,
+              0.04137660190463066,
+              0.43165767192840576
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000004",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.978218714735042,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4191284911964449,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              1.5587185621261597,
+              -1.8801831007003784,
+              0.9177528619766235
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.192802818758397,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9501367509365082,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.25064978392221,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.406784787774086,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.203406384541221,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.8841527952632517,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.75004358362511,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.4607113003730774,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000006",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.63306196093924,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9083394544456515,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9282262921333313,
+              1.813500165939331,
+              1.40696382522583
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.935926166690664,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.489194244146347,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.992836104700784,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.9458422809839249,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.945590680695259,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4232102884730906,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.6383046431781607,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9997687935829163,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000007",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.390632598139247,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4473969476554904,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.924312949180603,
+              1.5555001497268677,
+              1.946021318435669
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.456561671133985,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4715002477169037,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.4865189790725708,
+              -5.357603073120117,
+              0.4568270742893219
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.5147421577301055,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.9281482845544815,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.467498680711532,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.4055162920436473,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              1.1070432732958455,
+              -5.387686404904196,
+              0.5228110299625783
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.8882002561042306,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9820747971534729,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              4.229416370391846,
+              0.03446364402770996,
+              0.9462525248527527
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000008",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.885593163542053,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.429702951226047,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.9212290644645691,
+              2.077500104904175,
+              1.9283273220062256
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.665090271870214,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 0.9461969137191772,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              5.133708953857422,
+              -5.553940296173096,
+              0.6313414573669434
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 5.865603110388429,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.0537397861480713,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              5.5605692863464355,
+              -6.161102771759033,
+              0.5237985849380493
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.087695905408043,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.0742139198093579,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              3.158658216150998,
+              -5.436375459039977,
+              0.5033244512767627
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 3.3281342681636477,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.5509936287999153,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              8.992729187011719,
+              -0.5521219968795776,
+              1.6739152669906616
+            ],
+            "anchor_surface_sample": [
+              5.715607643127441,
+              0.028353750705718994,
+              0.12292163819074631
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000010",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 6.3191079163951525,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.446462087597629,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              8.982941627502441,
+              -1.3974206447601318,
+              1.5775383710861206
+            ],
+            "anchor_surface_sample": [
+              4.281616293289435,
+              -5.6198210238022295,
+              0.13107628348849154
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "multiple_anchor_candidates",
+        "relation": "on",
+        "subject_id": "object_000011",
+        "anchor_ids": [
+          "object_000005",
+          "object_000009",
+          "object_000013",
+          "object_000016",
+          "object_000017"
+        ]
+      },
+      {
+        "reason": "multiple_anchor_candidates",
+        "relation": "on",
+        "subject_id": "object_000012",
+        "anchor_ids": [
+          "object_000005",
+          "object_000009",
+          "object_000013",
+          "object_000016",
+          "object_000017"
+        ]
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000005",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.6061184476496351,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.7936423420906067,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              1.1102900505065918,
+              -6.105500221252441,
+              0.42639225721359253
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000009",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.9037032748684372,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 2.219855561852455,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              1.1096196174621582,
+              -5.434880256652832,
+              0.0001790374517440796
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000013",
+        "evidence": {
+          "geometry_state": "YES",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 0.2740830024650552,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.8034665921109059,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.07829143106937408,
+              -6.103732585906982,
+              1.9370393753051758
+            ],
+            "anchor_surface_sample": [
+              0.07915168842279385,
+              -5.829650933479197,
+              0.13357278319427002
+            ]
+          },
+          "reason": "pair_image_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000016",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 7.130348386358109,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.2195625305175781,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "measured_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              4.214519023895264,
+              -0.01684439182281494,
+              1.000472068786621
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "relation_evidence_unknown",
+        "relation": "on",
+        "subject_id": "object_000015",
+        "anchor_id": "object_000017",
+        "evidence": {
+          "geometry_state": "UNKNOWN",
+          "image_state": "UNKNOWN",
+          "geometry": {
+            "support_column_gap_m": 2.9690686430630935,
+            "horizontal_tolerance_m": 0.35,
+            "vertical_gap_m": 1.7214102285240207,
+            "geometry_basis": "observed_support_column_with_image_relation",
+            "subject_point_source": "measured_points",
+            "anchor_point_source": "estimated_points",
+            "subject_surface_sample": [
+              0.5041716694831848,
+              -6.1057844161987305,
+              2.220034599304199
+            ],
+            "anchor_surface_sample": [
+              3.3908949907947683,
+              -5.411380302287862,
+              0.4986243707801786
+            ],
+            "reason": "entity_extent_incomplete",
+            "bounds_semantics": "observed_surface_envelope"
+          },
+          "reason": "physical_geometry_evidence_needed"
+        }
+      },
+      {
+        "reason": "multiple_anchor_candidates",
+        "relation": "on",
+        "subject_id": "object_000018",
+        "anchor_ids": [
+          "object_000005",
+          "object_000009",
+          "object_000013",
+          "object_000016",
+          "object_000017"
+        ]
+      }
+    ],
+    "trajectory_violations": [],
+    "purpose": "observation"
+  },
+  "candidate_coverage": {
+    "observed_record_count": 17,
+    "selected_record_count": 3,
+    "unknown_count": 48,
+    "missing_count": 45,
+    "complete": false
+  },
+  "numerical_answer": 3,
+  "ros_published": true
+}
