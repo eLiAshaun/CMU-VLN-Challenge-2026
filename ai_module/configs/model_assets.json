@@ -1,100 +1,33 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.1",
   "asset_root": "..",
   "runtime": {
     "enabled": true,
-    "fail_closed": false,
     "perception_container_image": "docker_ai_module:mast3r-live",
     "pipeline": {
       "stage_order": [
         "task_compilation",
-        "canonical_panorama",
-        "perspective_adapter",
-        "qwen3vl_grounding",
-        "mast3r_matching",
-        "yolo_world_primary",
-        "groundingdino_rescue",
-        "sam2_segmentation",
-        "qwen3vl_verification",
-        "panorama_observation_fusion",
-        "qwen3vl_anchor_local_count",
-        "mast3r_3d_association",
-        "persistent_world_model",
+        "task_conditioned_perception",
+        "lidar_geometry",
+        "scene_memory",
+        "query_domain",
         "query_execution",
-        "route_planning",
-        "root_finalization",
-        "answer_gate"
+        "waypoint_selection",
+        "root_finalization"
       ],
       "canonical_evidence": "raw_equirectangular_panorama",
-      "semantic_primary_input": "raw_panorama_then_high_resolution_perspective_views",
+      "semantic_primary_input": "eight_high_resolution_perspective_views",
       "proposal_backend": "qwen3vl",
-      "detector_supplement_enabled": false,
       "same_optical_center_counts_as_independent_evidence": false,
-      "answer_requires_world_alignment": false,
-      "answer_requires_independent_viewpoint_support": false
-    },
-    "deepseek": {
-      "enabled": true,
-      "role": "primary_task_compiler",
-      "base_url": "https://api.deepseek.com",
-      "api_key_env": "DEEPSEEK_API_KEY",
-      "model": "deepseek-v4-flash",
-      "timeout_seconds": 30,
-      "max_tokens": 4096,
-      "max_retries": 1,
-      "fallback": "deterministic_v1"
-    },
-    "mast3r": {
-      "enabled": true,
-      "required": true,
-      "reconstruction_mode": "sparse_global_alignment",
-      "accept_equirectangular": false,
-      "projection_adapter_enabled": true,
-      "panorama_vertical_fov_deg": 120.0,
-      "perspective_width": 512,
-      "perspective_height": 384,
-      "perspective_horizontal_fov_deg": 90.0,
-      "perspective_yaws_deg": [
-        0,
-        45,
-        90,
-        135,
-        180,
-        225,
-        270,
-        315
-      ],
-      "perspective_pitches_deg": [
-        0
-      ],
-      "device": "cuda",
-      "coarse_iterations": 300,
-      "refine_iterations": 300,
-      "matching_confidence_threshold": 5.0,
-      "pointmap_confidence_threshold": 1.5,
-      "max_keyframe_stations": 6,
-      "keyframe_translation_m": 0.25,
-      "keyframe_rotation_deg": 20.0,
-      "any2full": {
-        "enabled": true,
-        "encoder": "vitb",
-        "depth_scale": 100.0,
-        "denoise": true
-      }
+      "geometry_authority": "official_lidar_and_state_estimation_map_frame"
     },
     "yolo_world": {
-      "enabled": false,
+      "enabled": true,
       "required": false,
-      "role": "disabled_qwen3vl_replacement",
-      "score_threshold": 0.35,
-      "nms_iou_threshold": 0.65
-    },
-    "groundingdino": {
-      "enabled": false,
-      "required": false,
-      "role": "disabled_qwen3vl_replacement",
-      "box_threshold": 0.22,
-      "text_threshold": 0.2
+      "role": "task_conditioned_proposal_generator",
+      "score_threshold": 0.20,
+      "nms_iou_threshold": 0.65,
+      "endpoint": "@mast3r_yolo"
     },
     "sam2": {
       "enabled": true,
@@ -102,39 +35,49 @@
       "endpoint": "@mast3r_sam2",
       "keep_alive": true,
       "startup_timeout_seconds": 180,
-      "request_timeout_seconds": 300,
+      "request_timeout_seconds": 120,
       "panorama_mask_iou_threshold": 0.2,
       "panorama_mask_containment_threshold": 0.5
     },
     "qwen3vl": {
       "enabled": true,
       "required": true,
+      "role": "semantic_verifier",
       "endpoint": "@mast3r_qwen3vl",
       "quantization": "int8",
       "startup_timeout_seconds": 180,
       "keep_alive": true,
       "grounding_enabled": true,
       "max_pixels": 1048576,
+      "batch_max_new_tokens": 256,
       "semantic_perspective_width": 1024,
       "semantic_perspective_height": 768,
-      "max_grounding_proposals_per_view": 12,
-      "max_candidates": 20,
-      "target_probability_threshold": 0.5
+      "semantic_perspective_yaws_deg": [0, 45, 90, 135, 180, 225, 270, 315]
     },
-    "live_ros": {
-      "enabled": true,
-      "camera_topic": "/camera/image",
-      "sensor_scan_topic": "/sensor_scan",
-      "registered_scan_topic": "/registered_scan",
-      "state_estimation_topic": "/state_estimation",
-      "question_topic": "/challenge_question",
-      "status_topic": "/mast3r_chain/status",
-      "publish_answers": true
+    "navigation": {
+      "goal_timeout_seconds": 60.0,
+      "terrain_obstacle_height_threshold": 0.05,
+      "terrain_obstacle_clearance_m": 0.75,
+      "terrain_voxel_size_m": 0.05,
+      "terrain_waypoint_acceptance_radius_m": 0.3,
+      "semantic_goal_roi_m": 2.5,
+      "stop_surface_distance_m": 0.9,
+      "stop_band_width_m": 0.45,
+      "near_surface_distance_m": 1.1,
+      "near_band_width_m": 0.8,
+      "terrain_distance_weight": 0.2,
+      "next_step_alignment_weight": 0.15,
+      "geometry_uncertainty_weight": 0.1
+    },
+    "time_budget": {
+      "question_time_budget_seconds": 600.0,
+      "answer_reserve_seconds": 70.0,
+      "initial_acquisition_estimate_seconds": 90.0
     },
     "competition_geometry": {
       "enabled": true,
       "sensor_scan_required": true,
-      "registered_scan_required": true,
+      "registered_scan_required": false,
       "state_estimation_required": true,
       "max_age_seconds": 1.0,
       "max_camera_lidar_offset_seconds": 0.25,
@@ -142,64 +85,31 @@
     },
     "semantic_execution": {
       "enabled": true,
-      "bringup_mode": true,
-      "numerical_semantic_relation_count_enabled": true,
-      "geometry_required_for_numerical": false,
-      "independent_viewpoint_required_for_numerical": false,
+      "geometry_required_for_numerical": true,
       "minimum_independent_viewpoint_separation_m": 0.3,
-      "persistent_store_name": "persistent_world_model.json",
-      "fail_closed_on_ambiguous_association": false
+      "distance_uncertainty_sigma_factor": 2.5,
+      "scene_memory_store_name": "scene_memory.json"
     }
   },
   "models": {
-    "mast3r": {
-      "source": "mast3r",
-      "source_commit": "f5209afc300cec36239a7ac992263f36847bbba0",
-      "checkpoint": "checkpoints/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth"
-    },
-    "any2full": {
-      "source": "https://github.com/zhiyuandaily/Any2Full",
-      "checkpoint": "/home/docker/ai_module/checkpoints/any2full/Any2Full_vitb.pth.tar"
-    },
     "qwen3vl": {
       "model_id": "Qwen/Qwen3-VL-8B-Instruct",
       "checkpoint": "checkpoints/qwen3vl/Qwen3-VL-8B-Instruct",
       "worker_module": "integrations.qwen3vl.worker_server",
       "probe_module": "integrations.qwen3vl.worker_probe"
     },
-    "groundingdino": {
-      "source": "third_party/Grounded-SAM-2/grounding_dino",
-      "source_commit": "b7a9c29f196edff0eb54dbe14588d7ae5e3dde28",
-      "config": "checkpoints/groundingdino/GroundingDINO_SwinB_cfg.py",
-      "checkpoint": "checkpoints/groundingdino/groundingdino_swinb_cogcoor.pth",
-      "text_encoder": "checkpoints/text_encoders/bert-base-uncased",
-      "worker": "integrations/perception/groundingdino_worker.py"
-    },
     "sam2": {
-      "source": "third_party/Grounded-SAM-2/sam2",
-      "source_commit": "b7a9c29f196edff0eb54dbe14588d7ae5e3dde28",
       "config": "third_party/Grounded-SAM-2/sam2/configs/sam2.1/sam2.1_hiera_b+.yaml",
       "checkpoint": "checkpoints/sam2/sam2.1_hiera_base_plus.pt",
-      "worker": "integrations/perception/sam2_box_worker.py",
       "worker_module": "integrations.perception.sam2_worker_server",
       "probe_module": "integrations.perception.sam2_worker_probe"
     },
     "yolo_world": {
-      "source": "third_party/YOLO-World",
-      "source_commit": "4f70adbaacf5685bd9ec5bea85f1f91057f6fc0b",
-      "mmyolo_commit": "4d97b3a06609dba94b8ec584be2f2029cfdb7519",
+      "role": "fixed_task_conditioned_proposal_ensemble",
       "config": "third_party/YOLO-World/configs/pretrain/yolo_world_v2_x_vlpan_bn_2e-3_100e_4x8gpus_obj365v1_goldg_cc3mlite_train_lvis_minival.py",
       "checkpoint": "checkpoints/yolo_world/x_stage1-62b674ad.pth",
       "text_encoder": "checkpoints/text_encoders/clip-vit-base-patch32",
       "worker": "integrations/perception/yolo_world_worker.py"
-    }
-  },
-  "text_encoders": {
-    "bert_base_uncased": {
-      "revision": "86b5e0934494bd15c9632b12f734a8a67f723594"
-    },
-    "clip_vit_base_patch32": {
-      "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268"
     }
   },
   "offline_wheels": "vendor/wheels"

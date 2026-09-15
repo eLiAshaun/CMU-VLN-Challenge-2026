@@ -1,3 +1,11 @@
+> **UPSTREAM COMPONENT DOCUMENTATION**
+>
+> **NOT AI MODULE ARCHITECTURE AUTHORITY**
+>
+> This README preserves MASt3R upstream provenance and component usage. The
+> only current AI Module architecture authority is
+> [`ARCHITECTURE_FINAL.md`](ARCHITECTURE_FINAL.md).
+
 ![banner](assets/mast3r.jpg)
 
 Official implementation of `Grounding Image Matching in 3D with MASt3R`  

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Cross-station MASt3R sparse global reconstruction aligned to ROS map."""
+"""Incremental current-station MASt3R geometry aligned to the ROS map."""
 
 from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
+import shutil
 import time
 import traceback
 from typing import Any
@@ -74,26 +75,41 @@ def _align_direction(source: np.ndarray, target: np.ndarray) -> np.ndarray:
     return _axis_angle_rotation(np.cross(source, helper), np.pi)
 
 
-def _build_pair_graph(images: list[dict], views: list[dict]) -> tuple[list[tuple[dict, dict]], list[dict]]:
+def _build_pair_graph(
+    images: list[dict],
+    views: list[dict],
+    *,
+    new_group: str,
+    current_station_only: bool,
+) -> tuple[list[tuple[dict, dict]], list[dict]]:
     by_group: dict[str, list[int]] = {}
     for index, view in enumerate(views):
         by_group.setdefault(str(view["optical_center_group"]), []).append(index)
-    ordered_groups = list(by_group)
+    if current_station_only and set(by_group) != {new_group}:
+        raise ValueError("incremental_mapper_requires_one_current_station")
     edges: set[tuple[int, int]] = set()
-
-    # Circular overlap inside each panorama preserves its eight-slice optical
-    # centre, while temporal same-heading edges carry translation between robot
-    # stations into one connected reconstruction.
-    for indices in by_group.values():
+    for group, indices in by_group.items():
+        if len(by_group) > 1 and group != new_group:
+            continue
         indices.sort(key=lambda value: float(views[value]["yaw_deg"]))
         for position, first in enumerate(indices):
             second = indices[(position + 1) % len(indices)]
             edges.add(tuple(sorted((first, second))))
-    for first_group, second_group in zip(ordered_groups, ordered_groups[1:]):
-        first_by_yaw = {round(float(views[i]["yaw_deg"]), 3): i for i in by_group[first_group]}
-        second_by_yaw = {round(float(views[i]["yaw_deg"]), 3): i for i in by_group[second_group]}
-        for yaw in sorted(set(first_by_yaw) & set(second_by_yaw)):
-            edges.add(tuple(sorted((first_by_yaw[yaw], second_by_yaw[yaw]))))
+    if not current_station_only:
+        ordered_groups = list(by_group)
+        for first_group, second_group in zip(
+            ordered_groups, ordered_groups[1:]
+        ):
+            first_by_yaw = {
+                round(float(views[index]["yaw_deg"]), 3): index
+                for index in by_group[first_group]
+            }
+            second_by_yaw = {
+                round(float(views[index]["yaw_deg"]), 3): index
+                for index in by_group[second_group]
+            }
+            for yaw in sorted(set(first_by_yaw) & set(second_by_yaw)):
+                edges.add(tuple(sorted((first_by_yaw[yaw], second_by_yaw[yaw]))))
 
     directed = []
     records = []
@@ -101,10 +117,6 @@ def _build_pair_graph(images: list[dict], views: list[dict]) -> tuple[list[tuple
         records.append({
             "view1": views[first]["view_id"],
             "view2": views[second]["view_id"],
-            "cross_station": (
-                views[first]["optical_center_group"]
-                != views[second]["optical_center_group"]
-            ),
         })
         directed.extend(((images[first], images[second]), (images[second], images[first])))
     return directed, records
@@ -215,6 +227,13 @@ def _apply_sim3(points: np.ndarray, scale: float, rotation: np.ndarray, translat
     return (scale * (points @ rotation.T) + translation).astype(np.float32)
 
 
+def _invert_sim3(points: np.ndarray, scale: float, rotation: np.ndarray, translation: np.ndarray) -> np.ndarray:
+    """Express map-frame points in the SGA frame used by the common export."""
+    if not np.isfinite(scale) or scale <= 0.0:
+        raise ValueError("sim3_scale_invalid")
+    return (((points - translation) @ rotation) / scale).astype(np.float32)
+
+
 def _transform(points: np.ndarray, matrix: np.ndarray) -> np.ndarray:
     return points @ matrix[:3, :3].T + matrix[:3, 3]
 
@@ -254,6 +273,11 @@ def _lidar_dense_correspondences(
         keyframe = keyframes_by_group[str(view["optical_center_group"])]
         sensor = np.load(keyframe["sensor_scan_path"]).astype(np.float64)
         registered = np.load(keyframe["registered_scan_path"]).astype(np.float64)
+        # Registered LiDAR is optional.  It can legitimately be empty while
+        # the raw sensor scan is populated; those arrays then have no
+        # point-for-point map-frame correspondence to consume here.
+        if len(registered) != len(sensor) or not len(registered):
+            continue
         adapter = _transform(_transform(sensor, sensor_to_camera), camera_to_adapter)
         rotation_adapter_from_view = np.asarray(
             view["R_panorama_from_camera"], dtype=np.float64
@@ -275,8 +299,12 @@ def _lidar_dense_correspondences(
             & np.isfinite(conf)
             & (conf >= confidence_threshold)
         )
-        source_points.append(points[valid])
-        target_points.append(registered[indices][valid])
+        if np.any(valid):
+            source_points.append(points[valid])
+            target_points.append(registered[indices][valid])
+    if not source_points:
+        empty = np.empty((0, 3), dtype=np.float64)
+        return empty, empty.copy()
     source = np.concatenate(source_points).astype(np.float64)
     target = np.concatenate(target_points).astype(np.float64)
     if len(source) > 12000:
@@ -333,12 +361,40 @@ def main() -> int:
             bundles.append(manifest)
             keyframes_by_group[str(keyframe["optical_center_group"])] = keyframe
         views = [view for bundle in bundles for view in bundle["views"]]
+        new_group = str(request["new_station_id"])
+        if new_group not in {
+            str(view["optical_center_group"]) for view in views
+        }:
+            raise ValueError("new_station_missing_from_mapper_request")
+        previous_manifest_path = Path(
+            str(request.get("previous_geometry_manifest_path", ""))
+        )
+        previous_manifest = (
+            json.loads(previous_manifest_path.read_text(encoding="utf-8"))
+            if previous_manifest_path.is_file()
+            else None
+        )
+        previous_views = list(
+            previous_manifest.get("views", ())
+            if isinstance(previous_manifest, dict) else ()
+        )
         image_paths = [str(view["image_path"]) for view in views]
         images = load_images(image_paths, size=512, verbose=False)
         for index, image in enumerate(images):
             image["idx"] = index
             image["instance"] = str(views[index]["view_id"])
-        pairs, pair_records = _build_pair_graph(images, views)
+        mapping_mode = str(request.get(
+            "mapping_mode", "append_current_station_to_frozen_scene_geometry"
+        ))
+        current_station_only = (
+            mapping_mode == "append_current_station_to_frozen_scene_geometry"
+        )
+        pairs, pair_records = _build_pair_graph(
+            images,
+            views,
+            new_group=new_group,
+            current_station_only=current_station_only,
+        )
 
         device = str(request.get("device", "cuda"))
         torch.cuda.empty_cache()
@@ -347,10 +403,11 @@ def main() -> int:
         model = AsymmetricMASt3R.from_pretrained(str(request["checkpoint"])).to(device).eval()
         model_load_seconds = time.perf_counter() - started
         alignment_started = time.perf_counter()
+        pair_cache_path = Path(request.get("pair_cache_dir", output / "sga_cache"))
         scene = sparse_global_alignment(
             image_paths,
             pairs,
-            str(output / "sga_cache"),
+            str(pair_cache_path),
             model,
             device=device,
             lr1=float(request.get("coarse_learning_rate", 0.07)),
@@ -364,6 +421,7 @@ def main() -> int:
         dense_points, _depthmaps, confidences = scene.get_dense_pts3d(clean_depth=False)
         dense_points = [item.detach().cpu().numpy() for item in dense_points]
         confidences = [item.detach().cpu().numpy() for item in confidences]
+        shutil.rmtree(pair_cache_path, ignore_errors=True)
         alignment_seconds = time.perf_counter() - alignment_started
 
         state_by_group = {
@@ -376,6 +434,13 @@ def main() -> int:
         cam2w_sga, dense_points = _consolidate_optical_centres(
             cam2w_sga_native, dense_points, groups
         )
+        # Keep the native MASt3R reconstruction alongside Any2Full.  LiDAR
+        # coverage is view-wide, but object masks are local: replacing the
+        # whole view discards useful MASt3R geometry in mask regions that have
+        # no LiDAR support.  The lift stage selects between both sources per
+        # object mask using registered-cloud consistency.
+        mast3r_dense_points = [item.copy() for item in dense_points]
+        mast3r_confidences = [item.copy() for item in confidences]
         initial_sim3 = _estimate_sim3(cam2w_sga, target_poses, groups)
         lidar_source, lidar_target = _lidar_dense_correspondences(
             views,
@@ -385,13 +450,14 @@ def main() -> int:
             calibration,
             float(request["pointmap_confidence_threshold"]),
         )
-        scale, rotation, translation, lidar_residual = _refine_sim3_with_lidar(
-            lidar_source,
-            lidar_target,
-            cam2w_sga,
-            target_poses,
-            groups,
-            initial_sim3,
+        # ROS state-estimation camera poses define the map frame.  Per-pixel
+        # MASt3R/LiDAR correspondences are useful diagnostics, but their depth
+        # errors must not move every camera or redefine the reconstruction.
+        scale, rotation, translation = initial_sim3
+        lidar_residual = np.linalg.norm(
+            _apply_sim3(lidar_source, scale, rotation, translation)
+            - lidar_target,
+            axis=1,
         )
 
         # ── Optional Any2Full refinement ───────────────────────────────
@@ -399,14 +465,20 @@ def main() -> int:
         any2full_refined = False
         any2full_runtime = 0.0
         any2full_views_refined = 0
+        any2full_view_geometry = [False] * len(views)
         if any2full_config.get("enabled"):
             try:
                 from integrations.mast3r.any2full_refiner import refine_view_pointmaps
 
+                new_indices = [
+                    index for index, view in enumerate(views)
+                    if str(view["optical_center_group"]) == new_group
+                ]
+                new_views = [views[index] for index in new_indices]
                 any2full_dense, any2full_conf, any2full_runtime, lidar_covered = (
                     refine_view_pointmaps(
-                        views,
-                        keyframes_by_group,
+                        new_views,
+                        {new_group: keyframes_by_group[new_group]},
                         calibration,
                         str(any2full_config["checkpoint"]),
                         encoder=str(any2full_config.get("encoder", "vitb")),
@@ -415,39 +487,72 @@ def main() -> int:
                     )
                 )
                 # Per-view hybrid: use Any2Full where LiDAR covers, keep MASt3R otherwise
-                for idx, has_lidar in enumerate(lidar_covered):
+                for local_index, has_lidar in enumerate(lidar_covered):
                     if has_lidar:
-                        dense_points[idx] = any2full_dense[idx]
-                        confidences[idx] = any2full_conf[idx]
+                        idx = new_indices[local_index]
+                        # Any2Full emits points in this view's camera frame,
+                        # whereas MASt3R emits reconstruction-frame points.
+                        # Place metric depth with the real ROS camera pose, then
+                        # express it in SGA coordinates so the common export
+                        # applies the reconstruction Sim(3) exactly once.
+                        any2full_points_map = _transform(
+                        any2full_dense[local_index], target_poses[idx]
+                        )
+                        dense_points[idx] = _invert_sim3(
+                            any2full_points_map,
+                            scale,
+                            rotation,
+                            translation,
+                        )
+                        confidences[idx] = any2full_conf[local_index]
+                        any2full_view_geometry[idx] = True
                         any2full_views_refined += 1
                 any2full_refined = any2full_views_refined > 0
                 print(
-                    f"[any2full] refined {any2full_views_refined}/{len(views)} views "
+                    f"[any2full] refined {any2full_views_refined}/{len(new_views)} new views "
                     f"in {any2full_runtime:.1f}s"
                 )
             except Exception as exc:
-                print(f"[any2full] refinement failed, falling back to MASt3R: {exc}")
-                # Continue with MASt3R pointmaps unchanged
+                raise RuntimeError("any2full_new_station_refinement_failed") from exc
 
         pointmaps_dir = output / "pointmaps"
         pointmaps_dir.mkdir(exist_ok=True)
-        geometry_views = []
+        geometry_views = [
+            dict(value) for value in previous_views
+            if str(value.get("optical_center_group", "")) != new_group
+        ]
         cam2w_map_all = []
         for index, (view, points, confidence) in enumerate(zip(views, dense_points, confidences)):
             points = points.reshape(*confidence.shape, 3)
             points_map = _apply_sim3(points, scale, rotation, translation)
-            cam2w_map = np.eye(4, dtype=np.float64)
-            cam2w_map[:3, :3] = rotation @ cam2w_sga[index, :3, :3]
-            cam2w_map[:3, 3] = _apply_sim3(
+            mast3r_confidence = mast3r_confidences[index]
+            mast3r_points = mast3r_dense_points[index].reshape(
+                *mast3r_confidence.shape, 3
+            )
+            mast3r_points_map = _apply_sim3(
+                mast3r_points, scale, rotation, translation
+            )
+            sga_cam2w_map = np.eye(4, dtype=np.float64)
+            sga_cam2w_map[:3, :3] = rotation @ cam2w_sga[index, :3, :3]
+            sga_cam2w_map[:3, 3] = _apply_sim3(
                 cam2w_sga[index, None, :3, 3], scale, rotation, translation
             )[0]
-            cam2w_map_all.append(cam2w_map)
+            cam2w_map_all.append(sga_cam2w_map)
+            geometry_cam2w_map = (
+                target_poses[index]
+                if any2full_view_geometry[index]
+                else sga_cam2w_map
+            )
+            if str(view["optical_center_group"]) != new_group:
+                continue
             pointmap_path = pointmaps_dir / f"{view['view_id']}.npz"
             np.savez_compressed(
                 pointmap_path,
                 points_sga=points.astype(np.float32),
                 points_map=points_map,
                 confidence=confidence.astype(np.float32),
+                mast3r_points_map=mast3r_points_map,
+                mast3r_confidence=mast3r_confidence.astype(np.float32),
             )
             geometry_views.append({
                 "view_id": view["view_id"],
@@ -455,12 +560,25 @@ def main() -> int:
                 "pointmap_path": str(pointmap_path),
                 "width": int(view["width"]),
                 "height": int(view["height"]),
+                "intrinsics": np.asarray(view["K"], dtype=float).tolist(),
                 "frame": "map",
                 "world_aligned": True,
                 "optical_center_group": view["optical_center_group"],
                 "cam2w_sga": cam2w_sga[index].astype(float).tolist(),
                 "cam2w_sga_native": cam2w_sga_native[index].astype(float).tolist(),
-                "cam2w_map": cam2w_map.astype(float).tolist(),
+                "cam2w_map": geometry_cam2w_map.astype(float).tolist(),
+                "sga_cam2w_map": sga_cam2w_map.astype(float).tolist(),
+                "target_cam2w_map": target_poses[index].astype(float).tolist(),
+                "dense_geometry_source": (
+                    "any2full_metric_depth_ros_camera_pose"
+                    if any2full_view_geometry[index]
+                    else "mast3r_sga_dense_pointmap"
+                ),
+                "available_geometry_sources": (
+                    ["any2full_metric_depth_ros_camera_pose", "mast3r_sga_dense_pointmap"]
+                    if any2full_view_geometry[index]
+                    else ["mast3r_sga_dense_pointmap"]
+                ),
             })
 
         camera_errors = np.linalg.norm(
@@ -480,13 +598,19 @@ def main() -> int:
             "frame": "map",
             "world_aligned": True,
             "reconstruction_id": output.name,
-            "optical_center_groups": list(dict.fromkeys(groups)),
+            "mapping_mode": mapping_mode,
+            "optical_center_groups": list(dict.fromkeys(
+                str(value.get("optical_center_group", ""))
+                for value in geometry_views
+            )),
             "sim3_sga_to_map": {
                 "scale": scale,
                 "rotation": rotation.astype(float).tolist(),
                 "translation": translation.astype(float).tolist(),
                 "source": "post_sga_ros_pose_alignment",
                 "pre_alignment": "post_sga_optical_center_consolidation",
+                "map_frame_authority": "ros_state_estimation_camera_poses",
+                "lidar_alignment_role": "diagnostic_only",
             },
             "views": geometry_views,
         }
@@ -495,24 +619,40 @@ def main() -> int:
         report = {
             "status": "completed",
             "reconstruction_mode": "sparse_global_alignment",
+            "mapping_mode": mapping_mode,
             "native_sga_executed": True,
             "get_im_poses_executed": True,
             "get_dense_pts3d_executed": True,
             "any2full_refinement_applied": any2full_refined,
             "geometry_manifest_path": str(geometry_path),
             "reconstruction_id": output.name,
-            "optical_center_group_count": len(set(groups)),
-            "view_count": len(views),
-            "pair_count": len(pair_records),
-            "cross_station_pair_count": sum(item["cross_station"] for item in pair_records),
+            "optical_center_group_count": len(
+                geometry_manifest["optical_center_groups"]
+            ),
+            "view_count": len(geometry_views),
+            "reused_geometry_view_count": len(previous_views),
+            "new_geometry_view_count": sum(
+                str(value.get("optical_center_group", "")) == new_group
+                for value in geometry_views
+            ),
+            "reconstruction_pair_count": len(pair_records),
             "pair_graph": pair_records,
+            "new_station_id": new_group,
+            "processed_station_ids": [new_group],
+            "reprocessed_station_count": 0,
+            "prior_view_count": len(previous_views),
             "sim3": geometry_manifest["sim3_sga_to_map"],
             "camera_alignment_rmse_m": float(np.sqrt(np.mean(camera_errors ** 2))),
             "sensor_scan_point_count": sensor_count,
             "registered_scan_point_count": registered_count,
             "sim3_lidar_correspondence_count": int(len(lidar_source)),
-            "sim3_lidar_residual_median_m": float(np.median(lidar_residual)),
-            "sim3_lidar_residual_p90_m": float(np.percentile(lidar_residual, 90)),
+            "sim3_lidar_residual_median_m": (
+                float(np.median(lidar_residual)) if len(lidar_residual) else None
+            ),
+            "sim3_lidar_residual_p90_m": (
+                float(np.percentile(lidar_residual, 90)) if len(lidar_residual) else None
+            ),
+            "sim3_lidar_alignment_role": "diagnostic_only",
             "runtime": {
                 "model_load_seconds": model_load_seconds,
                 "alignment_seconds": alignment_seconds,

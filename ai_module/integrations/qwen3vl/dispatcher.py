@@ -14,6 +14,10 @@ class LocalModelWorker:
         self.backends = dict(backends)
         self.max_cache_entries = max(1, int(max_cache_entries))
         self._cache = OrderedDict()
+        self._busy = False
+
+    def is_busy(self) -> bool:
+        return self._busy
 
     def execute(self, request: ModelRequest) -> ModelResponse:
         if request.backend not in self.backends:
@@ -29,6 +33,7 @@ class LocalModelWorker:
                 metadata=response.metadata,
                 error_code=response.error_code,
             )
+        self._busy = True
         try:
             payload = self.backends[request.backend].execute(request)
             response = payload if isinstance(payload, ModelResponse) else ModelResponse(request.request_id, True, metadata=dict(payload))
@@ -39,6 +44,8 @@ class LocalModelWorker:
                 metadata={"error_detail": str(exc)[:500]},
                 error_code=type(exc).__name__,
             )
+        finally:
+            self._busy = False
         self._cache[cache_key] = response
         while len(self._cache) > self.max_cache_entries:
             self._cache.popitem(last=False)

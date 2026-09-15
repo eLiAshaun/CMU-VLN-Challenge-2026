@@ -1,7 +1,33 @@
-"""Fail-closed semantic execution over persistent MASt3R observations."""
+"""Final semantic-control execution surface."""
 
-from .query_executor import execute_task
-from .root_finalizer import finalize_execution
-from .world_model import update_world_model
+from .evidence_acquisition import EvidenceAcquisitionCoordinator, ObservationIntent
+from .relation_engine import RelationEngine
+from .resolver_contracts import (
+    EvidenceNeed,
+    ExecutionNeed,
+    ResolverResult,
+    ResolverStatus,
+)
+from .root_finalizer import ROOT_DECISION_SCHEMA, finalize_resolver_result
+from .task_resolvers import (
+    InstructionResolver,
+    NumericalResolver,
+    ObjectReferenceResolver,
+    resolver_for,
+)
 
-__all__ = ["execute_task", "finalize_execution", "update_world_model"]
+__all__ = [
+    "EvidenceAcquisitionCoordinator",
+    "EvidenceNeed",
+    "ExecutionNeed",
+    "InstructionResolver",
+    "NumericalResolver",
+    "ObjectReferenceResolver",
+    "ObservationIntent",
+    "ROOT_DECISION_SCHEMA",
+    "RelationEngine",
+    "ResolverResult",
+    "ResolverStatus",
+    "finalize_resolver_result",
+    "resolver_for",
+]

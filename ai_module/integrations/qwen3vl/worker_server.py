@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from multiprocessing.connection import Listener
+from pathlib import Path
 
 from .backend import Qwen3VLBackend
 from .dispatcher import LocalModelWorker
@@ -25,6 +27,7 @@ def _request_from_json(payload) -> ModelRequest:
             str(value) for value in payload.get("input_handles", ())
         ),
         parameters=dict(payload.get("parameters", {})),
+        deadline_monotonic=float(payload.get("deadline_monotonic", 0.0)),
     )
 
 
@@ -33,6 +36,7 @@ def serve(
     endpoint: str,
     quantization: str = "int8",
     max_pixels: int = 512 * 512,
+    batch_max_new_tokens: int = 256,
 ) -> None:
     if not endpoint.startswith("@") or len(endpoint) < 2:
         raise ValueError("endpoint_must_be_abstract_unix_socket")
@@ -43,6 +47,7 @@ def serve(
                 checkpoint,
                 quantization=quantization,
                 max_pixels=max_pixels,
+                batch_max_new_tokens=batch_max_new_tokens,
             )
         ),
     })
@@ -55,13 +60,25 @@ def serve(
                     connection.recv_bytes().decode("utf-8")
                 )
                 request = _request_from_json(payload)
-                response = worker.execute(request)
-                result = {
-                    "request_id": response.request_id,
-                    "ok": response.ok,
-                    "metadata": dict(response.metadata),
-                    "error_code": response.error_code,
-                }
+
+                # Check worker status before accepting request
+                if request.deadline_monotonic > 0.0 and (
+                    request.deadline_monotonic <= time.monotonic()
+                ):
+                    result = {
+                        "request_id": request.request_id,
+                        "ok": False,
+                        "metadata": {},
+                        "error_code": "DEADLINE_EXPIRED",
+                    }
+                else:
+                    response = worker.execute(request)
+                    result = {
+                        "request_id": response.request_id,
+                        "ok": response.ok,
+                        "metadata": dict(response.metadata),
+                        "error_code": response.error_code,
+                    }
             except Exception as exc:
                 result = {
                     "request_id": "",
@@ -86,17 +103,53 @@ def serve(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint", required=True)
-    parser.add_argument("--endpoint", default="@scnav_qwen3vl")
+    parser.add_argument("--checkpoint", required=False)
+    parser.add_argument("--endpoint", required=False)
     parser.add_argument(
         "--quantization",
         choices=("int8", "int4", "bf16"),
-        default="int8",
+        required=False,
     )
-    parser.add_argument("--max-pixels", type=int, default=512 * 512)
+    parser.add_argument("--max-pixels", type=int, required=False)
+    parser.add_argument(
+        "--batch-max-new-tokens", type=int, required=False
+    )
     args = parser.parse_args()
+
+    # Backward compatibility: support CLI arguments
+    if args.checkpoint:
+        checkpoint = args.checkpoint
+        endpoint = args.endpoint or "@scnav_qwen3vl"
+        quantization = args.quantization or "int8"
+        max_pixels = args.max_pixels or 512 * 512
+        batch_max_new_tokens = args.batch_max_new_tokens or 256
+    else:
+        # New path: load from config
+        try:
+            from config import load_config
+            ai_module_root = Path(__file__).resolve().parents[2]
+            config = load_config(
+                asset_manifest_path=ai_module_root / "configs" / "model_assets.json"
+            )
+            checkpoint = str(ai_module_root / config.qwen3vl.checkpoint_path)
+            endpoint = config.qwen3vl.endpoint
+            quantization = config.qwen3vl.quantization
+            max_pixels = config.qwen3vl.max_pixels
+            batch_max_new_tokens = config.qwen3vl.batch_max_new_tokens
+        except ImportError:
+            raise RuntimeError(
+                "No --checkpoint provided and config system not available. "
+                "Use --checkpoint, --endpoint, --quantization, --max-pixels"
+            )
+
     try:
-        serve(args.checkpoint, args.endpoint, args.quantization, args.max_pixels)
+        serve(
+            checkpoint,
+            endpoint,
+            quantization,
+            max_pixels,
+            batch_max_new_tokens,
+        )
     except KeyboardInterrupt:
         pass
     return 0

@@ -1,11 +1,11 @@
 """Pinned, lazy local Qwen3-VL grounding and candidate verification.
 
-One request verifies one detector candidate from an object crop plus a wider
-context crop.  It may also report how many query instances are contained by
-that exact detector box so a group proposal is not mistaken for one physical
-object.  This is local proposal structure, never a scene-level answer.  Model
-weights are loaded only when the first request arrives so the worker can be
-scheduled independently from the ROS vision process.
+Candidate verification supports both the legacy single-candidate request and
+the newer per-view batch request.  The batch request uses one source image
+with numbered red boxes and returns independently validated rows, so a bad
+row does not become evidence for another candidate.  Model weights are loaded
+only when the first request arrives so the worker can be scheduled
+independently from the ROS vision process.
 """
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import time
 from typing import Mapping, Sequence
 
 from .semantic_verifier import SemanticVerification
@@ -36,7 +37,7 @@ def _normalized_bbox(value) -> tuple[float, float, float, float]:
 
 
 def _candidate_images_from_pil(source, normalized_bbox):
-    """Return object and context PIL crops with a context-only box overlay."""
+    """Return a close candidate view and the full scene with a box overlay."""
     from PIL import Image, ImageDraw
 
     if not isinstance(source, Image.Image):
@@ -62,26 +63,50 @@ def _candidate_images_from_pil(source, normalized_bbox):
         min(height, box[3] + object_pad_y),
     )
 
-    context_pad_x = max(32, int(round(3.0 * box_width)))
-    context_pad_y = max(32, int(round(3.0 * box_height)))
-    context_bounds = (
-        max(0, box[0] - context_pad_x),
-        max(0, box[1] - context_pad_y),
-        min(width, box[2] + context_pad_x),
-        min(height, box[3] + context_pad_y),
-    )
     object_crop = source.crop(object_bounds)
-    context_crop = source.crop(context_bounds)
-    context_box = (
-        box[0] - context_bounds[0],
-        box[1] - context_bounds[1],
-        box[2] - context_bounds[0],
-        box[3] - context_bounds[1],
-    )
+    context_crop = source.copy()
+    context_box = box
     draw = ImageDraw.Draw(context_crop)
     stroke = max(2, int(round(min(context_crop.size) / 120.0)))
     draw.rectangle(context_box, outline=(255, 32, 32), width=stroke)
     return object_crop, context_crop
+
+
+def _numbered_candidate_image_from_pil(source, candidates):
+    """Annotate one source image with independently numbered candidate boxes."""
+    from PIL import Image, ImageDraw
+
+    if not isinstance(source, Image.Image):
+        raise TypeError("qwen3vl_source_must_be_pil_image")
+    annotated = source.convert("RGB").copy()
+    width, height = annotated.size
+    draw = ImageDraw.Draw(annotated)
+    stroke = max(2, int(round(min(annotated.size) / 240.0)))
+    for index, candidate in enumerate(candidates, start=1):
+        bbox = _normalized_bbox(candidate.get("candidate_bbox", ()))
+        x1, y1, x2, y2 = (
+            int(round(bbox[0] * width)),
+            int(round(bbox[1] * height)),
+            int(round(bbox[2] * width)),
+            int(round(bbox[3] * height)),
+        )
+        draw.rectangle((x1, y1, x2, y2), outline=(255, 32, 32), width=stroke)
+        label = str(index)
+        text_box = draw.textbbox((0, 0), label)
+        label_width = max(16, text_box[2] - text_box[0] + 8)
+        label_height = max(16, text_box[3] - text_box[1] + 6)
+        label_x = max(0, min(width - label_width, x1))
+        label_y = max(0, y1 - label_height)
+        draw.rectangle(
+            (label_x, label_y, label_x + label_width, label_y + label_height),
+            fill=(255, 32, 32),
+        )
+        draw.text(
+            (label_x + 4, label_y + 2),
+            label,
+            fill=(255, 255, 255),
+        )
+    return annotated
 
 
 def _candidate_images(image_path: str, normalized_bbox):
@@ -129,108 +154,264 @@ def _verification_prompt(
     anchor_concept: str,
     hard_negatives: Sequence[str],
 ) -> str:
-    if operation == "verify_anchor":
-        negatives = ", ".join(
-            str(item).strip()
-            for item in hard_negatives
-            if str(item).strip()
-        ) or "none supplied"
-        return (
-            "You are a calibrated visual relation-anchor verifier. "
-            "Image 1 is a tight crop of one detector-proposed physical "
-            "anchor. Image 2 is wider context; the red rectangle encloses "
-            "that exact anchor. Candidate-and-relation concept: "
-            f"{query_concept!r}. Required context group: "
-            f"{anchor_concept!r}. Explicit hard negatives: {negatives}. "
-            "Inspect the wider context, including the wall area above and "
-            "behind the red rectangle. target_probability is confidence "
-            "that the red-rectangle object has the requested physical class. "
-            "anchor_probability is confidence that this exact object, not a "
-            "different nearby object, satisfies the requested spatial "
-            "relation to the required context group. It must be low when the "
-            "context is absent, only one isolated context member is visible, "
-            "or the group belongs to a different wall/object. "
-            "contained_instance_count is the number from 0 through 10 of "
-            "visually distinct required-context members supporting that "
-            "relation; count_confidence is confidence in that group count. "
-            "Do not answer the scene-wide numerical question. Return exactly "
-            "one JSON object and no markdown with exactly these keys: "
-            '{"target_probability":0.0,"anchor_probability":0.0,'
-            '"confuser_probabilities":{},"rationale_tags":[],'
-            '"contained_instance_count":0,"count_confidence":0.0}. '
-            "Probabilities must be calibrated numbers in [0,1]."
-        )
-    if operation == "count_on_anchor":
-        negatives = ", ".join(
-            str(item).strip()
-            for item in hard_negatives
-            if str(item).strip()
-        ) or "none supplied"
-        return (
-            "You are a calibrated anchor-local visual inventory verifier. "
-            "Image 1 is a crop of the local inventory region around one "
-            "detector-proposed support object. Image 2 is wider context; "
-            "the red rectangle covers that support and the usable surface "
-            "immediately above it. Query object concept: "
-            f"{query_concept!r}. Support concept: {anchor_concept!r}. "
-            f"Explicit hard negatives for the query object: {negatives}. "
-            "Count visually distinct query-object instances that are on, "
-            "attached to, or immediately supported by that one support "
-            "object inside the red ROI. The support may occupy the lower "
-            "part of the rectangle; do not require its whole body to fill "
-            "the ROI. Trace physical bodies, not screen "
-            "content: two back-to-back monitor bodies are two instances even "
-            "when their outlines overlap or form one V shape. Count a rear "
-            "housing as an instance only when its separate frame, casing, "
-            "stand, or mount is visibly distinguishable. Exclude objects on "
-            "other support surfaces and "
-            "exclude every hard negative. Do not infer hidden objects, do "
-            "not use a typical-layout prior, and do not answer any scene-wide "
-            "question. contained_instance_count is this measured local count "
-            "from 0 through 10. count_confidence is confidence in the local "
-            "count. target_probability is confidence that at least one query "
-            "object is present in the ROI; anchor_probability is confidence "
-            "that the named support is the red-ROI support. "
-            "Return exactly one JSON object and no markdown with exactly "
-            'these keys: {"target_probability":0.0,'
-            '"anchor_probability":0.0,"confuser_probabilities":{},'
-            '"rationale_tags":[],"contained_instance_count":0,'
-            '"count_confidence":0.0}. Probabilities must be calibrated '
-            "numbers in [0,1]."
-        )
-    role = "target object" if operation == "verify_object" else "anchor object"
+    role = (
+        "target object"
+        if operation in {"verify_object", "verify_object_batch"}
+        else "anchor object"
+    )
     negatives = ", ".join(
         str(item).strip() for item in hard_negatives if str(item).strip()
     ) or "none supplied"
     return (
         "You are a calibrated visual candidate verifier. "
-        "Image 1 is a tight detector-candidate crop. Image 2 is a wider "
-        "context crop; the exact candidate is enclosed by the red rectangle. "
+        "Image 1 is a tight detector-candidate crop. Image 2 is the complete "
+        "source view; the exact candidate is enclosed by the red rectangle. "
         f"Verify only that one {role}. Query concept: {query_concept!r}. "
         f"Anchor concept: {anchor_concept!r}. Explicit hard negatives: "
         f"{negatives}. Treat the target and every hard negative as mutually "
         "exclusive visual classes. A semantically related hard negative is "
         "not the target. Use visible shape, mounting, text, material, and "
         "requested attributes; do not accept a candidate merely because the "
-        "query words appear in the prompt. For every hard negative that is "
-        "visually supported with probability above 0.5, include that exact "
-        "supplied name as a key in confuser_probabilities. Omit every "
-        "unsupported or <=0.5 hard negative; never emit zero-valued confuser "
-        "keys, and emit at most the three strongest confusers. "
-        "contained_instance_count is the number from 0 through 10 of visually "
-        "distinct query-concept instances whose visible body or frame is at "
-        "least half inside the red candidate rectangle. Use 1 for one object, "
-        "and use more than 1 only when this exact detector candidate is an "
-        "instance group. count_confidence is confidence in that local count. "
+        "query words appear in the prompt. In confuser_probabilities, include "
+        "the strongest visually plausible alternative class for the red-"
+        "rectangle object, even when it was not supplied as a hard negative. "
+        "Never put the requested target class or one of its synonyms in the "
+        "confuser map. Use a short concrete class name as its key. Also include any visually "
+        "supported supplied hard negative. Emit at most the three strongest "
+        "alternatives; use an empty object only when no alternative class is "
+        "visually plausible. "
         "Do not count outside the red rectangle and do not answer the scene "
         "question. Treat blur or insufficient pixels as uncertainty, not "
         "false. "
+        "In this generic class-verification operation, target_probability "
+        "always means P(the red-box object belongs to the query concept), "
+        "regardless of whether that object later serves as a task target or a "
+        "relation anchor. anchor_probability is unused here and must be 0.0; "
+        "never move class probability into that field because of the object's "
+        "role in the question. "
         "Return exactly one JSON object and no markdown with exactly these "
         'keys: {"target_probability":0.0,"anchor_probability":0.0,'
-        '"confuser_probabilities":{},"rationale_tags":[],'
-        '"contained_instance_count":1,"count_confidence":0.0}. '
+        '"confuser_probabilities":{},"rationale_tags":[]}. '
         "Probabilities must be calibrated numbers in [0,1]."
     )
+
+
+def _batch_verification_prompt(
+    candidates: Sequence[Mapping[str, object]],
+    *,
+    anchor_concept: str,
+) -> str:
+    """Build the strict, indexed output contract for one annotated view."""
+    descriptions = []
+    for index, candidate in enumerate(candidates, start=1):
+        query = str(candidate.get("query_concept", "")).strip()
+        visual_definition = str(
+            candidate.get("visual_definition", query)
+        ).strip() or query
+        negatives = ", ".join(
+            str(value).strip()
+            for value in (candidate.get("hard_negatives", ()) or ())
+            if str(value).strip()
+        ) or "none supplied"
+        descriptions.append(
+            f"Candidate {index}: query concept={query!r}; "
+            f"visual definition={visual_definition!r}; "
+            f"hard negatives={negatives}."
+        )
+    return (
+        "You are a calibrated visual candidate verifier. The image is one "
+        "complete source view with red rectangles numbered 1 through "
+        f"{len(candidates)}. Each numbered rectangle identifies exactly one "
+        "detector candidate. Verify every candidate independently; never "
+        "transfer evidence from one numbered rectangle to another. "
+        + (f"Common anchor concept: {anchor_concept!r}. " if anchor_concept else "")
+        + "\n"
+        + "\n".join(descriptions)
+        + "\nFor each candidate, use visible shape, mounting, text, material, "
+        "and requested attributes. A red rectangle is only a detector "
+        "proposal, not evidence that the query object fills it. First "
+        "identify the dominant visible object or surface inside that exact "
+        "rectangle. If the rectangle is mostly background, a room surface, "
+        "or an unrelated object with only a clipped boundary fragment of the "
+        "query concept, assign probability to that concrete dominant "
+        "alternative instead of inferring the query from the boundary. "
+        "Treat the query and hard negatives as mutually exclusive visual "
+        "classes. In confuser_probabilities, include the strongest visually "
+        "plausible alternative class for each numbered rectangle even when "
+        "it was not supplied as a hard negative, plus any visually supported "
+        "supplied hard negative. Never put the requested query class or one "
+        "of its synonyms in the confuser map. Use an empty object only when "
+        "no alternative class is visually plausible. Treat blur or insufficient "
+        "pixels as uncertainty, not false. Do not answer a scene-wide "
+        "question. For every row, target_probability always means P(the "
+        "numbered-box object belongs to that row's query concept), regardless "
+        "of whether the class is called a target or anchor in the question. "
+        "anchor_probability is unused in this generic batch and must be 0.0; "
+        "never route class probability into it based on task role. Return "
+        "exactly one compact JSON object and no markdown. "
+        "The object has the single key v. Its value is an array containing "
+        f"exactly {len(candidates)} rows, one for each candidate, in any order. "
+        "Every row is exactly [index,target_probability,anchor_probability," 
+        "confuser_probabilities,rationale_tags]. Example: "
+        "{\"v\":[[1,0.8,0.1,{},[\"visible_frame\"]]]}. Use at most two "
+        "short snake_case rationale tags. Use the "
+        "numbered candidate index from 1 through the final candidate index. "
+        "Probabilities must be calibrated numbers in [0,1]."
+    )
+
+
+def _strict_semantic_batch_json(
+    text: str,
+    expected_count: int,
+) -> list[dict[str, object]]:
+    """Parse every independently valid indexed row without semantic repair.
+
+    Missing rows carry no verdict.  The perception owner already represents
+    an absent index as ``unavailable``; discarding other schema-valid rows
+    would instead erase real positive or confuser evidence from that view.
+    """
+    payload = None
+    standalone_rows: list[object] = []
+    for candidate in _decoded_json_values(text):
+        if (
+            isinstance(candidate, Mapping)
+            and set(candidate) == {"v"}
+            and isinstance(candidate.get("v"), list)
+        ):
+            payload = candidate
+            break
+        # ``raw_decode`` can still recover later complete rows when one row
+        # makes the enclosing object invalid.  These are independent schema
+        # units; accepting them does not repair or infer the malformed row.
+        if isinstance(candidate, list) and len(candidate) == 5:
+            standalone_rows.append(candidate)
+    raw_rows = payload["v"] if payload is not None else standalone_rows
+    if not raw_rows:
+        raise ValueError("qwen3vl_batch_json_object_missing")
+
+    results: list[dict[str, object]] = []
+    seen: set[int] = set()
+    for raw in raw_rows:
+        if (
+            not isinstance(raw, (list, tuple))
+            or len(raw) != 5
+        ):
+            continue
+        try:
+            raw_index = raw[0]
+            if (
+                isinstance(raw_index, bool)
+                or not isinstance(raw_index, int)
+            ):
+                continue
+            index = int(raw_index)
+            if not 1 <= index <= expected_count or index in seen:
+                continue
+            verification = SemanticVerification.from_json(
+                {
+                    "target_probability": raw[1],
+                    "anchor_probability": raw[2],
+                    "confuser_probabilities": raw[3],
+                    "rationale_tags": raw[4],
+                }
+            )
+        except (TypeError, ValueError, KeyError):
+            continue
+        seen.add(index)
+        results.append({
+            "index": index,
+            "target_probability": verification.target_probability,
+            "anchor_probability": verification.anchor_probability,
+            "confuser_probabilities": dict(
+                verification.confuser_probabilities
+            ),
+            "rationale_tags": list(verification.rationale_tags),
+        })
+    if not results:
+        raise ValueError("qwen3vl_batch_verifications_empty")
+    return sorted(results, key=lambda value: int(value["index"]))
+
+
+def _json_syntax_candidates(text: str) -> list[str]:
+    """Return syntax-only repairs without inventing any semantic field.
+
+    Quantized generation can wrap JSON in fences, use typographic quotes, or
+    stop immediately after a complete list item.  The repairs below only
+    normalize delimiters/quotes and close an otherwise complete prefix.  Every
+    caller still applies its exact schema validator afterwards.
+    """
+    raw = str(text).strip()
+    unfenced = re.sub(
+        r"^\s*```(?:json)?\s*|\s*```\s*$",
+        "",
+        raw,
+        flags=re.IGNORECASE,
+    ).strip()
+    normalized = (
+        unfenced.replace("\u201c", '"')
+        .replace("\u201d", '"')
+        .replace("\uff02", '"')
+    )
+    normalized = re.sub(r'(?<=\d)"(?=\s*[,}])', "", normalized)
+    normalized = re.sub(r",\s*([}\]])", r"\1", normalized)
+    candidates = [raw, unfenced, normalized]
+
+    starts = [index for index, value in enumerate(normalized) if value in "[{"]
+    for start in starts:
+        fragment = normalized[start:].strip()
+        stack: list[str] = []
+        in_string = False
+        escaped = False
+        invalid = False
+        for character in fragment:
+            if in_string:
+                if escaped:
+                    escaped = False
+                elif character == "\\":
+                    escaped = True
+                elif character == '"':
+                    in_string = False
+                continue
+            if character == '"':
+                in_string = True
+            elif character in "[{":
+                stack.append(character)
+            elif character in "]}":
+                expected = "[" if character == "]" else "{"
+                if not stack or stack[-1] != expected:
+                    invalid = True
+                    break
+                stack.pop()
+        if invalid or in_string or not stack:
+            continue
+        repairable = fragment.rstrip()
+        # A cut-off proposal object may follow one or more complete objects.
+        # Discard only that incomplete suffix, then close the enclosing list.
+        if stack[-1] == "{" and "[" in stack:
+            last_complete_object = repairable.rfind("}")
+            first_array = repairable.find("[")
+            if first_array <= last_complete_object:
+                repairable = repairable[: last_complete_object + 1]
+                stack = ["["]
+        repairable = re.sub(r",\s*$", "", repairable)
+        if not repairable or repairable[-1] in "[{:":
+            continue
+        closing = "".join("]" if value == "[" else "}" for value in reversed(stack))
+        candidates.append(repairable + closing)
+    return list(dict.fromkeys(value for value in candidates if value))
+
+
+def _decoded_json_values(text: str):
+    decoder = json.JSONDecoder()
+    for candidate in _json_syntax_candidates(text):
+        for index, character in enumerate(candidate):
+            if character not in "[{":
+                continue
+            try:
+                payload, _end = decoder.raw_decode(candidate[index:])
+            except json.JSONDecodeError:
+                continue
+            yield payload
 
 
 def _strict_semantic_json(text: str) -> SemanticVerification:
@@ -242,18 +423,14 @@ def _strict_semantic_json(text: str) -> SemanticVerification:
     an otherwise valid calibrated verdict.  ``raw_decode`` preserves strict
     schema validation while tolerating harmless surrounding text.
     """
-    value = str(text)
-    decoder = json.JSONDecoder()
     saw_object_start = False
     last_schema_error: Exception | None = None
-    for index, character in enumerate(value):
-        if character != "{":
+    for candidate in _json_syntax_candidates(text):
+        saw_object_start = saw_object_start or "{" in candidate
+    for payload in _decoded_json_values(text):
+        if not isinstance(payload, Mapping):
             continue
         saw_object_start = True
-        try:
-            payload, _end = decoder.raw_decode(value[index:])
-        except json.JSONDecodeError:
-            continue
         try:
             return SemanticVerification.from_json(payload)
         except (TypeError, ValueError) as exc:
@@ -270,12 +447,14 @@ def _grounding_prompt(
     *,
     view_id: str,
     scene_context: str,
-    maximum: int,
 ) -> str:
     specification = []
     for concept in concepts:
         class_name = str(concept["class_name"])
         aliases = ", ".join(str(value) for value in concept.get("aliases", ())) or "none"
+        visual_definition = str(
+            concept.get("visual_definition", class_name)
+        ).strip()
         context = json.dumps(
             list(concept.get("supporting_context", ())),
             ensure_ascii=False,
@@ -284,9 +463,27 @@ def _grounding_prompt(
         negatives = ", ".join(
             str(value) for value in concept.get("hard_negatives", ())
         ) or "none"
+        if concept.get("context_group") is True:
+            reporting_instruction = (
+                "emit one coarse union box around the complete visible context "
+                "group rather than one box per member"
+            )
+        elif concept.get("complete_instance_box") is True:
+            reporting_instruction = (
+                "emit one box per visible physical instance; each box must "
+                "cover that instance's complete visible extent, including "
+                "class-defining attached parts, container, stem, stand, or "
+                "base when they belong to the same object, while excluding "
+                "supporting furniture and background"
+            )
+        else:
+            reporting_instruction = "emit one box per visible physical instance"
         specification.append(
-            f"- label {class_name!r}; aliases: {aliases}; required supporting "
-            f"context: {context}; exclude: {negatives}"
+            f"- label {class_name!r}; aliases: {aliases}; relation-local "
+            f"attention hints (never a membership requirement): {context}; "
+            f"visible class definition: "
+            f"{visual_definition!r}; exclude: {negatives}; reporting: "
+            f"{reporting_instruction}"
         )
     return (
         "Locate every visible physical instance that belongs to the categories "
@@ -298,8 +495,14 @@ def _grounding_prompt(
         "when none is visible. Do not output confidence scores, prose, markdown, "
         "duplicate boxes, screen content, reflections, or inferred hidden objects. "
         "A segmentation model will refine the coarse boxes. Apply the required "
-        "supporting context and exclusions when choosing instances. Return at most "
-        f"{maximum} boxes.\n" + "\n".join(specification) +
+        "visual definitions and exclusions when choosing instances. Search at "
+        "multiple scales, including small or partly occluded instances and objects "
+        "near image edges. Do not stop after finding one large or easy instance of "
+        "a category. For every relation-local attention hint, inspect the "
+        "neighborhood of each visible context object as well as the whole image, "
+        "but report a visible category instance even when its relation is not yet "
+        "known; relation verification happens later. Enumerate all visible "
+        "instances that satisfy the supplied definitions.\n" + "\n".join(specification) +
         f"\nQuestion context: {scene_context}\nView id: {view_id}"
     )
 
@@ -307,20 +510,10 @@ def _grounding_prompt(
 def _strict_grounding_json(
     text: str,
     label_to_class: Mapping[str, str],
-    *,
-    maximum: int,
 ) -> list[dict[str, object]]:
-    # Qwen occasionally emits a stray quote immediately after a numeric box
-    # coordinate (for example ``"bottom":0.51"``).  Normalize that lexical
-    # artifact without altering any coordinate value or semantic field.
-    text = re.sub(r'(?<=\d)"(?=\s*[,}])', "", str(text))
-    decoder = json.JSONDecoder()
     last_error: Exception | None = None
-    for index, character in enumerate(text):
-        if character not in "[{":
-            continue
+    for payload in _decoded_json_values(text):
         try:
-            payload, _ = decoder.raw_decode(text[index:])
             if isinstance(payload, list):
                 raw_proposals = payload
             elif isinstance(payload, Mapping) and set(payload) == {"proposals"}:
@@ -330,65 +523,78 @@ def _strict_grounding_json(
             if not isinstance(raw_proposals, list):
                 raise ValueError("grounding_proposals_not_list")
             proposals = []
-            for raw in raw_proposals[:maximum]:
-                if not isinstance(raw, Mapping) or set(raw) not in ({
+            for raw in raw_proposals:
+                if not isinstance(raw, Mapping) or set(raw) != {
                     "label", "bbox_2d",
-                }, {
-                    "class_name", "bbox", "semantic_probability", "rationale_tags",
-                }, {
-                    "class_name", "box", "semantic_probability", "rationale_tags",
-                }):
+                }:
                     raise ValueError("grounding_proposal_schema_invalid")
-                emitted_label = str(raw.get("label", raw.get("class_name", ""))).strip().lower()
+                emitted_label = str(raw["label"]).strip().lower()
                 class_name = label_to_class.get(emitted_label)
                 if class_name is None:
-                    raise ValueError("grounding_class_outside_task")
-                if "bbox_2d" in raw:
-                    bbox_1000 = [float(value) for value in raw["bbox_2d"]]
-                    bbox = list(_normalized_bbox([value / 1000.0 for value in bbox_1000]))
-                elif "bbox" in raw:
-                    bbox = list(_normalized_bbox(raw["bbox"]))
-                else:
-                    box = raw["box"]
-                    if not isinstance(box, Mapping) or set(box) != {
-                        "left", "top", "right", "bottom"
-                    }:
-                        raise ValueError("grounding_box_schema_invalid")
-                    bbox = list(_normalized_bbox([
-                        box["left"], box["top"], box["right"], box["bottom"]
-                    ]))
-                if "semantic_probability" in raw:
-                    probability = float(raw["semantic_probability"])
-                    if not 0.0 <= probability <= 1.0:
-                        raise ValueError("grounding_probability_invalid")
-                    if probability == 0.0:
-                        continue
-                    tags = raw["rationale_tags"]
-                    if not isinstance(tags, list):
-                        raise ValueError("grounding_rationale_tags_invalid")
-                else:
-                    probability = 1.0
-                    tags = ["qwen3vl_native_2d_grounding"]
+                    # A narrowed candidate request can still make Qwen repeat
+                    # another visible class from the shared task context.  An
+                    # out-of-request label is not evidence that the requested
+                    # proposals in the same JSON list are malformed.  Ignore
+                    # that extra proposal and preserve the requested boxes.
+                    continue
+                bbox_1000 = [float(value) for value in raw["bbox_2d"]]
+                bbox = list(_normalized_bbox([
+                    value / 1000.0 for value in bbox_1000
+                ]))
                 proposals.append({
                     "class_name": class_name,
                     "bbox_xyxy_normalized": bbox,
-                    "semantic_probability": probability,
-                    "rationale_tags": [str(value) for value in tags],
+                    "rationale_tags": ["qwen3vl_native_2d_grounding"],
                 })
-            return proposals
-        except (json.JSONDecodeError, TypeError, ValueError) as exc:
+            unique_proposals = []
+            seen_proposals = set()
+            for proposal in proposals:
+                key = (
+                    str(proposal["class_name"]),
+                    *(
+                        round(float(value), 6)
+                        for value in proposal["bbox_xyxy_normalized"]
+                    ),
+                )
+                if key in seen_proposals:
+                    continue
+                seen_proposals.add(key)
+                unique_proposals.append(proposal)
+            return unique_proposals
+        except (TypeError, ValueError) as exc:
             last_error = exc
     raise ValueError("qwen3vl_grounding_json_invalid") from last_error
 
 
 def _relation_images(parameters):
+    from PIL import Image
+
+    output = []
+    path_values = parameters.get("relation_images")
+    if path_values is not None:
+        if not isinstance(path_values, list) or not 1 <= len(path_values) <= 3:
+            raise ValueError("qwen3vl_relation_image_contract_invalid")
+        for value in path_values:
+            if not isinstance(value, Mapping) or set(value) != {
+                "role", "image_path", "preprocessed_once"
+            }:
+                raise ValueError("qwen3vl_relation_image_path_schema_invalid")
+            if value["preprocessed_once"] is not True:
+                raise ValueError("qwen3vl_relation_image_not_preprocessed")
+            path = Path(str(value["image_path"])).resolve()
+            if not path.is_file():
+                raise ValueError("qwen3vl_relation_image_missing")
+            image = Image.open(path).convert("RGB")
+            if image.width % 32 or image.height % 32:
+                raise ValueError("qwen3vl_relation_image_profile_invalid")
+            output.append((str(value["role"]), image))
+        return tuple(output)
+
     values = parameters.get("shared_memories")
     if not isinstance(values, list) or not 1 <= len(values) <= 3:
         raise ValueError("qwen3vl_relation_image_contract_invalid")
-    from PIL import Image
     from .shared_memory_io import SharedArrayStore
 
-    output = []
     for value in values:
         if not isinstance(value, Mapping) or set(value) != {
             "role", "name", "shape", "dtype", "preprocessed_once"
@@ -410,45 +616,254 @@ def _relation_images(parameters):
             or image.shape[1] % 32
         ):
             raise ValueError("qwen3vl_relation_image_profile_invalid")
-        # No crop or resize occurs in the worker.  The processor receives the
-        # one client-prepared, patch-aligned image.
-        output.append((
-            str(value["role"]),
-            Image.fromarray(image, mode="RGB"),
-        ))
+        output.append((str(value["role"]), Image.fromarray(image, mode="RGB")))
     return tuple(output)
+
+
+def _relation_role_prompt(request: Mapping[str, object]) -> str:
+    """Audit exact boxed role identities before asking about the predicate."""
+    subject_id = int(request["subject_id"])
+    object_ids = [int(value) for value in request["object_ids"]]
+    object_descriptions = [
+        str(value) for value in request["object_descriptions"]
+    ]
+    object_contract = "; ".join(
+        f"O{index}:{object_id} must visibly be {description!r}"
+        for index, (object_id, description) in enumerate(
+            zip(object_ids, object_descriptions),
+            start=1,
+        )
+    )
+    return (
+        "You are performing an independent object-role identity audit. "
+        "Do not evaluate the spatial predicate in this pass and do not trust "
+        "the upstream class labels. Treat each exact coloured box as the "
+        "identity anchor for that role. Use the surrounding joint-context "
+        "pixels only to recover the complete physical body connected to the "
+        "boxed region (for example, whether a boxed surface is merely one "
+        "part of a larger object); never use a separate nearby item to satisfy "
+        "the role. The red box S:"
+        f"{subject_id} must visibly be {str(request['subject_description'])!r}; "
+        + object_contract
+        + ". The subject image isolates S, the objects image isolates O1/O2, "
+        "and joint_context shows which coloured boxes refer to the same or "
+        "different physical bodies. Overlapping boxes do not validate one "
+        "another; when two roles enclose the same body but request different "
+        "classes, judge each requested class independently. Set a role to Y "
+        "only when the complete physical object containing the boxed pixels "
+        "belongs to the requested class and defining visual parts are "
+        "positively visible. Set N "
+        "only when a different physical class is positively visible, and name "
+        "it in x using subject_is_<class> or object_<index>_is_<class>. Use U "
+        "for blur, partial pixels, mixed bodies, or insufficient evidence. "
+        "The relation field r is U in this identity-only pass. The x field "
+        "must be one snake_case label, never a sentence: use roles_match when "
+        "all roles are Y, role_unclear when any role is U, or the required "
+        "*_is_<class> label when a role is N. Return the requested compact "
+        "JSON only."
+    )
 
 
 def _relation_prompt(request: Mapping[str, object]) -> str:
     subject_id = int(request["subject_id"])
     object_ids = [int(value) for value in request["object_ids"]]
     predicate = str(request["predicate"]).upper()
-    output_example = json.dumps(
-        {
-            "subject_id": subject_id,
-            "predicate": predicate,
-            "object_ids": object_ids,
-            "state": "uncertain",
-            "confidence": 0.0,
-            "reason_code": "insufficient_visible_evidence",
-            "visible_subject": False,
-            "visible_objects": [False for _ in object_ids],
-            "jointly_observable": False,
-            "occlusion": "severe",
-        },
+    parameter_roles = [str(value) for value in request["parameter_roles"]]
+    subject_description = str(request["subject_description"])
+    object_descriptions = [
+        str(value) for value in request["object_descriptions"]
+    ]
+    object_legend = ", ".join(
+        f"O{index}:{object_id} is object argument {index}"
+        for index, object_id in enumerate(object_ids, start=1)
+    )
+    geometry_diagnostic = json.dumps(
+        request["geometry_diagnostic"],
+        ensure_ascii=False,
+        sort_keys=True,
         separators=(",", ":"),
     )
+    vertical_contract = ""
+    if predicate in {"ABOVE", "BELOW"}:
+        vertical_contract = (
+            f" Evaluate exactly {predicate}(S:{subject_id}, O1:{object_ids[0]}), "
+            "never the inverse. Reconcile the visible directed order with the "
+            "supplied 3D center delta, bounds, and horizontal-projection evidence. "
+            "These are observations, not a threshold or veto: no single boolean, "
+            "distance, overlap value, or missing field decides the result. A "
+            "supported result must be compatible with the combined visual and 3D "
+            "evidence. If credible cues conflict or remain insufficient, use "
+            "uncertain; horizontal separation alone is not a refutation."
+        )
+    elif predicate == "ON":
+        vertical_contract = (
+            f" Evaluate exactly ON(S:{subject_id}, O1:{object_ids[0]}). "
+            "Inspect whether the labelled subject visibly rests on, contacts, "
+            "or is directly supported by a surface of the labelled object. "
+            "Do not infer support from containment, box overlap, or relative "
+            "image position alone. Use refuted only when the visible layout "
+            "contradicts support, and uncertain when the support/contact surface "
+            "cannot be resolved. Reconcile the image "
+            "with vertical_gap_m and horizontal_projection_axis_overlap_m in "
+            "proportion to geometry_reliability. Sparse small-object depth can "
+            "attach to the rear wall or support and displace its map center; a "
+            "low-reliability metric mismatch must not override clear physical "
+            "support in the shared perspective image. Use uncertain when the "
+            "contact surface is hidden and metric evidence is also unreliable."
+        )
+    elif predicate == "NEAR":
+        vertical_contract = (
+            f" Evaluate exactly NEAR(S:{subject_id}, O1:{object_ids[0]}). "
+            "Joint visibility or membership in the same room/crop is not NEAR. "
+            "Compare the physical separation of the two labelled bodies with "
+            "their visible size and local support layout. They should be locally "
+            "adjacent as physical objects, not merely visible at opposite sides "
+            "of a wide context image. Reconcile the pixels with distances_m, "
+            "bounding_sphere_surface_gaps_m, and "
+            "center_distance_over_combined_bbox_radius as continuous diagnostic "
+            "cues, never as a fixed threshold. geometry_reliability states how "
+            "much those metric cues deserve; participant_geometry_support shows "
+            "why. Sparse small-object masks can attach their few depth returns "
+            "to a background wall or support, so a low-reliability large surface "
+            "gap must not override clear local visual adjacency. If the labelled "
+            "plant and book are visibly adjacent on the same cabinet, return "
+            "supported even when sparse metric depth is displaced. A large "
+            "scale-normalized gap is a conflict only in proportion to its "
+            "reliability. Use uncertain when neither the visual layout nor "
+            "reliable geometry resolves adjacency; never return supported solely "
+            "because the tuple is jointly observable."
+        )
+    elif predicate == "BETWEEN":
+        support_diagnostic = ""
+        if request["geometry_diagnostic"].get(
+            "top_support_possible_on_any_boundary"
+        ) is False:
+            support_diagnostic = (
+                " For this exact tuple, the supplied 3D evidence says "
+                "top_support_possible_on_any_boundary=false; therefore do not "
+                "use a resting-on, supported-by, or sits-on-boundary explanation "
+                "to refute BETWEEN."
+            )
+        vertical_contract = (
+            f" Evaluate exactly BETWEEN(S:{subject_id}, O1:{object_ids[0]}, "
+            f"O2:{object_ids[1]}). Recover the physical 3D layout, not merely the "
+            "red/blue/green rectangle order. First locate the body centers and "
+            "floor or support contact of all three labelled instances. Then ask "
+            "whether the subject lies in the spatial corridor joining the two "
+            "distinct boundary objects: the direction from O1 to S should "
+            "continue toward O2, and S should be reasonably near that corridor. "
+            "A floor-standing S inside the corridor is BETWEEN even when closer "
+            "to one endpoint. A subject sitting on unrelated furniture is not "
+            "BETWEEN merely because its 2D box center falls between two wide or "
+            "partly occluded anchor boxes. When S visibly rests on the top "
+            "surface of O1 or O2, that is a direct physical contradiction: "
+            "return refuted even if a noisy map diagnostic places its center "
+            "inside the corridor. If an anchor box visibly covers the "
+            "wrong object or its physical center/support cannot be located, use "
+            "uncertain rather than supported. Bounding-box overlap, adjacency, "
+            "or partial occlusion alone proves neither BETWEEN nor top support. "
+            "Reconcile the image with geometry_diagnostic: segment_position "
+            "and segment_position_interval describe position along O1-to-O2, and "
+            f"vertical_center_deltas_m is ordered [O1:{object_ids[0]}, "
+            f"O2:{object_ids[1]}]. A non-positive delta invalidates top support "
+            "on that boundary but does not alone prove BETWEEN. Use uncertain "
+            "when the physical layout cannot be recovered. The "
+            "shared_image_horizontal_order diagnostic describes only the same "
+            "joint crop's 2D ordering; it is a cue, never sufficient evidence. "
+            "Do not infer BETWEEN merely from horizontal box order or absence of "
+            "support, and do not default to a support explanation from overlapping "
+            "boxes."
+            + support_diagnostic
+        )
+    predicate_retry = (
+        "previous response was contract-invalid"
+        in str(request["verification_instruction"]).lower()
+    )
+    if predicate_retry:
+        return (
+            "This is a predicate-only reconsideration of the same grounded IDs, "
+            "not a new detection task. Inspect the supplied labelled images and "
+            f"evaluate exactly subject_id={subject_id}, predicate={predicate}, "
+            f"object_ids={object_ids}. Grounding legend: red S is subject_id "
+            f"{subject_id}; {object_legend}. The preceding pass already "
+            "classified every grounded role YES. Keep those role states YES "
+            "unless the pixels positively show a different object class. A "
+            "correct class name is never a spatial refutation. Predicate-specific "
+            f"instruction: {request['verification_instruction']} The tuple's "
+            f"read-only 3D observations are {geometry_diagnostic}."
+            f"{vertical_contract} Decide state=supported when the exact physical "
+            "layout satisfies the predicate, state=refuted only for a visible "
+            "physical contradiction to the predicate, and state=uncertain when "
+            "the evidence conflicts or is insufficient. For a refuted state, "
+            "reason_code must be one short snake_case label describing that "
+            "spatial contradiction, never the requested class. Keep reason_code "
+            "under 48 characters. Return exactly one JSON object with exactly these "
+            "keys: subject_id, predicate, object_ids, subject_role_state, "
+            "object_role_states, state, confidence, reason_code, visible_subject, "
+            "visible_objects, jointly_observable, occlusion. Repeat the supplied "
+            "IDs as raw JSON integers exactly, with no S: or O: prefixes; role "
+            "and visibility arrays must match object_ids. occlusion must be the "
+            "string none, partial, or severe."
+        )
     return (
         "You are an object-ID-grounded visual relation verifier. "
         "Use only the supplied crops and joint context. Never invent, merge, "
         "or substitute IDs. Treat missing pixels, occlusion, or absent joint "
         "visibility as uncertain. Verify this exact tuple: "
         f"subject_id={subject_id}, predicate={predicate}, "
-        f"object_ids={object_ids}. Choose state as exactly supported, "
-        "refuted, or uncertain; choose occlusion as exactly none, partial, "
-        "or severe. Return exactly one JSON object, no prose and no markdown, "
-        "with exactly these keys and the same IDs. This valid uncertain "
-        f"default illustrates the schema: {output_example}. "
+        f"object_ids={object_ids}. Directed parameter roles are "
+        f"{parameter_roles}. The subject must visibly satisfy the description "
+        f"{subject_description!r}; the object descriptions are "
+        f"{object_descriptions!r}. Evidence policy: "
+        f"{request['evidence_policy']}. Predicate-specific instruction: "
+        f"{request['verification_instruction']} Negative-evidence rule: "
+        f"{request['negative_evidence_policy']}. The exact tuple's read-only 3D "
+        f"diagnostic is geometry_diagnostic={geometry_diagnostic}."
+        f"{vertical_contract} Grounding legend: red S:{subject_id} is the subject; "
+        f"{object_legend}. The image labelled subject contains the red subject "
+        "grounding, the image labelled objects contains the object groundings, "
+        "and the image labelled joint_context contains all groundings together. "
+        "The supplied IDs and descriptions come from upstream grounding; this "
+        "call verifies their spatial predicate instead of repeating candidate "
+        "generation. Use the role fields as a visible contradiction check. Set "
+        "subject_role_state and each entry of object_role_states to exactly "
+        "YES, NO, or UNKNOWN. YES requires positive visible evidence of the "
+        "requested physical class and its defining parts; mere compatibility, "
+        "a plausible location, or the upstream label is not enough. UNKNOWN "
+        "means the crop is blurred, partial, too small, or otherwise lacks "
+        "those defining visual features. NO requires visible evidence that the "
+        "grounded ID is a different physical class. Inspect the pixels inside "
+        "the exact labelled box: a nearby requested object outside that box "
+        "does not validate the boxed ID. "
+        "When a role is NO, reason_code must name the positively observed "
+        "alternative using subject_is_<class> or object_<index>_is_<class>; "
+        "a tautology such as subject_not_<requested_class>, object_not_<class>, "
+        "NO, or not_visible is not negative evidence and must be UNKNOWN. "
+        "Any listed visual alternatives are comparison cues, never an automatic "
+        "exclusion or fixed rejection rule; blur, occlusion, or insufficient "
+        "pixels is UNKNOWN. A plausible location or a visually plausible "
+        "relation must never turn an ID into the requested object class. A "
+        "relation can be supported only when every required role is YES; if a "
+        "role is UNKNOWN, the relation state must be uncertain. Set "
+        "jointly_observable=true when that joint image "
+        "actually lets you compare the labelled subject and object layout, even "
+        "when the relation is false. A missing object, a crop that "
+        "does not show the joint layout, or failure to see the relation is "
+        "uncertain rather than refuted. Do not emit a default response: inspect "
+        "the pixels separately for this exact tuple. Choose relation state as "
+        "exactly supported, refuted, or uncertain from the labelled joint "
+        "layout. A role UNKNOWN does not erase a clearly visible spatial "
+        "predicate because candidate identity was established upstream; a role "
+        "NO refutes this exact binding. Choose occlusion as exactly none, "
+        "partial, or severe. reason_code must be one short snake_case label under "
+        "48 characters, not a sentence or copied diagnostic. Return exactly one "
+        "JSON object, no prose and no "
+        "markdown, with exactly these keys: subject_id, predicate, object_ids, "
+        "subject_role_state, object_role_states, state, confidence, reason_code, "
+        "visible_subject, visible_objects, jointly_observable, occlusion. "
+        "object_role_states and visible_objects must be JSON arrays with "
+        "exactly one entry for every object_id, in the same order. "
+        "Repeat the supplied IDs exactly. "
         "confidence is confidence in the chosen state, not a scene answer."
     )
 
@@ -457,6 +872,14 @@ def _strict_relation_json(
     text: str,
     expected: Mapping[str, object],
 ) -> ObjectGroundedRelationResult:
+    def normalized_id(value: object) -> object:
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, int):
+            return value
+        match = re.search(r"(?:^|:)(-?\d+)$", str(value).strip())
+        return int(match.group(1)) if match is not None else value
+
     decoder = json.JSONDecoder()
     last_error = None
     for index, character in enumerate(str(text)):
@@ -464,6 +887,85 @@ def _strict_relation_json(
             continue
         try:
             payload, _ = decoder.raw_decode(str(text)[index:])
+            if isinstance(payload, Mapping):
+                payload = dict(payload)
+                if set(payload) == {"s", "o", "r", "j", "x", "c"}:
+                    compact_state = str(payload["r"]).strip().upper()
+                    # The batch template is shared across tuple arities and
+                    # the model occasionally echoes extra role entries.  Keep
+                    # exactly the requested arity: extra entries are dropped,
+                    # missing ones become UNKNOWN.
+                    if isinstance(payload.get("o"), list):
+                        expected_arity = len(expected["object_ids"])
+                        if len(payload["o"]) < expected_arity:
+                            payload["o"] = [
+                                *payload["o"],
+                                *(["U"] * (expected_arity - len(payload["o"]))),
+                            ]
+                        elif len(payload["o"]) > expected_arity:
+                            payload["o"] = payload["o"][:expected_arity]
+                    compact_role = {
+                        "Y": "YES", "N": "NO", "U": "UNKNOWN",
+                        "YES": "YES", "NO": "NO", "UNKNOWN": "UNKNOWN",
+                    }
+                    compact_subject = compact_role.get(
+                        str(payload["s"]).strip().upper(), "UNKNOWN"
+                    )
+                    compact_objects = [
+                        compact_role.get(
+                            str(value).strip().upper(), "UNKNOWN"
+                        )
+                        for value in payload["o"]
+                    ]
+                    payload = {
+                        "subject_id": int(expected["subject_id"]),
+                        "predicate": str(expected["predicate"]).upper(),
+                        "object_ids": [
+                            int(value) for value in expected["object_ids"]
+                        ],
+                        "subject_role_state": compact_subject,
+                        "object_role_states": compact_objects,
+                        "state": {
+                            "Y": "supported",
+                            "N": "refuted",
+                            "U": "uncertain",
+                        }.get(compact_state, "uncertain"),
+                        "confidence": float(payload["c"]) / 100.0,
+                        "reason_code": str(payload["x"]),
+                        "visible_subject": compact_subject != "UNKNOWN",
+                        "visible_objects": [
+                            value != "UNKNOWN" for value in compact_objects
+                        ],
+                        "jointly_observable": bool(payload["j"]),
+                        "occlusion": (
+                            "partial"
+                            if "UNKNOWN" in [compact_subject, *compact_objects]
+                            else "none"
+                        ),
+                    }
+                state = str(payload.get("state", "")).strip().lower()
+                payload["state"] = {
+                    "yes": "supported",
+                    "no": "refuted",
+                    "unknown": "uncertain",
+                }.get(state, state)
+                payload["subject_id"] = normalized_id(
+                    payload.get("subject_id")
+                )
+                if isinstance(payload.get("object_ids"), (list, tuple)):
+                    payload["object_ids"] = [
+                        normalized_id(value)
+                        for value in payload["object_ids"]
+                    ]
+                if isinstance(payload.get("occlusion"), bool):
+                    payload["occlusion"] = (
+                        "partial" if payload["occlusion"] else "none"
+                    )
+                if not str(payload.get("reason_code", "")).strip():
+                    if payload["state"] == "supported":
+                        payload["reason_code"] = "predicate_supported"
+                    elif payload["state"] == "uncertain":
+                        payload["reason_code"] = "evidence_insufficient"
             result = ObjectGroundedRelationResult.from_json(payload)
             if (
                 result.subject_id != int(expected["subject_id"])
@@ -496,14 +998,18 @@ class LocalQwen3VLImplementation:
         device: str = "cuda",
         max_new_tokens: int = 128,
         max_pixels: int = 512 * 512,
-        quantization: str = "int8",
+        quantization: str = "bf16",
+        batch_max_new_tokens: int = 256,
     ):
         checkpoint = Path(checkpoint_path).expanduser().resolve()
         if not checkpoint.is_dir():
             raise ValueError("qwen3vl_checkpoint_directory_missing")
         self.checkpoint_path = str(checkpoint)
         self.device = str(device)
-        self.max_new_tokens = max(32, int(max_new_tokens))
+        self.max_new_tokens = int(max_new_tokens)
+        self.batch_max_new_tokens = int(batch_max_new_tokens)
+        if self.max_new_tokens < 1 or self.batch_max_new_tokens < 1:
+            raise ValueError("qwen3vl_token_budget_must_be_positive")
         self.max_pixels = max(224 * 224, int(max_pixels))
         quantization = str(quantization).strip().lower()
         if quantization not in {"int8", "int4", "bf16"}:
@@ -511,6 +1017,7 @@ class LocalQwen3VLImplementation:
         self.quantization = quantization
         self._model = None
         self._processor = None
+        self._active_deadline_monotonic = 0.0
 
     def _ensure_loaded(self):
         if self._model is not None:
@@ -527,6 +1034,11 @@ class LocalQwen3VLImplementation:
             local_files_only=True,
             max_pixels=self.max_pixels,
         )
+        # Qwen3-VL is decoder-only. Batched rows have different multimodal
+        # prefix lengths, so right padding shifts generation and can truncate
+        # the beginning of shorter rows. Transformers batch generation requires
+        # left padding here.
+        self._processor.tokenizer.padding_side = "left"
         compute_dtype = (
             torch.float16 if self.quantization in {"int8", "int4"}
             else torch.bfloat16
@@ -559,6 +1071,38 @@ class LocalQwen3VLImplementation:
             self._model = self._model.to(self.device)
         self._model.eval()
 
+    def _generate(self, model_inputs, *, max_new_tokens: int):
+        """Generate with cooperative deadline cancellation at token steps."""
+        import torch
+
+        deadline = float(self._active_deadline_monotonic)
+        if deadline > 0.0 and deadline <= time.monotonic():
+            raise TimeoutError("model_service_deadline_expired")
+        stopping_criteria = None
+        if deadline > 0.0:
+            from transformers import StoppingCriteria, StoppingCriteriaList
+
+            class _DeadlineStoppingCriteria(StoppingCriteria):
+                def __call__(self, input_ids, scores, **kwargs):
+                    return bool(time.monotonic() >= deadline)
+
+            stopping_criteria = StoppingCriteriaList([
+                _DeadlineStoppingCriteria()
+            ])
+        with torch.inference_mode():
+            generated = self._model.generate(
+                **model_inputs,
+                max_new_tokens=max(1, int(max_new_tokens)),
+                do_sample=False,
+                **(
+                    {"stopping_criteria": stopping_criteria}
+                    if stopping_criteria is not None else {}
+                ),
+            )
+        if deadline > 0.0 and deadline <= time.monotonic():
+            raise TimeoutError("model_service_deadline_expired")
+        return generated
+
     def healthcheck(self) -> Mapping[str, object]:
         """Load all weights so launch-time health proves runtime residency."""
         self._ensure_loaded()
@@ -567,18 +1111,27 @@ class LocalQwen3VLImplementation:
             "device": str(self._model.device),
             "quantization": self.quantization,
             "max_pixels": self.max_pixels,
+            "batch_max_new_tokens": self.batch_max_new_tokens,
+            "deadline_cancellation": "cooperative_token_boundary",
             "checkpoint_path": self.checkpoint_path,
         }
 
     def __call__(self, request) -> Mapping[str, object]:
         parameters = dict(getattr(request, "parameters", {}) or {})
+        self._active_deadline_monotonic = float(
+            getattr(request, "deadline_monotonic", 0.0) or 0.0
+        )
         operation = str(getattr(request, "operation", ""))
         if operation == "verify_relation":
             return self._verify_relation(parameters)
+        if operation == "verify_relation_batch":
+            return self._verify_relation_batch(parameters)
         if operation == "ground_objects":
             return self._ground_objects(parameters)
         if operation == "ground_objects_batch":
             return self._ground_objects_batch(parameters)
+        if operation == "verify_object_batch":
+            return self._verify_object_batch(parameters)
         if operation == "rank_candidates":
             return self._rank_candidates(parameters)
         bbox = _normalized_bbox(parameters.get("candidate_bbox", ()))
@@ -616,10 +1169,9 @@ class LocalQwen3VLImplementation:
         ).to(self._model.device)
         import torch
         with torch.inference_mode():
-            generated = self._model.generate(
-                **model_inputs,
+            generated = self._generate(
+                model_inputs,
                 max_new_tokens=self.max_new_tokens,
-                do_sample=False,
             )
         prompt_length = int(model_inputs["input_ids"].shape[1])
         decoded = self._processor.batch_decode(
@@ -647,11 +1199,104 @@ class LocalQwen3VLImplementation:
                 verification.confuser_probabilities
             ),
             "rationale_tags": list(verification.rationale_tags),
-            "contained_instance_count": (
-                verification.contained_instance_count
-            ),
-            "count_confidence": verification.count_confidence,
             "backend": "qwen3vl_local_candidate_verifier",
+            "checkpoint_path": self.checkpoint_path,
+            "quantization": self.quantization,
+        }
+
+    def _verify_object_batch(
+        self, parameters: Mapping[str, object]
+    ) -> Mapping[str, object]:
+        """Verify up to eight candidates from one source view in one wave."""
+        candidates = parameters.get("candidates")
+        if not isinstance(candidates, list) or not candidates:
+            raise ValueError("qwen3vl_verify_batch_candidates_missing")
+        if len(candidates) > 8:
+            raise ValueError("qwen3vl_verify_batch_max_eight_candidates")
+        for candidate in candidates:
+            if not isinstance(candidate, Mapping):
+                raise ValueError("qwen3vl_verify_batch_candidate_invalid")
+            if not str(candidate.get("query_concept", "")).strip():
+                raise ValueError("qwen3vl_verify_batch_query_concept_missing")
+            _normalized_bbox(candidate.get("candidate_bbox", ()))
+
+        self._ensure_loaded()
+        source_image = _request_source_image(parameters)
+        annotated_image = _numbered_candidate_image_from_pil(
+            source_image,
+            candidates,
+        )
+        prompt = _batch_verification_prompt(
+            candidates,
+            anchor_concept=str(parameters.get("anchor_concept", "")).strip(),
+        )
+        messages = [{
+            "role": "user",
+            "content": [
+                {"type": "image", "image": annotated_image},
+                {"type": "text", "text": prompt},
+            ],
+        }]
+        model_inputs = self._processor.apply_chat_template(
+            messages,
+            tokenize=True,
+            add_generation_prompt=True,
+            return_dict=True,
+            return_tensors="pt",
+        ).to(self._model.device)
+        import torch
+        # The compact response contains one independently validated row per
+        # candidate.  A fixed 256-token ceiling truncates otherwise valid JSON
+        # when a full view supplies seven or eight candidates, causing every
+        # row in that view to become unavailable.  Scale only this object-batch
+        # response with its explicit cardinality contract. Configured capacity
+        # remains the floor; every returned row still passes the strict schema
+        # parser, while a model-omitted index remains explicitly unavailable.
+        verification_max_new_tokens = max(
+            self.batch_max_new_tokens,
+            64 * len(candidates),
+        )
+        with torch.inference_mode():
+            generated = self._generate(
+                model_inputs,
+                max_new_tokens=verification_max_new_tokens,
+            )
+        prompt_length = int(model_inputs["input_ids"].shape[1])
+        decoded = self._processor.batch_decode(
+            generated[:, prompt_length:],
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False,
+        )[0]
+        try:
+            verifications = _strict_semantic_batch_json(
+                str(decoded),
+                len(candidates),
+            )
+        except ValueError as exc:
+            print(json.dumps({
+                "event": "qwen3vl_invalid_batch_verification_output",
+                "error": str(exc),
+                "decoded": str(decoded)[:1000],
+            }, ensure_ascii=False), file=sys.stderr, flush=True)
+            raise
+        returned_indices = {
+            int(value["index"]) for value in verifications
+        }
+        missing_indices = [
+            index for index in range(1, len(candidates) + 1)
+            if index not in returned_indices
+        ]
+        if missing_indices:
+            print(json.dumps({
+                "event": "qwen3vl_partial_batch_verification",
+                "missing_candidate_indices": missing_indices,
+                "valid_candidate_indices": sorted(returned_indices),
+            }, ensure_ascii=False), file=sys.stderr, flush=True)
+        return {
+            "verifications": verifications,
+            "candidate_count": len(candidates),
+            "missing_candidate_indices": missing_indices,
+            "backend": "qwen3vl_local_candidate_verifier_batch",
             "checkpoint_path": self.checkpoint_path,
             "quantization": self.quantization,
         }
@@ -675,15 +1320,12 @@ class LocalQwen3VLImplementation:
             for alias in raw.get("aliases", ()):
                 label_to_class[str(alias).strip().lower()] = class_name
             normalized_concepts.append({**dict(raw), "class_name": class_name})
-        maximum = max(1, min(100, int(parameters.get("max_proposals", 40))))
-
         self._ensure_loaded()
         source_image = _request_source_image(parameters)
         prompt = _grounding_prompt(
             normalized_concepts,
             view_id=view_id,
             scene_context=str(parameters.get("scene_context", "")),
-            maximum=maximum,
         )
         messages = [{
             "role": "user",
@@ -701,10 +1343,9 @@ class LocalQwen3VLImplementation:
         ).to(self._model.device)
         import torch
         with torch.inference_mode():
-            generated = self._model.generate(
-                **model_inputs,
-                max_new_tokens=max(self.max_new_tokens, 2048),
-                do_sample=False,
+            generated = self._generate(
+                model_inputs,
+                max_new_tokens=self.max_new_tokens,
             )
         prompt_length = int(model_inputs["input_ids"].shape[1])
         decoded = self._processor.batch_decode(
@@ -714,18 +1355,23 @@ class LocalQwen3VLImplementation:
         )[0]
         # The model occasionally emits a truncated JSON array when it runs
         # out of tokens.  Repair the common pattern of a missing closing "]".
-        decoded_stripped = str(decoded).rstrip()
+        decoded_for_parse = str(decoded)
+        decoded_stripped = decoded_for_parse.rstrip()
         if decoded_stripped.endswith(",") or (
             decoded_stripped.count("[") > decoded_stripped.count("]")
         ):
             decoded_stripped = re.sub(r',\s*$', '', decoded_stripped)
-            if decoded_stripped.count("[") > decoded_stripped.count("]"):
-                decoded_stripped += "]"
+            last_complete_object = decoded_stripped.rfind("}")
+            first_array = decoded_stripped.find("[")
+            if 0 <= first_array < last_complete_object:
+                decoded_for_parse = (
+                    decoded_stripped[: last_complete_object + 1].rstrip(",")
+                    + "]"
+                )
         try:
             proposals = _strict_grounding_json(
-                decoded,
+                decoded_for_parse,
                 label_to_class,
-                maximum=maximum,
             )
         except ValueError as exc:
             print(json.dumps({
@@ -749,14 +1395,14 @@ class LocalQwen3VLImplementation:
         """Ground objects across multiple views in a single GPU forward pass.
 
         Accepts ``views``: a list of {view_id, image_path, concepts,
-        scene_context, max_proposals}.  All images are encoded together so the
+        scene_context}.  All images are encoded together so the
         vision backbone runs once per batch instead of once per view.
         """
         views = parameters.get("views")
         if not isinstance(views, list) or not views:
             raise ValueError("ground_objects_batch_views_missing")
-        if len(views) > 4:
-            raise ValueError("ground_objects_batch_max_four_views")
+        if len(views) > 8:
+            raise ValueError("ground_objects_batch_max_eight_views")
 
         self._ensure_loaded()
         from PIL import Image
@@ -779,115 +1425,85 @@ class LocalQwen3VLImplementation:
                 for alias in raw.get("aliases", ()):
                     label_to_class[str(alias).strip().lower()] = cn
                 normalized.append({**dict(raw), "class_name": cn})
-            maximum = max(1, min(100, int(v.get("max_proposals", 12))))
             prompt = _grounding_prompt(
                 normalized,
                 view_id=view_id,
                 scene_context=str(v.get("scene_context", "")),
-                maximum=maximum,
             )
             image = Image.open(str(v["image_path"])).convert("RGB")
             per_view.append({
                 "view_id": view_id,
                 "label_to_class": label_to_class,
-                "maximum": maximum,
                 "image": image,
                 "prompt": prompt,
             })
 
-        # Build a multi-image message with per-view markers so the model
-        # returns a JSON object keyed by view_id.
-        view_ids = [pv["view_id"] for pv in per_view]
-        content_parts: list[dict] = []
-        for pv in per_view:
-            content_parts.append({"type": "image", "image": pv["image"]})
-            content_parts.append({"type": "text", "text": pv["prompt"]})
-        # Append a formatting instruction so responses are grouped by view.
-        content_parts.append({"type": "text", "text": (
-            "Return exactly one JSON object whose keys are the view ids "
-            + json.dumps(view_ids, separators=(",", ":"))
-            + " and whose values are the proposal lists for each view. "
-            "No prose, no markdown."
-        )})
-        messages = [{"role": "user", "content": content_parts}]
-
+        # Each view is a separate batch row.  This avoids the previous
+        # multi-image/single-conversation approximation, which could not
+        # reliably associate a returned box with its source image.
+        conversations = [[{
+            "role": "user",
+            "content": [
+                {"type": "image", "image": pv["image"]},
+                {"type": "text", "text": pv["prompt"]},
+            ],
+        }] for pv in per_view]
         model_inputs = self._processor.apply_chat_template(
-            messages,
+            conversations,
             tokenize=True,
             add_generation_prompt=True,
             return_dict=True,
             return_tensors="pt",
+            padding=True,
         ).to(self._model.device)
         import torch
 
         with torch.inference_mode():
-            generated = self._model.generate(
-                **model_inputs,
-                max_new_tokens=max(self.max_new_tokens * len(views), 2048),
-                do_sample=False,
+            generated = self._generate(
+                model_inputs,
+                max_new_tokens=self.batch_max_new_tokens,
             )
         prompt_length = int(model_inputs["input_ids"].shape[1])
-        decoded = self._processor.batch_decode(
+        decoded_rows = self._processor.batch_decode(
             generated[:, prompt_length:],
             skip_special_tokens=True,
             clean_up_tokenization_spaces=False,
-        )[0]
+        )
 
         results: list[dict] = []
-        # Parse the response: prefer a view_id-keyed object, fall back to a
-        # flat list assigned by label match.
-        parsed_by_view: dict[str, list] = {}
-        decoder = json.JSONDecoder()
-        raw_text = str(decoded)
-        for idx, ch in enumerate(raw_text):
-            if ch != "{":
-                continue
+        for pv, decoded in zip(per_view, decoded_rows):
             try:
-                payload, _end = decoder.raw_decode(raw_text[idx:])
-                if isinstance(payload, dict):
-                    # Check if this is a view_id-keyed object.
-                    view_keys = [k for k in payload if k in {pv["view_id"] for pv in per_view}]
-                    if len(view_keys) >= len(per_view) * 0.5:
-                        parsed_by_view = {
-                            k: (
-                                _strict_grounding_json(
-                                    json.dumps(v, separators=(",", ":")),
-                                    per_view[i]["label_to_class"]
-                                    if i < len(per_view) else {},
-                                    maximum=per_view[i]["maximum"] if i < len(per_view) else 12,
-                                )
-                                if isinstance(v, list) else []
-                            )
-                            for i, (k, v) in enumerate(payload.items())
-                            if k in {pv["view_id"] for pv in per_view}
-                        }
-                        break
-                    # Single flat object — try fallback parsing below.
-                elif isinstance(payload, list) and not parsed_by_view:
-                    # Flat list of proposals; assign by class-name match below.
-                    all_flat = payload
-            except (json.JSONDecodeError, ValueError):
+                view_proposals = _strict_grounding_json(
+                    str(decoded),
+                    pv["label_to_class"],
+                )
+            except ValueError as exc:
+                print(json.dumps({
+                    "event": "qwen3vl_invalid_batch_grounding_output",
+                    "view_id": pv["view_id"],
+                    "error": str(exc),
+                    "decoded": str(decoded)[:1000],
+                }, ensure_ascii=False), file=sys.stderr, flush=True)
+                results.append({
+                    "view_id": pv["view_id"],
+                    "proposals": [],
+                    "proposal_count": 0,
+                    "ok": False,
+                    "error_code": (
+                        f"ground_objects_batch_view_json_invalid:"
+                        f"{pv['view_id']}"
+                    ),
+                    "error_detail": str(exc)[:300],
+                    "backend": "qwen3vl_batch_multiview_grounder",
+                    "checkpoint_path": self.checkpoint_path,
+                    "quantization": self.quantization,
+                })
                 continue
-
-        for i, pv in enumerate(per_view):
-            view_proposals: list[dict] = []
-            if pv["view_id"] in parsed_by_view:
-                view_proposals = parsed_by_view[pv["view_id"]]
-            elif isinstance(parsed_by_view, dict) and not parsed_by_view:
-                # Fallback: parse the full text as one flat list and filter.
-                try:
-                    all_proposals = _strict_grounding_json(
-                        raw_text,
-                        pv["label_to_class"],
-                        maximum=pv["maximum"],
-                    )
-                    view_proposals = all_proposals
-                except ValueError:
-                    pass
             results.append({
                 "view_id": pv["view_id"],
                 "proposals": view_proposals,
                 "proposal_count": len(view_proposals),
+                "ok": True,
                 "backend": "qwen3vl_batch_multiview_grounder",
                 "checkpoint_path": self.checkpoint_path,
                 "quantization": self.quantization,
@@ -907,7 +1523,13 @@ class LocalQwen3VLImplementation:
         of the candidate that best matches the question description."""
         question = str(parameters.get("question", "")).strip()
         candidates = parameters.get("candidates")
-        if not question or not isinstance(candidates, list) or len(candidates) < 2:
+        allow_none = bool(parameters.get("allow_none", False))
+        if (
+            not question
+            or not isinstance(candidates, list)
+            or not candidates
+            or (len(candidates) < 2 and not allow_none)
+        ):
             raise ValueError("rank_candidates_needs_question_and_2plus_candidates")
 
         self._ensure_loaded()
@@ -932,16 +1554,29 @@ class LocalQwen3VLImplementation:
                 + (f" ({ctx})" if ctx else "")
             )
 
+        selection_contract = (
+            "Return NONE when every candidate contradicts the requested "
+            "physical entity or the entity is not visibly identifiable. "
+            "Otherwise return exactly one candidate letter."
+            if allow_none else
+            "Return exactly one candidate letter."
+        )
+        candidate_question = (
+            "Which candidate, if any, best matches what the question asks "
+            "for?" if allow_none else
+            "Which candidate best matches what the question asks for?"
+        )
         prompt = (
             f"Question: {question}\n\n"
             + "\n".join(candidate_descriptions)
             + "\n\n"
             "The image shows the scene with candidates labelled A,B,C... "
-            "in red boxes.  Which candidate (exactly one letter) best "
-            "matches what the question asks for?  "
+            "in red boxes. " + candidate_question + " "
             "Consider the full spatial context described in the question. "
-            "Return exactly one JSON object with key \"best_candidate\" "
-            "(the letter) and \"confidence\" (0-1).  No prose, no markdown."
+            + selection_contract
+            + " Return exactly one JSON object with key \"best_candidate\" "
+            "(the letter or NONE) and \"confidence\" (0-1). No prose, no "
+            "markdown."
         )
 
         messages = [{
@@ -960,10 +1595,9 @@ class LocalQwen3VLImplementation:
         ).to(self._model.device)
         import torch
         with torch.inference_mode():
-            generated = self._model.generate(
-                **model_inputs,
-                max_new_tokens=64,
-                do_sample=False,
+            generated = self._generate(
+                model_inputs,
+                max_new_tokens=self.max_new_tokens,
             )
         prompt_length = int(model_inputs["input_ids"].shape[1])
         decoded = self._processor.batch_decode(
@@ -975,7 +1609,7 @@ class LocalQwen3VLImplementation:
         # Parse the response
         import json as _json, re as _re
         decoder = _json.JSONDecoder()
-        best_idx = 0
+        best_idx: int | None = None if allow_none else 0
         confidence = 0.5
         for idx, ch in enumerate(str(decoded)):
             if ch != "{":
@@ -983,16 +1617,27 @@ class LocalQwen3VLImplementation:
             try:
                 payload, _ = decoder.raw_decode(str(decoded)[idx:])
                 letter = str(payload.get("best_candidate", "A")).strip().upper()
-                if len(letter) == 1 and "A" <= letter <= "Z":
+                if allow_none and letter in {"NONE", "NO_MATCH", "UNKNOWN"}:
+                    best_idx = None
+                elif len(letter) == 1 and "A" <= letter <= "Z":
                     best_idx = ord(letter) - ord("A")
                 confidence = float(payload.get("confidence", 0.5))
                 break
             except (_json.JSONDecodeError, ValueError, KeyError):
                 continue
 
-        best_idx = max(0, min(best_idx, len(candidates) - 1))
+        if best_idx is not None and not 0 <= best_idx < len(candidates):
+            # With an explicit NONE option, an out-of-domain label is an
+            # unresolved visual binding, not permission to clamp onto an
+            # unrelated endpoint candidate.
+            best_idx = None if allow_none else max(
+                0, min(best_idx, len(candidates) - 1)
+            )
         return {
-            "best_candidate_index": int(best_idx),
+            "best_candidate_index": (
+                None if best_idx is None else int(best_idx)
+            ),
+            "binding_state": "UNKNOWN" if best_idx is None else "YES",
             "confidence": float(max(0.0, min(1.0, confidence))),
             "backend": "qwen3vl_candidate_ranker",
             "checkpoint_path": self.checkpoint_path,
@@ -1016,6 +1661,13 @@ class LocalQwen3VLImplementation:
             "object_ids",
             "object_instance_versions",
             "predicate",
+            "parameter_roles",
+            "subject_description",
+            "object_descriptions",
+            "evidence_policy",
+            "negative_evidence_policy",
+            "verification_instruction",
+            "geometry_diagnostic",
             "subject_bbox_or_mask",
             "object_bboxes_or_masks",
             "camera_pose",
@@ -1025,12 +1677,27 @@ class LocalQwen3VLImplementation:
             raise ValueError("qwen3vl_grounded_relation_schema_invalid")
         images = _relation_images(parameters)
         self._ensure_loaded()
+        predicate_retry = (
+            "previous response was contract-invalid"
+            in str(grounded["verification_instruction"]).lower()
+        )
+        prompt_images = (
+            tuple(
+                (role, image) for role, image in images
+                if role == "joint_context"
+            )
+            if predicate_retry else images
+        )
         messages = [{
             "role": "user",
             "content": [
                 *(
-                    {"type": "image", "image": image}
-                    for _, image in images
+                    item
+                    for role, image in prompt_images
+                    for item in (
+                        {"type": "text", "text": f"Evidence role: {role}"},
+                        {"type": "image", "image": image},
+                    )
                 ),
                 {"type": "text", "text": _relation_prompt(grounded)},
             ],
@@ -1044,10 +1711,9 @@ class LocalQwen3VLImplementation:
         ).to(self._model.device)
         import torch
         with torch.inference_mode():
-            generated = self._model.generate(
-                **model_inputs,
+            generated = self._generate(
+                model_inputs,
                 max_new_tokens=self.max_new_tokens,
-                do_sample=False,
             )
         prompt_length = int(model_inputs["input_ids"].shape[1])
         decoded = self._processor.batch_decode(
@@ -1071,6 +1737,8 @@ class LocalQwen3VLImplementation:
             "subject_id": result.subject_id,
             "predicate": result.predicate,
             "object_ids": list(result.object_ids),
+            "subject_role_state": result.subject_role_state,
+            "object_role_states": list(result.object_role_states),
             "state": result.state,
             "confidence": result.confidence,
             "visible_subject": result.visible_subject,
@@ -1081,4 +1749,135 @@ class LocalQwen3VLImplementation:
             "backend": "qwen3vl_local_object_grounded_relation_verifier",
             "checkpoint_path": self.checkpoint_path,
             "quantization": self.quantization,
+        }
+
+    def _verify_relation_batch(
+        self, parameters: Mapping[str, object]
+    ) -> Mapping[str, object]:
+        """Verify independent ID tuples in one physical generation wave."""
+        raw_requests = parameters.get("requests")
+        verification_pass = str(
+            parameters.get("verification_pass", "predicate")
+        ).strip().lower()
+        if verification_pass not in {"roles", "predicate"}:
+            raise ValueError("qwen3vl_relation_batch_pass_invalid")
+        if not isinstance(raw_requests, list) or not raw_requests:
+            raise ValueError("qwen3vl_relation_batch_requests_missing")
+        if len(raw_requests) > 8:
+            raise ValueError("qwen3vl_relation_batch_max_eight_requests")
+        prepared = []
+        conversations = []
+        for raw in raw_requests:
+            if not isinstance(raw, Mapping):
+                raise ValueError("qwen3vl_relation_batch_request_invalid")
+            grounded = raw.get("grounded_relation_request")
+            if not isinstance(grounded, Mapping):
+                raise ValueError("qwen3vl_grounded_relation_request_missing")
+            images = _relation_images(raw)
+            predicate_retry = (
+                "previous response was contract-invalid"
+                in str(grounded["verification_instruction"]).lower()
+            )
+            prompt_images = (
+                tuple(
+                    (role, image) for role, image in images
+                    if role == "joint_context"
+                )
+                if predicate_retry else images
+            )
+            conversations.append([{
+                "role": "user",
+                "content": [
+                    *(
+                        item
+                        for role, image in prompt_images
+                        for item in (
+                            {"type": "text", "text": f"Evidence role: {role}"},
+                            {"type": "image", "image": image},
+                        )
+                    ),
+                    {"type": "text", "text": (
+                        (
+                            _relation_role_prompt(grounded)
+                            if verification_pass == "roles"
+                            else _relation_prompt(grounded)
+                        )
+                        + " Batched-wave output override: return only compact "
+                        "JSON {\"s\":\"Y|N|U\",\"o\":[\"Y|N|U\"],"
+                        "\"r\":\"Y|N|U\",\"j\":true,\"x\":"
+                        "\"short_reason\",\"c\":0}. Here s is subject role, "
+                        "o has one entry per object role, r is predicate state, "
+                        "j is joint observability, and c is integer confidence "
+                        "0..100. Output no other keys or prose."
+                    )},
+                ],
+            }])
+            prepared.append(dict(grounded))
+        self._ensure_loaded()
+        model_inputs = self._processor.apply_chat_template(
+            conversations,
+            tokenize=True,
+            add_generation_prompt=True,
+            return_dict=True,
+            return_tensors="pt",
+            padding=True,
+        ).to(self._model.device)
+        import torch
+        with torch.inference_mode():
+            generated = self._generate(
+                model_inputs,
+                max_new_tokens=self.batch_max_new_tokens,
+            )
+        prompt_length = int(model_inputs["input_ids"].shape[1])
+        decoded_rows = self._processor.batch_decode(
+            generated[:, prompt_length:],
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False,
+        )
+        results = []
+        for grounded, decoded in zip(prepared, decoded_rows):
+            try:
+                result = _strict_relation_json(decoded, grounded)
+                results.append({
+                    "ok": True,
+                    "metadata": {
+                        "subject_id": result.subject_id,
+                        "predicate": result.predicate,
+                        "object_ids": list(result.object_ids),
+                        "subject_role_state": result.subject_role_state,
+                        "object_role_states": list(result.object_role_states),
+                        "state": result.state,
+                        "confidence": result.confidence,
+                        "visible_subject": result.visible_subject,
+                        "visible_objects": list(result.visible_objects),
+                        "jointly_observable": result.jointly_observable,
+                        "occlusion": result.occlusion,
+                        "reason_code": result.reason_code,
+                        "verification_pass": verification_pass,
+                        "backend": (
+                            "qwen3vl_local_object_grounded_relation_batch"
+                        ),
+                        "checkpoint_path": self.checkpoint_path,
+                        "quantization": self.quantization,
+                    },
+                    "error_code": "",
+                })
+            except Exception as exc:
+                print(json.dumps({
+                    "event": "qwen3vl_relation_batch_row_invalid",
+                    "error": str(exc),
+                    "decoded": str(decoded)[:500],
+                    "subject_id": grounded.get("subject_id"),
+                    "predicate": grounded.get("predicate"),
+                    "object_ids": grounded.get("object_ids"),
+                }, ensure_ascii=False), file=sys.stderr, flush=True)
+                results.append({
+                    "ok": False,
+                    "metadata": {"error_detail": str(exc)[:500]},
+                    "error_code": type(exc).__name__,
+                })
+        return {
+            "results": results,
+            "batch_size": len(results),
+            "backend": "qwen3vl_local_object_grounded_relation_batch",
         }

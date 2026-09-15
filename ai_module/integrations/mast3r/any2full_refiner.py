@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Any2Full depth refinement for MASt3R perspective views.
 
-Replaces MASt3R dense pointmaps with LiDAR-anchored Any2Full depth,
-keeping MASt3R's multi-view alignment (camera poses, Sim3) unchanged.
+Replaces MASt3R dense pointmaps with LiDAR-anchored Any2Full depth.  The
+metric camera-frame depth is placed with the corresponding ROS camera pose;
+MASt3R still supplies cross-view association and fallback geometry.
 
 Architecture:
   LiDAR (sparse, accurate) + RGB → Any2Full → dense depth → pointmap
-  MASt3R SGA → camera poses + Sim(3) alignment (reused as-is)
+  ROS state estimation + calibration → metric camera pose in map
 
 Usage as a library::
 
@@ -101,9 +102,12 @@ def _depth_from_lidar_projection(
     # Transform: sensor → canonical camera
     camera_points = _transform(sensor_points, sensor_to_camera)
 
-    # Apply per-view rotation: canonical camera → view camera
+    # Apply per-view rotation: canonical camera → view camera.  The
+    # manifest rotation maps view-camera vectors into the panorama adapter;
+    # row-vector points therefore use the non-transposed matrix for the
+    # inverse direction.
     if R_panorama_from_camera is not None:
-        camera_points = camera_points @ R_panorama_from_camera[:3, :3].T
+        camera_points = camera_points @ R_panorama_from_camera[:3, :3]
 
     depths = camera_points[:, 2]
     valid_depth = depths > 0.05
@@ -117,12 +121,11 @@ def _depth_from_lidar_projection(
     in_bounds = (u >= 0) & (u < width) & (v >= 0) & (v < height)
     keep = valid_depth & in_bounds
 
-    depth_map = np.zeros((height, width), dtype=np.float32)
+    depth_map = np.full((height, width), np.inf, dtype=np.float32)
     if keep.any():
         # When multiple points project to the same pixel, keep the closest.
-        order = np.argsort(depths[keep])
-        u_keep, v_keep, d_keep = u[keep][order], v[keep][order], depths[keep][order]
-        depth_map[v_keep, u_keep] = d_keep
+        np.minimum.at(depth_map, (v[keep], u[keep]), depths[keep])
+    depth_map[~np.isfinite(depth_map)] = 0.0
     return depth_map
 
 
@@ -253,8 +256,8 @@ def refine_single_view(
     depth_scale: float = 100.0,
     denoise: bool = True,
     denoise_threshold: float = 2.0,
-    denoise_kernel_size: int | None = 9,
-) -> tuple[np.ndarray, np.ndarray]:
+    denoise_kernel_size: int | None = None,
+) -> tuple[np.ndarray, np.ndarray, int]:
     """Run Any2Full on a single perspective view.
 
     Parameters
@@ -275,7 +278,9 @@ def refine_single_view(
     pointmap : np.ndarray (H,W,3)
         Dense 3D points in camera frame.
     confidence : np.ndarray (H,W)
-        Per-pixel confidence (heuristic: 1.0 for all valid depth pixels).
+        Continuous confidence derived from distance to real LiDAR support.
+    lidar_support_count : int
+        Number of projected LiDAR pixels actually supplied to the model.
     """
     height, width = int(view["height"]), int(view["width"])
     intrinsics = np.asarray(view["K"], dtype=np.float64)
@@ -290,9 +295,11 @@ def refine_single_view(
     camera_canonical = _transform(sensor_points, sensor_to_camera)
     # canonical_camera → adapter
     adapter_pts = _transform(camera_canonical, camera_to_adapter)
-    # adapter → view_camera (apply view rotation)
+    # adapter/panorama → view camera.  The manifest stores
+    # R_panorama_from_camera, so row-vector points use its non-transposed form
+    # for the inverse direction: p_camera = p_panorama @ R_panorama_from_camera.
     R_view = np.asarray(view.get("R_panorama_from_camera", [[1,0,0],[0,1,0],[0,0,1]]), dtype=np.float64)
-    view_camera_pts = adapter_pts @ R_view[:3, :3].T
+    view_camera_pts = adapter_pts @ R_view[:3, :3]
 
     # Now project view_camera_pts to image plane
     depths = view_camera_pts[:, 2]
@@ -304,10 +311,12 @@ def refine_single_view(
     in_bounds = (u >= 0) & (u < width) & (v >= 0) & (v < height)
     keep = valid_depth & in_bounds
 
-    sparse_depth = np.zeros((height, width), dtype=np.float32)
+    sparse_depth = np.full((height, width), np.inf, dtype=np.float32)
     if keep.any():
-        order = np.argsort(depths[keep])
-        sparse_depth[v[keep][order], u[keep][order]] = depths[keep][order]
+        # Advanced-index assignment with duplicate pixels keeps the last
+        # value, not the closest value.  Use an actual z-buffer reduction.
+        np.minimum.at(sparse_depth, (v[keep], u[keep]), depths[keep])
+    sparse_depth[~np.isfinite(sparse_depth)] = 0.0
 
     # Convert to tensor (1,1,H,W)
     depth_img = Image.fromarray(sparse_depth)
@@ -321,6 +330,8 @@ def refine_single_view(
             threshold=denoise_threshold,
             kernel_size=denoise_kernel_size,
         )
+    prompt_depth = dep_tensor.squeeze(0).squeeze(0).numpy()
+    lidar_support_count = int(np.count_nonzero(prompt_depth > 0.0))
     dep_tensor = dep_tensor.to(_device)
 
     # 3. Run Any2Full
@@ -331,10 +342,21 @@ def refine_single_view(
     # 4. Depth → pointmap
     pointmap = _depth_to_pointmap(pred, intrinsics)
 
-    # 5. Confidence: mark valid (non-zero depth) pixels as confident
-    confidence = (pred > 1e-6).astype(np.float32) * 10.0  # heuristic confidence value
+    # 5. Confidence is continuous support provenance, not a fabricated
+    # constant.  Any2Full can predict everywhere, but pixels far from a real
+    # projected LiDAR return are increasingly monocular.  One transformer
+    # patch (14 px) is the natural spatial scale of the model input.
+    unsupported = (prompt_depth <= 0.0).astype(np.uint8)
+    lidar_distance_px = cv2.distanceTransform(
+        unsupported, cv2.DIST_L2, cv2.DIST_MASK_PRECISE
+    )
+    confidence = (
+        (pred > 1e-6).astype(np.float32)
+        * 10.0
+        * np.exp(-lidar_distance_px.astype(np.float32) / float(model.patch_size))
+    )
 
-    return pointmap, confidence
+    return pointmap, confidence, lidar_support_count
 
 
 def refine_view_pointmaps(
@@ -381,7 +403,7 @@ def refine_view_pointmaps(
         keyframe = keyframes_by_group[group]
         sensor_points = np.load(_resolve_path(keyframe["sensor_scan_path"])).astype(np.float64)
 
-        pointmap, confidence = refine_single_view(
+        pointmap, confidence, lidar_support_count = refine_single_view(
             view,
             sensor_points,
             sensor_to_camera,
@@ -394,7 +416,7 @@ def refine_view_pointmaps(
         # Check if Any2Full produced meaningful depth (not saturated at max_depth)
         cam_z = pointmap.reshape(-1, 3)[:, 2]
         finite_mask = np.isfinite(cam_z) & (cam_z > 0.05)
-        if finite_mask.any():
+        if lidar_support_count > 0 and finite_mask.any():
             median_z = float(np.median(cam_z[finite_mask]))
             # If median depth is near MAX_DEPTH, LiDAR didn't cover this view
             has_lidar = median_z < 900.0
@@ -406,7 +428,8 @@ def refine_view_pointmaps(
             confidences.append(confidence)
             lidar_covered.append(True)
         else:
-            # Return empty placeholders — caller should use MASt3R fallback
+            # Preserve the explicit no-depth result so the caller can select
+            # the MASt3R fallback; no synthetic points are emitted here.
             dense_points.append(np.zeros((0, 3), dtype=np.float32))
             confidences.append(np.zeros_like(confidence))
             lidar_covered.append(False)

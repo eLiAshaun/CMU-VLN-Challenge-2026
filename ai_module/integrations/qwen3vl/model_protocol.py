@@ -12,6 +12,7 @@ class ModelRequest:
     operation: str
     input_handles: tuple[str, ...] = ()
     parameters: Mapping[str, object] = field(default_factory=dict)
+    deadline_monotonic: float = 0.0
 
 
 @dataclass(frozen=True)

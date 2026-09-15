@@ -1,5 +1,10 @@
 # ai_module 项目限制
 
+## 当前架构权威
+
+- 当前 AI Module 架构只以 [`ARCHITECTURE_FINAL.md`](ARCHITECTURE_FINAL.md) 为准。
+- 历史 handoff、旧 phase、旧 counting pipeline、旧 runtime 说明和实验文档都不是实现权威。
+
 ## 真实场景验收
 
 - 对当前模型链路的正确性、效果、回归或可用性作出结论前，必须运行真实 `livingroom_3` 的 Q1 链路。

@@ -81,11 +81,33 @@ def main() -> int:
                 "detector_score": float(detection["detector_score"]),
                 "bbox_xyxy": detection["bbox_xyxy"],
                 "mask_path": detection["mask_path"],
+                # Preserve each view's own projected extent.  The cluster mask
+                # is a union used for identity association; using that union
+                # as one object's physical size can inflate a seam/edge view.
+                "panorama_bbox_xyxy": _bbox(mask),
                 "mask_area_px": int(detection.get("mask_area_px", 0)),
                 "sam_score": float(detection.get("sam_score", 0.0)),
-                "qwen_grounding_probability": detection.get("qwen_grounding_probability"),
                 "qwen_verification_probability": detection.get("qwen_verification_probability"),
                 "qwen_target_probability": detection.get("qwen_target_probability"),
+                "proposal_binding_key": str(
+                    detection.get("proposal_binding_key", "")
+                ),
+                **{
+                    key: detection[key]
+                    for key in (
+                        "relation_roi_image_path",
+                        "relation_roi_view_id",
+                        "relation_roi_subject_bbox_xyxy_normalized",
+                        "relation_roi_anchor_bbox_xyxy_normalized",
+                        "relation_roi_anchor_class",
+                        "relation_roi_anchor_classes",
+                        "relation_roi_anchor_bboxes_xyxy_normalized",
+                        "relation_roi_anchor_binding_keys",
+                        "relation_roi_predicate",
+                        "relation_binding_context_bbox_xyxy_normalized",
+                    )
+                    if key in detection
+                },
             }
             if destination is None:
                 clusters.append({
@@ -156,10 +178,45 @@ def main() -> int:
                 "representative_detection_id": representative["detection_id"],
                 "representative_mask_path": representative["mask_path"],
                 "representative_score": float(representative["detector_score"]),
+                **{
+                    key: representative[key]
+                    for key in (
+                        "relation_roi_image_path",
+                        "relation_roi_view_id",
+                        "relation_roi_subject_bbox_xyxy_normalized",
+                        "relation_roi_anchor_bbox_xyxy_normalized",
+                        "relation_roi_anchor_class",
+                        "relation_roi_anchor_classes",
+                        "relation_roi_anchor_bboxes_xyxy_normalized",
+                        "relation_roi_anchor_binding_keys",
+                        "relation_roi_predicate",
+                        "relation_binding_context_bbox_xyxy_normalized",
+                    )
+                    if key in representative
+                },
                 "member_count": len(cluster["members"]),
                 "members": cluster["members"],
                 "source_view_ids": list(dict.fromkeys(
                     str(member["view_id"]) for member in cluster["members"]
+                )),
+                "source_proposal_binding_keys": list(dict.fromkeys(
+                    str(member.get("proposal_binding_key", ""))
+                    for member in cluster["members"]
+                    if str(member.get("proposal_binding_key", ""))
+                )),
+                "proposal_verification_by_key": {
+                    str(member["proposal_binding_key"]): (
+                        float(member["qwen_verification_probability"])
+                        if member.get("qwen_verification_probability") is not None
+                        else None
+                    )
+                    for member in cluster["members"]
+                    if str(member.get("proposal_binding_key", ""))
+                },
+                "qwen_verification_probabilities": list(dict.fromkeys(
+                    float(member["qwen_verification_probability"])
+                    for member in cluster["members"]
+                    if member.get("qwen_verification_probability") is not None
                 )),
                 "qwen_target_probability": semantic_probability,
                 "optical_center_group": manifest["optical_center_group"],

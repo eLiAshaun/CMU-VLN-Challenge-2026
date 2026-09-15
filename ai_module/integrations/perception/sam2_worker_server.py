@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 from multiprocessing.connection import Listener
+from pathlib import Path
 
 from .sam2_box_worker import SAM2BoxService
 
@@ -68,17 +69,42 @@ def serve(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint", required=True)
-    parser.add_argument("--config", required=True)
-    parser.add_argument("--endpoint", default="@mast3r_sam2")
-    parser.add_argument("--device", default="cuda")
+    parser.add_argument("--checkpoint", required=False)
+    parser.add_argument("--config", required=False)
+    parser.add_argument("--endpoint", required=False)
+    parser.add_argument("--device", required=False)
     args = parser.parse_args()
+
+    # Backward compatibility: support CLI arguments
+    if args.checkpoint and args.config:
+        checkpoint = args.checkpoint
+        config = args.config
+        endpoint = args.endpoint or "@mast3r_sam2"
+        device = args.device or "cuda"
+    else:
+        # New path: load from config
+        try:
+            from config import load_config
+            ai_module_root = Path(__file__).resolve().parents[2]
+            app_config = load_config(
+                asset_manifest_path=ai_module_root / "configs" / "model_assets.json"
+            )
+            checkpoint = str(ai_module_root / app_config.sam2.checkpoint_path)
+            config = str(ai_module_root / app_config.sam2.config_name)
+            endpoint = app_config.sam2.endpoint
+            device = app_config.sam2.device
+        except ImportError:
+            raise RuntimeError(
+                "No --checkpoint provided and config system not available. "
+                "Use --checkpoint, --config, --endpoint, --device"
+            )
+
     try:
         serve(
-            checkpoint=args.checkpoint,
-            config=args.config,
-            endpoint=args.endpoint,
-            device=args.device,
+            checkpoint=checkpoint,
+            config=config,
+            endpoint=endpoint,
+            device=device,
         )
     except KeyboardInterrupt:
         pass

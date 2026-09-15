@@ -74,6 +74,13 @@ class ObjectGroundedRelationRequest:
     object_ids: tuple[int, ...]
     object_instance_versions: tuple[int, ...]
     predicate: str
+    parameter_roles: tuple[str, ...]
+    subject_description: str
+    object_descriptions: tuple[str, ...]
+    evidence_policy: str
+    negative_evidence_policy: str
+    verification_instruction: str
+    geometry_diagnostic: Mapping[str, object]
     subject_bbox_or_mask: Mapping[str, object]
     object_bboxes_or_masks: tuple[Mapping[str, object], ...]
     camera_pose: tuple[float, ...]
@@ -88,6 +95,10 @@ class ObjectGroundedRelationRequest:
                 self.query_node_id,
                 self.acquisition_id,
                 self.predicate,
+                self.subject_description,
+                self.evidence_policy,
+                self.negative_evidence_policy,
+                self.verification_instruction,
             )
         ):
             raise ValueError("grounded Qwen request identity is incomplete")
@@ -99,8 +110,16 @@ class ObjectGroundedRelationRequest:
             raise ValueError("Qwen object ID/version lengths mismatch")
         if len(self.object_ids) != len(self.object_bboxes_or_masks):
             raise ValueError("Qwen object ID/grounding lengths mismatch")
+        if len(self.object_ids) != len(self.object_descriptions):
+            raise ValueError("Qwen object ID/description lengths mismatch")
+        if len(self.parameter_roles) != 1 + len(self.object_ids):
+            raise ValueError("Qwen relation parameter-role lengths mismatch")
+        if any(not str(value).strip() for value in self.parameter_roles):
+            raise ValueError("Qwen relation parameter roles must be explicit")
         if self.predicate.upper() == "BETWEEN" and len(self.object_ids) != 2:
             raise ValueError("Qwen BETWEEN requires two anchor IDs")
+        if not isinstance(self.geometry_diagnostic, Mapping):
+            raise ValueError("Qwen relation geometry diagnostic must be a mapping")
 
     def to_dict(self) -> dict:
         return {
@@ -116,6 +135,13 @@ class ObjectGroundedRelationRequest:
                 self.object_instance_versions
             ),
             "predicate": self.predicate.upper(),
+            "parameter_roles": list(self.parameter_roles),
+            "subject_description": self.subject_description,
+            "object_descriptions": list(self.object_descriptions),
+            "evidence_policy": self.evidence_policy,
+            "negative_evidence_policy": self.negative_evidence_policy,
+            "verification_instruction": self.verification_instruction,
+            "geometry_diagnostic": dict(self.geometry_diagnostic),
             "subject_bbox_or_mask": dict(self.subject_bbox_or_mask),
             "object_bboxes_or_masks": [
                 dict(value) for value in self.object_bboxes_or_masks
@@ -130,6 +156,8 @@ class ObjectGroundedRelationResult:
     subject_id: int
     predicate: str
     object_ids: tuple[int, ...]
+    subject_role_state: str
+    object_role_states: tuple[str, ...]
     state: str
     confidence: float
     visible_subject: bool
@@ -149,6 +177,8 @@ class ObjectGroundedRelationResult:
             "subject_id",
             "predicate",
             "object_ids",
+            "subject_role_state",
+            "object_role_states",
             "state",
             "confidence",
             "visible_subject",
@@ -159,16 +189,31 @@ class ObjectGroundedRelationResult:
         }
         if not isinstance(payload, Mapping) or set(payload) != required:
             raise ValueError("qwen_relation_json_schema_invalid")
+        object_ids = tuple(int(item) for item in payload["object_ids"])
+        raw_object_role_states = payload["object_role_states"]
+        if not isinstance(raw_object_role_states, (list, tuple)):
+            raise ValueError("qwen_relation_object_role_states_type_invalid")
+        raw_visible_objects = payload["visible_objects"]
+        if isinstance(raw_visible_objects, bool):
+            if len(object_ids) != 1:
+                raise ValueError("qwen_relation_visibility_length_invalid")
+            visible_objects = (raw_visible_objects,)
+        elif isinstance(raw_visible_objects, (list, tuple)):
+            visible_objects = tuple(bool(item) for item in raw_visible_objects)
+        else:
+            raise ValueError("qwen_relation_visibility_type_invalid")
         value = cls(
             subject_id=int(payload["subject_id"]),
             predicate=str(payload["predicate"]).upper(),
-            object_ids=tuple(int(item) for item in payload["object_ids"]),
+            object_ids=object_ids,
+            subject_role_state=str(payload["subject_role_state"]).upper(),
+            object_role_states=tuple(
+                str(item).upper() for item in raw_object_role_states
+            ),
             state=str(payload["state"]).lower(),
             confidence=float(payload["confidence"]),
             visible_subject=bool(payload["visible_subject"]),
-            visible_objects=tuple(
-                bool(item) for item in payload["visible_objects"]
-            ),
+            visible_objects=visible_objects,
             jointly_observable=bool(payload["jointly_observable"]),
             occlusion=str(payload["occlusion"]).lower(),
             reason_code=str(payload["reason_code"]),
@@ -181,6 +226,16 @@ class ObjectGroundedRelationResult:
     ) -> None:
         if self.state not in {"supported", "refuted", "uncertain"}:
             raise ValueError("qwen_relation_state_invalid")
+        if self.subject_role_state not in {"YES", "NO", "UNKNOWN"}:
+            raise ValueError("qwen_relation_subject_role_state_invalid")
+        if (
+            len(self.object_role_states) != len(self.object_ids)
+            or any(
+                value not in {"YES", "NO", "UNKNOWN"}
+                for value in self.object_role_states
+            )
+        ):
+            raise ValueError("qwen_relation_object_role_states_invalid")
         if self.occlusion not in {"none", "partial", "severe"}:
             raise ValueError("qwen_relation_occlusion_invalid")
         if not math.isfinite(self.confidence) or not 0.0 <= self.confidence <= 1.0:

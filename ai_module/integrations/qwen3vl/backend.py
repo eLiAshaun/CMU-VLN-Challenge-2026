@@ -13,9 +13,9 @@ class Qwen3VLBackend:
             "ground_objects",
             "ground_objects_batch",
             "verify_object",
-            "verify_anchor",
-            "count_on_anchor",
+            "verify_object_batch",
             "verify_relation",
+            "verify_relation_batch",
             "rank_candidates",
         }:
             raise ValueError("qwen3vl_is_verification_only")
