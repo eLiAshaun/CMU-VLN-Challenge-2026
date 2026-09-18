@@ -4,7 +4,7 @@
 `cdfeb52771084b79d816a871c4801788dba24196`，不是旧的 `official-submission-20260916`。
 默认相机选择 **RealSense D435i**，使用官方 ROS 2 驱动的彩色图、对齐彩色图的深度和 CameraInfo；
 D455 等输出相同接口的型号也可使用，内参从设备读取，不使用固定 D435i 焦距。
-这是一份**已实现、完成隔离 CPU 单元测试的硬件接口适配版本**，尚未经过 ROS/GPU/Go2 实机验证。
+本分支已完成 CPU 回归和跨进程 ROS Jazzy DDS/TF/action 软件集成测试；真实相机、GPU 推理、完整导航闭环与 Go2 实机仍需验证。最新范围见 `go2/TEST_REPORT.md`。
 
 ## 适配了什么
 
@@ -14,11 +14,11 @@ D455 等输出相同接口的型号也可使用，内参从设备读取，不使
   彩色和对齐深度一起去畸变。按图像时刻的 `map <- camera_color_optical_frame` 完整 SE(3) 回投。
 - 物体的 `measured_points` 来自 RealSense 实测深度，DA3 默认不加载、不调用。
   Go2 LiDAR 仍交给你已有的定位/避障/Nav2；本适配没有把 `/utlidar/cloud` 冒充 `/registered_scan`。
-- 实际旋转获得六个朝向的观测。每次到达新的高层 waypoint 后再次扫描；先停稳，再取新图，
+- 实际旋转获得六个朝向的观测。初始位置及路线末点做完整扫描，中间转折点只做新的前向观察；先停稳，再取新图，
   不是把过去图像拼起来当作实时 360°。覆盖仍可能受遮挡限制，不代表整个候选集合完整。
 - 语义 waypoint 通过 Nav2 `NavigateToPose` action 执行，处理接受、完成、拒绝、失败和取消。
   新任务、超时和关闭会取消未完成动作；语义步骤继续根据实际 TF 轨迹推进。
-- 使用 Nav2 OccupancyGrid costmap 提供可行走信息，不将未知格子当作自由空间，不重复膨胀。
+- 使用 Nav2 OccupancyGrid 完整地图及 OccupancyGridUpdate 增量补丁更新可行走信息，按版本刷新规划输入；不将未知格子当作自由空间，不重复膨胀。
 - 原 `rebuild.ros_node` 和 CMU 启动脚本不变。`Runtime` 新增可选观察/导航工厂参数，缺省仍走原链。
 
 **这不是裸 Go2 的完整 SLAM/运动控制发行版。** 它接在已经能够接收 Nav2 目标的 Go2 导航系统上。
@@ -32,8 +32,8 @@ D455 等输出相同接口的型号也可使用，内参从设备读取，不使
    RealSense 驱动提供相机内部光学 TF，但不知道相机装在狗背上哪里。不能用零位姿替代安装标定。
    多电脑的时钟也需要对齐；在同一 ROS 时钟体系中运行，不能混用仿真 `/clock` 和实际设备时钟。
 3. **驱动和算力**：RealSense USB 驱动运行在采集主机；AI 可放在同机或有网络连接的 NVIDIA GPU 伴随电脑上。
-   当前 Docker 基于研究发布的 **x86-64 / ROS 2 Jazzy** 镜像。同一块 GPU 不要同时启动 CMU AI 和 Go2 AI 两套模型进程。不​​要把它直接用于 Jetson ARM，
-   也不要假设 Jazzy Nav2 action 能无配置地跨发行版连接 Humble。使用同一 ROS 发行版；
+   当前 Docker 基于研究发布的 **x86-64 / ROS 2 Jazzy** 镜像。同一块 GPU 不要同时启动 CMU AI 和 Go2 AI 两套模型进程。
+   不要把它直接用于 Jetson ARM，也不要假设 Jazzy Nav2 action 能无配置地跨发行版连接 Humble。使用同一 ROS 发行版；
    ARM/JetPack 或 Humble 需要对应环境构建和单独验证。Go2 不同型号的 SDK 开放程度应按实际设备确认。
 
 ## 默认接口
@@ -45,6 +45,7 @@ D455 等输出相同接口的型号也可使用，内参从设备读取，不使
 | 内参 | `/camera/camera/color/camera_info` |
 | 位姿 | TF：`map`、`base_link`、图像实际 optical frame |
 | 已膨胀成本地图 | `/global_costmap/costmap`，`nav_msgs/OccupancyGrid` |
+| 地图增量更新 | `/global_costmap/costmap_updates`，`map_msgs/OccupancyGridUpdate` |
 | 英文任务 | `/go2_ai/task`，`std_msgs/String` |
 | 导航动作 | `/navigate_to_pose` |
 | 数值结果 | `/go2_ai/numerical_response` |
@@ -81,7 +82,7 @@ docker compose -f ai_module/docker/compose.go2.yml build
 Dockerfile 使用 `elias1012/cmu-vln-2026:research-20260916-v7`，因为仓库发布记录说明该标签包含
 这条新链。用户原来的 `official-20260916` 标签、`latest` 和正式分支都不被覆盖。
 `Dockerfile.go2.dockerignore` 单独控制新镜像的构建上下文，避免重新传输本地 checkpoints。
-**本次提交没有实际构建或推送 Go2 Docker 镜像；以上是可复现的构建入口。**
+Go2 镜像构建与依赖验证记录见 `go2/TEST_REPORT.md`。现有 Docker Hub 标签保持不变，没有推送新的 Go2 标签。
 
 先做只读联通检查，不加载模型、不让狗移动：
 
@@ -91,7 +92,7 @@ docker compose -f ai_module/docker/compose.go2.yml run --rm \
   'source /opt/ros/jazzy/setup.bash; python3 -m go2.preflight --timeout 30'
 ```
 
-接口检查通过且操作员就位后启动 AI：
+接口检查完成且操作员就位后启动 AI：
 
 ```bash
 docker compose -f ai_module/docker/compose.go2.yml up
@@ -125,8 +126,8 @@ bash -n ai_module/docker/start_go2.sh ai_module/docker/start_realsense_d435i.sh
 
 CPU 测试覆盖米/毫米、字节序/行跨度、真实 K、SE(3)、无深度、去畸变、前置图像裁剪、
 未知成本格、实际朝向序列、Nav2 异步取消/重发状态，以及共用 Runtime 的适配分支。
-Nav2 action 测试使用模拟服务对象；Runtime 测试用模拟模型和存储隔离 GPU 依赖，
-**不等于 ROS DDS 联通、真实 VLM 识别或实机闭环通过**。详情见 `go2/TEST_REPORT.md`。
+部分单元测试使用模拟服务/模型。另有独立 ROS Jazzy 测试真实执行跨进程 DDS、TF 和 action 协议；
+传感器消息是合成数据，动作服务端不执行真实导航。**这些不等于真实 VLM 识别或实机闭环通过**。详情见 `go2/TEST_REPORT.md`。
 
 原研究版识别、身份关联、关系闭合、计数和包围盒不稳定的问题仍然存在，这次不宣称修好。
 数值任务沿用预算结束时输出当前集合计数的策略；状态和 summary 会同时记录 `evidence_complete`。
@@ -138,6 +139,23 @@ Nav2 action 测试使用模拟服务对象；Runtime 测试用模拟模型和存
 每个新任务仍然创建新的 ObjectStore，没有增加跨任务长期记忆、搬动家具处理或 SLAM 重定位修正。
 四足全 SE(3) 感知不等于已经支持上下楼梯、多层规划或腿部落足规划。
 
+## 2026-09-18 软件集成更新
+
+新增的 CI 在独立 ROS 域执行 53 项 CPU 回归与 9 项跨进程 ROS 集成测试。
+ROS 测试覆盖 RGB-D/内参同步、图像时刻 TF、地图增量更新、action 成功、替换、取消、失败，
+以及只读 preflight 的正例和过时深度反例。可重复运行：
+
+```bash
+# 具备测试依赖的 ROS Jazzy 环境；不连接真实机器人 ROS 域
+source /opt/ros/jazzy/setup.bash
+ROS_DOMAIN_ID=197 ROS_LOCALHOST_ONLY=1 PYTHONPATH=ai_module \
+  python3 ai_module/go2/tests/ros/test_live_interfaces.py -v
+```
+
+`go2.preflight` 和采集入口使用同一套 RGB、depth、CameraInfo 时间检查，
+不能用一张新 RGB 掩盖旧深度。增量地图仍需先接收到一张完整地图才能应用补丁；
+某些 Nav2 Jazzy 版本的晚加入订阅者可能收不到初始完整地图，部署时需实际检查该发布行为。
+
 ## 依据
 
 - 实际新链及发布记录：本仓库 `ai_module/README.md`、`RELEASE_20260916.md`。
@@ -145,3 +163,4 @@ Nav2 action 测试使用模拟服务对象；Runtime 测试用模拟模型和存
 - RealSense RGB-D 接口：https://dev.realsenseai.com/docs/ros2-wrapper/
 - Nav2 Jazzy NavigateToPose：https://api.nav2.org/actions/jazzy/navigatetopose.html
 - Unitree 官方 ROS 2 支持：https://github.com/unitreerobotics/unitree_ros2
+- Nav2 增量地图参数：https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/costmap_2d/
