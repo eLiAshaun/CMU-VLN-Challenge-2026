@@ -21,7 +21,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer, CancelResponse, GoalResponse
 from rclpy.callback_groups import ReentrantCallbackGroup
-from rclpy.executors import MultiThreadedExecutor
+from rclpy.executors import MultiThreadedExecutor, ExternalShutdownException
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, qos_profile_sensor_data
 from geometry_msgs.msg import TransformStamped
 from sensor_msgs.msg import Image, CameraInfo
@@ -119,9 +119,14 @@ def fixture_process(ready, commands):
     timer=node.create_timer(.03,publish,callback_group=group)
     executor=MultiThreadedExecutor(num_threads=3);executor.add_node(node)
     ready.set()
-    try: executor.spin()
+    try:
+        executor.spin()
+    except ExternalShutdownException:
+        pass
     finally:
-        server.destroy();node.destroy_node();rclpy.shutdown()
+        server.destroy(); node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 class LiveInterfacesTest(unittest.TestCase):
@@ -232,9 +237,14 @@ class LiveInterfacesTest(unittest.TestCase):
 
     def test_09_preflight_does_not_accept_fresh_rgb_with_old_depth(self):
         self.commands.put('stale_depth');self.spin_for(.2)
-        result=self.run_preflight(2)
+        # A new DDS participant needs time to discover the existing publishers.
+        # Assert sensor reception so a missing publisher cannot satisfy this test.
+        result=self.run_preflight(8)
         self.assertEqual(result.returncode,1,result.stdout+result.stderr)
-        self.assertIn('"rgbd_timing": false',result.stdout)
+        report=json.loads(result.stdout)
+        for key in ('rgb_topic', 'depth_topic', 'camera_info_topic'):
+            self.assertTrue(report['checks'][key], result.stdout+result.stderr)
+        self.assertFalse(report['checks']['rgbd_timing'])
 
 
 if __name__=='__main__':
