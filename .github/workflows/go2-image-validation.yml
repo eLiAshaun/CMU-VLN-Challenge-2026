@@ -1,0 +1,45 @@
+name: Go2 deployment image validation
+on:
+  push:
+    branches: [go2-compatible]
+    paths: ['.github/workflows/go2-image-validation.yml', 'ai_module/docker/Dockerfile.go2', 'ai_module/docker/start_realsense_d435i.sh']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare ephemeral runner disk
+        run: |
+          mkdir -p image-validation-output
+          df -h / | tee image-validation-output/disk-before.txt
+          # These preinstalled SDKs belong to this disposable runner, not the repository.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          df -h / | tee image-validation-output/disk-after.txt
+      - name: Pull published research runtime
+        run: |
+          set -o pipefail
+          docker pull elias1012/cmu-vln-2026:research-20260916-v7 2>&1 | tee image-validation-output/base-pull.log
+          docker image inspect elias1012/cmu-vln-2026:research-20260916-v7 > image-validation-output/base-inspect.json
+      - name: Build actual Go2 deployment image
+        run: |
+          set -o pipefail
+          docker build --progress=plain -f ai_module/docker/Dockerfile.go2 -t go2-production-ci ai_module 2>&1 | tee image-validation-output/production-build.log
+          docker image inspect go2-production-ci > image-validation-output/go2-inspect.json
+      - name: Imports and CPU tests inside actual deployment image
+        run: |
+          set -o pipefail
+          docker run --rm --entrypoint /bin/bash go2-production-ci -lc 'source /opt/ros/jazzy/setup.bash; python3 -c "import torch, rclpy, go2.ros_node, go2.preflight; print(\"Production imports passed\"); print(\"torch\", torch.__version__, \"CUDA available\", torch.cuda.is_available())" && python3 -m unittest discover -s go2/tests -v' 2>&1 | tee image-validation-output/production-tests.log
+      - name: Installed RealSense launch argument validation without camera
+        if: always()
+        run: |
+          set -o pipefail
+          docker run --rm --user 0 -v "$PWD:/workspace" --entrypoint /bin/bash ros:jazzy-ros-base -lc 'apt-get update && apt-get install -y --no-install-recommends ros-jazzy-realsense2-camera && source /opt/ros/jazzy/setup.bash && bash /workspace/ai_module/docker/start_realsense_d435i.sh --show-args' 2>&1 | tee image-validation-output/realsense-launch.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: go2-image-validation-${{ github.sha }}
+          path: image-validation-output/
