@@ -30,5 +30,6 @@
   "answer_reserve_seconds": 60,
   "output_root": "runs/go2",
   "calibration_platform": "live_camera_info_and_calibrated_tf",
-  "category_batch_size": 2
+  "category_batch_size": 2,
+  "costmap_updates_topic": "/global_costmap/costmap_updates"
 }

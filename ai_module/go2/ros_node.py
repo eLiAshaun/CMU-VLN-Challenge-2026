@@ -26,6 +26,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, qos_profi
 from rclpy.signals import SignalHandlerOptions
 from sensor_msgs.msg import Image, CameraInfo
 from nav_msgs.msg import OccupancyGrid
+from map_msgs.msg import OccupancyGridUpdate
 from std_msgs.msg import Int32, String
 from visualization_msgs.msg import Marker
 from tf2_ros import Buffer, TransformListener, TransformException
@@ -39,6 +40,8 @@ from .sensors import RGBDProjector, PinholeObservationAdapter, depth_metres, rgb
 from .sensors import transform_matrix, rotation_xyzw, yaw_of, angle_difference
 from .navigation import navigation_factory, costmap_points, HeadingSweep
 from .nav2_transport import Nav2Transport
+from .costmap import CostmapBuffer
+from .packet import packet_timing, timing_valid
 
 
 def stamp(message):
@@ -59,6 +62,7 @@ class Go2Node(Node):
         self.packets = deque(maxlen=8)
         self.pose, self.pose_stamp = None, -1.0
         self.costmap, self.terrain_key = None, None
+        self.costmap_buffer = CostmapBuffer()
         self.terrain = np.empty((0, 4), dtype=np.float32)
         self.sweep, self.sweep_position = None, None
         self.motion_kind, self.ready_after = None, -1.0
@@ -80,6 +84,9 @@ class Go2Node(Node):
                          durability=(DurabilityPolicy.TRANSIENT_LOCAL if config['costmap_transient_local']
                                      else DurabilityPolicy.VOLATILE))
         self.create_subscription(OccupancyGrid, config['costmap_topic'], self.on_costmap, qos)
+        updates_topic = config.get('costmap_updates_topic', config['costmap_topic'] + '_updates')
+        if updates_topic:
+            self.create_subscription(OccupancyGridUpdate, updates_topic, self.on_costmap_update, 10)
         self.create_timer(0.1, self.tick)
         self.get_logger().info(f"Go2 RGB-D AI listening on {config['task_topic']}; Nav2 must already be running")
 
@@ -119,7 +126,15 @@ class Go2Node(Node):
         self.event('question_received', question=question)
 
     def on_costmap(self, message):
-        self.costmap = message
+        self.costmap_buffer.set_full(message)
+        self.costmap = self.costmap_buffer.message
+
+    def on_costmap_update(self, message):
+        accepted, reason = self.costmap_buffer.apply_update(message)
+        if accepted:
+            self.costmap = self.costmap_buffer.message
+        else:
+            self.event('costmap_update_not_applied', reason=reason)
 
     def update_pose(self):
         transform = self.tf.lookup_transform(self.config['world_frame'], self.config['base_frame'], Time())
@@ -139,7 +154,7 @@ class Go2Node(Node):
         message = self.costmap
         if message is None:
             return False
-        key = id(message)
+        key = self.costmap_buffer.version
         if key == self.terrain_key:
             return True
         origin = message.info.origin
@@ -162,8 +177,10 @@ class Go2Node(Node):
             timestamp = stamp(rgb)
             if timestamp < self.ready_after or (self.episode and timestamp <= self.episode.last_image_stamp):
                 continue
-            age = self.now_seconds()-timestamp
-            if age < -0.1 or age > self.config['max_observation_age_seconds']:
+            timing = packet_timing((rgb, depth, info), self.now_seconds(),
+                                   self.config['max_observation_age_seconds'],
+                                   self.config['rgb_depth_sync_seconds'])
+            if not timing_valid(timing):
                 continue
             frame_id = info.header.frame_id
             if rgb.header.frame_id != frame_id or depth.header.frame_id != frame_id:
@@ -216,8 +233,11 @@ class Go2Node(Node):
             self.event('heading_observation_consumed', heading_index=self.sweep.index,
                        image_stamp=self.episode.last_image_stamp)
 
-    def new_sweep(self):
-        self.sweep = HeadingSweep(self.config['scan_yaws_deg'])
+    def new_sweep(self, full=True):
+        # Keep a fresh forward view at intermediate route bends, but reserve
+        # the full heading sweep for the initial pose and route endpoints.
+        offsets = self.config['scan_yaws_deg'] if full else [0.0]
+        self.sweep = HeadingSweep(offsets)
         self.sweep.reset(yaw_of(self.pose))
         self.sweep_position = self.pose[:2, 3].copy()
         self.ready_after = self.now_seconds() + self.config['observation_settle_seconds']
@@ -263,7 +283,10 @@ class Go2Node(Node):
                 return
             self.event('navigation_goal_reached', goal=self.transport.last_success, kind=self.motion_kind)
             if self.motion_kind == 'move':
-                self.new_sweep()
+                full = not bool(self.episode.navigation.route)
+                self.new_sweep(full=full)
+                self.event('observation_schedule', full_sweep=full,
+                           reason='route_endpoint' if full else 'intermediate_waypoint')
             else:
                 self.ready_after = self.transport.completed_stamp + self.config['observation_settle_seconds']
             self.motion_kind = None

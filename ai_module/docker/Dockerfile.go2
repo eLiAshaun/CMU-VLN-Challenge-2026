@@ -6,7 +6,7 @@ USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-jazzy-tf2-ros ros-jazzy-nav2-msgs ros-jazzy-message-filters \
     ros-jazzy-geometry-msgs ros-jazzy-sensor-msgs ros-jazzy-nav-msgs \
-    ros-jazzy-visualization-msgs && rm -rf /var/lib/apt/lists/*
+    ros-jazzy-visualization-msgs ros-jazzy-map-msgs && rm -rf /var/lib/apt/lists/*
 COPY --chown=docker:docker rebuild /home/docker/ai_module/rebuild
 COPY --chown=docker:docker go2 /home/docker/ai_module/go2
 COPY --chown=docker:docker configs/go2_d435i.json /home/docker/ai_module/configs/

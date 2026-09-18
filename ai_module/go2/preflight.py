@@ -13,6 +13,7 @@ from nav_msgs.msg import OccupancyGrid
 from nav2_msgs.action import NavigateToPose
 from tf2_ros import Buffer, TransformListener, TransformException
 from .config import load_config
+from .packet import packet_timing, timing_valid
 
 
 def main():
@@ -46,6 +47,10 @@ def main():
         report['aligned_rgbd_contract'] = False
         if all(report[key] for key in ['rgb_topic', 'depth_topic', 'camera_info_topic']):
             rgb, depth, info = [received[key] for key in ['rgb_topic', 'depth_topic', 'camera_info_topic']]
+            timing = packet_timing((rgb, depth, info),
+                node.get_clock().now().nanoseconds*1e-9,
+                config['max_observation_age_seconds'], config['rgb_depth_sync_seconds'])
+            report['rgbd_timing'] = timing_valid(timing)
             report['aligned_rgbd_contract'] = (
                 rgb.header.frame_id == depth.header.frame_id == info.header.frame_id
                 and (rgb.width, rgb.height) == (depth.width, depth.height) == (info.width, info.height)
