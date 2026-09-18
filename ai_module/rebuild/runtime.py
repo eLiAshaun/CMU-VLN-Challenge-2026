@@ -129,11 +129,14 @@ class Episode:
 
 
 class Runtime:
-    def __init__(self, config: dict):
+    def __init__(self, config: dict, *, observation_adapter=None, navigation_factory=Navigation):
         self.config = config
+        self.observation_adapter = observation_adapter
+        self.navigation_factory = navigation_factory
         self.models = ModelRuntime(config, log_event=self._model_event)
         self.current_log: RunLog | None = None
-        self.calibration = json.loads(Path(config['calibration']).read_text())
+        self.calibration = (json.loads(Path(config['calibration']).read_text())
+                            if observation_adapter is None else {})
 
     def _model_event(self, event: str, **fields) -> None:
         if self.current_log is not None:
@@ -145,7 +148,7 @@ class Runtime:
         task = self.models.compile_task(question)
         log.write('task_ir.json', task)
         log.event('task_compiled', task_type=task['task_type'], concepts=task_concepts(task))
-        return Episode(question, task, log, ObjectStore(self.config), Navigation(self.config), started)
+        return Episode(question, task, log, ObjectStore(self.config), self.navigation_factory(self.config), started)
 
     def observe(self, episode: Episode, frame: Frame) -> None:
         if episode.terminal:
@@ -153,25 +156,31 @@ class Runtime:
         self.current_log = episode.log
         observation_dir = episode.log.directory / 'observations' / frame.observation_id
         observation_dir.mkdir(parents=True, exist_ok=True)
-        Image.fromarray(frame.panorama_rgb).save(observation_dir / 'camera_panorama.png')
+        camera_file = 'camera_panorama.png' if self.observation_adapter is None else 'camera_rgb.png'
+        Image.fromarray(frame.panorama_rgb).save(observation_dir / camera_file)
         np.save(observation_dir / 'registered_scan.npy', frame.registered_points_map)
         episode.log.write(str(observation_dir.relative_to(episode.log.directory) / 'capture.json'), {
             'observation_id': frame.observation_id, 'image_stamp': frame.stamp,
             'registered_scan_stamp': frame.scan_stamp, 'T_map_sensor': frame.T_map_sensor,
-            'geometry_source': '/registered_scan in map; /state_estimation at image time',
+            'geometry_source': ('/registered_scan in map; /state_estimation at image time'
+                                if self.observation_adapter is None else self.observation_adapter.geometry_source),
+            'sensor_metadata': getattr(frame, 'metadata', {}),
         })
         episode.log.event('observation_started', observation_id=frame.observation_id,
                           image_stamp=frame.stamp, position=frame.T_map_sensor[:3, 3])
         concepts = task_concepts(episode.task)
         visual_queries = task_visual_queries(episode.task)
-        views = make_views(frame, self.calibration, self.config)
+        views = (make_views(frame, self.calibration, self.config) if self.observation_adapter is None
+                 else self.observation_adapter.make_views(frame))
         episode.log.write(str(observation_dir.relative_to(episode.log.directory) / 'views.json'), [
             {'view_id': view.view_id, 'observation_id': view.observation_id, 'stamp': view.stamp,
              'intrinsics': view.intrinsics, 'T_map_view': view.T_map_view,
              'panorama_shape': view.panorama_shape,
-             'projection': 'cropped_equirectangular',
-             'panorama_vertical_fov_deg': self.config['panorama_vertical_fov_deg'],
-             'horizontal_fov_deg': self.config['horizontal_fov_deg']}
+             'projection': ('cropped_equirectangular' if self.observation_adapter is None
+                            else self.observation_adapter.projection),
+             **({'panorama_vertical_fov_deg': self.config['panorama_vertical_fov_deg'],
+                 'horizontal_fov_deg': self.config['horizontal_fov_deg']}
+                if self.observation_adapter is None else self.observation_adapter.view_metadata(view))}
             for view in views])
         # Raw detector outputs remain proposals until their own image region
         # is verified. No historical object label can authorize a new region.
@@ -184,7 +193,9 @@ class Runtime:
             for index, det in enumerate(self.models.detect(view, concepts, visual_queries)):
                 Image.fromarray(det.mask.astype(np.uint8) * 255).save(
                     observation_dir / f'{view.view_id}_mask_{index:03d}.png')
-                crop, crop_metadata = category_image(frame, view, det, self.calibration, self.config)
+                crop, crop_metadata = (category_image(frame, view, det, self.calibration, self.config)
+                                       if self.observation_adapter is None else
+                                       self.observation_adapter.category_image(frame, view, det, self.config))
                 crop_path = observation_dir / f'{view.view_id}_category_{index:03d}.jpg'
                 crop.save(crop_path)
                 entry = {'view_id': view.view_id, 'concept': det.concept,
@@ -214,7 +225,7 @@ class Runtime:
             lifted = [lift_detection(det, view, frame.registered_points_map) for det, _ in relevant]
             sparse = [i for i, obs in enumerate(lifted)
                       if len(obs.measured_points) < self.config['depth_min_lidar_points']]
-            if sparse:
+            if sparse and self.config.get('estimated_depth_enabled', True):
                 depth_m = self.models.depth(view)
                 depth_m, calibration = calibrate_depth_to_scan(depth_m, view, frame.registered_points_map)
                 episode.log.event('view_depth_calibrated', observation_id=frame.observation_id,
@@ -224,6 +235,9 @@ class Runtime:
                                                depth_m, calibration)
                 del depth_m
             for obs, (det, entry) in zip(lifted, relevant):
+                if self.observation_adapter is not None:
+                    obs.geometry_quality['measured_sensor_source'] = self.observation_adapter.geometry_source
+                    self.observation_adapter.annotate_observation(obs, det)
                 obs.geometry_quality['reprojection_evidence'] = reprojection_evidence(
                     view, det.mask, episode.store.records, frame.registered_points_map)
                 entry.update(center=obs.center, bbox=obs.bbox, geometry_quality=obs.geometry_quality,

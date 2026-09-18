@@ -1,0 +1,12 @@
+**
+!rebuild/
+!rebuild/**
+!go2/
+!go2/**
+!configs/
+!configs/go2_d435i.json
+!docker/
+!docker/start_go2.sh
+!GO2_COMPATIBILITY.md
+**/__pycache__
+**/*.pyc

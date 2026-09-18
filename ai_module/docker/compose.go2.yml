@@ -1,0 +1,27 @@
+services:
+  go2_ai:
+    image: cmu-vln-go2:compatible
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.go2
+    network_mode: host
+    init: true
+    stop_grace_period: 15s
+    user: "${CMU_AI_UID:-1000}:${CMU_AI_GID:-1000}"
+    environment:
+      ROS_DOMAIN_ID: "${ROS_DOMAIN_ID:-0}"
+      ROS_LOCALHOST_ONLY: "0"
+      RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+      FASTDDS_BUILTIN_TRANSPORTS: UDPv4
+      GO2_AI_CONFIG: /home/docker/ai_module/configs/go2_d435i.json
+      ROS_LOG_DIR: /tmp/go2-ros
+    volumes:
+      - ../configs/go2_d435i.json:/home/docker/ai_module/configs/go2_d435i.json:ro
+      - ../runs/go2:/home/docker/ai_module/runs/go2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

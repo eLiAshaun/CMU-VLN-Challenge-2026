@@ -1,0 +1,22 @@
+# Use the research image documented by RELEASE_20260916.md.
+# Do not replace or overwrite the user's existing official image tags.
+ARG BASE_IMAGE=elias1012/cmu-vln-2026:research-20260916-v7
+FROM ${BASE_IMAGE}
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-jazzy-tf2-ros ros-jazzy-nav2-msgs ros-jazzy-message-filters \
+    ros-jazzy-geometry-msgs ros-jazzy-sensor-msgs ros-jazzy-nav-msgs \
+    ros-jazzy-visualization-msgs && rm -rf /var/lib/apt/lists/*
+COPY --chown=docker:docker rebuild /home/docker/ai_module/rebuild
+COPY --chown=docker:docker go2 /home/docker/ai_module/go2
+COPY --chown=docker:docker configs/go2_d435i.json /home/docker/ai_module/configs/
+COPY --chown=docker:docker docker/start_go2.sh /home/docker/ai_module/docker/
+COPY --chown=docker:docker GO2_COMPATIBILITY.md /home/docker/ai_module/
+RUN chmod +x /home/docker/ai_module/docker/start_go2.sh && \
+    mkdir -p /home/docker/ai_module/runs/go2 && chown docker:docker /home/docker/ai_module/runs/go2
+USER docker
+WORKDIR /home/docker/ai_module
+ENV PYTHONPATH=/home/docker/ai_module
+# Replace inherited entrypoints so no CMU simulator/base launch can run here.
+ENTRYPOINT ["/bin/bash", "/home/docker/ai_module/docker/start_go2.sh"]
+CMD []
