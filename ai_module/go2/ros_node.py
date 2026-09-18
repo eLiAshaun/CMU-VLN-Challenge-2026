@@ -12,6 +12,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 import json
 import math
+import signal
 import time
 import traceback
 
@@ -85,9 +86,9 @@ class Go2Node(Node):
     def now_seconds(self):
         return self.get_clock().now().nanoseconds * 1e-9
 
-    def event(self, kind, **fields):
+    def event(self, event_name, **fields):
         if self.log:
-            self.log.event(kind, **fields)
+            self.log.event(event_name, **fields)
 
     def waiting(self, reason):
         if reason != self.last_wait:
@@ -364,6 +365,12 @@ def main():
     parser.add_argument('--config')
     args, ros_args = parser.parse_known_args()
     rclpy.init(args=ros_args, signal_handler_options=SignalHandlerOptions.NO)
+
+    def request_shutdown(signum, frame):
+        raise KeyboardInterrupt
+
+    # Keep ROS alive long enough to cancel the goal on Docker stop (SIGTERM).
+    signal.signal(signal.SIGTERM, request_shutdown)
     node = Go2Node(load_config(args.config))
     try:
         rclpy.spin(node)

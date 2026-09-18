@@ -6,7 +6,7 @@ Environment: Linux, Python 3.13.5, CPU only.
 
 ## Executed
 
-- `PYTHONPATH=ai_module python3 -m unittest discover -s ai_module/go2/tests -v`: **32 passed**.
+- `PYTHONPATH=ai_module python3 -m unittest discover -s ai_module/go2/tests -v`: **36 passed**.
 - `python3 -m compileall -q ai_module/go2 ai_module/rebuild/runtime.py`: passed.
 - `bash -n ai_module/docker/start_go2.sh ai_module/docker/start_realsense_d435i.sh`: passed.
 - JSON profile and Compose YAML parsing: passed.
@@ -16,6 +16,9 @@ lifecycle tests use injected fake action clients/goal handles. Runtime tests exe
 the modified Runtime source with fake model, geometry and ObjectStore dependencies
 to isolate adapter routing. They test the pinhole path, no-DA3 measured-depth mode,
 and preservation of the default CMU path; they do not test real detector quality.
+Four additional tests execute the actual Go2Node orchestration class with fake ROS
+services and model jobs: initial observation, post-turn timing/logging, navigation
+failure, and replacement of an episode while an earlier inference completes.
 
 ## Not executed / not claimed
 
@@ -26,8 +29,13 @@ The existing competition/research accuracy limitations remain unchanged.
 
 A first CPU test used exact equality on floating-point timestamps and failed on
 123.00000000000001 versus 123.0. It was corrected to numerical approximate equality;
-the final 32-test run passed. The transport success/cancellation logic was also
+the final 36-test run passed. The transport success/cancellation logic was also
 covered by goal replacement and late-cancellation-response tests.
+A review found a keyword collision in navigation-completion logging: the event
+wrapper argument and a logged field were both named `kind`. The wrapper argument
+was renamed to `event_name`; the post-turn orchestration test covers this call.
+SIGTERM now enters the same orderly cancellation path as an operator interrupt;
+that signal-to-ROS cancellation path still requires real ROS integration testing.
 
 ## Required deployment validation
 
