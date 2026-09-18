@@ -1,0 +1,42 @@
+name: Go2 compatibility validation
+on:
+  push:
+    branches: [go2-compatible]
+    paths: ['ai_module/**', '.github/workflows/go2-validation.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpu-and-ros:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve testable source snapshot
+        run: |
+          mkdir -p validation-output
+          tar -czf validation-output/go2-source.tar.gz ai_module/go2 ai_module/rebuild ai_module/configs ai_module/docker ai_module/GO2_COMPATIBILITY.md
+      - name: Build ROS Jazzy test environment
+        run: |
+          cat > /tmp/Dockerfile.go2-test <<'EOF'
+          FROM ros:jazzy-ros-base
+          RUN apt-get update && apt-get install -y --no-install-recommends python3-numpy python3-opencv python3-pil python3-scipy python3-yaml ros-jazzy-nav2-msgs ros-jazzy-tf2-ros ros-jazzy-message-filters && rm -rf /var/lib/apt/lists/*
+          WORKDIR /workspace
+          ENV PYTHONPATH=/workspace/ai_module
+          EOF
+          docker build -f /tmp/Dockerfile.go2-test -t go2-jazzy-tests /tmp
+      - name: CPU and installed ROS import tests
+        run: |
+          set -o pipefail
+          docker run --rm -v "$PWD:/workspace" go2-jazzy-tests bash -c 'python3 -m unittest discover -s ai_module/go2/tests -v && python3 -m compileall -q ai_module/go2 ai_module/rebuild && python3 -c "import go2.ros_node; import go2.preflight; print(\"Real ROS Jazzy imports passed\")" && bash -n ai_module/docker/start_go2.sh ai_module/docker/start_realsense_d435i.sh' 2>&1 | tee validation-output/cpu-and-imports.log
+      - name: Real ROS integration tests when present
+        run: |
+          set -o pipefail
+          if [ -f ai_module/go2/tests/ros/test_live_interfaces.py ]; then
+            docker run --rm -e ROS_DOMAIN_ID=197 -e ROS_LOCALHOST_ONLY=1 -v "$PWD:/workspace" go2-jazzy-tests bash -c 'python3 ai_module/go2/tests/ros/test_live_interfaces.py -v' 2>&1 | tee validation-output/ros-integration.log
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: go2-validation-${{ github.sha }}
+          path: validation-output/
